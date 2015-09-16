@@ -1,0 +1,34 @@
+
+.hd-search-form{
+	width: 315px;
+    float: left;
+    margin-top: 4px;
+	margin-left: 35px;
+}
+
+.hd-search-form input{
+	height: 30px;
+}
+.hd-search-form .input-group-btn .js-submit-search{
+	border-left: none;
+    padding: 7px 12px;
+}
+.home-container .section-home .container>h3{
+	font-size: 2.5rem;
+}
+.controller-hourlie.action-list .listings-container{
+	margin-left: 10px;
+}
+.controller-hourlie.action-list .listing-row .title{
+	font-weight: bold;
+}
+.controller-hourlie.action-list .listing-row .horizontal>li{
+	text-transform: none;
+    font-weight: 400;
+}
+.controller-hourlie.action-list .listing-row.featured-row{
+	background-color: #fff;
+}
+a.js-paragraph-crop{
+	color: #4774b7;
+}
