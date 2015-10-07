@@ -9,29 +9,24 @@
 
 	<!-- ngIf: meta.androidAlternateLink -->
 
-	<link href="images/favicon.ico?_v=22bc513f" rel="shortcut icon" type="image/x-icon">
+	<link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
 	
 	<link href="css/styles.css" rel="stylesheet" type="text/css">
 	<link href="http://fonts.googleapis.com/css?family=Roboto&amp;subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
 
 	
-
-	<!-- angular app should be loaded strictly after analytics scripts are executed -->
-	<script type="text/javascript" src="js/scripts.js"></script>
-
-
 </head>
-<body class="ng-scope lw-home-page">
+<body>
 
 <header class="main-header ng-scope"  style="top: 0px;">
-	<button type="button" class="menu-toggle ng-hide" aria-haspopup="true" ng-show="isMobile" ng-click="toggleSiteMenu()"></button>
+	<button type="button" class="menu-toggle ng-hide"></button>
 
 	<a class="header-logo"  href="#">
 		<img src="images/localway-logo-white.png" alt="Логотип LocalWay">
 	</a>
 	<!-- Desktop header menu -->
 	<!-- ngIf: !isMobile -->
-	<ul class="header-menu ng-scope" ng-if="!isMobile">
+	<ul class="header-menu ng-scope">
 		<li class="dropdown agglo-menu" lw-agglo-menu="">
 			<button class="dropdown-toggle" aria-haspopup="true" type="button">
 				<span style="float: left" class="ng-binding">
@@ -263,95 +258,91 @@
 	</a>
 </header>
 
-<main class="main-content-wrapper ng-scope" >
-	<div class="page-home ng-scope">
-		<div class="home-header cover-1" style="background-position: 60px 0px;">
-			<div class="home-top">
-				<h1 class="home-title ng-binding">Найти лучшее в Москве</h1>
+<main class="main-content-wrapper ng-scope">
+	<section class="main-content ng-scope">
 
-			<aside class="search-home search-panel-wrapper" options="{ limit: 5 }">
-				<header class="hidden_offscreen">
-					<h1>Поиск</h1>
-				</header>
-				<form class="search-panel ng-pristine ng-valid">
-					<div class="field-search what">
-						<label for="input-what">
-							<span class="ico"></span>
-							<span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-							<input id="input-what" type="text" maxlength="50" autocomplete="off"  placeholder="Что Вы ищете?" class="ng-pristine ng-valid ui-autocomplete-input">
+		<div class="page-auth page-login">
+			<h1>Вход на сайт</h1>
 
-							<div class="suggestions-holder">
-								<div class="suggest-dropdown">
-									<div class="suggestions">
-										<ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-16" tabindex="0" style="display: none;">
-										</ul>
-									</div>
-								</div>
-							</div>
-						</label>
+			<h5>Нет аккаунта? <a href="#">Зарегистрироваться</a></h5>
+
+			<form name="loginForm" class="user-form ng-pristine ng-invalid ng-invalid-required">
+				<div class="fast-reg">
+					<p>Быстрый вход</p>
+
+					<div class="fast-reg-links ng-scope">
+						<a class="fast-reg-vk" href=""></a>
+						<a class="fast-reg-fb" href=""></a>
 					</div>
-
-					<div class="field-search where">
-						<label for="input-where">
-							<span class="ico"></span>
-							<input id="input-where" type="text" maxlength="50"  placeholder="Где Вы ищете?" class="ng-pristine ng-valid">
-
-						</label>
-					</div>
-
-					<button id="searchButton" type="submit" data-bind="search" disabled="disabled" class="btn btn-dark disabled" >
-						Поиск
-					</button>
-
-					<a id="backToSearchButton" class="back-to-result ng-hide" href="#" >
-						<i class="lw-icon-arrow-left-thin"></i>
-						К результатам поиска
-					</a>
-				</form>
-			</aside>
-		</div>
-
-		<!--<div class="home-options">
-				<div class="items">
-						<a href>
-								<img src="assets/images/layout/home-option-01.jpg" alt="" />
-								<div class="text">
-										<h5>Скачать приложение</h5>
-										<p>iOS и Android</p>
-								</div>
-						</a>
-						<a href>
-								<img src="assets/images/layout/home-option-02.jpg" alt="" />
-								<div class="text">
-										<h5>Смотреть видео</h5>
-										<p>Узнайте, как работает Localway</p>
-								</div>
-						</a>
-						<a href>
-								<img src="assets/images/layout/home-option-03.jpg" alt="" />
-								<div class="text">
-										<h5>Написать отзыв</h5>
-										<p>Стань экспертом, помоги другим</p>
-								</div>
-						</a>
 				</div>
-		</div>-->
 
-		<!-- ngIf: guidesExist -->
-		<button class="show-guides ng-scope" type="button" style="opacity: 1;">
-			<i class="lw-icon-circle-arrow-down"></i>
-			<span>Узнай город лучше с нашими гидами</span>
-		</button><!-- end ngIf: guidesExist -->
+			<div class="norm-reg">
+				<p>Обычный вход</p>
+
+				<div class="norm-reg-form">
+					<label class="field-register">
+						<input type="text" name="email" placeholder="Email" class="ng-pristine ng-invalid ng-invalid-required ng-valid-pattern" required="required">
+
+						<span class="error-message ng-hide" id="qa_email_error_message" >
+							<span class="error-message-text">
+								Пожалуйста, введите значение
+							</span>
+							<span class="error-message-text ng-hide">
+								Email некорректен
+							</span>
+							<span class="error-message-text ng-hide">
+								Email или пароль введены неверно
+							</span>
+						</span>
+					</label>
+
+					<label class="field-register">
+						<input type="password" name="password"placeholder="Пароль" class="ng-pristine ng-invalid ng-invalid-required" required="required">
+
+						<span class="error-message ng-hide" id="qa_password_error_message" >
+							<span class="error-message-text">
+								Пожалуйста, введите значение
+							</span>
+						</span>
+					</label>
+				</div>
+
+				<div class="norm-reg-notify">
+					<a href="#" class="right link">
+						Забыли пароль?
+					</a>
+
+					<div class="left">
+						<label>
+							<input type="checkbox" class="lw-switcher ng-pristine ng-valid" name="rememberMe" checked="">
+
+							<span class="lbl">
+								<span class="checked">Да</span>
+								<span class="unchecked">Нет</span>
+							</span>
+
+							<span class="text">
+								Запомнить меня
+							</span>
+						</label>
+					</div>
+				</div>
+			</div>
+
+			<button class="btn btn-big btn-red hover-darken" id="qa_login_button">
+				Войти
+			</button>
+		</form>
 	</div>
-</div>
 
-
-
+</section>
 </main>
 
-	<div class="left-panel ng-scope" style="padding-top: 55px;">
+<div class="left-panel ng-scope" style="padding-top: 55px;">
 		<nav class="main-menu left-panel-custom-scroll ng-scope" style="overflow: hidden; padding: 0px; width: 240px;">
-				<div class="ng-scope">
+			<div class="jspContainer" style="width: 240px; height: 665px;">
+				<div class="jspPane" style="padding: 0px; top: 0px; left: 0px; width: 240px;">
+					<div class="ng-scope">
 						<header>
 							<h1 class="hidden_offscreen">
 								Меню
@@ -409,450 +400,12 @@
 						</a>
 						
 					</div>
-				
+				</div>
+			</div>
 		</nav>
 	</div>
-	<section class="guide_card_list_wrapper guide_card_list_wrapper-home js-guide_card_list_wrapper-home ng-scope">
-		<header class="hidden_offscreen">
-			<h1>Последние гиды</h1>
-		</header>
-		<ul class="guide_card_list guide_card_list-size_default guide_card_list-cards_count_12">
-			<li class="guide-card ng-scope">
-				<a class="guide-card-link" target="_self" href="/moscow/guide/238">
-					<article>
-						<div class="pic">
-							<img alt="20&nbsp;отменных блюд азиатской кухни в заведениях Москвы" title="отменных блюд азиатской кухни в заведениях Москвы" width="280" height="220" src="https://img.localway.ru/scaled/guide/238/587464/280x220.jpg">
-						</div>
-						<div class="info">
-							<header>
-								<h1 class="desc">
-									<span class="counter ng-scope ng-binding">
-										20
-									</span>
-									<span class="text ng-binding">
-										отменных блюд азиатской кухни в заведениях Москвы
-									</span>
-								</h1>
-							</header>
-							<figure class="user ng-scope test">
-								<div class="userpics">
-									<div class="userpic ng-scope">
-										<img  alt="Михаил Артюхин Управляющий рестораном Black Thai" width="30" height="30" src="https://localway.ru/avatars/0985f56f4080ca9efe4750a977463cf6.JPG">
-										
-									</div>
-									<div class="userpic ng-scope">
-										<img  alt="Игорь Су Шеф-повар ресторана GUTAI" width="30" height="30" src="https://localway.ru/avatars/04538d44fe8fc8fe995084330ef30255.JPG">
-										
-									</div>
-									<div class="userpic ng-scope" >
-										<img alt="Чжан Сяньчэн Шеф-повар ресторана «Китайская грамота»" width="30" height="30" src="https://localway.ru/avatars/c4ea848716fcef59ec51048ac6d3c0c1.JPG">
-										
-									</div>
-								</div>
 
-								<figcaption class="user-info">
-									<h1 class="h4 user-name ng-binding">
-										20 авторов
-									</h1>
-								</figcaption>
-							</figure><!-- end ngIf: guide.authors -->
-
-						</div>
-					</article>
-				</a>
-			</li>
-			<li class="guide-card ng-scope" >
-				<a class="guide-card-link" target="_self" href="#">
-					<article>
-						<div class="pic">
-							<img alt="7&nbsp;вариантов отдыха в парке Фили" title="вариантов отдыха в парке Фили" width="280" height="220" src="https://img.localway.ru/scaled/guide/234/585385/280x220.jpg">
-						</div>
-						<div class="info">
-							<header>
-								<h1 class="desc">
-									<span class="counter ng-scope ng-binding">
-										7
-									</span>
-									<span class="text ng-binding">
-										вариантов отдыха в парке Фили
-									</span>
-								</h1>
-							</header>
-					
-							<figure class="user ng-scope">
-								<span class="userpic">
-									<img  alt="Редакция Localway" width="30" height="30" class="ng-scope" src="https://localway.ru/avatars/9d735293c10510908d74810d8882ad07.png"><!-- end ngIf: guide.author._id != -1 -->
-
-								</span>
-
-								<figcaption class="user-info">
-									<span class="user-name ng-scope ng-binding" ng-if="guide.author._id != -1">
-										Редакция Localway
-									</span>
-								</figcaption>
-							</figure>
-						</div>
-					</article>
-				</a>
-			</li>
-			<li class="guide-card ng-scope">
-				<a class="guide-card-link" target="_self" href="#">
-					<article>
-						<div class="pic">
-							<img alt="10&nbsp;красочных граффити на севере Москвы" title="красочных граффити на севере Москвы" width="280" height="220" src="https://img.localway.ru/scaled/guide/233/585332/280x220.jpg">
-						</div>
-						<div class="info">
-							<header>
-								<h1 class="desc">
-									<span ng-if="guide.nameCounter" class="counter ng-scope ng-binding">
-										10
-									</span>
-									<span class="text ng-binding">
-										красочных граффити на севере Москвы
-									</span>
-								</h1>
-							</header>
-					
-							<figure class="user ng-scope">
-								<span class="userpic">
-									<img alt="Индира Валеева тва" width="30" height="30" class="ng-scope" src="https://localway.ru/avatars/b759681f8a48423754631f473ba44079.jpg"><!-- end ngIf: guide.author._id != -1 -->
-									<span ng-if="isExpertUser(guide.author)" class="expert-ribbon ng-scope"></span>
-									
-								</span>
-								<figcaption class="user-info">
-									<span class="user-name ng-scope ng-binding">
-										Индира Валеева
-									</span>
-								</figcaption>
-							</figure>
-						</div>
-					</article>
-				</a>
-			</li>
-			<li class="guide-card ng-scope">
-				<a class="guide-card-link" target="_self" href="/moscow/guide/226">
-					<article>
-						<div class="pic">
-							<img alt="10&nbsp;литературных музеев Москвы" title="литературных музеев Москвы" width="280" height="220" src="https://img.localway.ru/scaled/guide/226/580705/280x220.jpg">
-						</div>
-						<div class="info">
-							<header>
-								<h1 class="desc">
-									<span class="counter ng-scope ng-binding">
-										10
-									</span>
-									<span class="text ng-binding">
-										литературных музеев Москвы
-									</span>
-								</h1>
-							</header>
-							<figure class="user ng-scope">
-								<span class="userpic">
-									<img alt="Редакция Localway" width="30" height="30" class="ng-scope" src="https://localway.ru/avatars/9d735293c10510908d74810d8882ad07.png"><!-- end ngIf: guide.author._id != -1 -->
-
-								</span>
-
-								<figcaption class="user-info">
-									<span class="user-name ng-scope ng-binding">
-										Редакция Localway
-									</span>
-								</figcaption>
-							</figure>
-						</div>
-					</article>
-				</a>
-			</li>
-			<li class="guide-card ng-scope">
-				<a class="guide-card-link" target="_self" href="#">
-					<article>
-						<div class="pic">
-							<img alt="12&nbsp;лучших пляжей и открытых бассейнов Москвы" title="лучших пляжей и открытых бассейнов Москвы" width="280" height="220" src="https://img.localway.ru/scaled/guide/193/567866/280x220.jpg">
-						</div>
-						<div class="info">
-							<header>
-								<h1 class="desc">
-									<!-- ngIf: guide.nameCounter --><span ng-if="guide.nameCounter" class="counter ng-scope ng-binding">
-										12
-									</span><!-- end ngIf: guide.nameCounter -->
-									<span class="text ng-binding">
-										лучших пляжей и открытых бассейнов Москвы
-									</span>
-								</h1>
-							</header>
-							<figure class="user ng-scope">
-								<span class="userpic">
-									<img alt="Редакция Localway" width="30" height="30" class="ng-scope" src="https://localway.ru/avatars/9d735293c10510908d74810d8882ad07.png"><!-- end ngIf: guide.author._id != -1 -->
-
-								</span>
-
-								<figcaption class="user-info">
-									<span class="user-name ng-scope ng-binding" ng-if="guide.author._id != -1">
-										Редакция Localway
-									</span>
-								</figcaption>
-							</figure>
-						</div>
-					</article>
-				</a>
-			</li>
-			<li class="guide-card ng-scope">
-				<a class="guide-card-link" target="_self" href="/moscow/guide/190">
-					<article>
-						<div class="pic">
-							<img alt="40&nbsp;восхитительных десертов в заведениях Москвы" title="восхитительных десертов в заведениях Москвы" width="280" height="220" src="https://img.localway.ru/scaled/guide/190/566265/280x220.jpg">
-						</div>
-						<div class="info">
-							<header>
-								<h1 class="desc">
-									<span class="counter ng-scope ng-binding">
-										40
-									</span>
-									<span class="text ng-binding">
-										восхитительных десертов в заведениях Москвы
-									</span>
-								</h1>
-							</header>
-					
-							<figure class="user ng-scope" ng-if="guide.authors">
-								<div class="userpics">
-									<div class="userpic ng-scope">
-										<img alt="Кристиан Лоренцини Шеф-повар ресторана Christian" width="30" height="30" src="https://localway.ru/avatars/f1747befd73de870d5c13c8af3ef968f.jpg">
-										
-									</div>
-									<div class="userpic ng-scope">
-										<img alt="Светлана Пынзарь Шеф-кондитер кафе «Пекарня Мишеля»" width="30" height="30" src="https://localway.ru/avatars/895ed6d065d7ffee4519446f5b3087c6.jpg">
-										
-									</div>
-									<div class="userpic ng-scope">
-										<img  alt="Дамьен Пищионери Шеф-кондитер кондитерской «Кафе ПушкинЪ»" width="30" height="30" src="https://localway.ru/avatars/59834b0c688b6dc72296000f55cfe1d3.jpg">
-										
-									</div>
-								</div>
-								<figcaption class="user-info">
-									<h1 class="h4 user-name ng-binding">
-										34 автора
-									</h1>
-								</figcaption>
-							</figure>
-						</div>
-					</article>
-				</a>
-			</li>
-			<li class="guide-card ng-scope">
-				<a class="guide-card-link" target="_self" href="#">
-					<article>
-						<div class="pic">
-							<img alt="7&nbsp;вариантов идеального романтического свидания в Москве" title="вариантов идеального романтического свидания в Москве" width="280" height="220" src="https://img.localway.ru/scaled/guide/186/563995/280x220.jpg">
-						</div>
-						<div class="info">
-							<header>
-								<h1 class="desc">
-									<span class="counter ng-scope ng-binding">
-										7
-									</span>
-									<span class="text ng-binding">
-										вариантов идеального романтического свидания в Москве
-									</span>
-								</h1>
-							</header>
-					
-							<figure class="user ng-scope">
-								<span class="userpic">
-									<img  alt="Редакция Localway" width="30" height="30" class="ng-scope" src="https://localway.ru/avatars/9d735293c10510908d74810d8882ad07.png"><!-- end ngIf: guide.author._id != -1 -->
-
-								</span>
-
-								<figcaption class="user-info">
-									<span class="user-name ng-scope ng-binding">
-										Редакция Localway
-									</span>
-								</figcaption>
-							</figure>
-						</div>
-					</article>
-				</a>
-			</li>
-			<li class="guide-card ng-scope">
-				<a class="guide-card-link" target="_self" href="#">
-					<article>
-						<div class="pic">
-							<img alt="11&nbsp;мест в Парке Горького для приверженцев здорового образа жизни" title="мест в Парке Горького для приверженцев здорового образа жизни" width="280" height="220" src="https://img.localway.ru/scaled/guide/180/563094/280x220.jpg">
-						</div>
-						<div class="info">
-							<header>
-								<h1 class="desc">
-									<span ng-if="guide.nameCounter" class="counter ng-scope ng-binding">
-										11
-									</span>
-									<span class="text ng-binding">
-										мест в Парке Горького для приверженцев здорового образа жизни
-									</span>
-								</h1>
-							</header>
-							<figure class="user ng-scope">
-								<span class="userpic">
-									<img alt="Мария Букреева Куратор образовательных программ ЦПКиО им. Горького" width="30" height="30" class="ng-scope" src="https://localway.ru/avatars/06c5fa260b500b6019f910a1b506e78f.jpg"><!-- end ngIf: guide.author._id != -1 -->
-									<span class="expert-ribbon ng-scope"></span>
-									
-								</span>
-
-								<figcaption class="user-info">
-									<span class="user-name ng-scope ng-binding" ng-if="guide.author._id != -1">
-										Мария Букреева
-									</span>
-								</figcaption>
-							</figure>
-						</div>
-					</article>
-				</a>
-			</li>
-			<li class="guide-card ng-scope">
-				<a class="guide-card-link" target="_self" href="#">
-				<article>
-					<div class="pic">
-						<img alt="10&nbsp;самых интересных мест в Измайловском парке" title="самых интересных мест в Измайловском парке" width="280" height="220" src="https://img.localway.ru/scaled/guide/179/563228/280x220.jpg">
-					</div>
-					<div class="info">
-						<header>
-							<h1 class="desc">
-								<span class="counter ng-scope ng-binding">
-									10
-								</span>
-								<span class="text ng-binding">
-									самых интересных мест в Измайловском парке
-								</span>
-							</h1>
-						</header>
-						<figure class="user ng-scope">
-							<span class="userpic">
-								<img alt="Кристина Наумова Парке культуры и отдыха»" width="30" height="30" class="ng-scope" src="https://localway.ru/avatars/48f67d30ea59b42cbfe35a4947f34735.jpg"><!-- end ngIf: guide.author._id != -1 -->
-								<span ng-if="isExpertUser(guide.author)" class="expert-ribbon ng-scope"></span> 
-							</span>
-
-							<figcaption class="user-info">
-								<span class="user-name ng-scope ng-binding">
-									Кристина Наумова
-								</span>
-							</figcaption>
-						</figure>
-					</div>
-				</article>
-			</a>
-		</li>
-		<li class="guide-card ng-scope">
-			<a class="guide-card-link" target="_self" href="#">
-				<article>
-					<div class="pic">
-						<img alt="6&nbsp;лучших «открытых» ремесленных мастерских Москвы" title="лучших «открытых» ремесленных мастерских Москвы" width="280" height="220" src="https://img.localway.ru/scaled/guide/161/558076/280x220.jpg">
-					</div>
-					<div class="info">
-						<header>
-							<h1 class="desc">
-								<span class="counter ng-scope ng-binding">
-									6
-								</span>
-								<span class="text ng-binding">
-									лучших «открытых» ремесленных мастерских Москвы
-								</span>
-							</h1>
-						</header>
-						<figure class="user ng-scope">
-							<span class="userpic">
-								<img  alt="Редакция Localway" width="30" height="30" class="ng-scope" src="https://localway.ru/avatars/9d735293c10510908d74810d8882ad07.png"><!-- end ngIf: guide.author._id != -1 -->
-					
-							</span>
-
-							<figcaption class="user-info">
-								<span class="user-name ng-scope ng-binding" ng-if="guide.author._id != -1">
-									Редакция Localway
-								</span>
-							</figcaption>
-						</figure>
-					</div>
-				</article>
-			</a>
-		</li>
-		<li class="guide-card ng-scope">
-			<a class="guide-card-link" target="_self" href="#">
-				<article>
-					<div class="pic">
-						<img alt="23&nbsp;летних освежающих коктейля в заведениях Москвы" title="летних освежающих коктейля в заведениях Москвы" width="280" height="220" src="https://img.localway.ru/scaled/guide/156/556926/280x220.jpg">
-					</div>
-					<div class="info">
-						<header>
-							<h1 class="desc">
-								<span class="counter ng-scope ng-binding">
-									23
-								</span>
-								<span class="text ng-binding">
-									летних освежающих коктейля в заведениях Москвы
-								</span>
-							</h1>
-						</header>
-					<figure class="user ng-scope">
-						<div class="userpics">
-							<div class="userpic ng-scope">
-								<img alt="Денис Шульман Бар-менеджер кафе «Молоко»" width="30" height="30" src="https://localway.ru/avatars/29b3b6d2f104497e4c8484cd2ec4eea6.jpg">
-				
-							</div>
-							<div class="userpic ng-scope">
-								<img alt="Александр Кан Time Out Bar" width="30" height="30" src="https://localway.ru/avatars/3922dcef9c0376fe32c3c886bad0de91.jpg">
-				
-							</div>
-							<div class="userpic ng-scope">
-								<img alt="Сергей Чесноков Шеф-бармен бара «Стрелка»" width="30" height="30" src="https://localway.ru/avatars/3ced34703a6022e4e02e806783d3f1a5.jpg">
-								
-							</div>
-						</div>
-
-						<figcaption class="user-info">
-							<h1 class="h4 user-name ng-binding">
-								22 автора
-							</h1>
-						</figcaption>
-					</figure>
-				</div>
-			</article>
-		</a>
-	</li>
-	<li class="guide-card ng-scope">
-		<a class="guide-card-link" target="_self" href="/moscow/guide/155">
-			<article>
-				<div class="pic">
-					<img alt="16&nbsp;интересных мест в Центральном Детском Магазине на Лубянке" title="интересных мест в Центральном Детском Магазине на Лубянке" width="280" height="220" src="https://img.localway.ru/scaled/guide/155/556236/280x220.jpg">
-				</div>
-				<div class="info">
-					<header>
-						<h1 class="desc">
-							<span ng-if="guide.nameCounter" class="counter ng-scope ng-binding">
-								16
-							</span>
-							<span class="text ng-binding">
-								интересных мест в Центральном Детском Магазине на Лубянке
-							</span>
-						</h1>
-					</header>
-					<figure class="user ng-scope">
-						<span class="userpic">
-							<img alt="Екатерина Никитина Генеральный директор ЦДМ на Лубянке" width="30" height="30" class="ng-scope" src="https://localway.ru/avatars/74a1d77bb379357d7a121b94fd48c624.jpg"><!-- end ngIf: guide.author._id != -1 -->
-
-							<span class="expert-ribbon ng-scope"></span>
-						</span>
-
-						<figcaption class="user-info">
-							<span class="user-name ng-scope ng-binding">
-								Екатерина Никитина
-							</span>
-						</figcaption>
-					</figure>
-				</div>
-			</article>
-		</a>
-	</li>
-</ul>
-</section>
-
-<footer class="main-footer ng-scope">
+<footer class="main-footer ng-scope" style="clear: both;">
 	<div class="footer-content">
 		<div class="footer-menu">
 			<div class="col">
@@ -925,88 +478,9 @@
 		</div>
 	</div>
 </footer> 
+<script src="https://api-maps.yandex.ru/2.1/?load=package.full&lang=ru-RU"></script>
 
-<div class="pre-launch-screen">
-	<section class="holder">
-		<header>
-			<img class="logo-gray" src="images/localway-logo-gray.jpg?_v=22bc513f">
 
-			<h1 class="h3">В вашем браузере сайт может отображаться некорректно</h1>
-		</header>
-
-		<span class="separator"></span>
-
-		<h2 class="h5">Для того, чтобы сайт работал правильно, скачайте или обновите браузер</h2>
-
-		<ul class="browsers-links">
-			<li class="ie">
-				<a href="#" target="_blank">
-					<i></i>
-					<span>Internet Explorer</span>
-					<b></b>
-				</a>
-			</li>
-			<li class="firefox">
-				<a href="#" target="_blank">
-					<i></i>
-					<span>Mozilla Firefox</span>
-					<b></b>
-				</a>
-			</li>
-			<li class="chrome">
-				<a href="#" target="_blank">
-					<i></i>
-					<span>Google Chrome</span>
-					<b></b>
-				</a>
-			</li>
-			<li class="opera">
-				<a href="#" target="_blank">
-					<i></i>
-					<span>Opera</span>
-					<b></b>
-				</a>
-			</li>
-			<li class="yabrowser">
-				<a href="#" target="_blank">
-					<i></i>
-					<span>Яндекс.Браузер</span>
-				</a>
-			</li>
-		</ul>
-		<div class="clear"></div>
-
-		<footer>
-			<button onclick="prelauncher.runApp(true); return false;" class="btn btn-dark btn-regular lw-stub-continue" type="button">
-				Всё равно продолжить
-			</button>
-		</footer>
-	</section>
-
-	<section class="mobile-holder">
-		<header>
-			<h1 class="h5">
-				В вашем браузере сайт может отображаться некорректно
-			</h1>
-		</header>
-
-		<div class="app-links">
-			<a href="#" class="btn btn-regular btn-red ios-store"> Установить приложение </a>
-
-			<a href="#" class="btn btn-regular btn-red and-store"> Установить приложение </a>
-
-			<br>
-			<a href="#" onclick="prelauncher.runApp(true); return false;" class="link-btn lw-stub-continue"> Всё равно продолжить </a>
-
-			<br>
-			<footer>
-				<img src="images/iphone-screen.png" class="device-screen iphone">
-				<img src="images/android-screen.png" class="device-screen android">
-			</footer>
-		</div>
-	</section>
-</div>
 
 </body>
 </html>
-

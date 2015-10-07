@@ -38,8 +38,8 @@
 			<div class="lw-agglo-menu-wrapper dropdown-menu menu dark">
 				<div class="lw-agglo-menu-scroller jspScrollable" style="height: 304px; overflow: hidden; padding: 0px; width: 300px;" tabindex="0">
 					
-					<div class="jspContainer" style="width: 300px; height: 304px;">
-						<div class="jspPane" style="padding: 0px; top: 0px; width: 292px;">
+					<div class="jspContainer">
+						<div class="jspPane">
 							<ul class="lw-agglo-menu-list">
 							<li class="lw-agglo-menu-list-item ng-scope lw-agglo-menu-list-item--active" >
 								<span  class="lw-agglo-menu-list-item-link ng-scope ng-binding lw-agglo-dropcap lw-icon-star" data-letter="★">
@@ -339,7 +339,7 @@
 
 			<div class="search-cards responsive ng-scope" style="height: 4120px; overflow: hidden;">
 
-				<article  class="search-item search-card ng-scope reflowed" style="top: 0px; left: 0px;">
+				<article  class="search-item search-card ng-scope reflowed">
 					<div class="dropdown bookmark-toggle bookmark-btn ng-scope" >
 						<div class="dropdown-toggle hotspot lw-tooltip-toggle">
 							<div class="lw-tooltip middle">
@@ -450,7 +450,7 @@
 						</div>
 					</a>
 				</article>
-				<article  class="search-item search-card ng-scope reflowed" style="top: 0px; left: 277px;">
+				<article  class="search-item search-card ng-scope reflowed">
 					<div class="dropdown bookmark-toggle bookmark-btn ng-scope" >
 						<div class="dropdown-toggle hotspot lw-tooltip-toggle">
 							<div class="lw-tooltip middle">
@@ -561,7 +561,7 @@
 						</div>
 					</a>
 				</article>
-				<article  class="search-item search-card ng-scope reflowed" style="top: 0px; left: 556px;">
+				<article  class="search-item search-card ng-scope reflowed">
 					<div class="dropdown bookmark-toggle bookmark-btn ng-scope" >
 						<div class="dropdown-toggle hotspot lw-tooltip-toggle">
 							<div class="lw-tooltip middle">
@@ -672,7 +672,7 @@
 						</div>
 					</a>
 				</article>
-				<article  class="search-item search-card ng-scope reflowed" style="top: 403px; left: 277px;">
+				<article  class="search-item search-card ng-scope reflowed">
 					<div class="dropdown bookmark-toggle bookmark-btn ng-scope" >
 						<div class="dropdown-toggle hotspot lw-tooltip-toggle">
 							<div class="lw-tooltip middle">
@@ -783,7 +783,7 @@
 						</div>
 					</a>
 				</article>
-				<article  class="search-item search-card ng-scope reflowed" style="top: 403px; left: 556px;">
+				<article  class="search-item search-card ng-scope reflowed">
 					<div class="dropdown bookmark-toggle bookmark-btn ng-scope" >
 						<div class="dropdown-toggle hotspot lw-tooltip-toggle">
 							<div class="lw-tooltip middle">
@@ -894,7 +894,7 @@
 						</div>
 					</a>
 				</article>
-				<article  class="search-item search-card ng-scope reflowed" style="top: 836px; left: 0px;">
+				<article  class="search-item search-card ng-scope reflowed">
 					<div class="dropdown bookmark-toggle bookmark-btn ng-scope" >
 						<div class="dropdown-toggle hotspot lw-tooltip-toggle">
 							<div class="lw-tooltip middle">
@@ -1015,7 +1015,7 @@
 				<h1>Поиск</h1>
 			</header>
 			<form class="search-panel ng-pristine ng-valid">
-				<div class="field-search what">
+				<div class="field-search c_what" style>
 					<label for="input-what">
 						<span class="ico"></span>
 						<span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
@@ -1031,14 +1031,11 @@
 					</label>
 				</div>
 
-				<div class="field-search where">
+				<div class="field-search c_where">
 					<label for="input-where">
 						<span class="ico"></span>
 						<input id="input-where" type="text" maxlength="50" autocomplete="off" ng-model="where" placeholder="Где Вы ищете?" class="ng-pristine ng-valid">
 
-						<button id="searchLocateMeButton" type="button" class="locate" >
-							<i class="lw-icon-aim"></i>
-						</button>
 					</label>
 				</div>
 
@@ -1057,10 +1054,8 @@
 	</div>
 
 	<div class="filters-panel-wrap ng-scope"  style="padding-top: 55px;">
-		<div class="filter-panel jspScrollable"  style="overflow: hidden; padding: 0px; width: 234px;" tabindex="0">
+		<div id="jscroll" class="filter-panel" tabindex="0">
 			
-		<div class="jspContainer" style="width: 234px; height: 326px;">
-			<div class="jspPane" style="padding: 0px; top: 0px; left: 0px; width: 226px;">
 				<div class="filter-panel-content ng-scope" >
 					<aside>
 						<header class="hidden_offscreen">
@@ -1468,9 +1463,7 @@
 						</section>
 					</aside>
 				</div>
-			</div>
-		
-		</div>
+			
 	</div>
 </div>
 
@@ -1520,8 +1513,6 @@
 
 <div class="left-panel ng-scope" style="padding-top: 55px;">
 		<nav class="main-menu left-panel-custom-scroll ng-scope" style="overflow: hidden; padding: 0px; width: 240px;">
-			<div class="jspContainer" style="width: 240px; height: 665px;">
-				<div class="jspPane" style="padding: 0px; top: 0px; left: 0px; width: 240px;">
 					<div class="ng-scope">
 						<header>
 							<h1 class="hidden_offscreen">
@@ -1580,14 +1571,21 @@
 						</a>
 						
 					</div>
-				</div>
-			</div>
+				
 		</nav>
 	</div>
 
 <script src="https://api-maps.yandex.ru/2.1/?load=package.full&lang=ru-RU"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"> </script>
+<script src="js/jquery.jscrollpane.min.js"></script>
+<script src="js/jquery.mousewheel.js"></script>
 
-
+<script> 
+$(function()
+{
+	$('.filter-panel').jScrollPane();
+});
+</script>
 
 </body>
 </html>
