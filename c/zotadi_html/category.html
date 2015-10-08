@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html class="has-mobile-holder" >
+	<head>
+	<title class="ng-binding">Localway, Москве</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Localway&nbsp;— современный онлайн-путеводитель по&nbsp;городам России">
+
+	<!-- ngIf: meta.androidAlternateLink -->
+
+	<link href="images/favicon.ico?_v=22bc513f" rel="shortcut icon" type="image/x-icon">
+	
+	<link href="css/styles.css" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Roboto&amp;subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+
+	
+</head>
+<body class="ng-scope lw-home-page">
+
+<header class="main-header ng-scope"  style="top: 0px;">
+	<button type="button" class="menu-toggle ng-hide" aria-haspopup="true" ng-show="isMobile" ng-click="toggleSiteMenu()"></button>
+
+	<a class="header-logo"  href="#">
+		<img src="images/localway-logo-white.png" alt="Логотип LocalWay">
+	</a>
+	<!-- Desktop header menu -->
+	<!-- ngIf: !isMobile -->
+	<ul class="header-menu ng-scope" ng-if="!isMobile">
+		<li class="dropdown agglo-menu" lw-agglo-menu="">
+			<button class="dropdown-toggle" aria-haspopup="true" type="button">
+				<span style="float: left" class="ng-binding">
+					Москва
+				</span>
+				<i class="lw-icon-down-dir"></i>
+			</button>
+
+			<div class="lw-agglo-menu-wrapper dropdown-menu menu dark">
+				<div class="lw-agglo-menu-scroller jspScrollable" style="height: 304px; overflow: hidden; padding: 0px; width: 300px;" tabindex="0">
+					
+					<div class="jspContainer">
+						<div class="jspPane">
+							<ul class="lw-agglo-menu-list">
+							<li class="lw-agglo-menu-list-item ng-scope lw-agglo-menu-list-item--active" >
+								<span  class="lw-agglo-menu-list-item-link ng-scope ng-binding lw-agglo-dropcap lw-icon-star" data-letter="★">
+									Москва
+								</span> 
+							</li>
+							<li class="lw-agglo-menu-list-item ng-scope" >
+								 <a  class="lw-agglo-menu-list-item-link ng-scope ng-binding" data-letter="" href="#">
+									Санкт-Петербург
+								</a> 
+								 
+							</li>
+							<li class="lw-agglo-menu-list-item ng-scope" >
+								<a class="lw-agglo-menu-list-item-link ng-scope ng-binding lw-agglo-dropcap" data-letter="А" href="#">
+									Анапа
+								</a> 
+								 
+							</li>
+							<li class="lw-agglo-menu-list-item ng-scope" >
+								 <a  class="lw-agglo-menu-list-item-link ng-scope ng-binding lw-agglo-dropcap" data-letter="В" href="#">
+									Волгоград
+								</a> 
+								 
+							</li>
+							<li class="lw-agglo-menu-list-item ng-scope" >
+								 <a class="lw-agglo-menu-list-item-link ng-scope ng-binding" data-letter="" href="#">
+									Воронеж
+								</a> 
+								 
+							</li>
+							<li class="lw-agglo-menu-list-item ng-scope" >
+								 <a class="lw-agglo-menu-list-item-link ng-scope ng-binding lw-agglo-dropcap" data-letter="Г" href="#">
+									Геленджик
+								</a> 
+								 
+							</li> 
+							<li class="lw-agglo-menu-list-item ng-scope" >
+								 <a class="lw-agglo-menu-list-item-link ng-scope ng-binding lw-agglo-dropcap" data-letter="Е" href="#">
+									Ейск
+								</a> 
+								 
+							</li> 
+							<li class="lw-agglo-menu-list-item ng-scope" >
+								 <a class="lw-agglo-menu-list-item-link ng-scope ng-binding" data-letter="" href="#">
+									Екатеринбург
+								</a> 
+							</li>
+							<li class="lw-agglo-menu-list-item ng-scope" >
+								 <a class="lw-agglo-menu-list-item-link ng-scope ng-binding lw-agglo-dropcap" data-letter="К" href="#">
+									Казань
+								</a> 
+								 
+							</li> <li class="lw-agglo-menu-list-item ng-scope" >
+								 <a class="lw-agglo-menu-list-item-link ng-scope ng-binding" data-letter="" href="#">
+									Калининград
+								</a> 
+							</li>
+							<li class="lw-agglo-menu-list-item ng-scope">
+								 <a class="lw-agglo-menu-list-item-link ng-scope ng-binding" data-letter="" href="#">
+									Красная Поляна
+								</a> 
+								 
+							</li>
+							<li class="lw-agglo-menu-list-item ng-scope" >
+								 <a class="lw-agglo-menu-list-item-link ng-scope ng-binding" data-letter="" href="#">
+									Краснодар
+								</a> 
+								 
+							</li> 
+							<li class="lw-agglo-menu-list-item ng-scope" >
+								 <a class="lw-agglo-menu-list-item-link ng-scope ng-binding" data-letter="" href="#">
+									Красноярск
+								</a> 
+								 
+							</li> 
+							<li class="lw-agglo-menu-list-item ng-scope" >
+								 <a  class="lw-agglo-menu-list-item-link ng-scope ng-binding lw-agglo-dropcap" data-letter="Н" href="#">
+									Нижний Новгород
+								</a> 
+							</li> 
+							<li class="lw-agglo-menu-list-item ng-scope" >
+								 <a class="lw-agglo-menu-list-item-link ng-scope ng-binding" data-letter="" href="#">
+									Новороссийск
+								</a> 
+							</li> 
+							<li class="lw-agglo-menu-list-item ng-scope" >
+								 <a class="lw-agglo-menu-list-item-link ng-scope ng-binding" data-letter="" href="#">
+									Новосибирск
+								</a> 
+							</li>
+							<li class="lw-agglo-menu-list-item ng-scope" >
+								 <a class="lw-agglo-menu-list-item-link ng-scope ng-binding lw-agglo-dropcap" data-letter="О" href="#">
+									Омск
+								</a> 
+								 
+							</li> 
+							<li class="lw-agglo-menu-list-item ng-scope" >
+								 <a class="lw-agglo-menu-list-item-link ng-scope ng-binding lw-agglo-dropcap" data-letter="Р" href="#">
+									Ростов-на-Дону
+								</a> 
+							</li> 
+							<li class="lw-agglo-menu-list-item ng-scope" >
+								 <a class="lw-agglo-menu-list-item-link ng-scope ng-binding lw-agglo-dropcap" data-letter="С" href="#">
+									Сочи
+								</a> 
+							</li> 
+							<li class="lw-agglo-menu-list-item ng-scope">
+								 <a class="lw-agglo-menu-list-item-link ng-scope ng-binding" data-letter="" href="#">
+									Ставрополь
+								</a> 
+							</li> 
+							<li class="lw-agglo-menu-list-item ng-scope" >
+								 <a class="lw-agglo-menu-list-item-link ng-scope ng-binding lw-agglo-dropcap" data-letter="Т" href="#">
+									Таганрог
+								</a> 
+							</li>
+							<li class="lw-agglo-menu-list-item ng-scope">
+								<a class="lw-agglo-menu-list-item-link ng-scope ng-binding" data-letter="" href="#">
+									Темрюк
+								</a> 
+							</li>
+							<li class="lw-agglo-menu-list-item ng-scope">
+								 <a  class="lw-agglo-menu-list-item-link ng-scope ng-binding" data-letter="" href="#">
+									Туапсе
+								</a> 
+							</li>
+							<li class="lw-agglo-menu-list-item ng-scope">
+								 <a class="lw-agglo-menu-list-item-link ng-scope ng-binding" data-letter="" href="#">
+									Тюмень
+								</a> 
+							</li>
+							<li class="lw-agglo-menu-list-item ng-scope" >
+								<a class="lw-agglo-menu-list-item-link ng-scope ng-binding lw-agglo-dropcap" data-letter="Ч" href="#">
+									Челябинск
+								</a>
+							</li>
+						</ul>
+						</div>
+						<div class="jspVerticalBar">
+							<div class="jspCap jspCapTop"></div>
+							<div class="jspTrack" style="height: 304px;">
+								<div class="jspDrag" style="height: 124px;">
+									<div class="jspDragTop"></div>
+									<div class="jspDragBottom"></div>
+								</div>
+							</div>
+							<div class="jspCap jspCapBottom"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li ng-show="user" class="profile-menu dropdown ng-hide">
+			<button class="header-user dropdown-toggle open" aria-haspopup="true" type="button">
+				<img class="header-user-pic"  src="images/user-icon.jpg">
+				<span class="ng-binding"></span>
+				<i class="lw-icon-down-dir"></i>
+			</button>
+			<ul class="dropdown-menu menu dark ng-scope" >
+				<li ng-if="!onProfilePage()" class="dropdown-menu__item ng-scope">
+					<a href="#">
+						Мой профиль
+					</a>
+				</li>
+				<li class="dropdown-menu__item">
+					<button type="button" ng-click="logout()">
+						Выход
+					</button>
+				</li>
+			</ul>
+		</li>
+		<li class="">
+			<a  href="#">
+				<i class="lw-icon-login"></i>
+				Войти
+			</a>
+		</li>
+	</ul><!-- end ngIf: !isMobile -->
+
+
+
+	<a class="mobile-holder ios" href="#" title="Установить приложение LocalWay" target="_blank" rel="nofollow" >
+		<button class="close_btn btn" type="button" title="Закрыть плашку «Установить приложение»" >×</button>
+		<img class="logo" alt="LocalWay" width="99" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASgAAAAqCAYAAAF3v/YwAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDE0IDc5LjE1Njc5NywgMjAxNC8wOC8yMC0wOTo1MzowMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkVDQ0NFMzE0OUQ2MTExRTRBM0VCRDI0NkYxM0EzNDJFIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkVDQ0NFMzE1OUQ2MTExRTRBM0VCRDI0NkYxM0EzNDJFIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RUNDQ0UzMTI5RDYxMTFFNEEzRUJEMjQ2RjEzQTM0MkUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RUNDQ0UzMTM5RDYxMTFFNEEzRUJEMjQ2RjEzQTM0MkUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6P9p3+AAAf5ElEQVR42ozS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">
+
+		<div class="os">
+			для&nbsp;iOS
+            <span class="rating">
+                <span class="star"></span>
+				<span class="star"></span>
+				<span class="star"></span>
+				<span class="star"></span>
+				<span class="star"></span>
+            </span>
+		</div>
+		<div class="install-btn btn btn-dark hover-darken">
+			Установить
+		</div>
+	</a>
+
+	<a class="mobile-holder android" href="#" title="Установить приложение LocalWay" target="_blank" rel="nofollow" >
+		<button class="close_btn btn" type="button" title="Закрыть плашку «Установить приложение»" ng-click="closeMobileHolder($event)">×</button>
+		<img class="logo" alt="LocalWay" width="99" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASgAAAAqCAYAAAF3v/YwAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDE0IDc5LjE1Njc5NywgMjAxNC8wOC8yMC0wOTo1MzowMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkVDQ0NFMzE0OUQ2MTExRTRBM0VCRDI0NkYxM0EzNDJFIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkVDQ0NFMzE1OUQ2MTExRTRBM0VCRDI0NkYxM0EzNDJFIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RUNDQ0UzMTI5RDYxMTFFNEEzRUJEMjQ2RjEzQTM0MkUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RUNDQ0UzMTM5RDYxMTFFNEEzRUJEMjQ2RjEzQTM0MkUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6P9p3+AAAf5ElEQVR42ozS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">
+
+		<div class="os">
+			для&nbsp;Android
+            <span class="rating rating_4">
+                <span class="star"></span>
+				<span class="star"></span>
+				<span class="star"></span>
+				<span class="star"></span>
+				<span class="star"></span>
+            </span>
+		</div>
+		<div class="install-btn btn btn-dark hover-darken">Установить</div>
+	</a>
+</header>
+
+<main class="main-content-wrapper ng-scope">
+	<div class="main-content ng-scope">
+		<div class="page-search ng-scope">
+
+		<div class="search-header ng-scope">
+			<div class="counters cell">
+				<span id="qa_total_count" class="total ng-binding">3385</span>
+				<p>Показаны</p>
+				<p class="shown">
+					из&nbsp;<span id="qa_total_count_by_ps" class="ng-binding">5909</span>
+				</p>
+			</div>
+			<div class="text cell">
+				<div class="title">
+					<h1 id="qa_search_title" class="ng-binding">Рестораны и кафе в Москве</h1>
+					
+				</div>
+
+				<div class="options">
+					<div class="lw-dropdown-select ng-scope" >
+						<div class="dropdown-overlay"></div>
+						<div class="dropdown-toggle">
+							<label class="label">Где:</label>
+
+							<div class="select suburban">
+								<a href="#">
+									<span class="ng-binding">Везде</span>
+									<i class="lw-icon-arrow-down-thin"></i>
+								</a>
+								<ul class="ng-scope">
+									<li class="ng-scope">
+										<a href="#" class="ng-binding">В городе</a>
+									</li>
+									<li class="ng-scope">
+										<a href="#" class="ng-binding">Вокруг города</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div class="lw-dropdown-select">
+						<div class="dropdown-toggle">
+							<label class="label">Сортировать по:</label>
+
+							<div class="select ordering">
+								<a id="sortingCurrent" href="">
+									<span class="ng-binding">Релевантности</span>
+									<i class="lw-icon-arrow-down-thin"></i></a>
+								<ul id="sortingDropdown">
+									<li class="ng-scope">
+										<a href="#" class="ng-binding">Рейтингу</a>
+									</li>
+									<li class="ng-scope">
+										<a href="#" class="ng-binding">Цене</a>
+									</li>
+									<li class="ng-scope">
+										<a href="#" class="ng-binding">Удаленности</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="direction-controls cell right-cell ng-scope">
+				<a href="#" title="По убыванию">
+					<i class="lw-icon-sorting-arrow"></i>
+					<i class="lw-icon-sorting-arrow down active"></i>
+				</a>
+			</div>
+
+		</div>
+		<section class="search-cards-wrapper">
+			<header class="hidden_offscreen">
+				<h1>Результаты поиска</h1>
+			</header>
+
+			<div class="search-cards responsive ng-scope" style="height: 4120px; overflow: hidden;">
+
+				<article  class="search-item search-card ng-scope reflowed">
+					<div class="dropdown bookmark-toggle bookmark-btn ng-scope" >
+						<div class="dropdown-toggle hotspot lw-tooltip-toggle">
+							<div class="lw-tooltip middle">
+								<span>Добавить в закладки</span>
+							</div>
+						</div>
+
+						<div text="добавлять объекты в&nbsp;закладки" class="ng-isolate-scope">
+							<div class="lw-popover ng-isolate-scope dropdown-menu dropdown-tip long" title="title">
+								<span class="close"></span>
+								
+								<div>
+									<span class="ng-scope ng-binding">
+										Только зарегистрированные пользователи могут добавлять объекты в&nbsp;закладки.
+										</span><br class="ng-scope">
+										<a href="#" class="link-red ng-scope" >Войдите</a><span class="ng-scope"> на&nbsp;сайт или
+										</span><a href="#" class="link-red ng-scope" >зарегистрируйтесь</a>
+										<span class="ng-scope">.</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="options">
+							<button class="bookmark lw-tooltip-toggle" >
+								<div class="lw-tooltip middle">
+									<span class="ng-binding">
+										Добавить в&nbsp;закладки
+									</span>
+									<span class="ng-binding ng-hide">
+										Удалить из&nbsp;закладок
+									</span>
+								</div>
+							</button>
+						</div>
+					</div><!-- end ngIf: !venue.inNetworkMode -->
+
+					<a title="Ресторан «Dr. Живаго»" href="#">
+						<!-- ngIf: venue.inNetworkMode -->
+						<div class="pic">
+							<div class="stub ng-isolate-scope" variation="middle" section="venue.section" category="venue.category" style="background-image: url(https://localway.ru/assets/images/content/stub/middle/11_170.jpg);">
+								<div class="stub-wrap">
+									<i class="icon"></i>
+									<span class="text"><b>К сожалению,</b> нет фото</span>
+								</div>
+							</div>
+							<img alt="Ресторан «Dr. Живаго»" title="Ресторан «Dr. Живаго»" width="263" height="175" src="https://img.localway.ru/scaled/poi/295158/500221/265x175.jpg">
+							<span data-bind="brief_rating" class="circle ng-binding">5,0</span>
+
+							<span  class="price ng-scope ng-binding" >1 500 <i class="lw-rouble-glyph">₽</i></span><!-- end ngIf: !(getVenuePrice(venue) | isNullOrUndefined) -->
+						</div>
+
+
+						<div class="content">
+							<header class="info">
+								<span class="hotel-stars ng-hide">
+									<span class="stars s0"></span>
+								</span>
+
+								<h1 class="h4 title ng-binding">
+									Dr. Живаго
+								</h1>
+
+								<p class="subtitle ng-scope" >
+									<span class="ng-scope ng-binding">
+										Ресторан
+									</span>
+								</p>
+
+								<p class="address ng-scope">
+									<span class="ng-binding">
+										Моховая, 15, корп.1
+									</span>
+									
+								</p>
+							</header>
+							<footer class="reviews">
+								<p>
+									<span class="ng-scope ng-binding">
+										Написали отзыв:
+										6 пользователей
+									</span>
+								</p>
+
+								<div class="reviewers">
+									<span class="userpic ng-scope" >
+										<img alt="Денис Калмыш" title="Денис Калмыш" width="38" height="38" src="https://localway.ru/avatars/4b7ea254a5005227c91e42250d217427.jpg">
+										<span ng-if="isExpertUser(us)" class="expert-ribbon ng-scope"></span>     
+										
+									</span>
+									<span class="userpic ng-scope" >
+										<img alt="Редакция Localway" title="Редакция Localway" width="38" height="38" src="https://localway.ru/avatars/9d735293c10510908d74810d8882ad07.png">
+										
+									</span>
+									<span class="userpic ng-scope" >
+										<img alt="Максим Тарусин" title="Максим Тарусин" width="38" height="38" src="https://localway.ru/avatars/c25603c1499b1263a389d0f67f44526c.jpg">
+										<span ng-if="isExpertUser(us)" class="expert-ribbon ng-scope"></span>
+										
+									</span>
+									<span class="userpic ng-scope" >
+										<img alt="Мага Умхаев" title="Мага Умхаев" width="38" height="38" src="https://localway.ru/avatars/e13fae8433de40b42980771b8883b86a.jpg">
+										<span class="star-ribbon ng-scope"></span>
+									</span>
+									<span class="counter ng-scope ng-binding">
+										+2
+									</span>
+								</div>
+							</footer>
+						</div>
+					</a>
+				</article>
+				<article  class="search-item search-card ng-scope reflowed">
+					<div class="dropdown bookmark-toggle bookmark-btn ng-scope" >
+						<div class="dropdown-toggle hotspot lw-tooltip-toggle">
+							<div class="lw-tooltip middle">
+								<span>Добавить в закладки</span>
+							</div>
+						</div>
+
+						<div text="добавлять объекты в&nbsp;закладки" class="ng-isolate-scope">
+							<div class="lw-popover ng-isolate-scope dropdown-menu dropdown-tip long" title="title">
+								<span class="close"></span>
+								
+								<div>
+									<span class="ng-scope ng-binding">
+										Только зарегистрированные пользователи могут добавлять объекты в&nbsp;закладки.
+										</span><br class="ng-scope">
+										<a href="#" class="link-red ng-scope" >Войдите</a><span class="ng-scope"> на&nbsp;сайт или
+										</span><a href="#" class="link-red ng-scope" >зарегистрируйтесь</a>
+										<span class="ng-scope">.</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="options">
+							<button class="bookmark lw-tooltip-toggle" >
+								<div class="lw-tooltip middle">
+									<span class="ng-binding">
+										Добавить в&nbsp;закладки
+									</span>
+									<span class="ng-binding ng-hide">
+										Удалить из&nbsp;закладок
+									</span>
+								</div>
+							</button>
+						</div>
+					</div><!-- end ngIf: !venue.inNetworkMode -->
+
+					<a title="Ресторан «Dr. Живаго»" href="#">
+						<!-- ngIf: venue.inNetworkMode -->
+						<div class="pic">
+							<div class="stub ng-isolate-scope" variation="middle" section="venue.section" category="venue.category" style="background-image: url(https://localway.ru/assets/images/content/stub/middle/11_170.jpg);">
+								<div class="stub-wrap">
+									<i class="icon"></i>
+									<span class="text"><b>К сожалению,</b> нет фото</span>
+								</div>
+							</div>
+							<img alt="Ресторан «Dr. Живаго»" title="Ресторан «Dr. Живаго»" width="263" height="175" src="https://img.localway.ru/scaled/poi/295158/500221/265x175.jpg">
+							<span data-bind="brief_rating" class="circle ng-binding">5,0</span>
+
+							<span  class="price ng-scope ng-binding" >1 500 <i class="lw-rouble-glyph">₽</i></span><!-- end ngIf: !(getVenuePrice(venue) | isNullOrUndefined) -->
+						</div>
+
+
+						<div class="content">
+							<header class="info">
+								<span class="hotel-stars ng-hide">
+									<span class="stars s0"></span>
+								</span>
+
+								<h1 class="h4 title ng-binding">
+									Dr. Живаго
+								</h1>
+
+								<p class="subtitle ng-scope" >
+									<span class="ng-scope ng-binding">
+										Ресторан
+									</span>
+								</p>
+
+								<p class="address ng-scope">
+									<span class="ng-binding">
+										Моховая, 15, корп.1
+									</span>
+									
+								</p>
+							</header>
+							<footer class="reviews">
+								<p>
+									<span class="ng-scope ng-binding">
+										Написали отзыв:
+										6 пользователей
+									</span>
+								</p>
+
+								<div class="reviewers">
+									<span class="userpic ng-scope" >
+										<img alt="Денис Калмыш" title="Денис Калмыш" width="38" height="38" src="https://localway.ru/avatars/4b7ea254a5005227c91e42250d217427.jpg">
+										<span ng-if="isExpertUser(us)" class="expert-ribbon ng-scope"></span>     
+										
+									</span>
+									<span class="userpic ng-scope" >
+										<img alt="Редакция Localway" title="Редакция Localway" width="38" height="38" src="https://localway.ru/avatars/9d735293c10510908d74810d8882ad07.png">
+										
+									</span>
+									<span class="userpic ng-scope" >
+										<img alt="Максим Тарусин" title="Максим Тарусин" width="38" height="38" src="https://localway.ru/avatars/c25603c1499b1263a389d0f67f44526c.jpg">
+										<span ng-if="isExpertUser(us)" class="expert-ribbon ng-scope"></span>
+										
+									</span>
+									<span class="userpic ng-scope" >
+										<img alt="Мага Умхаев" title="Мага Умхаев" width="38" height="38" src="https://localway.ru/avatars/e13fae8433de40b42980771b8883b86a.jpg">
+										<span class="star-ribbon ng-scope"></span>
+									</span>
+									<span class="counter ng-scope ng-binding">
+										+2
+									</span>
+								</div>
+							</footer>
+						</div>
+					</a>
+				</article>
+				<article  class="search-item search-card ng-scope reflowed">
+					<div class="dropdown bookmark-toggle bookmark-btn ng-scope" >
+						<div class="dropdown-toggle hotspot lw-tooltip-toggle">
+							<div class="lw-tooltip middle">
+								<span>Добавить в закладки</span>
+							</div>
+						</div>
+
+						<div text="добавлять объекты в&nbsp;закладки" class="ng-isolate-scope">
+							<div class="lw-popover ng-isolate-scope dropdown-menu dropdown-tip long" title="title">
+								<span class="close"></span>
+								
+								<div>
+									<span class="ng-scope ng-binding">
+										Только зарегистрированные пользователи могут добавлять объекты в&nbsp;закладки.
+										</span><br class="ng-scope">
+										<a href="#" class="link-red ng-scope" >Войдите</a><span class="ng-scope"> на&nbsp;сайт или
+										</span><a href="#" class="link-red ng-scope" >зарегистрируйтесь</a>
+										<span class="ng-scope">.</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="options">
+							<button class="bookmark lw-tooltip-toggle" >
+								<div class="lw-tooltip middle">
+									<span class="ng-binding">
+										Добавить в&nbsp;закладки
+									</span>
+									<span class="ng-binding ng-hide">
+										Удалить из&nbsp;закладок
+									</span>
+								</div>
+							</button>
+						</div>
+					</div><!-- end ngIf: !venue.inNetworkMode -->
+
+					<a title="Ресторан «Dr. Живаго»" href="#">
+						<!-- ngIf: venue.inNetworkMode -->
+						<div class="pic">
+							<div class="stub ng-isolate-scope" variation="middle" section="venue.section" category="venue.category" style="background-image: url(https://localway.ru/assets/images/content/stub/middle/11_170.jpg);">
+								<div class="stub-wrap">
+									<i class="icon"></i>
+									<span class="text"><b>К сожалению,</b> нет фото</span>
+								</div>
+							</div>
+							<img alt="Ресторан «Dr. Живаго»" title="Ресторан «Dr. Живаго»" width="263" height="175" src="https://img.localway.ru/scaled/poi/295158/500221/265x175.jpg">
+							<span data-bind="brief_rating" class="circle ng-binding">5,0</span>
+
+							<span  class="price ng-scope ng-binding" >1 500 <i class="lw-rouble-glyph">₽</i></span><!-- end ngIf: !(getVenuePrice(venue) | isNullOrUndefined) -->
+						</div>
+
+
+						<div class="content">
+							<header class="info">
+								<span class="hotel-stars ng-hide">
+									<span class="stars s0"></span>
+								</span>
+
+								<h1 class="h4 title ng-binding">
+									Dr. Живаго
+								</h1>
+
+								<p class="subtitle ng-scope" >
+									<span class="ng-scope ng-binding">
+										Ресторан
+									</span>
+								</p>
+
+								<p class="address ng-scope">
+									<span class="ng-binding">
+										Моховая, 15, корп.1
+									</span>
+									
+								</p>
+							</header>
+							<footer class="reviews">
+								<p>
+									<span class="ng-scope ng-binding">
+										Написали отзыв:
+										6 пользователей
+									</span>
+								</p>
+
+								<div class="reviewers">
+									<span class="userpic ng-scope" >
+										<img alt="Денис Калмыш" title="Денис Калмыш" width="38" height="38" src="https://localway.ru/avatars/4b7ea254a5005227c91e42250d217427.jpg">
+										<span ng-if="isExpertUser(us)" class="expert-ribbon ng-scope"></span>     
+										
+									</span>
+									<span class="userpic ng-scope" >
+										<img alt="Редакция Localway" title="Редакция Localway" width="38" height="38" src="https://localway.ru/avatars/9d735293c10510908d74810d8882ad07.png">
+										
+									</span>
+									<span class="userpic ng-scope" >
+										<img alt="Максим Тарусин" title="Максим Тарусин" width="38" height="38" src="https://localway.ru/avatars/c25603c1499b1263a389d0f67f44526c.jpg">
+										<span ng-if="isExpertUser(us)" class="expert-ribbon ng-scope"></span>
+										
+									</span>
+									<span class="userpic ng-scope" >
+										<img alt="Мага Умхаев" title="Мага Умхаев" width="38" height="38" src="https://localway.ru/avatars/e13fae8433de40b42980771b8883b86a.jpg">
+										<span class="star-ribbon ng-scope"></span>
+									</span>
+									<span class="counter ng-scope ng-binding">
+										+2
+									</span>
+								</div>
+							</footer>
+						</div>
+					</a>
+				</article>
+				<article  class="search-item search-card ng-scope reflowed">
+					<div class="dropdown bookmark-toggle bookmark-btn ng-scope" >
+						<div class="dropdown-toggle hotspot lw-tooltip-toggle">
+							<div class="lw-tooltip middle">
+								<span>Добавить в закладки</span>
+							</div>
+						</div>
+
+						<div text="добавлять объекты в&nbsp;закладки" class="ng-isolate-scope">
+							<div class="lw-popover ng-isolate-scope dropdown-menu dropdown-tip long" title="title">
+								<span class="close"></span>
+								
+								<div>
+									<span class="ng-scope ng-binding">
+										Только зарегистрированные пользователи могут добавлять объекты в&nbsp;закладки.
+										</span><br class="ng-scope">
+										<a href="#" class="link-red ng-scope" >Войдите</a><span class="ng-scope"> на&nbsp;сайт или
+										</span><a href="#" class="link-red ng-scope" >зарегистрируйтесь</a>
+										<span class="ng-scope">.</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="options">
+							<button class="bookmark lw-tooltip-toggle" >
+								<div class="lw-tooltip middle">
+									<span class="ng-binding">
+										Добавить в&nbsp;закладки
+									</span>
+									<span class="ng-binding ng-hide">
+										Удалить из&nbsp;закладок
+									</span>
+								</div>
+							</button>
+						</div>
+					</div><!-- end ngIf: !venue.inNetworkMode -->
+
+					<a title="Ресторан «Dr. Живаго»" href="#">
+						<!-- ngIf: venue.inNetworkMode -->
+						<div class="pic">
+							<div class="stub ng-isolate-scope" variation="middle" section="venue.section" category="venue.category" style="background-image: url(https://localway.ru/assets/images/content/stub/middle/11_170.jpg);">
+								<div class="stub-wrap">
+									<i class="icon"></i>
+									<span class="text"><b>К сожалению,</b> нет фото</span>
+								</div>
+							</div>
+							<img alt="Ресторан «Dr. Живаго»" title="Ресторан «Dr. Живаго»" width="263" height="175" src="https://img.localway.ru/scaled/poi/295158/500221/265x175.jpg">
+							<span data-bind="brief_rating" class="circle ng-binding">5,0</span>
+
+							<span  class="price ng-scope ng-binding" >1 500 <i class="lw-rouble-glyph">₽</i></span><!-- end ngIf: !(getVenuePrice(venue) | isNullOrUndefined) -->
+						</div>
+
+
+						<div class="content">
+							<header class="info">
+								<span class="hotel-stars ng-hide">
+									<span class="stars s0"></span>
+								</span>
+
+								<h1 class="h4 title ng-binding">
+									Dr. Живаго
+								</h1>
+
+								<p class="subtitle ng-scope" >
+									<span class="ng-scope ng-binding">
+										Ресторан
+									</span>
+								</p>
+
+								<p class="address ng-scope">
+									<span class="ng-binding">
+										Моховая, 15, корп.1
+									</span>
+									
+								</p>
+							</header>
+							<footer class="reviews">
+								<p>
+									<span class="ng-scope ng-binding">
+										Написали отзыв:
+										6 пользователей
+									</span>
+								</p>
+
+								<div class="reviewers">
+									<span class="userpic ng-scope" >
+										<img alt="Денис Калмыш" title="Денис Калмыш" width="38" height="38" src="https://localway.ru/avatars/4b7ea254a5005227c91e42250d217427.jpg">
+										<span ng-if="isExpertUser(us)" class="expert-ribbon ng-scope"></span>     
+										
+									</span>
+									<span class="userpic ng-scope" >
+										<img alt="Редакция Localway" title="Редакция Localway" width="38" height="38" src="https://localway.ru/avatars/9d735293c10510908d74810d8882ad07.png">
+										
+									</span>
+									<span class="userpic ng-scope" >
+										<img alt="Максим Тарусин" title="Максим Тарусин" width="38" height="38" src="https://localway.ru/avatars/c25603c1499b1263a389d0f67f44526c.jpg">
+										<span ng-if="isExpertUser(us)" class="expert-ribbon ng-scope"></span>
+										
+									</span>
+									<span class="userpic ng-scope" >
+										<img alt="Мага Умхаев" title="Мага Умхаев" width="38" height="38" src="https://localway.ru/avatars/e13fae8433de40b42980771b8883b86a.jpg">
+										<span class="star-ribbon ng-scope"></span>
+									</span>
+									<span class="counter ng-scope ng-binding">
+										+2
+									</span>
+								</div>
+							</footer>
+						</div>
+					</a>
+				</article>
+				<article  class="search-item search-card ng-scope reflowed">
+					<div class="dropdown bookmark-toggle bookmark-btn ng-scope" >
+						<div class="dropdown-toggle hotspot lw-tooltip-toggle">
+							<div class="lw-tooltip middle">
+								<span>Добавить в закладки</span>
+							</div>
+						</div>
+
+						<div text="добавлять объекты в&nbsp;закладки" class="ng-isolate-scope">
+							<div class="lw-popover ng-isolate-scope dropdown-menu dropdown-tip long" title="title">
+								<span class="close"></span>
+								
+								<div>
+									<span class="ng-scope ng-binding">
+										Только зарегистрированные пользователи могут добавлять объекты в&nbsp;закладки.
+										</span><br class="ng-scope">
+										<a href="#" class="link-red ng-scope" >Войдите</a><span class="ng-scope"> на&nbsp;сайт или
+										</span><a href="#" class="link-red ng-scope" >зарегистрируйтесь</a>
+										<span class="ng-scope">.</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="options">
+							<button class="bookmark lw-tooltip-toggle" >
+								<div class="lw-tooltip middle">
+									<span class="ng-binding">
+										Добавить в&nbsp;закладки
+									</span>
+									<span class="ng-binding ng-hide">
+										Удалить из&nbsp;закладок
+									</span>
+								</div>
+							</button>
+						</div>
+					</div><!-- end ngIf: !venue.inNetworkMode -->
+
+					<a title="Ресторан «Dr. Живаго»" href="#">
+						<!-- ngIf: venue.inNetworkMode -->
+						<div class="pic">
+							<div class="stub ng-isolate-scope" variation="middle" section="venue.section" category="venue.category" style="background-image: url(https://localway.ru/assets/images/content/stub/middle/11_170.jpg);">
+								<div class="stub-wrap">
+									<i class="icon"></i>
+									<span class="text"><b>К сожалению,</b> нет фото</span>
+								</div>
+							</div>
+							<img alt="Ресторан «Dr. Живаго»" title="Ресторан «Dr. Живаго»" width="263" height="175" src="https://img.localway.ru/scaled/poi/295158/500221/265x175.jpg">
+							<span data-bind="brief_rating" class="circle ng-binding">5,0</span>
+
+							<span  class="price ng-scope ng-binding" >1 500 <i class="lw-rouble-glyph">₽</i></span><!-- end ngIf: !(getVenuePrice(venue) | isNullOrUndefined) -->
+						</div>
+
+
+						<div class="content">
+							<header class="info">
+								<span class="hotel-stars ng-hide">
+									<span class="stars s0"></span>
+								</span>
+
+								<h1 class="h4 title ng-binding">
+									Dr. Живаго
+								</h1>
+
+								<p class="subtitle ng-scope" >
+									<span class="ng-scope ng-binding">
+										Ресторан
+									</span>
+								</p>
+
+								<p class="address ng-scope">
+									<span class="ng-binding">
+										Моховая, 15, корп.1
+									</span>
+									
+								</p>
+							</header>
+							<footer class="reviews">
+								<p>
+									<span class="ng-scope ng-binding">
+										Написали отзыв:
+										6 пользователей
+									</span>
+								</p>
+
+								<div class="reviewers">
+									<span class="userpic ng-scope" >
+										<img alt="Денис Калмыш" title="Денис Калмыш" width="38" height="38" src="https://localway.ru/avatars/4b7ea254a5005227c91e42250d217427.jpg">
+										<span ng-if="isExpertUser(us)" class="expert-ribbon ng-scope"></span>     
+										
+									</span>
+									<span class="userpic ng-scope" >
+										<img alt="Редакция Localway" title="Редакция Localway" width="38" height="38" src="https://localway.ru/avatars/9d735293c10510908d74810d8882ad07.png">
+										
+									</span>
+									<span class="userpic ng-scope" >
+										<img alt="Максим Тарусин" title="Максим Тарусин" width="38" height="38" src="https://localway.ru/avatars/c25603c1499b1263a389d0f67f44526c.jpg">
+										<span ng-if="isExpertUser(us)" class="expert-ribbon ng-scope"></span>
+										
+									</span>
+									<span class="userpic ng-scope" >
+										<img alt="Мага Умхаев" title="Мага Умхаев" width="38" height="38" src="https://localway.ru/avatars/e13fae8433de40b42980771b8883b86a.jpg">
+										<span class="star-ribbon ng-scope"></span>
+									</span>
+									<span class="counter ng-scope ng-binding">
+										+2
+									</span>
+								</div>
+							</footer>
+						</div>
+					</a>
+				</article>
+				<article  class="search-item search-card ng-scope reflowed">
+					<div class="dropdown bookmark-toggle bookmark-btn ng-scope" >
+						<div class="dropdown-toggle hotspot lw-tooltip-toggle">
+							<div class="lw-tooltip middle">
+								<span>Добавить в закладки</span>
+							</div>
+						</div>
+
+						<div text="добавлять объекты в&nbsp;закладки" class="ng-isolate-scope">
+							<div class="lw-popover ng-isolate-scope dropdown-menu dropdown-tip long" title="title">
+								<span class="close"></span>
+								
+								<div>
+									<span class="ng-scope ng-binding">
+										Только зарегистрированные пользователи могут добавлять объекты в&nbsp;закладки.
+										</span><br class="ng-scope">
+										<a href="#" class="link-red ng-scope" >Войдите</a><span class="ng-scope"> на&nbsp;сайт или
+										</span><a href="#" class="link-red ng-scope" >зарегистрируйтесь</a>
+										<span class="ng-scope">.</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="options">
+							<button class="bookmark lw-tooltip-toggle" >
+								<div class="lw-tooltip middle">
+									<span class="ng-binding">
+										Добавить в&nbsp;закладки
+									</span>
+									<span class="ng-binding ng-hide">
+										Удалить из&nbsp;закладок
+									</span>
+								</div>
+							</button>
+						</div>
+					</div><!-- end ngIf: !venue.inNetworkMode -->
+
+					<a title="Ресторан «Dr. Живаго»" href="#">
+						<!-- ngIf: venue.inNetworkMode -->
+						<div class="pic">
+							<div class="stub ng-isolate-scope" variation="middle" section="venue.section" category="venue.category" style="background-image: url(https://localway.ru/assets/images/content/stub/middle/11_170.jpg);">
+								<div class="stub-wrap">
+									<i class="icon"></i>
+									<span class="text"><b>К сожалению,</b> нет фото</span>
+								</div>
+							</div>
+							<img alt="Ресторан «Dr. Живаго»" title="Ресторан «Dr. Живаго»" width="263" height="175" src="https://img.localway.ru/scaled/poi/295158/500221/265x175.jpg">
+							<span data-bind="brief_rating" class="circle ng-binding">5,0</span>
+
+							<span  class="price ng-scope ng-binding" >1 500 <i class="lw-rouble-glyph">₽</i></span><!-- end ngIf: !(getVenuePrice(venue) | isNullOrUndefined) -->
+						</div>
+
+
+						<div class="content">
+							<header class="info">
+								<span class="hotel-stars ng-hide">
+									<span class="stars s0"></span>
+								</span>
+
+								<h1 class="h4 title ng-binding">
+									Dr. Живаго
+								</h1>
+
+								<p class="subtitle ng-scope" >
+									<span class="ng-scope ng-binding">
+										Ресторан
+									</span>
+								</p>
+
+								<p class="address ng-scope">
+									<span class="ng-binding">
+										Моховая, 15, корп.1
+									</span>
+									
+								</p>
+							</header>
+							<footer class="reviews">
+								<p>
+									<span class="ng-scope ng-binding">
+										Написали отзыв:
+										6 пользователей
+									</span>
+								</p>
+
+								<div class="reviewers">
+									<span class="userpic ng-scope" >
+										<img alt="Денис Калмыш" title="Денис Калмыш" width="38" height="38" src="https://localway.ru/avatars/4b7ea254a5005227c91e42250d217427.jpg">
+										<span ng-if="isExpertUser(us)" class="expert-ribbon ng-scope"></span>     
+										
+									</span>
+									<span class="userpic ng-scope" >
+										<img alt="Редакция Localway" title="Редакция Localway" width="38" height="38" src="https://localway.ru/avatars/9d735293c10510908d74810d8882ad07.png">
+										
+									</span>
+									<span class="userpic ng-scope" >
+										<img alt="Максим Тарусин" title="Максим Тарусин" width="38" height="38" src="https://localway.ru/avatars/c25603c1499b1263a389d0f67f44526c.jpg">
+										<span ng-if="isExpertUser(us)" class="expert-ribbon ng-scope"></span>
+										
+									</span>
+									<span class="userpic ng-scope" >
+										<img alt="Мага Умхаев" title="Мага Умхаев" width="38" height="38" src="https://localway.ru/avatars/e13fae8433de40b42980771b8883b86a.jpg">
+										<span class="star-ribbon ng-scope"></span>
+									</span>
+									<span class="counter ng-scope ng-binding">
+										+2
+									</span>
+								</div>
+							</footer>
+						</div>
+					</a>
+				</article>
+				
+				
+			</div><!-- end ngIf: !mapExpanded -->
+		</section>
+
+		<aside class="search-regular search-panel-wrapper" >
+			<header class="hidden_offscreen">
+				<h1>Поиск</h1>
+			</header>
+			<form class="search-panel ng-pristine ng-valid">
+				<div class="field-search c_what" style>
+					<label for="input-what">
+						<span class="ico"></span>
+						<span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+						<input id="input-what" type="text" maxlength="50" placeholder="Что Вы ищете?" class="ng-pristine ng-valid ui-autocomplete-input">
+
+						<div class="suggestions-holder">
+							<div class="suggest-dropdown">
+								<div class="suggestions">
+									<ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-1" tabindex="0" style="display: none;"></ul>
+								</div>
+							</div>
+						</div>
+					</label>
+				</div>
+
+				<div class="field-search c_where">
+					<label for="input-where">
+						<span class="ico"></span>
+						<input id="input-where" type="text" maxlength="50" autocomplete="off" ng-model="where" placeholder="Где Вы ищете?" class="ng-pristine ng-valid">
+
+					</label>
+				</div>
+
+				<button id="searchButton" type="submit" data-bind="search" disabled="disabled" class="btn btn-dark disabled" >
+					Поиск
+				</button>
+
+				<a id="backToSearchButton" class="back-to-result ng-hide" href="" >
+					<i class="lw-icon-arrow-left-thin"></i>
+					К результатам поиска
+				</a>
+			</form>
+		</aside>
+
+		
+	</div>
+
+	<div class="filters-panel-wrap ng-scope"  style="padding-top: 55px;">
+		<div id="jscroll" class="filter-panel" tabindex="0">
+			
+				<div class="filter-panel-content ng-scope" >
+					<aside>
+						<header class="hidden_offscreen">
+							<h1>Фильтры</h1>
+						</header>
+						<section class="ng-scope filters-block">
+
+							<header>
+								<h1 class="h5 ng-scope ng-binding" >Общее </h1>
+							</header>
+							<ul class="filters filters-checked ng-hide">
+								
+							</ul>
+
+							<ul class="filters">
+								<li class="ng-scope">
+									<label class="filters-checkbox">
+										<input type="checkbox" class="ng-pristine ng-valid">
+										<span data-bind="qa_unchecked_fiter_checkbox" class="label"></span>
+										<span class="text">
+											<span data-bind="qa_unchecked_fiter_name" class="ng-binding truncate t2">Только новые</span>
+											<span data-bind="qa_unchecked_fiter_count" class="count ng-binding">(43)</span>
+										</span>
+									</label>
+								</li>
+							</ul>
+
+							
+						</section>
+						<section  class="ng-scope filters-block">
+
+							<header>
+								<h1 class="h5 ng-scope ng-binding">Категории </h1>
+								
+							</header>
+
+							<ul class="filters filters-checked ng-hide">
+								
+							</ul>
+
+							<ul class="filters">
+								<li class="ng-scope">
+									<label class="filters-checkbox">
+										<input type="checkbox" class="ng-pristine ng-valid">
+										<span data-bind="qa_unchecked_fiter_checkbox" class="label"></span>
+										<span class="text">
+											<span data-bind="qa_unchecked_fiter_name" class="ng-binding truncate t4">Ресторан</span>
+											<span data-bind="qa_unchecked_fiter_count" class="count ng-binding">(2026)</span>
+										</span>
+									</label>
+								</li>
+								<li class="ng-scope">
+									<label class="filters-checkbox" >
+										<input type="checkbox" class="ng-pristine ng-valid">
+										<span data-bind="qa_unchecked_fiter_checkbox" class="label"></span>
+										<span class="text">
+											<span data-bind="qa_unchecked_fiter_name" class="ng-binding truncate t3">Кафе</span>
+											<span data-bind="qa_unchecked_fiter_count" class="count ng-binding">(856)</span>
+										</span>
+									</label>
+								</li>
+								<li class="ng-scope">
+									<label class="filters-checkbox" >
+										<input type="checkbox" class="ng-pristine ng-valid">
+										<span data-bind="qa_unchecked_fiter_checkbox" class="label"></span>
+										<span class="text">
+											<span data-bind="qa_unchecked_fiter_name" class="ng-binding truncate t3">Бар</span>
+											<span data-bind="qa_unchecked_fiter_count" class="count ng-binding">(424)</span>
+										</span>
+									</label>
+								</li>
+								<li class="ng-scope">
+									<label class="filters-checkbox" >
+										<input type="checkbox" class="ng-pristine ng-valid">
+										<span data-bind="qa_unchecked_fiter_checkbox" class="label"></span>
+										<span class="text">
+											<span data-bind="qa_unchecked_fiter_name" class="ng-binding truncate t3">Кофейня</span>
+											<span data-bind="qa_unchecked_fiter_count" class="count ng-binding">(206)</span>
+										</span>
+									</label>
+								</li>
+								<li class="ng-scope">
+									<label class="filters-checkbox" >
+										<input type="checkbox" class="ng-pristine ng-valid">
+										<span data-bind="qa_unchecked_fiter_checkbox" class="label"></span>
+										<span class="text">
+											<span data-bind="qa_unchecked_fiter_name" class="ng-binding truncate t2">Пиццерия</span>
+											<span data-bind="qa_unchecked_fiter_count" class="count ng-binding">(74)</span>
+										</span>
+									</label>
+								</li>
+							</ul>
+
+							<a href="" class="more ng-scope" >
+								<i class="lw-icon-more-filters"></i>
+								Ещё
+							</a>
+						</section>
+						<section class="ng-scope filters-block">
+
+							<header>
+								<h1 class="h5 ng-scope ng-binding">Цена
+									<i  class="lw-rouble-glyph ng-scope"></i>
+								</h1>
+								<a data-bind="qa_uncheck_all_filters" href="" class="uncheck-all ng-scope" >
+									<i class="lw-icon-filters-uncheck-cross"></i>
+								</a>
+							</header>
+
+							<div class="slider-holder ng-scope" >
+								<div class="slider-subscriptions">
+									<span class="text ng-binding">
+										0
+									</span>
+									<span class="text ng-binding">
+										8 500
+									</span>
+								</div>
+								<div class="control ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" >
+									<div class="ui-slider-range ui-widget-header ui-corner-all" style="left: 38.3647798742138%; width: 61.6352201257862%;"></div>
+									<a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 38.3647798742138%;">
+										<span style="right: 0px;">750</span>
+									</a>
+									<a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 100%;"><span style="left: -26px;">8 500</span></a>
+								</div>
+							</div>
+
+							<ul class="filters filters-checked ng-hide" >
+								
+							</ul>
+
+							<ul class="filters ng-hide" >
+								
+							</ul>
+						</section>
+						<section class="ng-scope filters-block"> 
+							<header> 
+								<h1 class="h5 ng-scope ng-binding">Звёзды </h1>
+							</header> 
+							<ul class="filters filters-checked">
+								
+							</ul>
+
+							<ul class="filters">
+								
+							</ul>
+
+							
+						</section>
+						<section class="ng-scope filters-block">
+
+							<header>
+								 <h1 class="h5 ng-scope ng-binding">Услуги </h1> 
+							</header> 
+							<ul class="filters filters-checked"  >
+								 
+							</ul>
+
+							<ul class="filters" >
+								 <li  class="ng-scope">
+									<label class="filters-checkbox"  >
+										<input type="checkbox"   class="ng-pristine ng-valid">
+										<span data-bind="qa_unchecked_fiter_checkbox" class="label"></span>
+										<span class="text">
+											<span data-bind="qa_unchecked_fiter_name"  class="ng-binding truncate t4">Wi-Fi</span>
+											<span data-bind="qa_unchecked_fiter_count" class="count ng-binding">(2874)</span>
+										</span>
+									</label>
+								</li>
+								<li class="ng-scope">
+									<label class="filters-checkbox" >
+										<input type="checkbox" class="ng-pristine ng-valid">
+										<span data-bind="qa_unchecked_fiter_checkbox" class="label"></span>
+										<span class="text">
+											<span data-bind="qa_unchecked_fiter_name" class="ng-binding truncate t4">Еда на вынос</span>
+											<span data-bind="qa_unchecked_fiter_count" class="count ng-binding">(1893)</span>
+										</span>
+									</label>
+								</li>
+								<li class="ng-scope">
+									<label class="filters-checkbox">
+										<input type="checkbox" class="ng-pristine ng-valid">
+										<span data-bind="qa_unchecked_fiter_checkbox" class="label"></span>
+										<span class="text">
+											<span data-bind="qa_unchecked_fiter_name" class="ng-binding truncate t4">Резерв столов</span>
+											<span data-bind="qa_unchecked_fiter_count" class="count ng-binding">(2375)</span>
+										</span>
+									</label>
+								</li>
+								<li class="ng-scope">
+									<label class="filters-checkbox" >
+										<input type="checkbox" class="ng-pristine ng-valid">
+										<span data-bind="qa_unchecked_fiter_checkbox" class="label"></span>
+										<span class="text">
+											<span data-bind="qa_unchecked_fiter_name"class="ng-binding truncate t4">Бизнес-ланч</span>
+											<span data-bind="qa_unchecked_fiter_count" class="count ng-binding">(2081)</span>
+										</span>
+									</label>
+								</li>
+								<li  class="ng-scope">
+									<label class="filters-checkbox">
+										<input type="checkbox" class="ng-pristine ng-valid">
+										<span data-bind="qa_unchecked_fiter_checkbox" class="label"></span>
+										<span class="text">
+											<span data-bind="qa_unchecked_fiter_name"  class="ng-binding truncate t4">Парковка</span>
+											<span data-bind="qa_unchecked_fiter_count" class="count ng-binding">(2080)</span>
+										</span>
+									</label>
+								</li> 
+							</ul>
+
+							 <a data-bind="qa_more_filters" href="" class="more ng-scope" >
+								<i class="lw-icon-more-filters"></i>
+								Ещё
+							</a> 
+						</section>
+						<section class="ng-scope filters-block">
+
+							<header>
+								<h1 class="h5 ng-scope ng-binding">Кухни </h1>
+							</header>
+
+							<ul class="filters filters-checked">
+								
+							</ul>
+
+							<ul class="filters">
+								<li class="ng-scope">
+									<label class="filters-checkbox">
+										<input type="checkbox" class="ng-pristine ng-valid">
+										<span class="label"></span>
+										<span class="text">
+											<span class="ng-binding truncate t4">Европейская</span>
+											<span class="count ng-binding">(2266)</span>
+										</span>
+									</label>
+								</li>
+								<li class="ng-scope">
+									<label class="filters-checkbox">
+										<input type="checkbox" class="ng-pristine ng-valid">
+										<span class="label"></span>
+										<span class="text">
+											<span class="ng-binding truncate t4">Русская</span>
+											<span class="count ng-binding">(1018)</span>
+										</span>
+									</label>
+								</li>
+								<li  class="ng-scope">
+									<label class="filters-checkbox">
+										<input type="checkbox" class="ng-pristine ng-valid">
+										<span data-bind="qa_unchecked_fiter_checkbox" class="label"></span>
+										<span class="text">
+											<span data-bind="qa_unchecked_fiter_name" class="ng-binding truncate t3">Итальянская</span>
+											<span data-bind="qa_unchecked_fiter_count" class="count ng-binding">(752)</span>
+										</span>
+									</label>
+								</li>
+								<li  class="ng-scope">
+									<label class="filters-checkbox">
+										<input type="checkbox" class="ng-pristine ng-valid">
+										<span data-bind="qa_unchecked_fiter_checkbox" class="label"></span>
+										<span class="text">
+											<span data-bind="qa_unchecked_fiter_name" class="ng-binding truncate t3">Японская</span>
+											<span data-bind="qa_unchecked_fiter_count" class="count ng-binding">(721)</span>
+										</span>
+									</label>
+								</li>
+								<li  class="ng-scope">
+									<label class="filters-checkbox">
+										<input type="checkbox" class="ng-pristine ng-valid">
+										<span data-bind="qa_unchecked_fiter_checkbox" class="label"></span>
+										<span class="text">
+											<span data-bind="qa_unchecked_fiter_name"  class="ng-binding truncate t3">Авторская</span>
+											<span data-bind="qa_unchecked_fiter_count" class="count ng-binding">(338)</span>
+										</span>
+									</label>
+								</li>
+							</ul>
+
+							<a data-bind="qa_more_filters" href="" class="more ng-scope">
+								<i class="lw-icon-more-filters"></i>
+								Ещё
+							</a>
+						</section>
+						<section class="ng-scope filters-block">
+
+							<header>
+								<h1 class="h5 ng-scope ng-binding">Время работы 
+								</h1>
+							</header>
+							<ul class="filters filters-checked ng-hide"> </ul>
+
+							<ul class="filters">
+								<li class="ng-scope">
+									<label class="filters-checkbox">
+										<input type="checkbox" class="ng-pristine ng-valid">
+										<span data-bind="qa_unchecked_fiter_checkbox" class="label"></span>
+										<span class="text">
+											<span data-bind="qa_unchecked_fiter_name" class="ng-binding truncate t3">Круглосуточно</span>
+											<span data-bind="qa_unchecked_fiter_count" class="count ng-binding">(384)</span>
+										</span>
+									</label>
+								</li>
+								<li class="ng-scope">
+									<label class="filters-checkbox">
+										<input type="checkbox"  class="ng-pristine ng-valid">
+										<span data-bind="qa_unchecked_fiter_checkbox" class="label"></span>
+										<span class="text">
+											<span data-bind="qa_unchecked_fiter_name" class="ng-binding truncate t3">Работает до утра</span>
+											<span data-bind="qa_unchecked_fiter_count" class="count ng-binding">(402)</span>
+										</span>
+									</label>
+								</li>
+								<li class="ng-scope">
+									<label class="filters-checkbox">
+										<input type="checkbox" class="ng-pristine ng-valid">
+										<span data-bind="qa_unchecked_fiter_checkbox" class="label"></span>
+										<span class="text">
+											<span data-bind="qa_unchecked_fiter_name" class="ng-binding truncate t4">До 00:00</span>
+											<span data-bind="qa_unchecked_fiter_count" class="count ng-binding">(2466)</span>
+										</span>
+									</label>
+								</li>
+								<li class="ng-scope">
+									<label class="filters-checkbox">
+										<input type="checkbox" class="ng-pristine ng-valid">
+										<span data-bind="qa_unchecked_fiter_checkbox" class="label"></span>
+										<span class="text">
+											<span data-bind="qa_unchecked_fiter_name" class="ng-binding truncate t4">Открыто ещё 2 ч.</span>
+											<span data-bind="qa_unchecked_fiter_count" class="count ng-binding">(3236)</span>
+										</span>
+									</label>
+								</li>
+							</ul>
+
+							
+						</section>
+						<section class="ng-scope filters-block">
+
+							<header>
+								<h1 class="h5 ng-scope ng-binding">Станции метро </h1>
+							</header>
+							<ul class="filters filters-checked ng-hide">
+								
+							</ul>
+
+							<ul class="filters">
+								<li class="ng-scope">
+									<label class="filters-checkbox">
+										<input type="checkbox" class="ng-pristine ng-valid">
+										<span data-bind="qa_unchecked_fiter_checkbox" class="label"></span>
+										<span class="text">
+											<span data-bind="qa_unchecked_fiter_name" class="ng-binding truncate t3">Пушкинская</span>
+											<span data-bind="qa_unchecked_fiter_count" class="count ng-binding">(114)</span>
+										</span>
+									</label>
+								</li>
+								<li class="ng-scope">
+									<label class="filters-checkbox">
+										<input type="checkbox" class="ng-pristine ng-valid">
+										<span data-bind="qa_unchecked_fiter_checkbox" class="label"></span>
+										<span class="text">
+											<span data-bind="qa_unchecked_fiter_name" class="ng-binding truncate t2">Проспект Вернадского</span>
+											<span data-bind="qa_unchecked_fiter_count" class="count ng-binding">(77)</span>
+										</span>
+									</label>
+								</li>
+								<li class="ng-scope">
+									<label class="filters-checkbox">
+										<input type="checkbox" class="ng-pristine ng-valid">
+										<span data-bind="qa_unchecked_fiter_checkbox" class="label"></span>
+										<span class="text">
+											<span data-bind="qa_unchecked_fiter_name" class="ng-binding truncate t2">Театральная</span>
+											<span data-bind="qa_unchecked_fiter_count" class="count ng-binding">(85)</span>
+										</span>
+									</label>
+								</li>
+								<li class="ng-scope">
+									<label class="filters-checkbox">
+										<input type="checkbox" class="ng-pristine ng-valid">
+										<span data-bind="qa_unchecked_fiter_checkbox" class="label"></span>
+										<span class="text">
+											<span data-bind="qa_unchecked_fiter_name" class="ng-binding truncate t2">Тверская</span>
+											<span data-bind="qa_unchecked_fiter_count" class="count ng-binding">(84)</span>
+										</span>
+									</label>
+								</li>
+								<li class="ng-scope">
+									<label class="filters-checkbox">
+										<input type="checkbox" class="ng-pristine ng-valid">
+										<span data-bind="qa_unchecked_fiter_checkbox" class="label"></span>
+										<span class="text">
+											<span data-bind="qa_unchecked_fiter_name" class="ng-binding truncate t2">Белорусская</span>
+											<span data-bind="qa_unchecked_fiter_count" class="count ng-binding">(73)</span>
+										</span>
+									</label>
+								</li>
+								
+							</ul>
+
+							<a data-bind="qa_more_filters" href="" class="more ng-scope">
+								<i class="lw-icon-more-filters"></i>
+								Ещё
+							</a>
+						</section>
+					</aside>
+				</div>
+			
+	</div>
+</div>
+
+	<div class="search-map ng-scope">
+	<div class="ng-isolate-scope"></div>
+
+	<div class="search-map-container">
+		<div class="search-map-holder">
+			<div class="search-mode-holder">
+				<label class="filters-checkbox">
+					<input type="checkbox" class="ng-pristine ng-valid">
+					<span class="label"></span>
+					<span class="text">
+						<span class="ng-binding">Искать при перемещении карты</span>
+					</span>
+				</label>
+			</div>
+			<div class="no-result-balloon absent">
+				<div>
+					<a href="#"></a>
+					<p>
+						К сожалению, на данном участке карты <br>
+						нет объектов по вашему запросу
+					</p>
+				</div>
+
+				<p>
+					Попробуйте сменить область просмотра или <br>
+					<a href="" ng-click="clearFilters()">сбросить</a> фильтры
+				</p>
+			</div>
+
+			<div class="search-map-block">
+			</div>
+
+			<button class="btn btn-dark">
+				<span class="ng-hide"><i class="lw-icon-arrow-up-thin"></i>Свернуть карту</span>
+				<span class=""><i class="lw-icon-arrow-down-thin-1"></i>Раскрыть карту</span>
+			</button>
+		</div>
+	</div>
+</div>
+
+
+</div>
+</main>
+
+<div class="left-panel ng-scope" style="padding-top: 55px;">
+		<nav class="main-menu left-panel-custom-scroll ng-scope" style="overflow: hidden; padding: 0px; width: 240px;">
+					<div class="ng-scope">
+						<header>
+							<h1 class="hidden_offscreen">
+								Меню
+							</h1>
+						</header>
+				
+						<a class="left-panel-link section-color-11" id="qa_section_10" href="#">
+							<i class="lw-section-icon icon-11"></i>
+							<span class="ng-binding">Активный отдых</span>
+						</a>
+						<a class="left-panel-link section-color-01" id="qa_section_11" href="#">
+							<i class="lw-section-icon icon-01"></i>
+							<span class="ng-binding">Рестораны</span>
+						</a>
+						<a class="left-panel-link section-color-02" id="qa_section_8" href="#">
+							<i class="lw-section-icon icon-02"></i>
+							<span class="ng-binding">Отели</span>
+						</a>
+						<a class="left-panel-link section-color-03" id="qa_section_4" href="#">
+							<i class="lw-section-icon icon-03"></i>
+							<span class="ng-binding">Развлечения</span>
+						</a>
+						<a class="left-panel-link section-color-04" id="qa_section_9" href="#">
+							<i class="lw-section-icon icon-04"></i>
+							<span class="ng-binding">Ночная жизнь</span>
+						</a>
+						<a class="left-panel-link section-color-05" id="qa_section_6" href="#">
+							<i class="lw-section-icon icon-05"></i>
+							<span class="ng-binding">Искусство</span>
+						</a>
+						<a class="left-panel-link section-color-06" id="qa_section_3" href="#">
+							<i class="lw-section-icon icon-06"></i>
+							<span class="ng-binding">Достопримечательности</span>
+						</a>
+						<a class="left-panel-link section-color-07" id="qa_section_7" href="#">
+							<i class="lw-section-icon icon-07"></i>
+							<span class="ng-binding">Путешествия</span>
+						</a>
+						<a class="left-panel-link section-color-08" id="qa_section_1" href="#">
+							<i class="lw-section-icon icon-08"></i>
+							<span class="ng-binding">Дети</span>
+						</a>
+						<a class="left-panel-link section-color-14" id="qa_section_13" href="#">
+							<i class="lw-section-icon icon-14"></i>
+							<span class="ng-binding">Красота и здоровье</span>
+						</a>
+						<a class="left-panel-link section-color-09" id="qa_section_2" href="#">
+							<i class="lw-section-icon icon-09"></i>
+							<span class="ng-binding">Магазины</span>
+						</a>
+						
+						<a class="left-panel-link section-color-20" href="#">
+							<i class="lw-section-icon icon-20"></i>
+							<span>Гиды</span>
+						</a>
+						
+					</div>
+				
+		</nav>
+	</div>
+
+<script src="https://api-maps.yandex.ru/2.1/?load=package.full&lang=ru-RU"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"> </script>
+<script src="js/jquery.jscrollpane.min.js"></script>
+<script src="js/jquery.mousewheel.js"></script>
+
+<script> 
+$(function()
+{
+	$('.filter-panel').jScrollPane();
+});
+</script>
+
+</body>
+</html>
