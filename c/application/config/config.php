@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-$config['base_url'] = 'http://localhost/vnup/c/index.php/';
+$config['base_url'] = 'http://localhost/vneconomist/c/';
 
 /*
 |--------------------------------------------------------------------------
@@ -413,7 +413,7 @@ $config['standardize_newlines'] = FALSE;
 |          for backwards compatibility purposes!
 |
 */
-$config['global_xss_filtering'] = FALSE;
+$config['global_xss_filtering'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------
@@ -520,3 +520,5 @@ $config['proxy_ips'] = '';
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['themes'] = 'default';
+$config['home_dir'] = 'E:/xampp/htdocs/vneconomist';
+$config['asset_url'] = 'http://localhost/vnup/c/assets/themes/';

@@ -1,0 +1,78 @@
+
+.hd-search-form{
+	width: 315px;
+    float: left;
+    margin-top: 4px;
+	margin-left: 35px;
+}
+
+.hd-search-form input{
+	height: 30px;
+}
+.hd-search-form .input-group-btn .js-submit-search{
+	border-left: none;
+    padding: 7px 12px 7px;
+}
+.home-container .section-home .container>h3{
+	font-size: 2.5rem;
+}
+.controller-hourlie.action-list .listings-container{
+	margin-left: 10px;
+}
+.controller-hourlie.action-list .listing-row .title{
+	font-weight: bold;
+}
+.controller-hourlie.action-list .listing-row .horizontal>li{
+	text-transform: none;
+    font-weight: 400;
+}
+.controller-hourlie.action-list .listing-row.featured-row{
+	background-color: #fff;
+}
+a.js-paragraph-crop{
+	color: #4774b7;
+}
+.top-navigation .nav .dropdown .dropdown-menu.simple li a:not(.nested-link){
+    font-size: 15px;
+    font-size: 1.5rem;
+    text-transform: none; 
+}
+.top-navigation .nav .dropdown .dropdown-menu{
+    background-color: #414141;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    top: 39px;
+    right: -59px;
+    width: 185px;
+}
+.dropdown:hover .dropdown-menu{
+    display: block;
+}
+.top-navigation .nav .navigation-menu, .top-navigation .nav .user-menu{
+    height: auto !important;
+}
+.hourlie-image-container, .hourlie-image-container a{
+    height: 115px;
+}
+.widget-memberSummary{
+    padding: 5px 0;
+    border-bottom: 1px dotted #ECECEC;
+}
+.category-tree li ul, .category-tree li .sub-menu {
+    margin-top: 10px;
+    padding-left: 30px;
+    position: relative;
+}
+.category-tree ul.sub-menu:before {
+    border-left: 3px solid #ff7300;
+}
+.category-tree ul.sub-menu:before{
+    content: '';
+    display: inline-block;
+    position: absolute;
+    width: 0;
+    height: 100%;
+    top: 0;
+    left: 10px;
+}
+}

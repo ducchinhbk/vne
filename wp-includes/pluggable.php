@@ -2181,6 +2181,7 @@ function get_avatar( $id_or_email, $size = '96', $default = '', $alt = false ) {
 			$out .= "&amp;r={$rating}";
 
 		$out = str_replace( '&#038;', '&amp;', esc_url( $out ) );
+       
 		$avatar = "<img alt='{$safe_alt}' src='{$out}' class='avatar avatar-{$size} photo' height='{$size}' width='{$size}' />";
 	} else {
 		$out = esc_url( $default );

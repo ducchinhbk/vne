@@ -6,11 +6,10 @@
 			<div class="login-signup-container">
 				<h1 class="gutter-bottom clearfix align-center">
 					Sign Up        <aside class="clearfix">
-						Already have an account? <a class="call-to-action" href="/site/login">Log In</a>        </aside>
+						Already have an account? <a class="call-to-action" href="<?php echo $login_link; ?>">Log In</a>        </aside>
 				</h1>
 				<div class="signup-form-container">
-					<form id="yw0" action="#" method="POST">
-						<div style="display:none"><input type="hidden" value="bdb0edf80e269d336ddf931b18a86545ad676c5d" name="YII_CSRF_TOKEN" /></div>
+					<?php echo form_open('user/user/signup'); ?>
 						<div class="fullPage signupDiv clearfix">
 						<div class="clearfix gutter-bottom" data-hook="partial-social-buttons">
 							<div class="col-xs-12">

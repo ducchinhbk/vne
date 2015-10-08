@@ -10,6 +10,8 @@ class User extends CI_Controller {
    function __construct()
     {
         parent::__construct();
+        $this->load->helper('form');
+        $this->load->library('form_validation');
     }
 	public function index()
 	{
@@ -20,15 +22,15 @@ class User extends CI_Controller {
     public function login()
 	{
 	   
-        $this->load->helper('form');
-        $this->load->library('form_validation');
         
         $this->form_validation->set_rules('LoginForm_email', 'Email', 'required');
         $this->form_validation->set_rules('text', 'text', 'required');
         
+        $data['signup_link'] =  base_url('user/user/signup');
+        $data['forgotpass_link'] =  base_url('user/user/forgotpass');
 		
         $this->load->view('common/tpl_header');
-        $this->load->view('user/tpl_login');
+        $this->load->view('user/tpl_login', $data);
         $this->load->view('common/tpl_footer');
         
 	}
@@ -48,9 +50,15 @@ class User extends CI_Controller {
     //function process normal user registration
     public function signup()
 	{
-		
+        
+        
+        $this->form_validation->set_rules('LoginForm_email', 'Email', 'required');
+        $this->form_validation->set_rules('text', 'text', 'required');
+		$data['login_link'] =  base_url('user/user');
+       
+        
         $this->load->view('common/tpl_header');
-        $this->load->view('user/tpl_signup');
+        $this->load->view('user/tpl_signup', $data);
         $this->load->view('common/tpl_footer');
 	}
     
@@ -73,6 +81,16 @@ class User extends CI_Controller {
     {
        $this->load->view('user/tpl_activate'); 
         
+    }
+    
+    //function process forgot pass
+    public function forgotpass()
+    {
+        
+        
+        $this->load->view('common/tpl_header');
+        $this->load->view('user/tpl_forgotpass');
+        $this->load->view('common/tpl_footer');
     }
     
     //function process user activation

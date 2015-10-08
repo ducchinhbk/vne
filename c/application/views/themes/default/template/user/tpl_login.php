@@ -5,10 +5,10 @@
         
 			<div class="login-signup-container clearfix">
 				<h1 class="gutter-bottom clearfix align-center">
-					Log In        <aside class="clearfix">Don't have an account? <a class="call-to-action" href="#">Sign Up</a></aside>
+					Log In        <aside class="clearfix">Don't have an account? <a class="call-to-action" href="<?php echo $signup_link; ?>">Sign Up</a></aside>
 				</h1>
 				<div class="login-form-container">
-					<?php echo form_open('cauth/login'); ?>
+					<?php echo form_open('user/user/login'); ?>
 						
 						<div class="fullPage loginDiv clearfix">
 							<div>
@@ -51,7 +51,7 @@
 											</div>
 											<div class="col-xs-6 no-padding text-right">
 												<div class="clear clearfix">
-													<a class="forgotPassword gutter-bottom clear" rel="nofollow" href="/site/forgot">Forgot password?</a>                
+													<a class="forgotPassword gutter-bottom clear" rel="nofollow" href="<?php echo $forgotpass_link; ?>">Forgot password?</a>                
 												</div>
 											</div>
 
