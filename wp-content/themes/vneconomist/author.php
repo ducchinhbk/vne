@@ -30,7 +30,7 @@
         </div>
         <div class="fav-icon">
             <div class="widget-star-item " style="display: inline-block; margin-top: 0;">
-            <a  href="#"><span></span></a>
+            <a href="#"><span></span></a>
             </div>        
         </div>
     </div>
@@ -112,12 +112,18 @@
             </h1>
         </div>
     </div>
+    <div class="cover-edit-action hidden-xs">
+        <a class="btn cover-edit-button" href="<?php echo site_url('c/user/user/edit');?>">
+            <i class="fa fa-camera"></i> Change Cover
+        </a>    
+    </div>
     <div class="profile-header-right-col align-center hidden-xs">
         <div class="cert-container">
             <span class="cert cert-level5-xlarge " data-level="5" data-tooltip-content="CERT is PPH's  proprietary ranking algorithm  which factors in all the things our buyers care about a Seller, in one synthetic score. Sellers are ranked from CERT1 up to CERT5 with the Top 0.5% getting a special badge." data-tooltip-pos="left" title="CERT is PPH's  proprietary ranking algorithm  which factors in all the things our buyers care about a Seller, in one synthetic score. Sellers are ranked from CERT1 up to CERT5 with the Top 0.5% getting a special badge.">
             </span>        
         </div>
-        <span><a class="btn contact-member call-to-action btn-inverted " rel="nofollow" href="#">Contact</a></span>    
+        <!--span><a class="btn contact-member call-to-action btn-inverted " rel="nofollow" href="#">Contact</a></span-->    
+        <a class="btn contact-member call-to-action  " rel="nofollow" href="<?php echo site_url('c/user/user/edit');?>">Edit</a>
     </div>
 </div>
 <div class="member-info-container">
@@ -197,7 +203,7 @@
     <div class="col-xs-12 col-sm-8 col-lg-9 profile-main">
         <div id="members-widget-hourlies-portfolio" class="member-tabs pph-default stretch gutter-bottom hidden-xs">
             <ul role="tablist" class="nav nav-tabs">
-                <li class="active"><a role="tab" data-toggle="tab" href="#my-hourlies">Bài viết đã chia sẽ (8)</a></li>
+                <li class="active"><a role="tab" data-toggle="tab" href="#my-hourlies">Bài viết đã chia sẽ (<?php echo count_user_posts($cur_user->ID);?>)</a></li>
             </ul>
             <div class="tab-content">
                 <div id="my-hourlies" class="tab-pane fade in active">
@@ -207,73 +213,101 @@
                     </div>
                     <!-- The Loop -->
 
-                    <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+                    <?php   $paged = (get_query_var('page')) ? get_query_var('page') : 1; 
+                            $args = array(
+                                'author'        =>  $cur_user->ID,
+                                'paged' => $paged,
+                                'posts_per_page' => 12
+                            );
+                            $the_query = new WP_Query($args);
+                            if ( $the_query->have_posts() ) {
+                                	
+                                	while ( $the_query->have_posts() ) {
+                                		$the_query->the_post();
+                                        ?>
                        
-                        <div class="col-xs-12 col-sm-6 col-md-4 hourlie-tile-container">
-                            <div class="clearfix hourlie-tile js-listing-tile  with-member-info">
-                                <div class="image-container">
-                                    <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>" class="">
-                                        <?php the_post_thumbnail(array(260, 195)); ?>         
-                                    </a>
-                                    <div class="stats-container clearfix">
-                                        <div class="pull-left rating">
-                                            <i class="fpph fpph-thumb-up"></i>
-                                            <span>Vote:</span>
-                                            <span class="rating-value">99</span>
+                                <div class="col-xs-12 col-sm-6 col-md-4 hourlie-tile-container">
+                                    <div class="clearfix hourlie-tile js-listing-tile  with-member-info">
+                                        <div class="image-container">
+                                            <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>" class="">
+                                                <?php the_post_thumbnail(array(260, 195)); ?>         
+                                            </a>
+                                            <div class="stats-container clearfix">
+                                                <div class="pull-left rating">
+                                                    <i class="fpph fpph-thumb-up"></i>
+                                                    <span>Vote:</span>
+                                                    <span class="rating-value">99</span>
+                                                </div>
+                                                <div class="pull-right sales">
+                                                    <i class="fpph fpph-buyer-activity"></i>
+                                                    <span>View:</span>
+                                                    <span class="sales-value">1999</span>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="pull-right sales">
-                                            <i class="fpph fpph-buyer-activity"></i>
-                                            <span>View:</span>
-                                            <span class="sales-value">1999</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="title-container">
-                                    <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>" class="color-hourlie js-paragraph-crop" style="word-wrap: break-word;">
-                                        <?php the_title(); ?>           
-                                    </a>
-                                </div>
-                                <div class="profile-container stretch clearfix">
-                                    <div class="col-xs-8 no-padding-right">
-                                        <div class="user-image-container pull-left">
-                                            <a  title="<?php echo $full_name; ?>">
-                                                <img class="user-avatar user-avatar-xs"  alt="<?php echo $full_name; ?>" src="<?php echo esc_url(site_url($cur_user->cus_avatar)); ?>"/>
+                                        <div class="title-container">
+                                            <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>" class="color-hourlie js-paragraph-crop" style="word-wrap: break-word;">
+                                                <?php the_title(); ?>           
                                             </a>
                                         </div>
-                                        <div class="user-info pull-left">
-                                            <a  title="<?php echo $full_name; ?>" class="clearfix user-name crop"><?php echo $full_name; ?></a>
-                                            <span class="user-country clearfix crop"><?php echo $cur_user->cus_city; ?></span>
+                                        <div class="profile-container stretch clearfix">
+                                            <div class="col-xs-8 no-padding-right">
+                                                <div class="user-image-container pull-left">
+                                                    <a title="<?php echo $full_name; ?>">
+                                                        <?php echo c_get_avatar($cur_user->ID);?>
+                                                    </a>
+                                                </div>
+                                                <div class="user-info pull-left">
+                                                    <a  title="<?php echo $full_name; ?>" class="clearfix user-name crop"><?php echo $full_name; ?></a>
+                                                    <span class="user-country clearfix crop"><?php echo $cur_user->cus_city; ?></span>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="col-xs-4 price-container price-tag text-right" style="font-size: 12px;line-height: 2.5;">
+                                                <span>30</span><sup> votes</sup>              
+                                            </div>
                                         </div>
-                                        
-                                    </div>
-                                    <div class="col-xs-4 price-container price-tag text-right" style="font-size: 12px;line-height: 2.5;">
-                                        <span>30</span><sup> votes</sup>              
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    <?php endwhile; else: ?>
+                    <?php } } else { ?>
                         <p><?php _e('Không có bài viết hiển thị..'); ?></p>
                 
-                    <?php endif; ?>
+                    <?php } ?>
                 
                 <!-- End Loop -->
                     
                     
                     <div class="clearfix"></div>
                     <div class="pager" style="margin-top: 20px;">
-							<div class="pagination clearfix">
-								<ul data-responsive="1" role="navigation" id="hourlies-listing-pager" class="yiiPager">
-									<li class="hidden-xs"><span class="inactive"><i class="fa fa-angle-left"></i></span></li>
-									<li class=""><a data-page="1" class=" selected" title="go to page 1" href="#">1</a></li>
-									<li class="hidden-xs"><a data-page="2" class="" title="go to page 2" href="#">2</a></li>
-									<li class="hidden-xs"><a data-page="3" class="" title="go to page 3" href="#">3</a></li>
-									<li class="hidden-xs"><a data-page="4" class="" title="go to page 4" href="#">4</a></li>
+                        <div class="pagination clearfix">
+							<?php if($the_query->max_num_pages > 1){ 
+                                    if( $the_query->max_num_pages > 10 ){
+                                                                
+                                        $limit = $paged + 10;
+                                        $limit = ( $limit > $the_query->max_num_pages)? $the_query->max_num_pages: $limit;
+                                        $start = ( $paged >= 3)? ($paged - 2): $paged;
+                                        
+                                    } else{
+                                    $limit = $the_query->max_num_pages;
+                                    $start = 1;
+                                }
+                                ?>
+								<ul id="hourlies-listing-pager" class="yiiPager">
+                                    <?php
+                                        if ($paged > 1) { ?>
+                                        <li class=""><a href="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) )).'?page=' . ($paged - 1);?>" data-page="<?php echo ($paged - 1);?>" class="previous" title="Trang trước" ><i class="fa fa-angle-left"></i></a></li>
+                                    <?php }
+                                    for( $i= $start; $i <= $limit; $i++){ ?>
 									
-									<li class=""><a data-page="2" class="next" title="" href="#"><i class="fa fa-angle-right"></i></a></li>
-								</ul>
-							</div>
-						</div>
+									<li class="hidden-xs"><a href="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) )).'?page=' . $i; ?>" data-page="<?php echo $i;?>" class="<?php echo ($paged == $i)? "selected": ""; ?>" title="Trang <?php echo $i;?>" ><?php echo $i;?></a></li>
+									<?php }
+                                    if($paged < $the_query->max_num_pages){ ?>
+                                        <li class=""><a href="<?php echo esc_url(get_author_posts_url( get_the_author_meta( 'ID' ) )).'?page=' . ($paged + 1);?>" data-page="<?php echo ($paged + 1);?>" class="next" title="Trang tiếp theo" ><i class="fa fa-angle-right"></i></a></li>
+								    <?php } ?>
+                                </ul>
+                            <?php } ?> 
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
