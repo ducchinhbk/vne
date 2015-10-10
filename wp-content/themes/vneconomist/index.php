@@ -47,7 +47,7 @@
 				<div class="results list" id="hourlies-listing-results">
 					<div id="hourlies-listing-listview" class="list-view">
 						<div class="items clearfix items-results ">
-                       <?php  $paged = (get_query_var('page')) ? get_query_var('page') : 1;
+                       <?php  $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                                 $args = array(
                                 	'posts_per_page'      => 20,
                                     'paged' => $paged,
@@ -78,13 +78,14 @@
         										<ul class="clearfix member-info horizontal left crop">
         											<li>
         												<div class="user-image pull-left">
-        													<a class="member-name" title="<?php echo get_the_author();?>" rel="nofollow" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>">
-                                                                <?php echo c_get_avatar(get_the_author_meta('ID'));?>
+        													<a class="member-name" title="Vector M." rel="nofollow" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>">
+                                                                <?php echo get_avatar( get_the_author_meta( 'ID' ), 30); ?>
+                                                                
                                                             </a>                    
                                                         </div>
         												<div class="pull-left">
         													<span class="member-first-name crop">
-                                                                <a class="member-name" title="<?php echo get_the_author();?>" rel="nofollow" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php echo get_the_author();?></a>
+                                                                <a class="member-name" title="Vector M." rel="nofollow" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php echo get_the_author();?></a>
                                                             </span>
         													<span class="user-country crop">United Kingdom</span>
         												</div>
@@ -110,7 +111,7 @@
         									<div class="col-xs-4 col-sm-3 details">
         										 
         									</div>
-        									<br class="clear"/>
+        									<br class="clear">
         								</div>
         							</div>
                                         
@@ -134,14 +135,14 @@
 								<ul data-responsive="1" role="navigation" id="hourlies-listing-pager" class="yiiPager">
                                     <?php
                                         if ($paged > 1) { ?>
-                                        <li class=""><a data-page="<?php echo ($paged - 1);?>" class="previous" title="Trang trước" href="<?php echo esc_url(home_url()).'?page=' . ($paged - 1);?>"><i class="fa fa-angle-left"></i></a></li>
+                                        <li class=""><a data-page="<?php echo ($paged - 1);?>" class="previous" title="Trang trước" href="<?php echo esc_url(home_url()).'?paged=' . ($paged - 1);?>"><i class="fa fa-angle-left"></i></a></li>
                                     <?php }
                                     for( $i= $start; $i <= $limit; $i++){ ?>
 									
-									<li class="hidden-xs"><a data-page="<?php echo $i;?>" class="<?php echo ($paged == $i)? "selected": ""; ?>" title="Trang <?php echo $i;?>" href="<?php echo esc_url(home_url()).'?page=' . $i; ?>"><?php echo $i;?></a></li>
+									<li class="hidden-xs"><a data-page="<?php echo $i;?>" class="<?php echo ($paged == $i)? "selected": ""; ?>" title="Trang <?php echo $i;?>" href="<?php echo esc_url(home_url()).'?paged=' . $i; ?>"><?php echo $i;?></a></li>
 									<?php }
                                     if($paged < $the_query->max_num_pages){ ?>
-                                        <li class=""><a data-page="<?php echo ($paged + 1);?>" class="next" title="Trang tiếp theo" href="<?php echo esc_url(home_url()).'?page=' . ($paged + 1);?>"><i class="fa fa-angle-right"></i></a></li>
+                                        <li class=""><a data-page="<?php echo ($paged + 1);?>" class="next" title="Trang tiếp theo" href="<?php echo esc_url(home_url()).'?paged=' . ($paged + 1);?>"><i class="fa fa-angle-right"></i></a></li>
 								    <?php } ?>
                                 </ul>
                                 <?php } ?> 

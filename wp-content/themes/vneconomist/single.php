@@ -9,27 +9,46 @@
  **/
 ?>
 <?php get_header();?>
-<?php $category = get_the_category(); $cat_ID = ($category[0]->category_parent > 0)? $category[0]->category_parent : $category[0]->term_id; ?>
+<?php $category = get_the_category(); $relateCats = get_relate_catID($category[0]->term_id)?>
 <div class="container container-top"></div>
 	<div id="main-container" class="wrap-container container clearfix offcanvas offcanvas-right">
 		<div class="main-content controller-hourlie action-view">
-       <?php if (have_posts()) { ?>		
-             <?php while (have_posts()) : the_post();?>
 			<header class="clearfix featured featured-right">
-				<h1 class="clearfix"> <?php the_title()?> </h1>
+				<h1 class="clearfix">
+					Design high quality logo+ Unlimited revisions + Editable source files    </h1>
 			</header>
 			
 			
 			<div class="col-xs-12 clearfix js-auto-pause-hidden hourlie-description-text">
-				<?php the_content(); ?>	
+				<h2 class="clearfix prepend-top"> What you get with this Hourlie    </h2>
+				<div class="content-text clearfix">
+						Hi!<br/>
+						<br/>
+						PLEASE NOTE : THIS HOURLIE IS ONLY FOR A LIMITED OFFER , SO PLEASE GRAB THE OPPORTUNITY.<br />
+						<br />
+						We&#039;ll make atleast 2 logo designs for your website,company etc. The designs will be created by professionals within 3-4 days! We need time because we want to give your logo proper time so that we can get awesome results<br />
+						<br />
+						$16 Hourlie includes : <br />
+						2 initial concepts<br />
+						Unlimited Revisions till the time you are happy<br />
+						Logo files - Jpg , png , psd , Ai , Tiff, Eps , pdf Or any format of your choice!<br />
+						<br />
+						Why us?<br />
+						1. I am a highly skilled professional graphic designer in Manchester , UK<br />
+						2. Full time designer , so no scope of bad designs<br />
+						3. More than 1000 Designs done till now!<br />
+						5. No templates used , as other people are likely to use here<br />
+						<br />
+						FREE source file<br />
+						Fast turn around time<br />
+						Reseller welcome<br />
+						<br />
+						ATTENTION : <br />
+						DO BUY THE FULL STATIONARY PACKAGE FOR A BETTER EXPERIENCE (DO CHECK EXTRAS)<br />
+						<br />
+						Thanks    
+				</div>
 			</div>
-                <?php setPostViews(get_the_ID());  endwhile; ?> 
-            <?php } else { ?>
-        		  <div class="col-xs-12 clearfix js-auto-pause-hidden hourlie-description-text">
-        				<h1 class="single-title" >Không có thông tin để hiển thị</h1>					
-			     </div>
-                        			
- 		     <?php } ?> 
 			<div class="js-auto-pause-hidden" >
 				<div class="widget-order-hourlie-addons clearfix">
 					<div class="title-container">
@@ -453,10 +472,10 @@
 						<br />
 						We carry out a broad range of creative tasks for a diverse range of clients, from small to medium sized businesses to corporate clients and charitable organisations.<br />
 						<br />
-						We recognise that every clientâ€™s needs are as different as they are exacting and believe a viable solution is usually a creative one.<br />
+						We recognise that every client’s needs are as different as they are exacting and believe a viable solution is usually a creative one.<br />
 						We like to come up with bright ideas that illuminate new ways of doing business and empathise with your objectives. This approach is maintained throughout the lifetime of our relationship, as trusting us with your brand is a big step and we appreciate that, which is probably why we have so many long-term and loyal clients.<br />
 						<br />
-						We specialise inâ€¦<br />
+						We specialise in…<br />
 						Design for traditional and digital print including end to end print management<br />
 						Exhibition, merchandising and POS graphic design and large format graphics<br />
 						Brand creation and management<br />
