@@ -105,11 +105,4 @@ class User extends CI_Controller {
         
     }
     
-    public function edit(){
-        $this->load->helper('wp');
-        
-        $data['header_view'] = c_get_header();
-        $this->load->view('user/tpl_edit_profile', $data);
-        $this->load->view('common/tpl_footer');
-    }
 }
