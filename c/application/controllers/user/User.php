@@ -19,7 +19,7 @@ require_once(config_item('home_dir') . '/c/application/libraries/Facebook/HttpCl
 
 require_once( config_item('home_dir'). '/wp-includes/class-phpass.php');
 require_once(config_item('home_dir'). '/c/application/utils/HttpCallUtils.php');
-require_once(config_item('home_dir'). '/c/application/utils/ViewUtils.php');
+require_once(config_item('home_dir'). '/c/application/utils/ViewUtils.phpsssss');
 afdgdafdafdsa
 use Facebook\FacebookSession;
 use Facebook\FacebookRedirectLoginHelper;
