@@ -51,7 +51,7 @@ class User_model extends CI_Model {
             $dataPass = $user['user_pass'];  // MD 5
             $isValid = $this->wp_hasher->CheckPassword($pass, $dataPass);
             if($isValid){
-                return $user['ID'];
+                return $user;
             }else{
                 return 0;
             }

@@ -90,10 +90,17 @@ class User extends CI_Controller
             $email = $_POST['LoginForm']['email'];
             $pass = $_POST['LoginForm']['password'];
             $remember_me = $_POST['LoginForm']['rememberMe'];
-            $userID = $this->user_model->validate_login($email, $pass);
-            if($userID > 0){ // > 0 is valid
+            $userObject = $this->user_model->validate_login($email, $pass);
+            if(is_array($userObject)){ // > 0 is valid
+                // UPDATE USER SESSION DATA
+                $userSessionData['user_email'] = $email;
+                $userSessionData['user_login'] = $userObject['user_login'];
+                $userSessionData['user_id'] = $userObject['ID'];
+                $userSessionData['user_image'] = $userObject['cus_avatar'];
+                $this->session->set_userdata($userSessionData);
+
                 // HANDLE COOKIE DATA
-                $this->handleCookie($userID, $remember_me, 0);
+                $this->handleCookie($userObject['ID'], $remember_me, 0);
 
                 if(isset($_SESSION['redirect_to'])){
                     redirect($_SESSION['redirect_to']);

@@ -8,11 +8,10 @@ class Article extends CI_Controller {
     function __construct(){
         parent::__construct();
         $_SESSION['redirect_to'] = config_item('base_url') . 'user/article/create';
-
-        if(!isset($_SESSION['user_data']) || !isset($_COOKIE['vnup_user'])){
+        if(!isset($_SESSION['user_id']) || !isset($_COOKIE['vnup_user'])){
             redirect(config_item('base_url') . 'user/user');
         }
-        if(isset($_SESSION['user_data']) && $_SESSION['user_data']['user_id'] == null){
+        if(isset($_SESSION['user_id']) && $this->session->user_id == null){
             redirect(config_item('home_url'));
         }
     }

@@ -83,6 +83,7 @@ function isSessionUserDataAvailable(){
             }
         }
     }
+
 ?>
 
 <div id="site-wrapper" class="site-wrapper">
