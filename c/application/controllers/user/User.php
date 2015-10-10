@@ -17,10 +17,9 @@ require_once(config_item('home_dir') . '/c/application/libraries/Facebook/HttpCl
 require_once(config_item('home_dir') . '/c/application/libraries/Facebook/HttpClients/FacebookHttpable.php');
 require_once(config_item('home_dir') . '/c/application/libraries/Facebook/HttpClients/FacebookCurlHttpClient.php');
 
-require_once( config_item('home_dir'). '/wp-includes/class-phpass.php');
+require_once(config_item('home_dir'). '/wp-includes/class-phpass.php');
 require_once(config_item('home_dir'). '/c/application/utils/HttpCallUtils.php');
 require_once(config_item('home_dir'). '/c/application/utils/ViewUtils.php');
-afdgdafdafdsa
 use Facebook\FacebookSession;
 use Facebook\FacebookRedirectLoginHelper;
 use Facebook\FacebookRequest;
