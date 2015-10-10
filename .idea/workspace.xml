@@ -2,56 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4b373de-ca38-4c2a-b045-8afb2c28d34b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/Entities/AccessToken.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/HttpClients/certs/DigiCertHighAssuranceEVRootCA.pem" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/FacebookAuthorizationException.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/FacebookCanvasLoginHelper.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/FacebookClientException.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/HttpClients/FacebookCurl.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/HttpClients/FacebookCurlHttpClient.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/HttpClients/FacebookGuzzleHttpClient.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/HttpClients/FacebookHttpable.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/FacebookJavaScriptLoginHelper.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/FacebookOtherException.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/FacebookPageTabHelper.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/FacebookPermissionException.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/FacebookPermissions.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/FacebookRedirectLoginHelper.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/FacebookRequest.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/FacebookRequestException.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/FacebookResponse.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/FacebookSDKException.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/FacebookServerException.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/FacebookSession.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/FacebookSignedRequestFromInputHelper.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/HttpClients/FacebookStream.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/HttpClients/FacebookStreamHttpClient.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/FacebookThrottleException.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/GraphAlbum.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/GraphLocation.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/GraphObject.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/GraphPage.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/GraphSessionInfo.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/GraphUser.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/GraphUserPage.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/utils/HttpCallUtils.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/libraries/Facebook/Entities/SignedRequest.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/models/User_cookie_model.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/models/User_model.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/utils/ViewUtils.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/views/themes/default/template/email/activate.tpl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/db/modify_db.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/views/themes/default/template/email/welcome.tpl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vneconomist.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c/application/controllers/user/Article.php" afterPath="$PROJECT_DIR$/c/application/controllers/user/Article.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c/application/controllers/user/User.php" afterPath="$PROJECT_DIR$/c/application/controllers/user/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c/application/config/autoload.php" afterPath="$PROJECT_DIR$/c/application/config/autoload.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c/application/config/config.php" afterPath="$PROJECT_DIR$/c/application/config/config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c/application/config/database.php" afterPath="$PROJECT_DIR$/c/application/config/database.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c/application/models/User_model.php" afterPath="$PROJECT_DIR$/c/application/models/User_model.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/vneconomist/header.php" afterPath="$PROJECT_DIR$/wp-content/themes/vneconomist/header.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c/application/views/themes/default/template/user/tpl_login.php" afterPath="$PROJECT_DIR$/c/application/views/themes/default/template/user/tpl_login.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c/application/views/themes/default/template/user/tpl_signup.php" afterPath="$PROJECT_DIR$/c/application/views/themes/default/template/user/tpl_signup.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-config.php" afterPath="$PROJECT_DIR$/wp-config.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-includes/wp-db.php" afterPath="$PROJECT_DIR$/wp-includes/wp-db.php" />
     </list>
     <ignored path="vneconomist.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -74,28 +35,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="header.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wp-content/themes/vneconomist/header.php">
+      <file leaf-file-name="Article.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/c/application/controllers/user/Article.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="41" selection-start="2377" selection-end="2377" vertical-scroll-proportion="-5.1538463" vertical-offset="767" max-vertical-offset="4675">
-              <folding>
-                <element signature="n#style#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#form#0;n#nav#0;n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#span#0;n#div#0;n#div#1;n#form#0;n#nav#0;n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#a#0;n#li#1;n#ul#0;n#div#0;n#div#1;n#nav#0;n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#i#0;n#a#0;n#li#0;n#ul#0;n#div#2;n#div#1;n#nav#0;n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+            <state line="12" column="9" selection-start="429" selection-end="429" vertical-scroll-proportion="45.115383" vertical-offset="1377" max-vertical-offset="3417">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="User.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/c/application/controllers/user/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="56" selection-start="848" selection-end="848" vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="8296">
-              <folding>
-                <element signature="e#1831#1860#0" expanded="true" />
-              </folding>
+            <state line="136" column="63" selection-start="6635" selection-end="6640" vertical-scroll-proportion="0.46653542" vertical-offset="1973" max-vertical-offset="8313">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -103,48 +56,7 @@
       <file leaf-file-name="User_model.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/c/application/models/User_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="47" selection-start="260" selection-end="260" vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="3179">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tpl_login.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/c/application/views/themes/default/template/user/tpl_login.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="71" column="47" selection-start="5267" selection-end="5267" vertical-scroll-proportion="-12.346154" vertical-offset="886" max-vertical-offset="1428">
-              <folding>
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tpl_signup.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/c/application/views/themes/default/template/user/tpl_signup.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="47" selection-start="571" selection-end="571" vertical-scroll-proportion="0.36811024" vertical-offset="0" max-vertical-offset="2295">
-              <folding>
-                <marker date="1444473582524" expanded="false" signature="8578:8600" placeholder="..." />
-                <marker date="1444473582524" expanded="false" signature="8916:8938" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="wp-config.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wp-config.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="30" selection-start="823" selection-end="823" vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="1241">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/c/application/config/config.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="517" column="1" selection-start="18302" selection-end="18302" vertical-scroll-proportion="-12.192307" vertical-offset="8472" max-vertical-offset="8993">
+            <state line="43" column="7" selection-start="1151" selection-end="1151" vertical-scroll-proportion="-28.115385" vertical-offset="0" max-vertical-offset="3179">
               <folding />
             </state>
           </provider>
@@ -168,16 +80,17 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/c/application/controllers/user/User.php" />
         <option value="$PROJECT_DIR$/c/application/config/autoload.php" />
         <option value="$PROJECT_DIR$/c/application/config/database.php" />
-        <option value="$PROJECT_DIR$/c/application/controllers/user/Article.php" />
-        <option value="$PROJECT_DIR$/wp-content/themes/vneconomist/header.php" />
         <option value="$PROJECT_DIR$/wp-config.php" />
         <option value="$PROJECT_DIR$/c/application/config/config.php" />
-        <option value="$PROJECT_DIR$/c/application/models/User_model.php" />
         <option value="$PROJECT_DIR$/c/application/views/themes/default/template/user/tpl_login.php" />
         <option value="$PROJECT_DIR$/c/application/views/themes/default/template/user/tpl_signup.php" />
+        <option value="$PROJECT_DIR$/wp-includes/wp-db.php" />
+        <option value="$PROJECT_DIR$/wp-content/themes/vneconomist/header.php" />
+        <option value="$PROJECT_DIR$/c/application/models/User_model.php" />
+        <option value="$PROJECT_DIR$/c/application/controllers/user/User.php" />
+        <option value="$PROJECT_DIR$/c/application/controllers/user/Article.php" />
       </list>
     </option>
   </component>
@@ -213,6 +126,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -391,13 +305,13 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../vnup" />
+    <property name="FullScreen" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -436,24 +350,24 @@
     <frame x="-8" y="0" width="1382" height="728" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25378788" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -470,119 +384,108 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/c/application/libraries/Facebook/Entities/AccessToken.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="16" selection-start="1309" selection-end="1309" vertical-scroll-proportion="0.32629558" vertical-offset="0" max-vertical-offset="6137">
-          <folding />
-        </state>
+        <state line="34" column="16" selection-start="1309" selection-end="1309" vertical-scroll-proportion="0.32629558" vertical-offset="0" max-vertical-offset="6137" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/c/application/utils/ViewUtils.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="547">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="547" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/c/application/db/modify_db.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="12" selection-start="405" selection-end="405" vertical-scroll-proportion="-3.74" vertical-offset="0" max-vertical-offset="391">
-          <folding />
-        </state>
+        <state line="11" column="12" selection-start="405" selection-end="405" vertical-scroll-proportion="-3.74" vertical-offset="0" max-vertical-offset="391" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/c/application/config/autoload.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="20" selection-start="2033" selection-end="2033" vertical-scroll-proportion="-13.5" vertical-offset="737" max-vertical-offset="2278">
-          <folding />
-        </state>
+        <state line="64" column="20" selection-start="2033" selection-end="2033" vertical-scroll-proportion="-13.5" vertical-offset="737" max-vertical-offset="2278" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/c/application/config/database.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="26" selection-start="4020" selection-end="4020" vertical-scroll-proportion="-7.8461537" vertical-offset="1020" max-vertical-offset="1734">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/c/application/controllers/user/Article.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="36" selection-start="398" selection-end="398" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="3434">
-          <folding />
-        </state>
+        <state line="72" column="26" selection-start="4020" selection-end="4020" vertical-scroll-proportion="-7.8461537" vertical-offset="1020" max-vertical-offset="1734" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/c/application/views/themes/default/template/email/welcome.tpl">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="32" selection-start="167" selection-end="167" vertical-scroll-proportion="0.19577736" vertical-offset="0" max-vertical-offset="521">
-          <folding />
-        </state>
+        <state line="6" column="32" selection-start="167" selection-end="167" vertical-scroll-proportion="0.19577736" vertical-offset="0" max-vertical-offset="521" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/c/application/models/User_cookie_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/vneconomist/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="41" selection-start="2377" selection-end="2377" vertical-scroll-proportion="-5.1538463" vertical-offset="767" max-vertical-offset="4675">
-          <folding>
-            <element signature="n#style#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#form#0;n#nav#0;n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#span#0;n#div#0;n#div#1;n#form#0;n#nav#0;n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#a#0;n#li#1;n#ul#0;n#div#0;n#div#1;n#nav#0;n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#a#0;n#li#0;n#ul#0;n#div#2;n#div#1;n#nav#0;n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="30" selection-start="823" selection-end="823" vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="1241">
+        <state line="23" column="30" selection-start="823" selection-end="823" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="1462">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/c/application/config/config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="517" column="1" selection-start="18302" selection-end="18302" vertical-scroll-proportion="-12.192307" vertical-offset="8472" max-vertical-offset="8993">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/c/application/controllers/user/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="56" selection-start="848" selection-end="848" vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="8296">
-          <folding>
-            <element signature="e#1831#1860#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/c/application/models/User_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="47" selection-start="260" selection-end="260" vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="3179">
+        <state line="517" column="1" selection-start="18302" selection-end="18302" vertical-scroll-proportion="0.0" vertical-offset="8472" max-vertical-offset="8993">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/c/application/views/themes/default/template/user/tpl_login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="47" selection-start="5267" selection-end="5267" vertical-scroll-proportion="-12.346154" vertical-offset="886" max-vertical-offset="1428">
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
+        <state line="71" column="47" selection-start="5267" selection-end="5267" vertical-scroll-proportion="0.0" vertical-offset="886" max-vertical-offset="1428">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/c/application/views/themes/default/template/user/tpl_signup.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="47" selection-start="571" selection-end="571" vertical-scroll-proportion="0.36811024" vertical-offset="0" max-vertical-offset="2295">
+        <state line="6" column="55" selection-start="288" selection-end="288" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="2295">
           <folding>
-            <marker date="1444473582524" expanded="false" signature="8578:8600" placeholder="..." />
-            <marker date="1444473582524" expanded="false" signature="8916:8938" placeholder="..." />
+            <marker date="1444473582524" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1444473582524" expanded="false" signature="-1:-1" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-includes/wp-db.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="411" column="19" selection-start="6741" selection-end="6741" vertical-scroll-proportion="-7.5384617" vertical-offset="6655" max-vertical-offset="51918">
+          <folding>
+            <marker date="1444499072914" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1444499072914" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1444499072914" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1444499072914" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1444499072914" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/vneconomist/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="71" column="41" selection-start="3463" selection-end="3463" vertical-scroll-proportion="-7.1923075" vertical-offset="1020" max-vertical-offset="4692">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/c/application/models/User_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="7" selection-start="1151" selection-end="1151" vertical-scroll-proportion="-28.115385" vertical-offset="0" max-vertical-offset="3179">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/c/application/controllers/user/Article.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="9" selection-start="429" selection-end="429" vertical-scroll-proportion="45.115383" vertical-offset="1377" max-vertical-offset="3417">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/c/application/controllers/user/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="136" column="63" selection-start="6635" selection-end="6640" vertical-scroll-proportion="0.46653542" vertical-offset="1973" max-vertical-offset="8313">
+          <folding />
         </state>
       </provider>
     </entry>
