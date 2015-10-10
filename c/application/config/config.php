@@ -520,5 +520,6 @@ $config['proxy_ips'] = '';
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['themes'] = 'default';
-$config['home_dir'] = 'E:/xampp/htdocs/vneconomist';
-$config['asset_url'] = 'http://localhost/vnup/c/assets/themes/';
+$config['home_dir'] = 'D:/xampp/htdocs/vneconomist';
+$config['asset_url'] = 'http://localhost/vneconomist/c/assets/themes/';
+$config['home_url'] = 'http://localhost/vneconomist';
