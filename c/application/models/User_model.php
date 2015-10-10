@@ -100,6 +100,35 @@ class User_model extends CI_Model {
             if(isset($data['user_activation_key'])){
                 $sql .= ", user_activation_key = ". $this->db->escape($data['user_activation_key']);
             }
+            // cus_avatar
+            if(isset($data['cus_avatar'])){
+                $sql .= ", cus_avatar = ". $this->db->escape($data['cus_avatar']);
+            }
+            // cus_description
+            if(isset($data['cus_description'])){
+                $sql .= ", cus_description = ". $this->db->escape($data['cus_description']);
+            }
+            // cus_cover
+            if(isset($data['cus_cover'])){
+                $sql .= ", cus_cover = ". $this->db->escape($data['cus_cover']);
+            }
+            // cus_quote
+            if(isset($data['cus_quote'])){
+                $sql .= ", cus_quote = ". $this->db->escape($data['cus_quote']);
+            }
+            // cus_career
+            if(isset($data['cus_career'])){
+                $sql .= ", cus_career = ". $this->db->escape($data['cus_career']);
+            }
+            // cus_company
+            if(isset($data['cus_company'])){
+                $sql .= ", cus_company = ". $this->db->escape($data['cus_company']);
+            }
+            // cus_city
+            if(isset($data['cus_city'])){
+                $sql .= ", cus_city = ". $this->db->escape($data['cus_city']);
+            }
+
             try{
                 $this->db->query($sql);
                 return $this->db->insert_id();
@@ -144,6 +173,34 @@ class User_model extends CI_Model {
             //user_activation_key
             if(isset($data['user_activation_key'])){
                 $sql .= ", user_activation_key = ". $this->db->escape($data['user_activation_key']);
+            }
+            // cus_avatar
+            if(isset($data['cus_avatar'])){
+                $sql .= ", cus_avatar = ". $this->db->escape($data['cus_avatar']);
+            }
+            // cus_description
+            if(isset($data['cus_description'])){
+                $sql .= ", cus_description = ". $this->db->escape($data['cus_description']);
+            }
+            // cus_cover
+            if(isset($data['cus_cover'])){
+                $sql .= ", cus_cover = ". $this->db->escape($data['cus_cover']);
+            }
+            // cus_quote
+            if(isset($data['cus_quote'])){
+                $sql .= ", cus_quote = ". $this->db->escape($data['cus_quote']);
+            }
+            // cus_career
+            if(isset($data['cus_career'])){
+                $sql .= ", cus_career = ". $this->db->escape($data['cus_career']);
+            }
+            // cus_company
+            if(isset($data['cus_company'])){
+                $sql .= ", cus_company = ". $this->db->escape($data['cus_company']);
+            }
+            // cus_city
+            if(isset($data['cus_city'])){
+                $sql .= ", cus_city = ". $this->db->escape($data['cus_city']);
             }
 
             $sql .= " WHERE ID = ". (int)$data['ID'];

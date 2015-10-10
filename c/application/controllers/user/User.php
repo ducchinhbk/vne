@@ -17,7 +17,7 @@ require_once(config_item('home_dir') . '/c/application/libraries/Facebook/HttpCl
 require_once(config_item('home_dir') . '/c/application/libraries/Facebook/HttpClients/FacebookHttpable.php');
 require_once(config_item('home_dir') . '/c/application/libraries/Facebook/HttpClients/FacebookCurlHttpClient.php');
 
-require_once(config_item('home_dir'). '/wp-includes/class-phpass.php');
+require_once( config_item('home_dir'). '/wp-includes/class-phpass.php');
 require_once(config_item('home_dir'). '/c/application/utils/HttpCallUtils.php');
 require_once(config_item('home_dir'). '/c/application/utils/ViewUtils.php');
 
@@ -40,9 +40,9 @@ class User extends CI_Controller
     private $default_redirectURL;
     private $helper;
     private $wp_hasher;
-    private $callbackInLink = 'http://localhost/vnup/c/user/user/ilogin';
-    private $homepage = 'http://localhost/vnup';
-    private $activateLink = 'http://localhost/vnup/c/user/user/activate';
+    private $callbackInLink = 'http://localhost/vneconomist/c/user/user/ilogin';
+    private $homepage = 'http://localhost/vneconomist';
+    private $activateLink = 'http://localhost/vneconomist/c/user/user/activate';
 
     function __construct(){
         parent::__construct();
@@ -81,6 +81,7 @@ class User extends CI_Controller
         if(isset($_GET['redirect_to'])){
             $_SESSION['redirect_to'] = $_GET['redirect_to'];
         }
+        $this->handleLogViaCookie();
         $this->login();
     }
 
@@ -89,16 +90,16 @@ class User extends CI_Controller
         if(isset($_POST['LoginForm'])){
             $email = $_POST['LoginForm']['email'];
             $pass = $_POST['LoginForm']['password'];
-            $remember_me = $_POST['LoginForm']['remember_me'];
+            $remember_me = $_POST['LoginForm']['rememberMe'];
             $userID = $this->user_model->validate_login($email, $pass);
             if($userID > 0){ // > 0 is valid
-                if(isset($_SESSION['redirect_to'])){
+                // HANDLE COOKIE DATA
+                $this->handleCookie($userID, $remember_me, 0);
 
-                    // HANDLE COOKIE DATA
-                    $this->handleCookie($userID, $remember_me);
+                if(isset($_SESSION['redirect_to'])){
                     redirect($_SESSION['redirect_to']);
                 }else{
-                    echo 'login successfully! BUT missing redirect link to url';
+                    redirect($this->homepage);
                 }
             }else{
                 echo "Sai username hoac password";
@@ -125,7 +126,7 @@ class User extends CI_Controller
                 $data = $args;
                 $data['user_login'] = $args['name'];
                 $data['user_email'] = ($args['email'] != null && !empty($args['email']))? $args['email'] : $id. '@facebook.com';
-                $data['user_image'] = $args['image'];
+                $data['cus_avatar'] = $args['image'];
                 $data['user_pass'] = $this->wp_hasher->HashPassword('12345');
                 $userObject = $this->user_model->get_user($data);
                 if($userObject == null){
@@ -136,7 +137,7 @@ class User extends CI_Controller
                         'name' => $data['user_login']
                     ));
                 }else{
-                    $userID = $this->user_model->update_user($data);
+                    $userID = $this->user_model->update_user($userObject);
                 }
                 // UPDATE USER SESSION DATA
                 $userSessionData['user_email'] = $data['user_email'];
@@ -148,9 +149,9 @@ class User extends CI_Controller
 
 
                 // HANDLE COOKIE DATA
-                $this->handleCookie($userID, false);
+                $this->handleCookie($userID, false, 1);
 
-                if($_GET['redirect_to']){
+                if(isset($_SESSION['redirect_to'])){
                     redirect($_SESSION['redirect_to']);
                 }else{
                     redirect($this->homepage);
@@ -189,7 +190,7 @@ class User extends CI_Controller
             $user = HttpCallUtils::fetchBasicProfile($accessTokenObject['access_token']);
             $data['user_login'] = substr($user->emailAddress, 0, strpos($user->emailAddress, '@'));
             $data['user_email'] = $user->emailAddress;
-            $data['user_image'] = (isset($user->pictureUrl))? $user->pictureUrl : 'default_user.png';
+            $data['cus_avatar'] = (isset($user->pictureUrl))? $user->pictureUrl : $this->homepage . '/upload/avatar/user_default.png';
             $data['user_pass'] = $this->wp_hasher->HashPassword('12345');
             $data['first_name'] = $user->firstName;
             $data['last_name'] = $user->lastName;
@@ -218,7 +219,7 @@ class User extends CI_Controller
             $this->session->set_userdata($userSessionData);
 
             // HANDLE COOKIE DATA
-            $this->handleCookie($id, false);
+            $this->handleCookie($id, false, 1);
 
             // REDIRECT TO CURRENT PAGE
             redirect($_SESSION['redirect_to']);
@@ -227,6 +228,13 @@ class User extends CI_Controller
 
     //function process normal user registration
     public function signup(){
+        // UPDATE SESSION DATA
+        if(isset($_GET['redirect_to'])){
+            $_SESSION['redirect_to'] = $_GET['redirect_to'];
+        }
+
+        $this->handleLogViaCookie();
+
         if(isset($_POST['EmailMemberRegistration'])){
             $data['fname'] = $_POST['EmailMemberRegistration']['fname'];
             $data['lname'] = $_POST['EmailMemberRegistration']['lname'];
@@ -252,11 +260,11 @@ class User extends CI_Controller
                 ));
 
                 // HANDLE COOKIE DATA
-                $this->handleCookie($userID, $data['remember_me']);
+                $this->handleCookie($userID, 1, 0);
 
                 // redirect to current URL
                 echo 'Sign up successful . This page will be redirect in a second.';
-                if($_SESSION['redirect_to']){
+                if(isset($_SESSION['redirect_to'])){
                     redirect($_SESSION['redirect_to']);
                 }else{
                     redirect($this->homepage);
@@ -287,7 +295,7 @@ class User extends CI_Controller
                 $data = $args;
                 $data['user_login'] = $args['name'];
                 $data['user_email'] = ($args['email'] != null && !empty($args['email']))? $args['email'] : $id. '@facebook.com';
-                $data['user_image'] = $args['image'];
+                $data['cus_avatar'] = $args['image'];
                 $data['user_pass'] = $this->wp_hasher->HashPassword('12345');
                 $userObject = $this->user_model->get_user($data);
                 if($userObject == null){
@@ -299,11 +307,11 @@ class User extends CI_Controller
                     ));
                 }
                 // update user session data
-                $this->session->set_userdata($args);
+                $this->session->set_userdata($data);
                 $data['loginFacebookLink'] = '#';
 
-                if(isset($_GET['redirect_to'])){
-                    redirect($_GET['redirect_to']);
+                if(isset($_SESSION['redirect_to'])){
+                    redirect($_SESSION['redirect_to']);
                 }else{
                     echo 'Login via facebook successful! But missing redirect link to url';
                 }
@@ -343,7 +351,7 @@ class User extends CI_Controller
                 $userSessionData['user_id'] = $user['ID'];
                 $this->session->set_userdata($userSessionData);
 
-                $this->handleCookie($user['ID'], json_decode($this->input->cookie('vnup_user'))->remember_me);
+                $this->handleCookie($user['ID'], json_decode($this->input->cookie('vnup_user'))->remember_me, 0);
 
                 echo 'Your account is activated! This page will redirect in seconds';
                 flush();
@@ -355,17 +363,43 @@ class User extends CI_Controller
         }
     }
 
+    public function logout(){
+        $this->load->helper('wp');
+
+        // REMOVE SESSION DATA
+        $this->session->unset_userdata('user_email');
+        $this->session->unset_userdata('user_login');
+        $this->session->unset_userdata('user_first_name');
+        $this->session->unset_userdata('user_last_name');
+        $this->session->unset_userdata('user_id');
+        $this->session->unset_userdata('user_image');
+
+        // REMOVE COOKIE DATA
+        delete_cookie('vnup_user', '.localhost', '/');
+
+        // REMOVE COOKIE USER LOGIN VIA SOCIAL
+        delete_cookie('vnup_log_social', '.localhost', '/');
+
+        if(isset($_GET['redirect_to'])){
+            redirect($_GET['redirect_to']);
+        }else if(isset($_SESSION['redirect_to'])){
+            redirect($_SESSION['redirect_to']);
+        }else{
+            redirect($this->homepage);
+        }
+    }
+
     //function send mail to user
     private function sendmail($email, $type, $data = array()){
         $subject = '';
         $messageBody = '';
         if($type == 'WELCOME'){
             $subject = 'WELCOME TO VNUP';
-            $filePath = config_item('home_dir'). 'c/application/views/themes/default/template/email/welcome.tpl';
+            $filePath = config_item('home_dir'). '/c/application/views/themes/default/template/email/welcome.tpl';
             $messageBody = ViewUtils::loadTemplate($filePath, $data);
         }else if($type == 'ACTIVATE'){
             $subject = 'Thank you for signup VNUP';
-            $filePath = config_item('home_dir'). 'c/application/views/themes/default/template/email/activate.tpl';
+            $filePath = config_item('home_dir'). '/c/application/views/themes/default/template/email/activate.tpl';
             $messageBody = ViewUtils::loadTemplate($filePath, $data);
         }
         $this->email->to($email);
@@ -386,7 +420,7 @@ class User extends CI_Controller
         set_cookie($cookie);
     }
 
-    function handleCookie($userID, $remember_me){
+    function handleCookie($userID, $remember_me, $loginViaSocial){
         // UPDATE TO DB USER COOKIE DATA
         $userToken = sha1(mt_rand(10000,99999).time(). $userID);
         $dataInsertCookie['user_token'] = $userToken;
@@ -399,5 +433,52 @@ class User extends CI_Controller
         $userCookieData['user_token'] = $userToken;
         $userCookieData['remember_me'] = $remember_me;
         $this->setUserDataToCookie($userCookieData);
+
+        // SET TO COOKIE LOGIN VIA SOCIAL
+        $cookie = array(
+            'name'   => 'log_social',
+            'value'  => $loginViaSocial,
+            'expire' => 86400, // 1 day
+            'domain' => '.localhost',
+            'path'   => '/',
+            'prefix' => 'vnup_',
+        );
+        set_cookie($cookie);
+    }
+
+    private function handleLogViaCookie(){
+        // HANDLE LOGIN USER && INIT SESSION && REDIRECT
+        if(isset($_COOKIE['vnup_user'])){
+            $cookieVnupUser = $_COOKIE['vnup_user'];
+            $index1 = strrpos($cookieVnupUser, 'user_token') + strlen('user_token') + 3;
+            $index2 = strrpos($cookieVnupUser, 'remember_me') - 3;
+            $index3 = strrpos($cookieVnupUser, 'remember_me') + strlen('remember_me') + 3;
+
+            $user_token = substr($cookieVnupUser, $index1, $index2 - $index1);
+            $remember_me = substr($cookieVnupUser, $index3, 1);
+            if($remember_me == '1' ||
+                (isset($_COOKIE['vnup_log_social']) && $_COOKIE['vnup_log_social'] == '1') ){
+                $dbUserToken = $this->user_cookie_model->get_user_cookie(
+                    $user_token,
+                    $this->input->user_agent(),
+                    $this->input->ip_address());
+                if(isset($dbUserToken)){
+                    $dataUserData = array(
+                        'user_login' => $dbUserToken['user_login'],
+                        'user_email' => $dbUserToken['user_email'],
+                        'user_fname' => $dbUserToken['first_name'],
+                        'user_lname' => $dbUserToken['last_name'],
+                        'user_id' => $dbUserToken['ID']
+                    );
+                    $this->session->set_userdata($dataUserData);
+
+                    if(isset($_SESSION['redirect_to'])){
+                        redirect($_SESSION['redirect_to']);
+                    }else{
+                        redirect($this->homepage);
+                    }
+                }
+            }
+        }
     }
 }

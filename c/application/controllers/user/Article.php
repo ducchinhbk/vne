@@ -5,16 +5,21 @@ class Article extends CI_Controller {
 
 	private $error = array();
      
-    function __construct()
-    {
+    function __construct(){
         parent::__construct();
+        $_SESSION['redirect_to'] = config_item('base_url') . 'user/article/create';
+
+        if(!isset($_SESSION['user_data']) || !isset($_COOKIE['vnup_user'])){
+            redirect(config_item('base_url') . 'user/user');
+        }
+        if(isset($_SESSION['user_data']) && $_SESSION['user_data']['user_id'] == null){
+            redirect(config_item('home_url'));
+        }
     }
     
     
-	public function create()
-	{  
-	   $this->load->helper('wp');
-       
+	public function create(){
+	    $this->load->helper('wp');
         if( $this->input->post('post_data') && $this->validateForm()){
             echo "run herre";
             
