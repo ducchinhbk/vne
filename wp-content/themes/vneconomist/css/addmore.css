@@ -75,4 +75,16 @@ a.js-paragraph-crop{
     top: 0;
     left: 10px;
 }
+
+.thum-404{
+    background: transparent url('../images/main-bg-noise.png') repeat top left;
+    height: 100%;
+}
+.controller-site.full-page .static-errors {
+    min-height: 500px;
+    background: url('../images/error-face.png') 600px 50px no-repeat;
+}
+.hourlie-description-text{
+    padding: 25px 15px;
+    font-size: 14px;
 }

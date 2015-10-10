@@ -25,7 +25,7 @@
 					<div id="hourlies-listing-listview" class="list-view">
 						<div class="items clearfix items-results ">
                         
-                            <?php  $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+                            <?php  $paged = (get_query_var('page')) ? get_query_var('page') : 1;
                                 $args = array(
                                     'cat'                 =>$cat_ID,
                                 	'posts_per_page'      => 20,
@@ -57,9 +57,12 @@
         										<ul class="clearfix member-info horizontal left crop">
         											<li>
         												<div class="user-image pull-left">
-        													<a class="member-name" title="Vector M." rel="nofollow" href="#"><img class="user-avatar user-avatar-xs user-avatar-square" onerror="this.src=&#039;https://d3ambpg2zf25sl.cloudfront.net/imgs/blank_profile_pic_60x60.jpg&#039;" src="https://d3v9w2rcr4yc0o.cloudfront.net/uploads/thumbs/b3c5e29ccc8cfdfce26ee279931d3f8f_70x70.png" alt="Vector" /></a>                    </div>
+        													<a class="member-name" title="<?php echo get_the_author();?>" rel="nofollow" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>">
+                                                                <?php echo c_get_avatar(get_the_author_meta('ID'));?>
+                                                            </a>                    
+                                                        </div>
         												<div class="pull-left">
-        													<span class="member-first-name crop"><a class="member-name" title="Vector M." rel="nofollow" href="#">Vector</a></span>
+        													<span class="member-first-name crop"><a class="member-name" title="<?php echo get_the_author();?>" rel="nofollow" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php echo get_the_author();?></a></span>
         													<span class="user-country crop">United Kingdom</span>
         												</div>
         											</li>
@@ -94,19 +97,32 @@
 						</div>
 						<div class="pager">
 							<div class="pagination clearfix">
+								<?php if($the_query->max_num_pages > 1){ 
+                                    if( $the_query->max_num_pages > 10 ){
+                                                                
+                                        $limit = $paged + 10;
+                                        $limit = ( $limit > $the_query->max_num_pages)? $the_query->max_num_pages: $limit;
+                                        $start = ( $paged >= 3)? ($paged - 2): $paged;
+                                        
+                                    } else{
+                                    $limit = $the_query->max_num_pages;
+                                    $start = 1;
+                                }
+                                ?>
 								<ul data-responsive="1" role="navigation" id="hourlies-listing-pager" class="yiiPager">
-									<li class="hidden-xs"><span class="inactive"><i class="fa fa-angle-left"></i></span></li>
-									<li class=""><a data-page="1" class=" selected" title="go to page 1" href="#">1</a></li>
-									<li class="hidden-xs"><a data-page="2" class="" title="go to page 2" href="#">2</a></li>
-									<li class="hidden-xs"><a data-page="3" class="" title="go to page 3" href="#">3</a></li>
-									<li class="hidden-xs"><a data-page="4" class="" title="go to page 4" href="#">4</a></li>
-									<li class="hidden-xs"><a data-page="5" class="" title="go to page 5" href="#">5</a></li>
-									<li class="hidden-xs"><a data-page="6" class="" title="go to page 6" href="#">6</a></li>
-									<li class="hidden-xs"><a data-page="7" class="" title="go to page 7" href="#">7</a></li>
-									<li class="hidden-xs"><a data-page="8" class="" title="go to page 8" href="#">8</a></li>...
-									<li class="hidden-xs"><a data-page="1450" class="" title="go to page 1450" href="#">1450</a></li>
-									<li class=""><a data-page="2" class="next" title="" href="#"><i class="fa fa-angle-right"></i></a></li>
-								</ul>
+                                    <?php
+                                        if ($paged > 1) { ?>
+                                        <li class=""><a href="<?php echo esc_url(get_category_link($cat_ID)).'?page=' . ($paged - 1);?>" data-page="<?php echo ($paged - 1);?>" class="previous" title="Trang trước" ><i class="fa fa-angle-left"></i></a></li>
+                                    <?php }
+                                    for( $i= $start; $i <= $limit; $i++){ ?>
+									
+									<li class="hidden-xs"><a href="<?php echo esc_url(get_category_link($cat_ID)).'?page=' . $i; ?>" data-page="<?php echo $i;?>" class="<?php echo ($paged == $i)? "selected": ""; ?>" title="Trang <?php echo $i;?>" ><?php echo $i;?></a></li>
+									<?php }
+                                    if($paged < $the_query->max_num_pages){ ?>
+                                        <li class=""><a href="<?php echo esc_url(get_category_link($cat_ID)).'?page=' . ($paged + 1);?>" data-page="<?php echo ($paged + 1);?>" class="next" title="Trang tiếp theo" ><i class="fa fa-angle-right"></i></a></li>
+								    <?php } ?>
+                                </ul>
+                                <?php } ?> 
 							</div>
 						</div>
 						
