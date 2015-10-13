@@ -21,12 +21,12 @@ class User_model extends CI_Model {
         if(isset($input_data['id'])){
             $sql .= " and ID = ". (int)$input_data['id'];
         }
-        if(isset($input_data['user_login'])){
-            $sql .= " and user_login = ". $this->db->escape($input_data['user_login']);
-        }
         if(isset($input_data['user_email'])){
             $sql .= " and user_email = ". $this->db->escape($input_data['user_email']);
+        }else if(isset($input_data['user_login'])){
+            $sql .= " and user_login = ". $this->db->escape($input_data['user_login']);
         }
+
         if($sql == "1=1"){
             return null;
         }

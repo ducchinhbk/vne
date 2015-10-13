@@ -247,11 +247,11 @@ class User extends CI_Controller
             $data['user_email'] = $_POST['EmailMemberRegistration']['email'];
             $data['password'] = $_POST['EmailMemberRegistration']['password'];
             $data['memType'] = $_POST['EmailMemberRegistration']['memType'];
-            $data['remember_me'] = $_POST['EmailMemberRegistration']['remember_me'];
+            $data['remember_me'] = true;
 
             $data['user_login'] = $data['fname'] . '_' . $data['lname'];
             $userObject = $this->user_model->get_user($data);
-            if(isset($userObject) && isset($userObject['ID'])){
+            if(isset($userObject) && isset($userObject['ID']) && $userObject['ID'] > 0){
                 echo 'This email is already existed';
             }else{
                 $data['user_pass'] = $this->wp_hasher->HashPassword(trim($data['password']));
@@ -495,10 +495,14 @@ class User extends CI_Controller
     }
     //method edit profile
      public function edit(){
-        $this->load->helper('wp');
-        
-        $data['header_view'] = c_get_header();
-        $this->load->view('user/tpl_edit_profile', $data);
-        $this->load->view('common/tpl_footer');
+        if(isset($_SESSION['user_id']) && $this->session->user_id > 0 && isset($_COOKIE['vnup_user'])){
+            $this->load->helper('wp');
+
+            $data['header_view'] = c_get_header();
+            $this->load->view('user/tpl_edit_profile', $data);
+            $this->load->view('common/tpl_footer');
+        }else{
+            redirect($this->homepage . '/c/user/user');
+        }
     }
 }

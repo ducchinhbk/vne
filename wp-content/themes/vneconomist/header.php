@@ -169,8 +169,8 @@ function isSessionUserDataAvailable(){
                                 <ul class="dropdown-menu user-account-menu simple pull-right">
                                     <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
                                     <li>
-                                        <a class="inline-option" title="Micheal T." rel="nofollow" href="#"><i class="fpph fpph-user"></i>Profile</a>
-                                        <a class="inline-option right-option" href="#">Edit</a>
+                                        <a class="inline-option" title="Micheal T." rel="nofollow" href="<?php echo site_url( '/c/user/user/edit'); ?>"><i class="fpph fpph-user"></i>Profile</a>
+                                        <a class="inline-option right-option" href="<?php echo site_url( '/c/user/user/edit'); ?>">Edit</a>
                                     </li>
                                     <li><a href="#"><i class="fa fa-credit-card"></i>Payments</a></li>
                                     <li><a href="#"><i class="fpph fpph-buyer-activity"></i>My Buyer Activity</a></li>
