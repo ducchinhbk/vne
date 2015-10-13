@@ -379,6 +379,12 @@ class User extends CI_Controller
         $this->session->unset_userdata('user_last_name');
         $this->session->unset_userdata('user_id');
         $this->session->unset_userdata('user_image');
+        unset($_SESSION['user_data']);
+
+        // REMOVE SESSION WP
+        if(isset($_SESSION['wp_user_data'])){
+            unset($_SESSION['wp_user_data']);
+        }
 
         // REMOVE COOKIE DATA
         delete_cookie('vnup_user', '.localhost', '/');

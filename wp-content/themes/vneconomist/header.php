@@ -40,8 +40,8 @@
 
 <?php
 function isSessionUserDataAvailable(){
-    if(isset($_SESSION['user_data'])){
-        $sessionObject = $_SESSION['user_data'];
+    if(isset($_SESSION['wp_user_data'])){
+        $sessionObject = $_SESSION['wp_user_data'];
         if(isset($sessionObject) && isset($sessionObject['user_id']) && $sessionObject['user_id'] > 0){
             return true;
         }
@@ -52,7 +52,7 @@ function isSessionUserDataAvailable(){
 <body class="responsive">
 <?php
     if(!isset($_COOKIE['vnup_user']) && isSessionUserDataAvailable()){
-        unset($_SESSION['user_data']);
+        unset($_SESSION['wp_user_data']);
     }else if(isSessionUserDataAvailable() && isset($_COOKIE['vnup_user'])){
         // TODO : show profile HTML menu
     }else if(isset($_COOKIE['vnup_user'])){
@@ -78,7 +78,7 @@ function isSessionUserDataAvailable(){
                     'user_id' => $dbUserToken->ID,
                     'user_image' => $dbUserToken->cus_avatar
                 );
-                $_SESSION['user_data'] = $dataUserData;
+                $_SESSION['wp_user_data'] = $dataUserData;
                 // TODO : show profile HTML menu
             }
         }
@@ -146,7 +146,7 @@ function isSessionUserDataAvailable(){
                             <li class="dropdown">
                                 <?php
                                     $userName = ''; $userImage = site_url('/upload/avatar/user_default.png');
-                                    $sesObject = $_SESSION['user_data'];
+                                    $sesObject = $_SESSION['wp_user_data'];
                                     if(!empty($sesObject['user_fname']) && !empty($sesObject['user_lname'])){
                                         $userName = $sesObject['user_fname'] . ' '. $sesObject['user_lname'];
                                     }else{

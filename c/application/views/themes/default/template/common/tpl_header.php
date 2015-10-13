@@ -19,6 +19,7 @@
         <script src="<?php echo base_url();?>assets/themes/default/js/html5.js"></script>
         <![endif]-->
         <script src="http://localhost/vneconomist/c/assets/themes/default/js/jquery-1.11.3.min.js"></script>
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
 
     </head>
    <body class="responsive">

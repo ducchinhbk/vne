@@ -32,3 +32,8 @@
 a.js-paragraph-crop{
 	color: #4774b7;
 }
+
+label.error{
+    color: red;
+    font-size: 9px;
+}
