@@ -39,7 +39,7 @@
                                     <a href="#" class="remove" title="Remove">Remove</a>
                                     <div class="attachFiles-item">
                                         
-                                        <img alt="undefined - " class="preview" style="" src="http://d3v9w2rcr4yc0o.cloudfront.net/uploads/covers/thumbs/930f0bd4ee4d1e5656cbd940c72e948a_320x90.jpg"/>
+                                        <img alt="undefined - " class="preview" id="coverImg" style="cursor: pointer" src="http://d3v9w2rcr4yc0o.cloudfront.net/uploads/covers/thumbs/930f0bd4ee4d1e5656cbd940c72e948a_320x90.jpg"/>
                                     </div>
             
                                     <input type="hidden" name="MemberProfile[coverImage][cover_710651][name]" class="file-attachment file-attach-cover_710651" value=""/>
@@ -143,7 +143,8 @@
                                 <div>Code igniter</div>    
                                 <a href="#" class="select2-search-choice-close" tabindex="-1"></a>
                             </li>
-                                                
+
+                            <input type="text" style="border: none; padding-top:9px;" />
                         </ul>
                     </div>
                             
@@ -156,9 +157,7 @@
                         <label class="clearfix" id="location-city-anchor" for="MemberProfile_location_city">Location (city)</label>
                         <div class="widget-jsModuleLocationCombo" id="widget-jsModuleLocationCombo-profile-edit-location">
                         <span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr;">
-                            <input class="location-combo-input clearfix form-control tt-hint" type="text" value="Singapore, SG" disabled="" autocomplete="off" spellcheck="false" style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box padding-box rgb(255, 255, 255);">
                             <input id="" class="location-combo-input clearfix form-control tt-input" placeholder="Type a city" data-tooltip-pos="bottom" data-tooltip-fallback-pos="right" data-input-suggestion="Indicate the City you are based in." type="text" value="Singapore, SG" name="location_combo" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: rgba(0, 0, 0, 0);">
-                           
                         </span>
                         <input name="MemberProfile[locationCity]" id="MemberProfile_locationCity" type="hidden" value="Singapore"/>
                         <input  name="MemberProfile[locationCountry]" id="MemberProfile_locationCountry" type="hidden" value="SG"/>
@@ -204,3 +203,37 @@
         </div>
     </aside>
 </div>
+
+
+<!-- MODEL BOOPSTRAP -->
+<div id="channelDialogAction" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="channelDlActionTitle">
+                    <i class="fa fa-edit"></i>Channel Edit
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid" id="channelDlActionBody">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="channelDlActionInput"/>
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="button" onclick="editChannelName();" class="btn btn-primary">Edit Channel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+    <input type="hidden" id="currChannelId" value="0" />
+</div><!-- /.modal -->
+
+<script>
+    $('#coverImg').bind('click', function(){
+        $('#channelDialogAction').modal('show');
+    });
+</script>
