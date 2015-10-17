@@ -91,29 +91,14 @@ function isSessionUserDataAvailable(){
 ?>
 
 <div id="site-wrapper" class="site-wrapper">
-    <header id="widget-TopNav" class="top-navigation for-guest">
+    <header id="widget-TopNav" class="top-navigation for-guest <?php echo (is_home())? 'home-version with-transparency': ''; ?>">
         <nav role="navigation" class="container">
             <div class="navbar-header">
                 <a id="logo" class="pph-logo" href="<?php echo site_url('/'); ?>">VnEconomist</a>
             </div>
-            <form id="hd-search-form" class="hd-search-form" action="#" method="POST">
-                <div style="display:none">
-                    <input type="hidden" value="7c9f6e3f89b4c36bbefb39b118569fda405d0a6a" name="YII_CSRF_TOKEN">
-                </div>
-                <div class="clearfix search-container" id="job-listing-search">
-                    <div class="input-group clearfix ">
-                        <input id="keyword" placeholder="Tìm kiếm..." class="form-control" type="text" value="" name="keyword">
-								<span class="input-group-btn">
-									<button type="button" data-reset-url="/freelance-jobs" class="btn btn-default js-reset-form" style="display: none;">
-                                        <i class="fa fa-times-circle"></i>
-                                    </button>
-									<button type="submit" class="btn btn-default js-submit-search">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-								</span>
-                    </div>
-                </div>
-            </form>
+            <?php if(!is_home()){
+                get_search_form(true); 
+            } ?>
             <div class="nav collapse navbar-collapse visible-md visible-lg">
                 <?php if(isSessionUserDataAvailable() && isset($_COOKIE['vnup_user'])) { ?>
                     <div class="pull-right menu-block user-menu">

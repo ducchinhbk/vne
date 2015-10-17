@@ -5,7 +5,7 @@
 				<div class="col-sm-3 hidden-sm hidden-xs description">
 					<a href="#" class="pph-logo"></a>
 					<div class="description-text">
-						A community of <strong>curated freelance talent</strong> available to work for you remotely at the click of a button    </div>
+						A community of <strong>people</strong> available to dedicate to make the world better   </div>
 					<div class="copyright">
 						© 2015 VnEconomist Inc.    </div>
 					<div class="helper-links clearfix">
@@ -99,7 +99,8 @@
 
 </div>
        
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 </body>
 </html>
