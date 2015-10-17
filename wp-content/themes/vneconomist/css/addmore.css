@@ -88,3 +88,8 @@ a.js-paragraph-crop{
     padding: 25px 15px;
     font-size: 14px;
 }
+
+label.error{
+    color: red;
+    font-size: 9px;
+}

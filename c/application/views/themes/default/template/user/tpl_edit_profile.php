@@ -16,16 +16,23 @@
                     <div class="col-sm-6 col-xs-12">
                         <label class="clearfix" for="MemberProfile_fname">First Name</label>
                         <input class="form-control" name="MemberProfile[fname]" id="MemberProfile_fname" type="text" value="Micheal"/>        
-                        </div>
+                    </div>
                     <div class="col-sm-6 col-xs-12">
                         <label class="clearfix" for="MemberProfile_lname">Last Name</label>
                         <input class="form-control popover-toggle"  name="MemberProfile[lname]" id="MemberProfile_lname" type="text" value="Tran"/>        
                     </div>
                     <div class="clear"></div>
                 </div>
-                <div class="form-group">
-                    <label class="clearfix" for="MemberProfile_job_title">Job Title</label>
-                    <input class="form-control popover-toggle" placeholder="Example: Web Designer; Copywriter; Virtual Assistant..." name="MemberProfile[job_title]" id="MemberProfile_job_title" type="text" value="Senior Software Engineer"/>    
+                <div class="gutter-top form-group row">
+                    <div class="col-sm-6 col-xs-12">
+                        <label class="clearfix" for="MemberProfile_career">Career</label>
+                        <input class="form-control" name="MemberProfile[career]" id="MemberProfile_career" type="text" value="CEO"/>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <label class="clearfix" for="MemberProfile_company">Company</label>
+                        <input class="form-control popover-toggle"  name="MemberProfile[company]" id="MemberProfile_company" type="text" value="Zotadi"/>
+                    </div>
+                    <div class="clear"></div>
                 </div>
                 <div class="form-group">
                     <label id="edit-cover-image" class="clearfix" for="MemberProfile_coverImage">Cover image<span class="discreet">(recommended)</span></label>
@@ -204,6 +211,9 @@
     </aside>
 </div>
 
+<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/themes/default/css/fileinput.min.css" />
+<script src="<?php echo base_url();?>assets/themes/default/js/bootstrap-fileinput/plugins/canvas-to-blob.min.js"></script>
+<script src="<?php echo base_url();?>assets/themes/default/js/bootstrap-fileinput/fileinput.min.js"></script>
 
 <!-- MODEL BOOPSTRAP -->
 <div id="channelDialogAction" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
@@ -212,17 +222,17 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="channelDlActionTitle">
-                    <i class="fa fa-edit"></i>Channel Edit
+                    <i class="fa fa-edit"></i>Cover Image
                 </h4>
             </div>
             <div class="modal-body">
                 <div class="container-fluid" id="channelDlActionBody">
                     <div class="row">
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" id="channelDlActionInput"/>
-                        </div>
-                        <div class="col-sm-4">
-                            <button type="button" onclick="editChannelName();" class="btn btn-primary">Edit Channel</button>
+                        <div class="col-sm-12">
+                            <form id="cover-form" method="post" enctype="multipart/form-data" action="uploadfile">
+                                <input type="hidden" name="image_type" value="cover" />
+                                <input type="file" id="img_cover" name="coverfile"/>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -235,5 +245,36 @@
 <script>
     $('#coverImg').bind('click', function(){
         $('#channelDialogAction').modal('show');
+    });
+
+    $("#img_cover").fileinput({
+        initialPreview: [
+        ],
+        overwriteInitial: false,
+        maxFileSize: 1000,
+        initialCaption: "",
+        previewSettings: {
+            image: {width: "auto", height: "389px"}
+        },
+        layoutTemplates: {
+            close : ""
+        },
+        uploadLabel : "OK",
+        allowedFileTypes : ['image'],
+        allowedFileExtensions : ['jpg', 'gif', 'png']
+    });
+    $('#cover-form').ajaxForm({
+        url : $(this).attr('action'), // or whatever
+        type : "POST",
+        dataType : 'json',
+        data : $(this).serialize(),
+        success : function (json){
+            if(json.status){
+                $('#coverImg').attr('src', json.coverUrl);
+                $('#channelDialogAction').modal('hide');
+            }else{
+                alert(json.message);
+            }
+        }
     });
 </script>

@@ -53,6 +53,7 @@ class User extends CI_Controller
         $this->load->helper('cookie');
         $this->load->model('user_model');
         $this->load->model('user_cookie_model');
+        $this->load->helper('wp');
 
         // setting up email ===============================================
         $config['useragent'] = "Codeigniter";
@@ -171,7 +172,7 @@ class User extends CI_Controller
             $data['image'] = $this->session->userdata('user_image');
             $data['loginViaLinkin'] = 'https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id='. $this->inClientId . '&redirect_uri='. $this->callbackInLink .'&state=DCEeFWf45A53sdfKef42afda4&scope=r_basicprofile%20r_emailaddress';
 
-            $this->load->view('common/tpl_header');
+            $data['header_view'] = c_get_header();
             $this->load->view('user/tpl_login', $data);
             $this->load->view('common/tpl_footer');
         }
@@ -330,7 +331,7 @@ class User extends CI_Controller
             $data['image'] = $this->session->userdata('image');
             $data['loginViaLinkin'] = 'https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id='. $this->inClientId . '&redirect_uri='. $this->callbackInLink .'&state=DCEeFWf45A53sdfKef42afda4&scope=r_basicprofile%20r_emailaddress';
 
-            $this->load->view('common/tpl_header');
+            $data['header_view'] = c_get_header();
             $this->load->view('user/tpl_signup', $data);
             $this->load->view('common/tpl_footer');
         }
@@ -505,4 +506,40 @@ class User extends CI_Controller
             redirect($this->homepage . '/c/user/user');
         }
     }
+
+    public function uploadfile(){
+        header('Content-Type: application/json');
+        if(isset($_SESSION['user_id']) && $this->session->user_id > 0 && isset($_COOKIE['vnup_user'])){
+            $result = array();
+            if(isset($_POST['image_type']) && isset($_FILES['coverfile'])){
+                $target_dir = config_item('home_dir'). '/upload/cover/';
+                $target_file = $target_dir . basename($_FILES["coverfile"]["name"]);
+
+                $check = getimagesize($_FILES["coverfile"]["tmp_name"]);
+                if($check){
+                    $tempPath = $_FILES["coverfile"]["tmp_name"];
+                    if(file_exists($target_file)){
+                        $result['status'] = true;
+                        $result['coverUrl'] = $this->homepage . '/upload/cover/'. basename( $_FILES["coverfile"]["name"]);
+                    }else{
+                        $isOk = move_uploaded_file($tempPath, $target_file);
+                        if ($isOk) {
+                            $result['status'] = true;
+                            $result['coverUrl'] = $this->homepage . '/upload/cover/'. basename( $_FILES["coverfile"]["name"]);
+                        } else {
+                            $result['status'] = false;
+                            $result['message'] = 'Sorry, there was an error uploading your file';
+                        }
+                    }
+                }else{
+                    $result['status'] = false;
+                    $result['message'] = 'Please choose image file';
+                }
+            }
+            echo json_encode($result);
+        }else{
+            redirect($this->homepage);
+        }
+    }
+
 }
