@@ -88,8 +88,15 @@ a.js-paragraph-crop{
     padding: 25px 15px;
     font-size: 14px;
 }
-
 label.error{
     color: red;
     font-size: 9px;
+}
+#get-started{
+    background-color: rgba(0,0,0,.5);
+    border-radius: 2px;
+    padding: 10px;
+}
+.profile-main{
+    margin-top: 15px;
 }
