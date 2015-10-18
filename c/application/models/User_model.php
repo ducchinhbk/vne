@@ -107,10 +107,14 @@ class User_model extends CI_Model {
             // cus_avatar
             if(isset($data['cus_avatar'])){
                 $sql .= ", cus_avatar = ". $this->db->escape($data['cus_avatar']);
+            }else{
+                $sql .= ", cus_avatar = 'upload/avatar/default_". rand(1,5) . ".png'";
             }
             // cus_cover
             if(isset($data['cus_cover'])){
                 $sql .= ", cus_cover = ". $this->db->escape($data['cus_cover']);
+            }else{
+                $sql .= ", cus_cover = 'upload/cover/default_". rand(1,5) . ".jpg'";
             }
             // cus_quote
             if(isset($data['cus_quote'])){

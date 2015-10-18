@@ -32,11 +32,8 @@
 </head>
 <?php
     function isSessionUserDataAvailable(){
-        if(isset($_SESSION['user_data'])){
-            $sessionObject = $_SESSION['user_data'];
-            if(isset($sessionObject) && isset($sessionObject['user_id']) && $sessionObject['user_id'] > 0){
-                return true;
-            }
+        if(isset($_SESSION['user_data']) || isset($_SESSION['user_id']) && $_SESSION['user_id'] > 0){
+            return true;
         }
         return false;
     }
@@ -101,20 +98,17 @@
                             </li>
                             <li class="dropdown">
                                 <?php
-                                    $userName = '';
-                                    $userImage = site_url('/upload/avatar/user_default.png');
-                                    $sesObject = $_SESSION['user_login'];
-
+                                    $userName = ''; $userImage = $_SESSION['cus_avatar'];
                                     if(!empty($sesObject['user_fname']) && !empty($sesObject['user_lname'])){
-                                        $userName = $sesObject['user_fname'] . ' '. $sesObject['user_lname'];
+                                        $userName = $_SESSION['user_fname'] . ' '. $_SESSION['user_lname'];
                                     }else{
-                                        $userName = $sesObject['user_name'];
+                                        $userName = $_SESSION['user_login'];
                                     }
 
-                                    // user image
-                                    if(isset($sesObject['user_image']) && !empty($sesObject['user_image'])){
-                                        $userImage = $sesObject['user_image'];
+                                    if(strpos($userImage, 'http') === false){
+                                        $userImage = config_item('wp_home_url') . '/' . $_SESSION['cus_avatar'];
                                     }
+
                                 ?>
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <div class="top-nav-image">
@@ -128,15 +122,9 @@
                                     <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
                                     <li>
                                         <a class="inline-option" title="Micheal T." rel="nofollow" href="<?php echo base_url( 'user/user/edit'); ?>"><i class="fpph fpph-user"></i>Profile</a>
-                                        <a class="inline-option right-option" href="<?php echo base_url( 'user/user/edit'); ?>">Edit</a>
                                     </li>
-                                    <li><a href="#"><i class="fa fa-credit-card"></i>Payments</a></li>
-                                    <li><a href="#"><i class="fpph fpph-buyer-activity"></i>My Buyer Activity</a></li>
-                                    <li><a href="#"><i class="fpph fpph-seller-activity"></i>My Seller Activity</a></li>
-                                    <li><a href="#"><i class="fpph fpph-invite-earn"></i>Invite & Earn <span class="etiquette-new">NEW</span></a></li>
                                     <li><a href="#"><i class="fpph fpph-gear"></i>Settings</a></li>
-                                    <li><a href="<?php echo base_url( 'user/user/logout?redirect_to='. urlencode('http://'. $_SERVER[HTTP_HOST]. $_SERVER[REQUEST_URI]));?>"><i class="fa fa-power-off"></i>Log out</a></li>
-                                    <li class="separator-h"><a><div class="dot"></div><div class="dot"></div><div class="dot"></div></a></li>
+                                    <li><a href="<?php echo base_url( 'user/user/logout?redirect_to='. urlencode('http://'. $_SERVER['HTTP_HOST']. $_SERVER['REQUEST_URI']));?>"><i class="fa fa-power-off"></i>Log out</a></li>
                                     <li><a target="_blank" href="#"><i class="fpph fpph-customer-support"></i>Customer Support</a></li>
                                     <li>
                                         <a rel="nofollow" href="#"><i class="fpph fpph-questionmark-circle"></i>How it works</a>

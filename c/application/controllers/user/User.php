@@ -93,11 +93,7 @@ class User extends CI_Controller
             $userObject = $this->user_model->validate_login($email, $pass);
             if(is_array($userObject)){ // > 0 is valid
                 // UPDATE USER SESSION DATA
-                $userSessionData['user_email'] = $email;
-                $userSessionData['user_login'] = $userObject['user_login'];
-                $userSessionData['user_id'] = $userObject['ID'];
-                $userSessionData['user_image'] = $userObject['cus_avatar'];
-                $this->session->set_userdata($userSessionData);
+                $this->storeDataToUserSession($userObject);
 
                 // HANDLE COOKIE DATA
                 $this->handleCookie($userObject['ID'], $remember_me, 0);
@@ -136,26 +132,24 @@ class User extends CI_Controller
                 $data['user_pass'] = $this->wp_hasher->HashPassword('12345');
                 $userObject = $this->user_model->get_user($data);
                 if($userObject == null){
-                    $userID = $this->user_model->insert_user($data);
+                    $data['ID'] = $this->user_model->insert_user($data);
+
+                    // UPDATE USER SESSION DATA
+                    $this->storeDataToUserSession($data);
 
                     // send email cause this is new user
                     $this->sendmail($data['user_email'], 'WELCOME', array(
                         'name' => $data['user_login']
                     ));
                 }else{
-                    $userID = $this->user_model->update_user($userObject);
+                    $data['ID'] = $userObject['ID'];
+
+                    // UPDATE USER SESSION DATA
+                    $this->storeDataToUserSession($userObject);
                 }
-                // UPDATE USER SESSION DATA
-                $userSessionData['user_email'] = $data['user_email'];
-                $userSessionData['user_login'] = $data['user_login'];
-                $userSessionData['user_id'] = $userID;
-                $userSessionData['user_image'] = $image;
-
-                $this->session->set_userdata($userSessionData);
-
 
                 // HANDLE COOKIE DATA
-                $this->handleCookie($userID, false, 1);
+                $this->handleCookie($data['ID'], false, 1);
 
                 if(isset($_SESSION['redirect_to'])){
                     redirect($_SESSION['redirect_to']);
@@ -166,9 +160,6 @@ class User extends CI_Controller
                 $data['facebookLoginUrl'] = $this->helper->getLoginUrl();
             }
 
-            $data['name'] = $this->session->userdata('user_email');
-            $data['email'] = $this->session->userdata('user_login');
-            $data['image'] = $this->session->userdata('user_image');
             $data['loginViaLinkin'] = 'https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id='. $this->inClientId . '&redirect_uri='. $this->callbackInLink .'&state=DCEeFWf45A53sdfKef42afda4&scope=r_basicprofile%20r_emailaddress';
 
             $this->load->view('common/tpl_header');
@@ -206,13 +197,20 @@ class User extends CI_Controller
             $userObject = $this->user_model->get_user($data);
             if($userObject == null){
                 $id = $this->user_model->insert_user($data);
+                $data['ID'] = $id;
+
+                // UPDATE USER SESSION DATA
+                $this->storeDataToUserSession($data);
 
                 // send Email cause this is new user
                 $this->sendmail($data['user_email'], 'WELCOME', array(
                     'name' => $data['first_name']. ' ' . $data['last_name']
                 ));
             }else if($userObject['ID'] > 0){
-                $id = $this->user_model->update_user($data);
+                $id = $userObject['ID'];
+
+                // UPDATE USER SESSION DATA
+                $this->storeDataToUserSession($userObject);
             }
 
             // UPDATE SESSION USER DATA
@@ -234,7 +232,6 @@ class User extends CI_Controller
 
     //function process normal user registration
     public function signup(){
-        // UPDATE SESSION DATA
         if(isset($_GET['redirect_to'])){
             $_SESSION['redirect_to'] = $_GET['redirect_to'];
         }
@@ -242,14 +239,14 @@ class User extends CI_Controller
         $this->handleLogViaCookie();
 
         if(isset($_POST['EmailMemberRegistration'])){
-            $data['fname'] = $_POST['EmailMemberRegistration']['fname'];
-            $data['lname'] = $_POST['EmailMemberRegistration']['lname'];
+            $data['first_name'] = $_POST['EmailMemberRegistration']['fname'];
+            $data['last_name'] = $_POST['EmailMemberRegistration']['lname'];
             $data['user_email'] = $_POST['EmailMemberRegistration']['email'];
             $data['password'] = $_POST['EmailMemberRegistration']['password'];
             $data['memType'] = $_POST['EmailMemberRegistration']['memType'];
             $data['remember_me'] = true;
 
-            $data['user_login'] = $data['fname'] . '_' . $data['lname'];
+            $data['user_login'] = $data['first_name'] . '_' . $data['last_name'];
             $userObject = $this->user_model->get_user($data);
             if(isset($userObject) && isset($userObject['ID']) && $userObject['ID'] > 0){
                 echo 'This email is already existed';
@@ -264,6 +261,10 @@ class User extends CI_Controller
                     'homepage' => $this->homepage,
                     'activateLink' => $this->activateLink .'?activate_code='. $activateCode
                 ));
+
+                // UPDATE SESSION USER DATA
+                $data['ID'] = $userID;
+                $this->storeDataToUserSession($data);
 
                 // HANDLE COOKIE DATA
                 $this->handleCookie($userID, 1, 0);
@@ -305,17 +306,21 @@ class User extends CI_Controller
                 $data['user_pass'] = $this->wp_hasher->HashPassword('12345');
                 $userObject = $this->user_model->get_user($data);
                 if($userObject == null){
-                    $this->user_model->insert_user($data);
+                    $data['ID'] = $this->user_model->insert_user($data);
+
+                    // UPDATE SESSION USER DATA
+                    $this->storeDataToUserSession($data);
 
                     // send Email cause this is new user
                     $this->sendmail($data['user_email'], 'WELCOME', array(
                         'name' => $data['user_login']
                     ));
+                }else{
+                    // UPDATE SESSION USER DATA
+                    $this->storeDataToUserSession($userObject);
                 }
-                // update user session data
-                $this->session->set_userdata($data);
-                $data['loginFacebookLink'] = '#';
 
+                $data['loginFacebookLink'] = '#';
                 if(isset($_SESSION['redirect_to'])){
                     redirect($_SESSION['redirect_to']);
                 }else{
@@ -349,13 +354,7 @@ class User extends CI_Controller
                     ));
                 }
                 // UPDATE SESSION USER DATA
-                $userSessionData = array();
-                $userSessionData['user_email'] = $user['user_email'];
-                $userSessionData['user_login'] = $user['user_login'];
-                $userSessionData['user_first_name'] = $user['first_name'];
-                $userSessionData['user_last_name'] = $user['last_name'];
-                $userSessionData['user_id'] = $user['ID'];
-                $this->session->set_userdata($userSessionData);
+                $this->storeDataToUserSession($user);
 
                 $this->handleCookie($user['ID'], json_decode($this->input->cookie('vnup_user'))->remember_me, 0);
 
@@ -376,7 +375,7 @@ class User extends CI_Controller
         $this->session->unset_userdata('user_first_name');
         $this->session->unset_userdata('user_last_name');
         $this->session->unset_userdata('user_id');
-        $this->session->unset_userdata('user_image');
+        $this->session->unset_userdata('cus_avatar');
         unset($_SESSION['user_data']);
 
         // REMOVE SESSION WP
@@ -539,6 +538,23 @@ class User extends CI_Controller
         }else{
             redirect($this->homepage);
         }
+    }
+
+    private function storeDataToUserSession($user){
+        $userSessionData['user_id'] = $user['ID'];
+        $userSessionData['user_login'] = $user['user_login'];
+        $userSessionData['user_email'] = $user['user_email'];
+        $userSessionData['user_display_name'] = (isset($user['display_name']))? $user['display_name'] : '' ;
+        $userSessionData['cus_description'] = (isset($user['cus_description']))? $user['cus_description'] : '';
+        $userSessionData['cus_avatar'] = $user['cus_avatar'];
+        $userSessionData['cus_cover'] = $user['cus_cover'];
+        $userSessionData['cus_quote'] = (isset($user['cus_quote']))? $user['cus_quote'] : '';
+        $userSessionData['cus_career'] = (isset($user['cus_career']))? $user['cus_career'] : '';
+        $userSessionData['cus_company'] = (isset($user['cus_company'])) ? $user['cus_company'] : '';
+        $userSessionData['cus_city'] = (isset($user['cus_city']))? $user['cus_city']: '';
+        $userSessionData['user_fname'] = (isset($user['first_name']))? $user['first_name'] : '';
+        $userSessionData['user_lname'] = (isset($user['last_name']))? $user['last_name'] : '';
+        $this->session->set_userdata($userSessionData);
     }
 
 }

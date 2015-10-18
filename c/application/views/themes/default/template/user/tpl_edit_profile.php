@@ -13,22 +13,22 @@
                 <div class="gutter-top form-group row">
                     <div class="col-sm-6 col-xs-12">
                         <label class="clearfix" for="MemberProfile_fname">First Name</label>
-                        <input class="form-control" name="MemberProfile[fname]" id="MemberProfile_fname" type="text" value="Micheal"/>        
+                        <input class="form-control" name="MemberProfile[fname]" id="MemberProfile_fname" type="text" value="<?php (isset($_SESSION['user_fname']))? $_SESSION['user_fname'] : $_SESSION['user_login']; ?>"/>
                     </div>
                     <div class="col-sm-6 col-xs-12">
                         <label class="clearfix" for="MemberProfile_lname">Last Name</label>
-                        <input class="form-control popover-toggle"  name="MemberProfile[lname]" id="MemberProfile_lname" type="text" value="Tran"/>        
+                        <input class="form-control popover-toggle"  name="MemberProfile[lname]" id="MemberProfile_lname" type="text" value="<?php echo $_SESSION['user_lname'];?>"/>
                     </div>
                     <div class="clear"></div>
                 </div>
                 <div class="gutter-top form-group row">
                     <div class="col-sm-6 col-xs-12">
                         <label class="clearfix" for="MemberProfile_career">Career</label>
-                        <input class="form-control" name="MemberProfile[career]" id="MemberProfile_career" type="text" value="CEO"/>
+                        <input class="form-control" name="MemberProfile[career]" id="MemberProfile_career" type="text" value="<?php echo $_SESSION['cus_career'];?>"/>
                     </div>
                     <div class="col-sm-6 col-xs-12">
                         <label class="clearfix" for="MemberProfile_company">Company</label>
-                        <input class="form-control popover-toggle"  name="MemberProfile[company]" id="MemberProfile_company" type="text" value="Zotadi"/>
+                        <input class="form-control popover-toggle"  name="MemberProfile[company]" id="MemberProfile_company" type="text" value="<?php echo $_SESSION['cus_company'];?>"/>
                     </div>
                     <div class="clear"></div>
                 </div>
@@ -42,9 +42,10 @@
                             <ul class="attachFiles-list ">
                                 <li class="attach-success" style="opacity: 1; width: 60px;" data-category="other" id="cover_710651">
                                     <a href="#" class="remove" title="Remove">Remove</a>
+
                                     <div class="attachFiles-item">
-                                        
-                                        <img alt="undefined - " class="preview" id="coverImg" style="cursor: pointer" src="http://d3v9w2rcr4yc0o.cloudfront.net/uploads/covers/thumbs/930f0bd4ee4d1e5656cbd940c72e948a_320x90.jpg"/>
+                                        <img alt="undefined - " class="preview" id="coverImg" style="cursor: pointer"
+                                             src="<?php echo config_item('wp_home_url'). '/'. $_SESSION['cus_cover'];?>"/>
                                     </div>
             
                                     <input type="hidden" name="MemberProfile[coverImage][cover_710651][name]" class="file-attachment file-attach-cover_710651" value=""/>

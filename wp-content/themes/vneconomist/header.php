@@ -159,15 +159,9 @@ function isSessionUserDataAvailable(){
                                     <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
                                     <li>
                                         <a class="inline-option" title="Micheal T." rel="nofollow" href="<?php echo site_url( '/c/user/user/edit'); ?>"><i class="fpph fpph-user"></i>Profile</a>
-                                        <a class="inline-option right-option" href="<?php echo site_url( '/c/user/user/edit'); ?>">Edit</a>
                                     </li>
-                                    <li><a href="#"><i class="fa fa-credit-card"></i>Payments</a></li>
-                                    <li><a href="#"><i class="fpph fpph-buyer-activity"></i>My Buyer Activity</a></li>
-                                    <li><a href="#"><i class="fpph fpph-seller-activity"></i>My Seller Activity</a></li>
-                                    <li><a href="#"><i class="fpph fpph-invite-earn"></i>Invite & Earn <span class="etiquette-new">NEW</span></a></li>
                                     <li><a href="#"><i class="fpph fpph-gear"></i>Settings</a></li>
                                     <li><a href="<?php echo site_url( '/c/user/user/logout?redirect_to='. urlencode('http://'. $_SERVER[HTTP_HOST]. $_SERVER[REQUEST_URI]));?>"><i class="fa fa-power-off"></i>Log out</a></li>
-                                    <li class="separator-h"><a><div class="dot"></div><div class="dot"></div><div class="dot"></div></a></li>
                                     <li><a target="_blank" href="#"><i class="fpph fpph-customer-support"></i>Customer Support</a></li>
                                     <li>
                                         <a rel="nofollow" href="#"><i class="fpph fpph-questionmark-circle"></i>How it works</a>
