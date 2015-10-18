@@ -33,11 +33,8 @@ class Ajax extends CI_Controller {
             $cate_id = '0';
         }
         
-        
         $categories = $this->post->get_post_sub_categories($cate_id);
         $data['categories'] = $categories;
-        
-       
 		
         $this->load->view('ajax/tpl_subcategory', $data);
         

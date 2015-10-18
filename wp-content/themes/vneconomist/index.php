@@ -134,7 +134,7 @@
                                                     <div class="col-xs-8 no-padding-right">
                                                         <div class="user-image-container pull-left">
                                                             <a title="<?php echo $full_name; ?>" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>">
-                                                                <?php echo c_get_avatar(get_the_author_ID());?>
+                                                                <?php echo c_get_avatar(get_the_author_ID(), 30, 30, "user-avatar user-avatar-sm user-avatar-square");?>
                                                             </a>
                                                         </div>
                                                         <div class="user-info pull-left">
@@ -163,4 +163,100 @@
         </section>
     </div>
 </div>
+
+<style>
+#navigation_toolbox{
+    display: none ;
+    position: fixed;
+    bottom: 45px;
+    left: 5px;
+    width: 110px;
+    background: #fff;
+    box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0,0,0,0.1);
+    font-size: 0.9em;
+    z-index: 99;
+}
+#navigation_toolbox ul{
+    list-style: none;
+    padding: 10px 2px;
+}
+
+#navigation_toolbox .sub-menu{
+    display: none;
+    position: absolute;
+    left: 105px;
+    margin-top: -34px;
+    background: #fff;
+    box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0,0,0,0.1);
+    border-left: none;
+    padding: 0 20px;
+}
+#navigation_toolbox .sub-menu li a{
+    border-bottom: none;
+}
+#navigation_toolbox li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 7px 0 7px 7px;
+    color: #5F5A5A;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 12px;
+    font-weight: bold;
+    border-bottom: 1px dotted #ddd;
+}
+#navigation_toolbox li a:hover{
+	color: #cc3300;
+}
+#navigation_toolbox li:last-child a{
+   border-bottom: none; 
+}
+#navigation_toolbox li:hover > .sub-menu{
+    display: block;
+} 
+#navigation_toolbox li .sub-menu li a{
+    color: #000 !important;
+}
+#navigation_toolbox li .sub-menu li a:hover {
+    color: #E66E46 !important;
+}
+#navigation_toolbox #menu-category-menu .current-menu-item{
+    background-color: #E66E46;
+    color: #fff;
+}
+#navigation_toolbox #menu-category-menu .current-menu-item a{
+    color: #fff;
+}
+</style>
+<div id="navigation_toolbox">
+    
+    <?php
+    wp_nav_menu(array(
+	   'menu' => 'Category Menu',
+	   'menu_class' => 'menu-list',
+	   'container' => false,
+    ));
+    ?>
+ </div>
+ 
+ <script>
+ 
+    $(window).scroll(function() {
+
+     if ($(this).scrollTop()> 200)
+     { 
+        $('#navigation_toolbox').show();
+        $('#secondary-bar').addClass('menu-fixed');
+     }
+     else
+     {
+      $('#navigation_toolbox').hide();
+      $('#secondary-bar').removeClass('menu-fixed');
+     }
+ });
+ </script>
 <?php get_footer();?>

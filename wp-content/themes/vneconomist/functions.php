@@ -141,14 +141,14 @@ function get_sub_string($string, $num = 0)
     return $result;
 }
 
-function c_get_avatar($user_id){
+function c_get_avatar($user_id, $width = 30, $height = 30, $class=""){
     
     $userData = get_userdata( $user_id );
-    $avatar = c_crop_image_resize(site_url($userData->cus_avatar), 30, 30, true);
+    $avatar = c_crop_image_resize(site_url($userData->cus_avatar), $width, $height, true);
     //var_dump($userData);
     $full_name = get_user_meta( $userData->ID, 'first_name', true ).' '.get_user_meta( $userData->ID, 'last_name', true );
     
-    $result = '<img src="'. esc_url($avatar).'" alt="'. $full_name.'" width="30" height="30"/> ';
+    $result = '<img class="'.$class.'" src="'. esc_url($avatar).'" alt="'. $full_name.'" width="'.$width.'" height="'.$height.'"/> ';
     
     return $result;
 }													

@@ -9,12 +9,18 @@
  **/
 ?>
 <?php get_header();?>
-<?php $category = get_the_category(); $cat_ID = ($category[0]->category_parent > 0)? $category[0]->category_parent : $category[0]->term_id; ?>
+<?php 
+    $category = get_the_category(); $cat_ID = ($category[0]->category_parent > 0)? $category[0]->category_parent : $category[0]->term_id; 
+    
+?>
 <div class="container container-top"></div>
 	<div id="main-container" class="wrap-container container clearfix offcanvas offcanvas-right">
 		<div class="main-content controller-hourlie action-view">
        <?php if (have_posts()) { ?>		
-             <?php while (have_posts()) : the_post();?>
+             <?php while (have_posts()) : the_post();
+                     $user_info = get_userdata(get_the_author_ID()); 
+                     $full_name = get_user_meta( get_the_author_ID(), 'first_name', true ).' '.get_user_meta( get_the_author_ID(), 'last_name', true );
+             ?>
 			<header class="clearfix featured featured-right">
 				<h1 class="clearfix"> <?php the_title()?> </h1>
 			</header>
@@ -26,35 +32,34 @@
                 <?php setPostViews(get_the_ID());  endwhile; ?> 
             <?php } else { ?>
         		  <div class="col-xs-12 clearfix js-auto-pause-hidden hourlie-description-text">
-        				<h1 class="single-title" >Kh�ng c� th�ng tin d? hi?n th?</h1>					
+        				<h1 class="single-title" >Không có thông tin d? hi?n th?</h1>					
 			     </div>
                         			
  		     <?php } ?> 
 			<div class="js-auto-pause-hidden" >
 				<div class="widget-order-hourlie-addons clearfix">
 					<div class="title-container">
-						<h2 class="col-xs-12 clearfix prepend-top">Get more with Hourlie Add-ons</h2>
+						<h2 class="col-xs-12 clearfix prepend-top">Từ khóa liên quan</h2>
 					</div>
 				
-						<div  class="content-text clear addons-container" data-hook="addons-container">
-							<ul class="addons clearfix boxmodelfix">
+				    <div  class="content-text clear addons-container" data-hook="addons-container">
+				        <ul class="addons clearfix boxmodelfix">
 								
-							</ul>
-							<br class="clear"/>
-						</div>
-					</div>
+				        </ul>
+				        <br class="clear"/>
+				    </div>
+				</div>
 			</div>
 			<div class="col-xs-12 js-auto-pause-hidden hourlie-description-text">
-				<h2 class="prepend-top toaster-trigger"> What the Seller needs to start the work    </h2>
-				<div class="content-text clearfix"> Just provide us full description of the company followed by some sample designs    </div>
+		
 				<div class="feedbacks-container clear prepend-top">
 					<div class="feedback-toggle-container visible-xs visible-sm clearfix">
-						<button class="btn tall call-to-action col-xs-12" id="toggle-reviews" data-hide-msg="Hide Reviews" data-show-msg="Show Reviews (25)">
+						<button class="btn tall call-to-action col-xs-12" id="toggle-reviews">
 							Show Reviews (25)   </button>
 					</div>
 					<div class="feedbacks-list-container hidden-xs hidden-sm">
 						<h2 class="prepend-top reviews clearfix">
-							Reviews (25) </h2>
+							Bình luận (25) </h2>
 						<section id="feedack-230890" class="timeline clear review-list" data-hook="feedack-container">
 							<div id="reviews-list" class="list-view">
 								<ul class="items row">
@@ -390,8 +395,8 @@
 						<i class="fpph fpph-clock-wall"></i>
 					</span>
 					<span>
-						<span>Delivery in</span><br>
-						<span class="value js-delivery-days">4 days</span>
+						<span>Bình luận</span><br>
+						<span class="value js-delivery-days">25</span>
 					</span>
 				</div>
 				<div class="col-xs-6 no-padding-left no-padding-right">
@@ -404,40 +409,20 @@
 					</span>
 				</div>
 			</div>
-			<hr>
-			<div class="clearfix detailed-information">
-				<ul class="horizontal">
-					<li>
-						<span>Views</span>
-						<span class="value">1,287</span>
-					</li>
-					<li>
-						<span>Sales</span>
-						<span class="value">97</span>
-					</li>
-					<li class="star-container pull-right">
-						<div class="widget-star-item ">
-							<a data-has-tooltip="1" rel="nofollow" data-label-add-to-fav="Add to Favourites Hourlies" data-label-remove-from-fav="Remove from Favourites Hourlies" class="action-entity-star fa fa-star js-tooltip  js-tooltip" data-title="Add to Favourites Hourlies" data-url="/hourlie/star?id=230890" id="Star-00cc2be1c2c4c4970bbe100a6c911b5f" data-isGuest="1" data-type="Hourlie" href="#">
-								<span></span>
-							</a>
-							<span class=" count-stars">35</span>
-						</div>        
-					</li>
-				</ul>
-			</div>
+			
 		</div>
 		<div class="clearfix member-summary widget-memberSummary">
 			<div class=" summary member-summary-section clearfix">
 				<div class="member-image-container">
-					<img class="img-border-round member-image" src="https://d3v9w2rcr4yc0o.cloudfront.net/uploads/thumbs/13b9c4759030b85793e924b1d482a625_150x150.jpg" alt="Amanda P." />
+					<?php echo c_get_avatar(get_the_author_ID(), 150, 250, "img-border-round member-image");?>
 				</div>
 				<div class="member-information-container">
 					<div class="member-name-container crop">
 						<h2>
-							<a class="crop member-short-name" title="Amanda P." rel="nofollow" href="#">Amanda P.</a>
-							<span class="icon member-online offline" data-tooltip-content="Last seen: Today"></span>
+							<a class="crop member-short-name" title="<?php echo $full_name; ?>" rel="nofollow" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php echo $full_name; ?></a>
+							<span class="icon member-online offline"></span>
 						</h2>
-						<div class="member-job-title crop">Graphic Designer , Logo designer , Web Developer , Seo promotion , Translation and all the services you can think of</div>
+						<div class="member-job-title crop"><?php echo $user_info->cus_career.', '.$user_info->cus_company;?> </div>
 					</div>
 				</div>
 				<div class="cert-container text-right">
@@ -447,30 +432,15 @@
 			</div>
 			<div class=" about member-summary-section clearfix">
 				<div class="about-container js-about-container">
-					<p>Welcome You all , My name is Amanda Powell an established outsourcing agency owner in UK.
-
-						We carry out a broad range of creative tasks for a diverse range of clients, from small<a class="call-to-action about-read-more js-open-about-dialog-trigger" href="#">more...</a><span style="display: none;" class="js-about-full-text">Welcome You all , My name is Amanda Powell an established outsourcing agency owner in UK.<br />
-						<br />
-						We carry out a broad range of creative tasks for a diverse range of clients, from small to medium sized businesses to corporate clients and charitable organisations.<br />
-						<br />
-						We recognise that every client’s needs are as different as they are exacting and believe a viable solution is usually a creative one.<br />
-						We like to come up with bright ideas that illuminate new ways of doing business and empathise with your objectives. This approach is maintained throughout the lifetime of our relationship, as trusting us with your brand is a big step and we appreciate that, which is probably why we have so many long-term and loyal clients.<br />
-						<br />
-						We specialise in…<br />
-						Design for traditional and digital print including end to end print management<br />
-						Exhibition, merchandising and POS graphic design and large format graphics<br />
-						Brand creation and management<br />
-						Website design, development and optimisation<br />
-						Employees: 11-15<br />
-						<br />
-						Describe what you can do as a professional.<br />
-						Emphasize on making the first 3 lines really interesting, as only those will be initially visible to viewers.<br />
-						Then you can add all the rest! (eg. previous work experience, education, areas of expertise etc.)</span>
+					<p>
+                        <?php echo get_sub_string($user_info->cus_description, 25); ?>
+                        <a class="call-to-action about-read-more about-dialog-trigger" >xem thêm...</a>
+                        
 					</p>
 				</div>
 			</div>
 			<div class=" location member-summary-section clearfix">
-				<div class="location-container crop"><i class="fpph-location"></i>United Kingdom</div>
+				<div class="location-container crop"><i class="fpph-location"></i><?php echo $user_info->cus_city; ?></div>
 			</div>
 			<div class=" contact member-summary-section clearfix">
 				<a class="btn contact-button" rel="nofollow" href="#">Contact</a>
@@ -490,73 +460,77 @@
 				</div>
 			</div>
 		</div>
-		<br class="clear">
 		
 		<br class="clear"/>
 		<div class="sidebar-box prepend-top clearfix js-auto-pause-hidden">
 			<div class="clearfix widget-recommended-hourlies sidebar-box">
-				<h2 class="bubble">Consider also</h2>
+                <?php   
+                    $args = array(
+                        'posts_per_page' => 5
+                    );
+                    $the_query = new WP_Query($args);
+                    if ( $the_query->have_posts() ) {
+                                	
+                ?>    	
+            
+				<h2 class="bubble">Bài viết gợi ý</h2>
 				<hr/>
 				<ul class="clearfix recommended-hourlie-items">
-                    <li class="clearfix">
+                    <?php while ( $the_query->have_posts() ) {
+                  		    $the_query->the_post();
+                            $full_name = get_user_meta( get_the_author_ID(), 'first_name', true ).' '.get_user_meta( get_the_author_ID(), 'last_name', true );
+                        ?>
+                       
+                       <li class="clearfix">
 						<div class="col-xs-4 no-padding-left no-padding-right image">
-							<a title="Design Your Logo + Business Card + Letterhead + Envelope + Compliment Slip + Fevicon" class="img-container" href="#">
-								<img width="100%" height="100%" class="hourlie-image" src="https://d3v9w2rcr4yc0o.cloudfront.net/uploads/hourliesAttachments/thumbs/110x83/2014/12/11ae382a7a2106a5d7e7b30a4bff0238.jpg" alt="Design Your Logo " />
+							<a href="<?php the_permalink() ?>" class="img-container" title="<?php the_title(); ?>" >
+								<?php the_post_thumbnail('thumbnail', array( 'class' => 'hourlie-image' )); ?>
 							</a>
 						</div>
 						<div class="col-xs-8 no-padding-right no-padding-left">
-							<a href="#" title="Design Your Logo + Business Card + Letterhead + Envelope + Compliment Slip + Fevicon" class="title clearfix">
-								Design Your Logo + Business Card + Let...    </a>
-								<div class="details crop pull-left">
-									<a data-hook="member-popover" data-seller-id="651743" data-placement="left" data-seller-name="Dreams S." rel="member-popover" href="#">Dreams S.</a>    </div>
-								<div class="price pull-right">
-									<strong> $<span title="">49</span>        </strong>
-								</div>
-						</div>
-						<div class="clearfix horizontal-line stretch"></div>
-					</li>
-                    <li class="clearfix">
-						<div class="col-xs-4 no-padding-left no-padding-right image">
-							<a title="Design your logo + business card + letterhead + envelope + compliment slip + fevicon" class="img-container" href="#">
-								<img width="100%" height="100%" class="hourlie-image" src="https://d3v9w2rcr4yc0o.cloudfront.net/uploads/hourliesAttachments/thumbs/110x83/2015/09/a757f6668031b80469d1f37b29ef4a70.jpg" alt="Design your logo" />
-							</a>
-						</div>
-						<div class="col-xs-8 no-padding-right no-padding-left">
-							<a href="#" title="Design your logo + business card + letterhead + envelope + compliment slip + fevicon" class="title clearfix">
-								Design your logo + business card + let...    </a>
+							<a href="<?php the_permalink() ?>" title="<?php the_title(); ?>" class="title clearfix">
+								<?php the_title(); ?>
+                            </a>
 							<div class="details crop pull-left">
-								<a data-hook="member-popover" data-seller-id="1035576" data-placement="left" data-seller-name="Umar K." rel="member-popover" href="#">Umar K.</a>    </div>
-							<div class="price pull-right">
-								<strong>
-								$<span title="">62</span>        </strong>
-							</div>
+							 <a href="#"><?php echo $full_name; ?></a>    
+                            </div>
 						</div>
 						<div class="clearfix horizontal-line stretch"></div>
 					</li>
-                    <li class="clearfix">
-						<div class="col-xs-4 no-padding-left no-padding-right image">
-							<a title="Design Logos + Business cards + Letterhead + Envelope + Tshirt + Mug + Favicon" class="img-container" href="#">
-								<img width="100%" height="100%" class="hourlie-image" src="https://d3v9w2rcr4yc0o.cloudfront.net/uploads/hourliesAttachments/thumbs/110x83/2015/04/a807c13829ebca41981992ccc370fcc0.jpg" alt="Design Logos " />
-							</a>
-						</div>
-						<div class="col-xs-8 no-padding-right no-padding-left">
-							<a href="#" title="Design Logos + Business cards + Letterhead + Envelope + Tshirt + Mug + Favicon" class="title clearfix">
-								Design Logos + Business cards + Letter...    
-							</a>
-							<div class="details crop pull-left">
-								<a data-hook="member-popover" data-seller-id="863780" data-placement="left" data-seller-name="Alessia F." rel="member-popover" href="#">Alessia F.</a>    
-							</div>
-							<div class="price pull-right">
-								<strong> $<span title="">30</span></strong>
-							</div>
-						</div>
-						<div class="clearfix horizontal-line stretch"></div>
-					</li>
+                       
+                       
+                <?php } ?>
+                  
 				</ul>
+                <?php } ?>
 			</div>
 		</div>
 		<br class="clear"/>    
 		</aside>
 	</div>
-    
+    <div class="bootbox modal fade in"  style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close">×</button>
+                    <h4 class="modal-title">Về <?php echo $full_name; ?></h4>
+            </div>
+            <div class="modal-body">
+                <div class="bootbox-body">
+                    <?php echo $user_info->cus_description; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+       $('.about-dialog-trigger').click(function(){
+            $('.bootbox').toggle();
+            $('.bootbox-close-button').click(function(){
+                $('.bootbox').fadeOut();
+            });
+       }) 
+    });
+</script>
 <?php get_footer();?>

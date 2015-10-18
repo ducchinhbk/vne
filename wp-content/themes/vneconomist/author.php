@@ -262,7 +262,13 @@
                     <a role="tab" data-toggle="tab" href="#my-post">Bài viết (<?php echo count_user_posts($cur_user->ID);?>)</a>
                 </li>
                 <li >
-                    <a role="tab" data-toggle="tab" href="#my-colection">Bộ sưu tập (<?php echo count_user_posts($cur_user->ID);?>)</a>
+                    <a role="tab" data-toggle="tab" href="#my-colection">Bộ sưu tập</a>
+                </li>
+                <li >
+                    <a role="tab" data-toggle="tab" href="#my-bookmark">Đã lưu</a>
+                </li>
+                <li >
+                    <a role="tab" data-toggle="tab" href="#my-friend">Bạn bè</a>
                 </li>
             </ul>
             <div class="tab-content">
@@ -314,7 +320,7 @@
                                                 <div class="col-xs-8 no-padding-right">
                                                     <div class="user-image-container pull-left">
                                                         <a title="<?php echo $full_name; ?>">
-                                                            <?php echo c_get_avatar($cur_user->ID);?>
+                                                            <?php echo c_get_avatar($cur_user->ID, 30, 30, "user-avatar user-avatar-xs");?>
                                                         </a>
                                                     </div>
                                                     <div class="user-info pull-left">
@@ -375,15 +381,25 @@
                         <div class="col-xs-12">
                             <a class="my-hourlies-viewall call-to-action right" style="margin-bottom: 20px;"></a>
                         </div>
-                        <!-- The Loop -->
-    
-                       
-                            <p>Không có bộ sưu tập nào để hiển thị..</p>
+                        <p>Tính năng bộ sưu tập đang được đang xây dựng..</p>
                     
-                        
+                    </div>
+                </div>
+                <div id="my-bookmark" class="tab-pane fade">
+                    <div id="" class="clearfix">
+                        <div class="col-xs-12">
+                            <a class="my-hourlies-viewall call-to-action right" style="margin-bottom: 20px;"></a>
+                        </div>
+                        <p>Tính năng lưu bài viết đang xây dựng..</p>
                     
-                    <!-- End Loop -->
-                        
+                    </div>
+                </div>
+                <div id="my-bookmark" class="tab-pane fade">
+                    <div id="" class="clearfix">
+                        <div class="col-xs-12">
+                            <a class="my-hourlies-viewall call-to-action right" style="margin-bottom: 20px;"></a>
+                        </div>
+                        <p>Tính năng bạn bè đang được phát triển..</p>
                     
                     </div>
                 </div>

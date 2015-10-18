@@ -31,7 +31,7 @@
 
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
-    <?php wp_head(); ?>
+    <?php //wp_head(); ?>
     <!--[if lt IE 9]>
     <script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/html5.js"></script>
     <![endif]-->
@@ -184,11 +184,11 @@ function isSessionUserDataAvailable(){
                         <li class="dropdown">
                             <a class="dropdown-toggle  text-uppercase with-border-on-hover " data-toggle="dropdown" rel="nofollow"  ><i class="fpph-categories color-pph" style="margin-right: 6px;"></i>Có gì hay</a>
                             <ul class="dropdown-menu simple pull-right">
-                                <li><a href="#">News</a></li>
-                                <li><a href="#">VneTV</a></li>
+                                <li><a href="#">eNews</a></li>
+                                <li><a href="#">eTV</a></li>
                                 <li><a href="#">Zotadi</a></li>
-                                <li><a href="#">VnWorks</a></li>
-                                <li><a href="#">VnLand</a></li>
+                                <li><a href="#">eAction</a></li>
+                                <li><a href="#">eChild</a></li>
                             </ul>
                         </li>
                         <li class="dropdown separator"><a class="job btn bold" rel="nofollow" data-trigger="post-btn" href="<?php echo site_url( '/c/user/article/create' );?>">Tạo bài viết</a></li>

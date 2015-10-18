@@ -58,7 +58,7 @@
         											<li>
         												<div class="user-image pull-left">
         													<a class="member-name" title="<?php echo get_the_author();?>" rel="nofollow" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>">
-                                                                <?php echo c_get_avatar(get_the_author_meta('ID'));?>
+                                                                <?php echo c_get_avatar(get_the_author_meta('ID'), 30, 30, "user-avatar user-avatar-sm user-avatar-square");?>
                                                             </a>                    
                                                         </div>
         												<div class="pull-left">
@@ -145,41 +145,19 @@
 						Categories        
 					</h3>
 					<hr/>
-					<ul class="category-tree sidebar-filter-options tree-node depth-0 last-level">
-						<li class="depth-1  selected last-level">  
-							<a href="#">All Categories </a>
-						</li>
-						<li class="depth-1  last-level">  
-							<a href="#">Design </a>
-						</li>
-						<li class="depth-1  last-level">  
-							<a href="#">Video, Photo &amp; Audio </a>
-						</li>
-						<li class="depth-1  last-level">  
-							<a href="#">Web Development </a>
-						</li>
-						<li class="depth-1  last-level">  
-							<a href="#">Sales &amp; Marketing </a>
-						</li>
-						<li class="depth-1  last-level">  
-							<a href="#">Business Support </a>
-						</li>
-						<li class="depth-1  last-level">  
-							<a href="#">Writing &amp; Translation </a>
-						</li>
-						<li class="depth-1  last-level">  
-							<a href="#">Social media</a>
-						</li>
-						<li class="depth-1  last-level">  
-							<a href="#">Software Dev &amp; Mobile</a>
-						</li>
-					</ul>    
+					<?php
+                        wp_nav_menu(array(
+                    	   'menu' => 'Category Menu',
+                    	   'menu_class' => 'category-tree tree-node',
+                    	   'container' => false,
+                        ));
+                        ?> 
 				</div>
 				
 			</section>
 			<section class="prepend-top">
 				<h3>
-					<i class="fpph-categories color-pph"></i>
+					<span class="fpph fpph-user"></span>
 						Top Vneconomists        
 				</h3>
 				<div class="addTip-left member-summary widget-memberSummary" ref="buyer">
