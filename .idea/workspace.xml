@@ -2,17 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4b373de-ca38-4c2a-b045-8afb2c28d34b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vneconomist.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c/application/controllers/user/Article.php" afterPath="$PROJECT_DIR$/c/application/controllers/user/Article.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/application/models/Tag_model.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/c/assets/themes/default/js/custom-autocomplete.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c/application/controllers/Ajax.php" afterPath="$PROJECT_DIR$/c/application/controllers/Ajax.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c/application/controllers/user/User.php" afterPath="$PROJECT_DIR$/c/application/controllers/user/User.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c/application/models/User_model.php" afterPath="$PROJECT_DIR$/c/application/models/User_model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/vneconomist/header.php" afterPath="$PROJECT_DIR$/wp-content/themes/vneconomist/header.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/vneconomist/css/addmore.css" afterPath="$PROJECT_DIR$/wp-content/themes/vneconomist/css/addmore.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c/application/config/database.php" afterPath="$PROJECT_DIR$/c/application/config/database.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c/application/views/themes/default/template/user/tpl_edit_profile.php" afterPath="$PROJECT_DIR$/c/application/views/themes/default/template/user/tpl_edit_profile.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c/application/views/themes/default/template/common/tpl_header.php" afterPath="$PROJECT_DIR$/c/application/views/themes/default/template/common/tpl_header.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-includes/wp-db.php" afterPath="$PROJECT_DIR$/wp-includes/wp-db.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-config.php" afterPath="$PROJECT_DIR$/wp-config.php" />
     </list>
     <ignored path="vneconomist.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,29 +35,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Article.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/c/application/controllers/user/Article.php">
+      <file leaf-file-name="custom-autocomplete.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/c/assets/themes/default/js/custom-autocomplete.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="9" selection-start="429" selection-end="429" vertical-scroll-proportion="45.115383" vertical-offset="1377" max-vertical-offset="3417">
+            <state line="98" column="13" selection-start="4119" selection-end="4119" vertical-scroll-proportion="0.5254545" vertical-offset="1377" max-vertical-offset="2856">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/c/application/controllers/user/User.php">
+      <file leaf-file-name="tpl_edit_profile.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/c/application/views/themes/default/template/user/tpl_edit_profile.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="136" column="63" selection-start="6635" selection-end="6640" vertical-scroll-proportion="0.46653542" vertical-offset="1973" max-vertical-offset="8313">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User_model.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/c/application/models/User_model.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="7" selection-start="1151" selection-end="1151" vertical-scroll-proportion="-28.115385" vertical-offset="0" max-vertical-offset="3179">
-              <folding />
+            <state line="9" column="41" selection-start="523" selection-end="523" vertical-scroll-proportion="-0.0" vertical-offset="153" max-vertical-offset="5219">
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#4;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#2;n#div#4;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#li#0;n#ul#0;n#div#0;n#div#2;n#div#4;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#4;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#4;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#ul#0;n#div#1;n#div#6;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#1;n#div#6;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#7;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#span#0;n#div#0;n#div#7;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -80,25 +88,31 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/c/application/config/autoload.php" />
-        <option value="$PROJECT_DIR$/c/application/config/database.php" />
-        <option value="$PROJECT_DIR$/wp-config.php" />
+        <option value="$PROJECT_DIR$/c/.htaccess" />
+        <option value="$PROJECT_DIR$/.htaccess" />
         <option value="$PROJECT_DIR$/c/application/config/config.php" />
         <option value="$PROJECT_DIR$/c/application/views/themes/default/template/user/tpl_login.php" />
-        <option value="$PROJECT_DIR$/c/application/views/themes/default/template/user/tpl_signup.php" />
-        <option value="$PROJECT_DIR$/wp-includes/wp-db.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/vneconomist/header.php" />
-        <option value="$PROJECT_DIR$/c/application/models/User_model.php" />
-        <option value="$PROJECT_DIR$/c/application/controllers/user/User.php" />
         <option value="$PROJECT_DIR$/c/application/controllers/user/Article.php" />
+        <option value="$PROJECT_DIR$/c/application/models/User_model.php" />
+        <option value="$PROJECT_DIR$/c/application/views/themes/default/template/user/tpl_activate.php" />
+        <option value="$PROJECT_DIR$/c/application/controllers/user/User.php" />
+        <option value="$PROJECT_DIR$/c/application/views/themes/default/template/common/tpl_header.php" />
+        <option value="$PROJECT_DIR$/c/application/models/Tag_model.php" />
+        <option value="$PROJECT_DIR$/c/application/controllers/Ajax.php" />
+        <option value="$PROJECT_DIR$/wp-content/themes/vneconomist/css/addmore.css" />
+        <option value="$PROJECT_DIR$/c/assets/themes/default/js/try-js.js" />
+        <option value="$PROJECT_DIR$/c/application/views/themes/default/template/user/tpl_edit_profile.php" />
+        <option value="$PROJECT_DIR$/c/assets/themes/default/js/custom-autocomplete.js" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="1382" />
-    <option name="height" value="728" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -155,7 +169,99 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="upload" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cover" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vneconomist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vneconomist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="upload" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="avatar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vneconomist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vneconomist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="c" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vneconomist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vneconomist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="c" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="default" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vneconomist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vneconomist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="c" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="default" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -255,70 +361,39 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vneconomist" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vneconomist" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="c" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vneconomist" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vneconomist" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="c" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="user" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
     <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="136" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="155" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="158" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="159" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="833" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="840" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="152" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="147" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../vnup" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
     <property name="FullScreen" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\xampp\htdocs\vneconomist\upload\cover" />
+      <recent name="D:\xampp\htdocs\vneconomist\upload\avatar" />
+      <recent name="D:\xampp\htdocs\vneconomist\wp-content\themes\vneconomist\images" />
       <recent name="D:\xampp\htdocs\vneconomist\c\application\views\themes\default\template" />
       <recent name="D:\xampp\htdocs\vneconomist\c\application" />
-      <recent name="D:\xampp\htdocs\vneconomist\c\application\models" />
-      <recent name="D:\xampp\htdocs\vneconomist\c\application\libraries" />
     </key>
   </component>
   <component name="RunManager">
@@ -347,24 +422,24 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1382" height="728" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25378788" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2659091" sideWeight="0.6706282" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46349746" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293718" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -382,109 +457,112 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/c/application/libraries/Facebook/Entities/AccessToken.php">
+    <entry file="file://$PROJECT_DIR$/c/application/views/themes/default/template/user/tpl_login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="16" selection-start="1309" selection-end="1309" vertical-scroll-proportion="0.32629558" vertical-offset="0" max-vertical-offset="6137" />
+        <state line="39" column="174" selection-start="3010" selection-end="3010" vertical-scroll-proportion="0.39694658" vertical-offset="455" max-vertical-offset="1428" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/c/application/utils/ViewUtils.php">
+    <entry file="file://$PROJECT_DIR$/c/application/views/themes/default/template/user/tpl_activate.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="547" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="563" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/c/application/db/modify_db.sql">
+    <entry file="file://$PROJECT_DIR$/c/application/views/themes/default/template/common/tpl_header.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="12" selection-start="405" selection-end="405" vertical-scroll-proportion="-3.74" vertical-offset="0" max-vertical-offset="391" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/c/application/config/autoload.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="20" selection-start="2033" selection-end="2033" vertical-scroll-proportion="-13.5" vertical-offset="737" max-vertical-offset="2278" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/c/application/config/database.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="26" selection-start="4020" selection-end="4020" vertical-scroll-proportion="-7.8461537" vertical-offset="1020" max-vertical-offset="1734" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/c/application/views/themes/default/template/email/welcome.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="32" selection-start="167" selection-end="167" vertical-scroll-proportion="0.19577736" vertical-offset="0" max-vertical-offset="521" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/c/application/models/User_cookie_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="30" selection-start="823" selection-end="823" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="1462">
+        <state line="31" column="0" selection-start="1662" selection-end="1662" vertical-scroll-proportion="-12.423077" vertical-offset="204" max-vertical-offset="3808">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/c/application/config/config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="517" column="1" selection-start="18302" selection-end="18302" vertical-scroll-proportion="0.0" vertical-offset="8472" max-vertical-offset="8993">
+        <state line="19" column="17" selection-start="615" selection-end="623" vertical-scroll-proportion="-8.192307" vertical-offset="110" max-vertical-offset="9027" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/c/application/controllers/user/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="41" selection-start="2885" selection-end="2927" vertical-scroll-proportion="0.0" vertical-offset="901" max-vertical-offset="9775">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/c/application/views/themes/default/template/user/tpl_login.php">
+    <entry file="file://$PROJECT_DIR$/c/application/models/Tag_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="47" selection-start="5267" selection-end="5267" vertical-scroll-proportion="0.0" vertical-offset="886" max-vertical-offset="1428">
-          <folding />
-        </state>
+        <state line="7" column="0" selection-start="115" selection-end="115" vertical-scroll-proportion="0.22160149" vertical-offset="0" max-vertical-offset="595" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/c/application/views/themes/default/template/user/tpl_signup.php">
+    <entry file="file://$PROJECT_DIR$/c/application/models/User_cookie_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="55" selection-start="288" selection-end="288" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="2295">
-          <folding>
-            <marker date="1444473582524" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1444473582524" expanded="false" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-includes/wp-db.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="411" column="19" selection-start="6741" selection-end="6741" vertical-scroll-proportion="-7.5384617" vertical-offset="6655" max-vertical-offset="51918">
-          <folding>
-            <marker date="1444499072914" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1444499072914" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1444499072914" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1444499072914" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1444499072914" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/vneconomist/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="41" selection-start="3463" selection-end="3463" vertical-scroll-proportion="-7.1923075" vertical-offset="1020" max-vertical-offset="4692">
+        <state line="5" column="30" selection-start="116" selection-end="116" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="629">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/c/application/models/User_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="7" selection-start="1151" selection-end="1151" vertical-scroll-proportion="-28.115385" vertical-offset="0" max-vertical-offset="3179">
+        <state line="291" column="43" selection-start="11654" selection-end="11654" vertical-scroll-proportion="0.0" vertical-offset="3918" max-vertical-offset="5457">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/c/application/controllers/user/Article.php">
+    <entry file="file://$PROJECT_DIR$/c/application/config/autoload.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="9" selection-start="429" selection-end="429" vertical-scroll-proportion="45.115383" vertical-offset="1377" max-vertical-offset="3417">
+        <state line="1" column="29" selection-start="35" selection-end="35" vertical-scroll-proportion="0.04956268" vertical-offset="0" max-vertical-offset="2278" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/c/application/controllers/Ajax.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="31" selection-start="1422" selection-end="1422" vertical-scroll-proportion="0.0" vertical-offset="619" max-vertical-offset="1156">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/c/application/controllers/user/User.php">
+    <entry file="file://$PROJECT_DIR$/c/assets/themes/default/css/addmore.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="136" column="63" selection-start="6635" selection-end="6640" vertical-scroll-proportion="0.46653542" vertical-offset="1973" max-vertical-offset="8313">
+        <state line="12" column="22" selection-start="205" selection-end="205" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-admin/js/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="827" column="27" selection-start="22416" selection-end="22416" vertical-scroll-proportion="0.4536862" vertical-offset="13819" max-vertical-offset="14960" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/vneconomist/css/addmore.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="1" selection-start="133" selection-end="133" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2261">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/c/application/views/themes/default/template/user/tpl_edit_profile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="41" selection-start="523" selection-end="523" vertical-scroll-proportion="-0.0" vertical-offset="153" max-vertical-offset="5219">
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#4;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#4;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#0;n#ul#0;n#div#0;n#div#2;n#div#4;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#4;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#4;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ul#0;n#div#1;n#div#6;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#div#6;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#7;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#span#0;n#div#0;n#div#7;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/c/assets/themes/default/js/custom-autocomplete.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="98" column="13" selection-start="4119" selection-end="4119" vertical-scroll-proportion="0.5254545" vertical-offset="1377" max-vertical-offset="2856">
           <folding />
         </state>
       </provider>

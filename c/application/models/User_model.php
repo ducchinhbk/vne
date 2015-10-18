@@ -240,4 +240,77 @@ class User_model extends CI_Model {
             return null;
         }
     }
+
+    public function update_user_info($data){
+        if(isset($data['ID']) && $data['ID'] > 0){
+            $sqlSetData = "user_activation_key = ''";
+            // user_nicename;
+            if(isset($data['user_nicename']) && !empty($data['user_nicename'])){
+                $sqlSetData .= ",user_nicename = ". $this->db->escape($data['user_nicename']);
+            }
+            // display_name
+            if(isset($data['display_name']) && !empty($data['display_name'])){
+                $sqlSetData .= ",display_name = ". $this->db->escape($data['display_name']);
+            }
+            // first name
+            if(isset($data['first_name'])){
+                $sqlSetData .= ", first_name = ". $this->db->escape($data['first_name']);
+            }
+            // last_name
+            if(isset($data['last_name'])){
+                $sqlSetData .= ", last_name = ". $this->db->escape($data['last_name']);
+            }
+            // in_access_token
+            if(isset($data['in_access_token'])){
+                $sqlSetData .= ", in_access_token = ". $this->db->escape($data['in_access_token']);
+            }
+            // in_token_expire
+            if(isset($data['in_token_expire'])){
+                $sqlSetData .= ", in_token_expire = ". $this->db->escape($data['in_token_expire']);
+            }
+            // user_activation_key
+            if(isset($data['user_activation_key'])){
+                $sqlSetData .= ", user_activation_key = ". $this->db->escape($data['user_activation_key']);
+            }
+            // cus_description
+            if(isset($data['cus_description'])){
+                $sqlSetData .= ", cus_description = ". $this->db->escape($data['cus_description']);
+            }
+            // cus_avatar
+            if(isset($data['cus_avatar'])){
+                $sqlSetData .= ", cus_avatar = ". $this->db->escape($data['cus_avatar']);
+            }
+            // cus_cover
+            if(isset($data['cus_cover'])){
+                $sqlSetData .= ", cus_cover = ". $this->db->escape($data['cus_cover']);
+            }
+            // cus_quote
+            if(isset($data['cus_quote'])){
+                $sqlSetData .= ", cus_quote = ". $this->db->escape($data['cus_quote']);
+            }
+            // cus_career
+            if(isset($data['cus_career'])){
+                $sqlSetData .= ", cus_career = ". $this->db->escape($data['cus_career']);
+            }
+            // cus_company
+            if(isset($data['cus_company'])){
+                $sqlSetData .= ", cus_company = ". $this->db->escape($data['cus_company']);
+            }
+            // cus_city
+            if(isset($data['cus_city'])){
+                $sqlSetData .= ", cus_city = ". $this->db->escape($data['cus_city']);
+            }
+
+            //
+            $sql = "UPDATE wp_users SET ". $sqlSetData . " WHERE ID = ". (int)$data['ID'];
+            try{
+                $this->db->query($sql);
+                return $data['ID'];
+            }catch(Exception $e){
+                echo $e->getMessage();
+            }
+        }else{
+            return null;
+        }
+    }
 }

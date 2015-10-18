@@ -13,13 +13,12 @@ class Ajax extends CI_Controller {
         parent::__construct();
         //$this->load->library('Input');
         if (!$this->input->is_ajax_request()) {
-           exit('No direct script access allowed');
+            exit('No direct script access allowed');
         }
     }
     
     
-	public function index()
-	{  
+	public function index(){
 	   echo "fdadfldahf";
 	}
     
@@ -35,10 +34,28 @@ class Ajax extends CI_Controller {
         
         $categories = $this->post->get_post_sub_categories($cate_id);
         $data['categories'] = $categories;
-		
+
         $this->load->view('ajax/tpl_subcategory', $data);
         
     }
-    
+
+    public function get_wp_post_tag(){
+        header('Content-Type: application/json');
+        if(isset($_SESSION['user_id']) && $this->session->user_id > 0 && isset($_COOKIE['vnup_user'])){
+            if(isset($_GET['filter_model'])){
+                $this->load->model('tag_model');
+                $filter_model = $_GET['filter_model'];
+                $postTags = $this->tag_model->filter_post_tag_by_name($filter_model);
+                $result = array();
+                foreach($postTags as $postTag){
+                    $result[] = array(
+                        'term_name' => $postTag['name'],
+                        'term_id' => $postTag['term_id']
+                    );
+                }
+                echo json_encode($result);
+            }
+        }
+    }
    
 }

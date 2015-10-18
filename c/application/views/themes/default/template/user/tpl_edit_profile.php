@@ -1,7 +1,7 @@
 <div id="main-container" class="wrap-container container clearfix offcanvas offcanvas-right">
     <div class="main-content controller-member action-edit">
         <div class="append-bottom">
-            <form id="member-edit-form" action="#" method="post">
+            <div id="member-edit-form">
                 <div style="display:none">
                     <input type="hidden" value="5c2696c5a2b1244f11d3a184cc47c3f866772c5c" name="YII_CSRF_TOKEN"/>
                 </div>    
@@ -89,7 +89,13 @@
                                 <li class="attach-success" style="opacity: 1; width: 60px;" data-category="other" id="710651">
                                     <a href="#" class="remove" title="Remove">Remove</a>
                                     <div class="attachFiles-item">
-                                        <img alt="undefined - " class="preview" style="" src="http://d3v9w2rcr4yc0o.cloudfront.net/uploads/thumbs/902af83297ca2ee2b4e73a6ceef84f7d_70x70.png">
+                                        <?php
+                                            $userAvatar = $_SESSION['cus_avatar'];
+                                            if(strpos($userAvatar, 'http') === false){
+                                                $userAvatar = config_item('wp_home_url'). '/' . $_SESSION['cus_avatar'];
+                                            }
+                                        ?>
+                                        <img alt="undefined - " class="preview" style="" src="<?= $userAvatar; ?>">
                                     </div>
             
                                     <input type="hidden" name="MemberProfile[images][710651][name]" data-file-id="710651" data-property="name" class="file-attachment file-attach-710651" value="902af83297ca2ee2b4e73a6ceef84f7d.png"><input type="hidden" name="MemberProfile[images][710651][type]" data-file-id="710651" data-property="type" class="file-attachment file-attach-710651" value="other"><input type="hidden" name="MemberProfile[images][710651][path]" data-file-id="710651" data-property="path" class="file-attachment file-attach-710651" value=""><input type="hidden" name="MemberProfile[images][710651][thumb]" data-file-id="710651" data-property="thumb" class="file-attachment file-attach-710651" value=""><input type="hidden" name="MemberProfile[images][710651][id]" data-file-id="710651" data-property="id" class="file-attachment file-attach-710651" value="710651"><input type="hidden" name="MemberProfile[images][710651][filesize]" data-file-id="710651" data-property="filesize" class="file-attachment file-attach-710651" value="undefined"><input type="hidden" name="MemberProfile[images][710651][description]" data-file-id="710651" data-property="description" class="file-attachment file-attach-710651" value=""/>
@@ -114,8 +120,14 @@
                  <div class="form-group">
                     <label class="clearfix" for="MemberProfile_about">About You</label>
                     <textarea class="form-control popover-toggle" rows="10" placeholder="Introduce yourself..." name="MemberProfile[about]" id="MemberProfile_about">
-                        5 years in web developer, Php developer
-                    </textarea>    
+                        <?= $_SESSION['cus_description']?>
+                    </textarea>
+                    <script>
+                        var desValue = $('#MemberProfile_about').val();
+                        if(desValue.trim() == ''){
+                            $('#MemberProfile_about').val('');
+                        }
+                    </script>
                  </div>
                  <div class="form-group">
                     <label class="pull-left" for="MemberProfile_skillsString">Your profile skills</label>
@@ -128,7 +140,7 @@
                            
                     <div class="clear"></div>
                     <div class="select2-container select2-container-multi clear form-control" id="s2id_MemberProfile_skillsString">
-                        <ul class="select2-choices">  
+                        <ul class="select2-choices" style="display: inline-block; float: left">
                             <li class="select2-search-choice">    
                                 <div>Mobile app design</div>    
                                 <a href="#" class="select2-search-choice-close" tabindex="-1"></a>
@@ -137,23 +149,9 @@
                                 <div>Website design</div>    
                                 <a href="#" class="select2-search-choice-close" tabindex="-1"></a>
                             </li>
-                            <li class="select2-search-choice">    
-                                <div>Wordpress design</div>    
-                                <a href="#" class="select2-search-choice-close" tabindex="-1"></a>
-                            </li>
-                            <li class="select2-search-choice">    
-                                <div>CMS</div>    
-                                <a href="#" class="select2-search-choice-close" tabindex="-1"></a>
-                            </li>
-                            <li class="select2-search-choice">    
-                                <div>Code igniter</div>    
-                                <a href="#" class="select2-search-choice-close" tabindex="-1"></a>
-                            </li>
-
-                            <input type="text" style="border: none; padding-top:9px;" />
                         </ul>
+                        <input type="text" style="border: none; padding-top:9px; display: inline-block; float: left" id="post-tag-autocomplete"/>
                     </div>
-                            
                     <p class="contact-skills">
                         Can't find a skill? 
                         <a id="skill-suggestion-trigger-selector" 0="Contact us" href="#">Contact us</a> to add it.        
@@ -174,7 +172,7 @@
                         <input class="action-declineDialog-submit tall col-xs-4 btn btn-pph" id="edit-profile-submit" type="submit" name="yt3" value="Done"/>        
                         <div class="clear"></div>
                     </div>
-                 </form>
+            </div>
             </div>
     </div>
     <aside class="right-column sidebar-member-edit offcanvas-sidebar">
@@ -276,4 +274,29 @@
             }
         }
     });
+
+    $('#post-tag-autocomplete').autocomplete({
+        'source': function(request, response) {
+            $.ajax({
+                url: '<?php echo config_item('base_url'); ?>ajax/get_wp_post_tag?filter_model=' +  encodeURIComponent(request),
+                dataType: 'json',
+                success: function(json) {
+                    response($.map(json, function(item) {
+                        return {
+                            label: item['term_name'],
+                            value: item['term_id']
+                        }
+                    }));
+                }
+            });
+        },
+        'select': function(item) {
+            var html = '<li class="select2-search-choice">'+
+                       '<div>'+ item['label'] + '</div>'+
+                            '<a tabindex="-1" class="select2-search-choice-close" href="#"></a>'+
+                       '</li>';
+            $(this).parent().find('ul.select2-choices').append(html);
+        }
+    });
+
 </script>

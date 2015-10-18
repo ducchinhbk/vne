@@ -519,9 +519,18 @@ class User extends CI_Controller
                     if(file_exists($target_file)){
                         $result['status'] = true;
                         $result['coverUrl'] = $this->homepage . '/upload/cover/'. basename( $_FILES["coverfile"]["name"]);
+
+                        // UPDATE USER SESSION DATA
+                        $_SESSION['cus_cover'] = 'upload/cover/'. basename( $_FILES["coverfile"]["name"]);
                     }else{
                         $isOk = move_uploaded_file($tempPath, $target_file);
                         if ($isOk) {
+                            $data['ID'] = $_SESSION['user_id'];
+                            $data['cus_cover'] = 'upload/cover/'. basename( $_FILES["coverfile"]["name"]);
+                            $this->user_model->update_user_info($data);
+                            // UPDATE USER SESSION DATA
+                            $_SESSION['cus_cover'] = $data['cus_cover'];
+
                             $result['status'] = true;
                             $result['coverUrl'] = $this->homepage . '/upload/cover/'. basename( $_FILES["coverfile"]["name"]);
                         } else {
@@ -534,6 +543,7 @@ class User extends CI_Controller
                     $result['message'] = 'Please choose image file';
                 }
             }
+
             echo json_encode($result);
         }else{
             redirect($this->homepage);
