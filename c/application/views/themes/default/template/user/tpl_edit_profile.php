@@ -1,5 +1,3 @@
-<?php echo $header_view;?>
-
 <div id="main-container" class="wrap-container container clearfix offcanvas offcanvas-right">
     <div class="main-content controller-member action-edit">
         <div class="append-bottom">

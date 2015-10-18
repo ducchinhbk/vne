@@ -53,7 +53,6 @@ class User extends CI_Controller
         $this->load->helper('cookie');
         $this->load->model('user_model');
         $this->load->model('user_cookie_model');
-        $this->load->helper('wp');
 
         // setting up email ===============================================
         $config['useragent'] = "Codeigniter";
@@ -172,7 +171,7 @@ class User extends CI_Controller
             $data['image'] = $this->session->userdata('user_image');
             $data['loginViaLinkin'] = 'https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id='. $this->inClientId . '&redirect_uri='. $this->callbackInLink .'&state=DCEeFWf45A53sdfKef42afda4&scope=r_basicprofile%20r_emailaddress';
 
-            $data['header_view'] = c_get_header();
+            $this->load->view('common/tpl_header');
             $this->load->view('user/tpl_login', $data);
             $this->load->view('common/tpl_footer');
         }
@@ -331,7 +330,7 @@ class User extends CI_Controller
             $data['image'] = $this->session->userdata('image');
             $data['loginViaLinkin'] = 'https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id='. $this->inClientId . '&redirect_uri='. $this->callbackInLink .'&state=DCEeFWf45A53sdfKef42afda4&scope=r_basicprofile%20r_emailaddress';
 
-            $data['header_view'] = c_get_header();
+            $this->load->view('common/tpl_header');
             $this->load->view('user/tpl_signup', $data);
             $this->load->view('common/tpl_footer');
         }
@@ -371,8 +370,6 @@ class User extends CI_Controller
     }
 
     public function logout(){
-        $this->load->helper('wp');
-
         // REMOVE SESSION DATA
         $this->session->unset_userdata('user_email');
         $this->session->unset_userdata('user_login');
@@ -497,9 +494,11 @@ class User extends CI_Controller
     //method edit profile
      public function edit(){
         if(isset($_SESSION['user_id']) && $this->session->user_id > 0 && isset($_COOKIE['vnup_user'])){
-            $this->load->helper('wp');
 
-            $data['header_view'] = c_get_header();
+            $data = array();
+            // TODO: more code here
+
+            $this->load->view('common/tpl_header');
             $this->load->view('user/tpl_edit_profile', $data);
             $this->load->view('common/tpl_footer');
         }else{
