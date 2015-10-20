@@ -95,7 +95,7 @@
                                                 $userAvatar = config_item('wp_home_url'). '/' . $_SESSION['cus_avatar'];
                                             }
                                         ?>
-                                        <img alt="undefined - " class="preview" style="" src="<?= $userAvatar; ?>">
+                                        <img alt="undefined - " id="avatarImg" style="cursor: pointer" class="preview" style="" src="<?= $userAvatar; ?>">
                                     </div>
             
                                     <input type="hidden" name="MemberProfile[images][710651][name]" data-file-id="710651" data-property="name" class="file-attachment file-attach-710651" value="902af83297ca2ee2b4e73a6ceef84f7d.png"><input type="hidden" name="MemberProfile[images][710651][type]" data-file-id="710651" data-property="type" class="file-attachment file-attach-710651" value="other"><input type="hidden" name="MemberProfile[images][710651][path]" data-file-id="710651" data-property="path" class="file-attachment file-attach-710651" value=""><input type="hidden" name="MemberProfile[images][710651][thumb]" data-file-id="710651" data-property="thumb" class="file-attachment file-attach-710651" value=""><input type="hidden" name="MemberProfile[images][710651][id]" data-file-id="710651" data-property="id" class="file-attachment file-attach-710651" value="710651"><input type="hidden" name="MemberProfile[images][710651][filesize]" data-file-id="710651" data-property="filesize" class="file-attachment file-attach-710651" value="undefined"><input type="hidden" name="MemberProfile[images][710651][description]" data-file-id="710651" data-property="description" class="file-attachment file-attach-710651" value=""/>
@@ -213,7 +213,7 @@
 <script src="<?php echo base_url();?>assets/themes/default/js/bootstrap-fileinput/fileinput.min.js"></script>
 
 <!-- MODEL BOOPSTRAP -->
-<div id="channelDialogAction" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+<div id="coverDialogModal" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -223,7 +223,7 @@
                 </h4>
             </div>
             <div class="modal-body">
-                <div class="container-fluid" id="channelDlActionBody">
+                <div class="container-fluid" id="coverDialogModalBody">
                     <div class="row">
                         <div class="col-sm-12">
                             <form id="cover-form" method="post" enctype="multipart/form-data" action="uploadfile">
@@ -236,12 +236,41 @@
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
-    <input type="hidden" id="currChannelId" value="0" />
 </div><!-- /.modal -->
+
+
+<!-- MODEL AVATAR BOOPSTRAP -->
+<div id="avatarDialogModal" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="channelDlActionTitle">
+                    <i class="fa fa-edit"></i>Avatar Image
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid" id="avatarDialogModalBody">
+                    <div class="row">
+                        <form id="avatar-form" method="post" enctype="multipart/form-data" action="uploadfile">
+                            <input type="hidden" name="image_type" value="avatar" />
+                            <input type="file" id="img_avatar" name="avatarfile"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 
 <script>
     $('#coverImg').bind('click', function(){
-        $('#channelDialogAction').modal('show');
+        $('#coverDialogModal').modal('show');
+    });
+
+    $('#avatarImg').bind('click', function(){
+        $('#avatarDialogModal').modal('show');
     });
 
     $("#img_cover").fileinput({
@@ -260,6 +289,56 @@
         allowedFileTypes : ['image'],
         allowedFileExtensions : ['jpg', 'gif', 'png']
     });
+
+    $("#img_avatar").fileinput({
+        initialPreview: [
+        ],
+        overwriteInitial: false,
+        maxFileSize: 1000,
+        initialCaption: "",
+        previewSettings: {
+            image: {width: "auto", height: "389px"}
+        },
+        layoutTemplates: {
+            close : ""
+        },
+        uploadLabel : "OK",
+        allowedFileTypes : ['image'],
+        allowedFileExtensions : ['jpg', 'gif', 'png']
+    });
+
+    $('#img_avatar').on('fileloaded', function(event, file, previewId, index, reader) {
+        var $image = $('#avatarDialogModalBody img.file-preview-image');
+        $image.cropper();
+    });
+
+    // SUBMIT AVATAR FORM ===================================
+    $('#avatar-form').ajaxForm({
+        url : $(this).attr('action'), // or whatever
+        type : "POST",
+        dataType : 'json',
+        data : $(this).serialize(),
+        beforeSubmit : function(arr, $form, options){
+            var $image = $('#avatarDialogModalBody img.file-preview-image');
+            var result = $image.cropper('getCroppedCanvas');
+            arr.push({
+                name: 'avatar_data',
+                value: result.toDataURL()
+            });
+            return true;
+        },
+        success : function (json){
+            if(json.status){
+                var d = new Date();
+                $('#avatarImg').attr('src', json.coverUrl+ "?" + d.getTime());
+                $('#avatarDialogModal').modal('hide');
+            }else{
+                alert(json.message);
+            }
+        }
+    });
+
+    // SUBMIT COVER FORM ======================================
     $('#cover-form').ajaxForm({
         url : $(this).attr('action'), // or whatever
         type : "POST",
@@ -268,7 +347,7 @@
         success : function (json){
             if(json.status){
                 $('#coverImg').attr('src', json.coverUrl);
-                $('#channelDialogAction').modal('hide');
+                $('#coverDialogModal').modal('hide');
             }else{
                 alert(json.message);
             }

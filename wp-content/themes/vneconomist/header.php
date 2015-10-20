@@ -145,6 +145,9 @@ function isSessionUserDataAvailable(){
                                     // user image
                                     if(isset($sesObject['user_image']) && !empty($sesObject['user_image'])){
                                         $userImage = $sesObject['user_image'];
+                                        if(strpos($userImage, 'http') === false){
+                                            $userImage = site_url('/'. $userImage);
+                                        }
                                     }
                                 ?>
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">

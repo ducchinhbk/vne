@@ -107,7 +107,7 @@ class User extends CI_Controller
                 echo "Sai username hoac password";
             }
         }else if(isset($_GET)){
-            $this->form_validation->set_rules('LoginForm_email', 'Email', 'required');
+            $this->form_validation->set_rule('LoginForm_email', 'Email', 'required');
             $this->form_validation->set_rules('text', 'text', 'required');
 
             $sess = $this->helper->getSessionFromRedirect();
@@ -509,30 +509,56 @@ class User extends CI_Controller
         header('Content-Type: application/json');
         if(isset($_SESSION['user_id']) && $this->session->user_id > 0 && isset($_COOKIE['vnup_user'])){
             $result = array();
-            if(isset($_POST['image_type']) && isset($_FILES['coverfile'])){
-                $target_dir = config_item('home_dir'). '/upload/cover/';
-                $target_file = $target_dir . basename($_FILES["coverfile"]["name"]);
+            if(isset($_POST['image_type'])){
+                // cover file
+                // or avatar file
+                $imageType = $_POST['image_type'];
+                $fileUpload = null;
+                if($imageType === 'cover'){
+                    $fileUpload = $_FILES["coverfile"];
+                }else if($imageType === 'avatar'){
+                    $fileUpload = $_FILES["avatarfile"];
+                }
 
-                $check = getimagesize($_FILES["coverfile"]["tmp_name"]);
+                $target_dir = config_item('home_dir'). '/upload/'. $imageType .'/';
+                $check = getimagesize($fileUpload["tmp_name"]);
+
                 if($check){
-                    $tempPath = $_FILES["coverfile"]["tmp_name"];
-                    if(file_exists($target_file)){
+                    $tempPath = $fileUpload["tmp_name"];
+                    if($imageType === 'avatar'){
+                        $baseName = $_SESSION['user_id'] . '_'. basename($fileUpload["name"]);
+                    }else{
+                        $baseName = basename($fileUpload["name"]);
+                    }
+                    $target_file = $target_dir . $baseName;
+
+                    if(file_exists($target_file) && $imageType === 'cover'){
+                        $data['ID'] = $_SESSION['user_id'];
+                        $data['cus_'. $imageType] = 'upload/'. $imageType .'/'. $baseName;
+                        $this->user_model->update_user_info($data);
+
                         $result['status'] = true;
-                        $result['coverUrl'] = $this->homepage . '/upload/cover/'. basename( $_FILES["coverfile"]["name"]);
+                        $result['coverUrl'] = $this->homepage . '/upload/'. $imageType .'/'. $baseName;
 
                         // UPDATE USER SESSION DATA
-                        $_SESSION['cus_cover'] = 'upload/cover/'. basename( $_FILES["coverfile"]["name"]);
+                        $_SESSION['cus_'. $imageType] = 'upload/'. $imageType .'/'. $baseName;
                     }else{
+                        if($imageType === 'avatar'){
+                            $avatarData = $_POST['avatar_data'];
+                            $avatarData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $avatarData));
+                            file_put_contents($tempPath, $avatarData);
+                        }
+                        unlink($target_file);
                         $isOk = move_uploaded_file($tempPath, $target_file);
                         if ($isOk) {
                             $data['ID'] = $_SESSION['user_id'];
-                            $data['cus_cover'] = 'upload/cover/'. basename( $_FILES["coverfile"]["name"]);
+                            $data['cus_'. $imageType] = 'upload/'. $imageType .'/'. $baseName;
                             $this->user_model->update_user_info($data);
                             // UPDATE USER SESSION DATA
-                            $_SESSION['cus_cover'] = $data['cus_cover'];
+                            $_SESSION['cus_'. $imageType] = $data['cus_'. $imageType];
 
                             $result['status'] = true;
-                            $result['coverUrl'] = $this->homepage . '/upload/cover/'. basename( $_FILES["coverfile"]["name"]);
+                            $result['coverUrl'] = $this->homepage . '/upload/'. $imageType .'/'. $baseName;
                         } else {
                             $result['status'] = false;
                             $result['message'] = 'Sorry, there was an error uploading your file';

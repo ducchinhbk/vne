@@ -6,6 +6,8 @@
             this.items = new Array();
             this.currentPressDown = 0;
             this.index = 0;
+            this.background_color = 'rgb(104,104,104)';
+            this.background_compare = 'rgb(128, 128, 128)';
 
             $.extend(this, option);
             $(this).attr('autocomplete', 'off');
@@ -28,10 +30,10 @@
                     case 8 : // backspace
                         if($(this).val() == ''){
                             var lastLi = $(this).parent().find('ul.select2-choices li:last-child');
-                            if($(lastLi).css('background-color') == 'rgb(0, 0, 255)'){
+                            if($(lastLi).css('background-color') == this.background_compare){
                                 $(lastLi).remove();
                             }else{
-                                $(lastLi).css('background-color', 'blue');
+                                $(lastLi).css('background-color', 'grey');
                             }
                         }
                         break;

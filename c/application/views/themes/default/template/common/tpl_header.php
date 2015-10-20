@@ -22,7 +22,9 @@
 
     <link rel="stylesheet" href="<?php echo config_item('wp_theme_url'); ?>style.css"/>
     <!--[if lt IE 9]>
-    <script src="<?php echo config_item('wp_theme_url'); ?>/js/html5.js"></script>
+        <script src="<?php echo config_item('wp_theme_url'); ?>/js/html5.js"></script>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="<?php echo config_item('wp_theme_url'); ?>/js/jquery-1.11.3.min.js"></script>
 
@@ -30,7 +32,11 @@
     <script src="http://malsup.github.com/jquery.form.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
 
+
+    <link rel="stylesheet" href="<?php echo config_item('asset_url'); ?>default/css/cropper.min.css"/>
     <script src="<?php echo config_item('asset_url'); ?>default/js/custom-autocomplete.js"></script>
+    <script src="<?php echo config_item('asset_url'); ?>default/js/cropper/cropper.min.js"></script>
+
 </head>
 <?php
     function isSessionUserDataAvailable(){
