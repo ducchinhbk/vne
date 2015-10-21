@@ -126,3 +126,16 @@ label.error{
     outline: 0 none;
     padding: 5px;
 }
+
+/* RATING */
+#rating { list-style:none; margin:20px auto; }
+#rating li { display:inline; float:left; }
+#rating li a { display:block; width:22px; height:21px; margin:5px; background-color:#cbcbcb; text-indent:-9999px;
+    -moz-border-radius: 2px;-webkit-border-radius: 2px;-o-border-radius: 2px;  }
+
+#ratinginfo { float:left; width:50px; }
+#ratinginfo p {
+    background-image: url("../images/textbg.png");
+    font: 20px Ari,'Times New Roman',serif;
+        padding: 4px 5px;
+    font-weight: bold; }

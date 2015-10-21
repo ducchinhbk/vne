@@ -15,7 +15,7 @@
 ?>
 <div class="container container-top"></div>
 	<div id="main-container" class="wrap-container container clearfix offcanvas offcanvas-right">
-		<div class="main-content controller-hourlie action-view">
+		<div class="main-content controller-hourlie action-view controller-member action-contact">
        <?php if (have_posts()) { ?>		
              <?php while (have_posts()) : the_post();
                      $user_info = get_userdata(get_the_author_ID()); 
@@ -32,14 +32,14 @@
                 <?php setPostViews(get_the_ID());  endwhile; ?> 
             <?php } else { ?>
         		  <div class="col-xs-12 clearfix js-auto-pause-hidden hourlie-description-text">
-        				<h1 class="single-title" >Không có thông tin d? hi?n th?</h1>					
+        				<h1 class="single-title" >Không có thông tin để hiển thị</h1>					
 			     </div>
                         			
  		     <?php } ?> 
 			<div class="js-auto-pause-hidden" >
 				<div class="widget-order-hourlie-addons clearfix">
 					<div class="title-container">
-						<h2 class="col-xs-12 clearfix prepend-top">Từ khóa liên quan</h2>
+						<h2 class="col-xs-12 clearfix prepend-top">Bộ sưu tập liên quan</h2>
 					</div>
 				
 				    <div  class="content-text clear addons-container" data-hook="addons-container">
@@ -50,9 +50,58 @@
 				    </div>
 				</div>
 			</div>
+            <div>
+                <div class="col-xs-12 col-sm-6 col-md-2 col-lg-1 member"></div>
+                <div class="col-xs-12 col-sm-6 col-md-10 col-lg-10 col-lg-pull-1 contact">
+                    <div class="hire-form-container clearfix">
+                        <div>
+        					<form enctype="multipart/form-data" id="member-contact-form" action="#" method="post">
+        						<div class="row">
+        							<div class="col-xs-12 form-group">
+        								<div class="instant-hire clearfix">
+        									<div class="fields clearfix">
+        										
+        										<div class="clearfix payment-contracts">
+        											<div class="row">
+        												<ul id="rating">
+        													<li><a href="#">1.0</a></li>
+        													<li><a href="#">1.5</a></li>
+        													<li><a href="#">2.0</a></li>
+        													<li><a href="#">2.5</a></li>
+        													<li><a href="#">3.0</a></li>
+        													<li><a href="#">3.5</a></li>
+        													<li><a href="#">4.0</a></li>
+        													<li><a href="#">4.5</a></li>
+        													<li><a href="#">5.0</a></li>
+        												</ul>
+        											</div>
+        
+        										</div>
+        									</div>
+        								</div>
+        								<div class="textbox new-job hourlie clearfix">
+        									<textarea placeholder="Tip: A great review covers food, service, and ambiance.." class="col-xs-12" name="ContactSellerForm[description]" id="ContactSellerForm_description"></textarea>            
+        									
+        								</div>
+        								
+        							</div>
+        						</div>
+        
+        
+        						<div class="form-group submit-btn clearfix gutter-top new-job hourlie">
+        							<input class="tall btn btn-inverted call-to-action col-xs-12 col-sm-6 col-md-4 col-lg-2" type="submit" name="yt0" value="Send"  style="padding: 7px 0;"/>
+        						</div>
+        						<div class="js-invite-more-sellers"></div>
+        
+        					</form>
+        				</div>
+                    </div>
+                </div>
+                </div>
 			<div class="col-xs-12 js-auto-pause-hidden hourlie-description-text">
-		
+		          
 				<div class="feedbacks-container clear prepend-top">
+                    
 					<div class="feedback-toggle-container visible-xs visible-sm clearfix">
 						<button class="btn tall call-to-action col-xs-12" id="toggle-reviews">
 							Show Reviews (25)   </button>
@@ -395,7 +444,7 @@
 						<i class="fpph fpph-clock-wall"></i>
 					</span>
 					<span>
-						<span>Bình luận</span><br>
+						<span>Bình luận</span><br/>
 						<span class="value js-delivery-days">25</span>
 					</span>
 				</div>
@@ -404,7 +453,7 @@
 						<i class="fpph fpph-thumb-up"></i>
 					</span>
 					<span>
-						<span class="value">98%</span> Rating<br>
+						<span class="value">98%</span> Rating<br/>
 						<span>(25 reviews)</span>
 					</span>
 				</div>
@@ -523,6 +572,9 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery1.4.1.min.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.color.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/script.js"></script>
 <script>
     $(document).ready(function(){
        $('.about-dialog-trigger').click(function(){

@@ -12,6 +12,19 @@ add_image_size( 'mid-image', 175, 92, true );
 // register menu
 register_nav_menu('category-menu',__( 'Category Menu' ));
 
+
+
+add_action('init', 'dvd_enqueue_script');
+function dvd_enqueue_script(){
+    wp_register_script('ajax_js', get_template_directory_uri() . '/js/ajax.js', array('jquery'), null, false);
+    wp_localize_script('ajax_js', 'AJAX', array('url' => admin_url('admin-ajax.php')));
+    wp_enqueue_script('ajax_js');
+    
+}
+//register ajax action for category page
+add_action('wp_ajax_autocomplete_getposts', 'autocomplete_getposts');
+add_action('wp_ajax_nopriv_autocomplete_getposts', 'autocomplete_getposts');
+
 //get background image
 function get_bg_resize_image($postID, $size)
 {
@@ -240,10 +253,15 @@ function c_crop_image_resize( $url, $width = NULL, $height = NULL, $crop = true,
 		return $resized_url;
 	}											
 												
+/******--------AJAX--------********/
 													
 														
+function autocomplete_getposts(){
+                  
+    return "dflkhadfladf";
+    die();
+}												
 												
-												
-											
+/******--------END AJAX--------********/											
 									
 									

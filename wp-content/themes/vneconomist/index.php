@@ -62,7 +62,7 @@
                     <form class="clearfix" id="get-started" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" role="search">
                         
                         <div class="col-sm-10 no-padding-left">
-                            <input placeholder="Nhập từ khóa tìm kiếm.." value="<?php echo esc_attr( get_search_query() ); ?>" name="s" type="text" maxlength="85" />
+                            <input placeholder="Nhập từ khóa tìm kiếm.." value="<?php echo esc_attr( get_search_query() ); ?>" name="s" id="search-input" type="text" maxlength="85" />
                            
                         </div>
                         <div class="col-sm-2 no-padding-left">
