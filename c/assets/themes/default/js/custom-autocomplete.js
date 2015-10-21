@@ -43,9 +43,13 @@
                             value = $(this).parent().find('ul.dropdown-menu :eq('+ this.index*2 + ') a:first-child').html();
                         }
                         if(value == ''){
-                            break;
+                            if($(this).val().trim().length > 0){
+                                value = $(this).val();
+                            }else{
+                                break;
+                            }
                         }
-                        var html = '<li class="select2-search-choice">'+
+                        var html = '<li class="select2-search-choice" value="'+ value +'">'+
                             '<div>'+ value + '</div>'+
                             '<a tabindex="-1" class="select2-search-choice-close" href="#"></a>'+
                             '</li>';

@@ -309,14 +309,21 @@ class User_model extends CI_Model {
                     if(is_numeric($termId)){
                         (!empty($meta_value_build))? $meta_value_build .= ','. $termId : $meta_value_build .= $termId;
                     }else if(is_string($termId)){
-                        // TODO UPDATE TERM ID  && INSERT , get back termid
+                        // Insert into TERM table
+                        $sqlInsert = "INSERT INTO wp_terms SET name = ". $this->db->escape($termId) . ", slug = ". $this->db->escape($this->remove_vietnamese_accents($termId));
+                        $this->db->query($sqlInsert);
+                        $inTermId = $this->db->insert_id();
+                        // Insert into TERM_TAXONOMY table
+                        $sqlInsert = "INSERT INTO wp_term_taxonomy SET term_id =". (int) $inTermId. ", taxonomy = 'post_tag', description = ". $this->db->escape($termId) . ", parent=0,count=1";
+                        $this->db->query($sqlInsert);
+                        (!empty($meta_value_build))? $meta_value_build .= ','. $inTermId : $meta_value_build .= $inTermId;
                     }
                 }
 
                 $sqlMetaValue = "SELECT * FROM wp_usermeta WHERE user_id =" . (int) $data['ID'] . " AND meta_key = 'interested'";
                 $tempQuery = $this->db->query($sqlMetaValue);
                 if($tempQuery->num_rows() > 0){  // UPDATE
-                    $sqlMetaValue = "UPDATE wp_usermeta SET meta_value = ". $meta_value_build ." WHERE user_id = ". (int) $data['ID'] ." AND meta_key = 'interested'";
+                    $sqlMetaValue = "UPDATE wp_usermeta SET meta_value = ". $this->db->escape($meta_value_build) ." WHERE user_id = ". (int) $data['ID'] ." AND meta_key = 'interested'";
                 }else{  // INSERT
                     $sqlMetaValue = "INSERT INTO wp_usermeta
                                     SET user_id = ". (int)$data['ID']. ",
@@ -344,11 +351,45 @@ class User_model extends CI_Model {
         $query1 = $this->db->query($sqlTerm);
         if($query1->num_rows() > 0){
             $inValue = $query1->result_array()[0]['meta_value'];
-            $sql = $sql = "SELECT * FROM wp_terms term LEFT JOIN wp_term_taxonomy term_tx ON term.term_id = term_tx.term_id
+            if(!empty($inValue)){
+                $sql = $sql = "SELECT * FROM wp_terms term LEFT JOIN wp_term_taxonomy term_tx ON term.term_id = term_tx.term_id
                          WHERE term_tx.taxonomy = 'post_tag' AND term.term_id in (". $inValue .")";
-            $query = $this->db->query($sql);
-            return $query->result_array();
+                $query = $this->db->query($sql);
+                return $query->result_array();
+            }
         }
         return array();
+    }
+
+    function remove_vietnamese_accents($string) {
+        $trans = array(
+            'à'=>'a','á'=>'a','ả'=>'a','ã'=>'a','ạ'=>'a',
+            '?'=>'a','?'=>'a','?'=>'a','?'=>'a','?'=>'a','?'=>'a',
+            'â'=>'a','?'=>'a','?'=>'a','?'=>'a','?'=>'a','?'=>'a',
+            'À'=>'a','Á'=>'a','?'=>'a','Ã'=>'a','?'=>'a',
+            '?'=>'a','?'=>'a','?'=>'a','?'=>'a','?'=>'a','?'=>'a',
+            'Â'=>'a','?'=>'a','?'=>'a','?'=>'a','?'=>'a','?'=>'a',
+            '?'=>'d','?'=>'d',
+            'è'=>'e','é'=>'e','?'=>'e','?'=>'e','?'=>'e',
+            'ê'=>'e','?'=>'e','?'=>'e','?'=>'e','?'=>'e','?'=>'e',
+            'È'=>'e','É'=>'e','?'=>'e','?'=>'e','?'=>'e',
+            'Ê'=>'e','?'=>'e','?'=>'e','?'=>'e','?'=>'e','?'=>'e',
+            'ì'=>'i','í'=>'i','?'=>'i','?'=>'i','?'=>'i',
+            'Ì'=>'i','Í'=>'i','?'=>'i','?'=>'i','?'=>'i',
+            'ò'=>'o','ó'=>'o','?'=>'o','õ'=>'o','?'=>'o',
+            'ô'=>'o','?'=>'o','?'=>'o','?'=>'o','?'=>'o','?'=>'o',
+            '?'=>'o','?'=>'o','?'=>'o','?'=>'o','?'=>'o','?'=>'o',
+            'Ò'=>'o','Ó'=>'o','?'=>'o','Õ'=>'o','?'=>'o',
+            'Ô'=>'o','?'=>'o','?'=>'o','?'=>'o','?'=>'o','?'=>'o',
+            '?'=>'o','?'=>'o','?'=>'o','?'=>'o','?'=>'o','?'=>'o',
+            'ù'=>'u','ú'=>'u','?'=>'u','?'=>'u','?'=>'u',
+            '?'=>'u','?'=>'u','?'=>'u','?'=>'u','?'=>'u','?'=>'u',
+            'Ù'=>'u','Ú'=>'u','?'=>'u','?'=>'u','?'=>'u',
+            '?'=>'u','?'=>'u','?'=>'u','?'=>'u','?'=>'u','?'=>'u',
+            '?'=>'y','ý'=>'y','?'=>'y','?'=>'y','?'=>'y',
+            'Y'=>'y','?'=>'y','Ý'=>'y','?'=>'y','?'=>'y','?'=>'y',
+            ' '=>'_'
+        );
+        return strtr($string, $trans);
     }
 }

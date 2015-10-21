@@ -101,9 +101,7 @@
                 </div>
                  <div class="form-group">
                     <label class="clearfix" for="MemberProfile_about">About You</label>
-                    <textarea class="form-control popover-toggle" rows="10" placeholder="Introduce yourself..." name="post_data[cus_description]" id="MemberProfile_about">
-                        <?= $_SESSION['cus_description']?>
-                    </textarea>
+                    <textarea class="form-control popover-toggle" rows="10" placeholder="Introduce yourself..." name="post_data[cus_description]" id="MemberProfile_about"><?= $_SESSION['cus_description']?></textarea>
                     <script>
                         var desValue = $('#MemberProfile_about').val();
                         if(desValue.trim() == ''){
@@ -350,6 +348,12 @@
                 name : 'post_data[interested]',
                 value:  interestedArray.toString()
             });
+            for(var j=0; j < arr.length; j++){
+                if(arr[j].name == 'post_data[cus_description]'){
+                    arr[j].value = arr[j].value.trim();
+                    break;
+                }
+            }
             return true;
         },
         success: function(json){
@@ -376,7 +380,7 @@
             });
         },
         'select': function(item) {
-            var html = '<li class="select2-search-choice">'+
+            var html = '<li class="select2-search-choice" value="'+ item['value'] +'">'+
                        '<div>'+ item['label'] + '</div>'+
                             '<a tabindex="-1" class="select2-search-choice-close" href="/chu-de/'+ item['slug'] +'"></a>'+
                        '</li>';
