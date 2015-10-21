@@ -308,7 +308,7 @@ class User_model extends CI_Model {
                 foreach($termIdArray as $termId){
                     if(is_numeric($termId)){
                         (!empty($meta_value_build))? $meta_value_build .= ','. $termId : $meta_value_build .= $termId;
-                    }else if(is_string($termId)){
+                    }else if(is_string($termId) && !empty($termId) && strlen($termId) > 0){
                         // Insert into TERM table
                         $sqlInsert = "INSERT INTO wp_terms SET name = ". $this->db->escape($termId) . ", slug = ". $this->db->escape($this->remove_vietnamese_accents($termId));
                         $this->db->query($sqlInsert);
