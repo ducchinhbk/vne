@@ -80,7 +80,7 @@ function isSessionUserDataAvailable(){
                     'user_fname' => $dbUserToken->first_name,
                     'user_lname' => $dbUserToken->last_name,
                     'user_id' => $dbUserToken->ID,
-                    'user_image' => $dbUserToken->cus_avatar
+                    'cus_avatar' => $dbUserToken->cus_avatar
                 );
                 $_SESSION['wp_user_data'] = $dataUserData;
                 // TODO : show profile HTML menu
@@ -89,7 +89,6 @@ function isSessionUserDataAvailable(){
     }
 
 ?>
-
 <div id="site-wrapper" class="site-wrapper">
     <header id="widget-TopNav" class="top-navigation for-guest <?php echo (is_home())? 'home-version with-transparency': ''; ?>">
         <nav role="navigation" class="container">
@@ -143,8 +142,8 @@ function isSessionUserDataAvailable(){
                                     }
 
                                     // user image
-                                    if(isset($sesObject['user_image']) && !empty($sesObject['user_image'])){
-                                        $userImage = $sesObject['user_image'];
+                                    if(isset($sesObject['cus_avatar']) && !empty($sesObject['cus_avatar'])){
+                                        $userImage = $sesObject['cus_avatar'];
                                         if(strpos($userImage, 'http') === false){
                                             $userImage = site_url('/'. $userImage);
                                         }

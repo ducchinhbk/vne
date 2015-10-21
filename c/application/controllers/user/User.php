@@ -546,6 +546,7 @@ class User extends CI_Controller
                             $this->user_model->update_user_info($data);
                             // UPDATE USER SESSION DATA
                             $_SESSION['cus_'. $imageType] = $data['cus_'. $imageType];
+                            $_SESSION['wp_user_data']['cus_'. $imageType] = $data['cus_'. $imageType];
 
                             $result['status'] = true;
                             $result['coverUrl'] = $this->homepage . '/upload/'. $imageType .'/'. $baseName;
@@ -591,6 +592,9 @@ class User extends CI_Controller
                     $_SESSION['cus_description'] = $data['cus_description'];
                     $_SESSION['cus_city'] = $data['cus_city'];
 
+                    // WP_SESSION
+                    $_SESSION['wp_user_data']['user_fname'] = $data['first_name'];
+                    $_SESSION['wp_user_data']['user_lname'] = $data['last_name'];
                     $result = array(
                         'status' => true,
                         'message' => 'Update profile successfully.'
