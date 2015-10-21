@@ -319,18 +319,19 @@ class User_model extends CI_Model {
                         (!empty($meta_value_build))? $meta_value_build .= ','. $inTermId : $meta_value_build .= $inTermId;
                     }
                 }
-
-                $sqlMetaValue = "SELECT * FROM wp_usermeta WHERE user_id =" . (int) $data['ID'] . " AND meta_key = 'interested'";
-                $tempQuery = $this->db->query($sqlMetaValue);
-                if($tempQuery->num_rows() > 0){  // UPDATE
-                    $sqlMetaValue = "UPDATE wp_usermeta SET meta_value = ". $this->db->escape($meta_value_build) ." WHERE user_id = ". (int) $data['ID'] ." AND meta_key = 'interested'";
-                }else{  // INSERT
-                    $sqlMetaValue = "INSERT INTO wp_usermeta
+                if(!empty($meta_value_build) && strlen($meta_value_build) > 0){
+                    $sqlMetaValue = "SELECT * FROM wp_usermeta WHERE user_id =" . (int) $data['ID'] . " AND meta_key = 'interested'";
+                    $tempQuery = $this->db->query($sqlMetaValue);
+                    if($tempQuery->num_rows() > 0){  // UPDATE
+                        $sqlMetaValue = "UPDATE wp_usermeta SET meta_value = ". $this->db->escape($meta_value_build) ." WHERE user_id = ". (int) $data['ID'] ." AND meta_key = 'interested'";
+                    }else{  // INSERT
+                        $sqlMetaValue = "INSERT INTO wp_usermeta
                                     SET user_id = ". (int)$data['ID']. ",
                                         meta_key = 'interested' ,
                                         meta_value = ". $this->db->escape($meta_value_build);
+                    }
+                    $this->db->query($sqlMetaValue);
                 }
-                $this->db->query($sqlMetaValue);
             }
 
             //
