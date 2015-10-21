@@ -107,9 +107,6 @@ class User extends CI_Controller
                 echo "Sai username hoac password";
             }
         }else if(isset($_GET)){
-            $this->form_validation->set_rule('LoginForm_email', 'Email', 'required');
-            $this->form_validation->set_rules('text', 'text', 'required');
-
             $sess = $this->helper->getSessionFromRedirect();
             if(isset($sess)){
                 $request = new FacebookRequest($sess, 'GET', '/me');
@@ -472,14 +469,8 @@ class User extends CI_Controller
                     $this->input->user_agent(),
                     $this->input->ip_address());
                 if(isset($dbUserToken)){
-                    $dataUserData = array(
-                        'user_login' => $dbUserToken['user_login'],
-                        'user_email' => $dbUserToken['user_email'],
-                        'user_fname' => $dbUserToken['first_name'],
-                        'user_lname' => $dbUserToken['last_name'],
-                        'user_id' => $dbUserToken['ID']
-                    );
-                    $this->session->set_userdata($dataUserData);
+                    // UPDATE USER SESSION DATA
+                    $this->storeDataToUserSession($dbUserToken);
 
                     if(isset($_SESSION['redirect_to'])){
                         redirect($_SESSION['redirect_to']);
@@ -494,8 +485,7 @@ class User extends CI_Controller
      public function edit(){
         if(isset($_SESSION['user_id']) && $this->session->user_id > 0 && isset($_COOKIE['vnup_user'])){
 
-            $data = array();
-            // TODO: more code here
+            $data['user_interested'] = $this->user_model->getUserInterested($_SESSION['user_id']);
 
             $this->load->view('common/tpl_header');
             $this->load->view('user/tpl_edit_profile', $data);
@@ -571,6 +561,43 @@ class User extends CI_Controller
             }
 
             echo json_encode($result);
+        }else{
+            redirect($this->homepage);
+        }
+    }
+
+    public function update_profile(){
+        header('Content-Type: application/json');
+        if(isset($_SESSION['user_id']) && $this->session->user_id > 0 && isset($_COOKIE['vnup_user'])){
+            if(isset($_POST['post_data'])){
+                $post_data = $_POST['post_data'];
+                if(is_array($post_data)){
+                    $data['ID'] = $_SESSION['user_id'];
+                    $data['first_name'] = $post_data['fname'];
+                    $data['last_name'] = $post_data['lname'];
+                    $data['cus_career'] = $post_data['cus_career'];
+                    $data['cus_company'] = $post_data['cus_company'];
+                    $data['cus_description'] = $post_data['cus_description'];
+                    $data['cus_city'] = $post_data['country'];
+                    $data['interested'] = $post_data['interested'];
+
+                    $this->user_model->update_user_info($data);
+
+                    // UPDATE SESSION USER DATA
+                    $_SESSION['user_fname'] = $data['first_name'];
+                    $_SESSION['user_lname'] = $data['last_name'];
+                    $_SESSION['cus_career'] = $data['cus_career'];
+                    $_SESSION['cus_company'] = $data['cus_company'];
+                    $_SESSION['cus_description'] = $data['cus_description'];
+                    $_SESSION['cus_city'] = $data['cus_city'];
+
+                    $result = array(
+                        'status' => true,
+                        'message' => 'Update profile successfully.'
+                    );
+                    echo json_encode($result);
+                }
+            }
         }else{
             redirect($this->homepage);
         }

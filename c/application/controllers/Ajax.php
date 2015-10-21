@@ -50,7 +50,8 @@ class Ajax extends CI_Controller {
                 foreach($postTags as $postTag){
                     $result[] = array(
                         'term_name' => $postTag['name'],
-                        'term_id' => $postTag['term_id']
+                        'term_id' => $postTag['term_id'],
+                        'term_slug' => $postTag['slug']
                     );
                 }
                 echo json_encode($result);

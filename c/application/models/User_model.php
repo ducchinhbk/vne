@@ -301,6 +301,31 @@ class User_model extends CI_Model {
                 $sqlSetData .= ", cus_city = ". $this->db->escape($data['cus_city']);
             }
 
+            // user_interested
+            if(isset($data['interested'])){
+                $termIdArray = explode(',',$data['interested']);
+                $meta_value_build = '';
+                foreach($termIdArray as $termId){
+                    if(is_numeric($termId)){
+                        (!empty($meta_value_build))? $meta_value_build .= ','. $termId : $meta_value_build .= $termId;
+                    }else if(is_string($termId)){
+                        // TODO UPDATE TERM ID  && INSERT , get back termid
+                    }
+                }
+
+                $sqlMetaValue = "SELECT * FROM wp_usermeta WHERE user_id =" . (int) $data['ID'] . " AND meta_key = 'interested'";
+                $tempQuery = $this->db->query($sqlMetaValue);
+                if($tempQuery->num_rows() > 0){  // UPDATE
+                    $sqlMetaValue = "UPDATE wp_usermeta SET meta_value = ". $meta_value_build ." WHERE user_id = ". (int) $data['ID'] ." AND meta_key = 'interested'";
+                }else{  // INSERT
+                    $sqlMetaValue = "INSERT INTO wp_usermeta
+                                    SET user_id = ". (int)$data['ID']. ",
+                                        meta_key = 'interested' ,
+                                        meta_value = ". $this->db->escape($meta_value_build);
+                }
+                $this->db->query($sqlMetaValue);
+            }
+
             //
             $sql = "UPDATE wp_users SET ". $sqlSetData . " WHERE ID = ". (int)$data['ID'];
             try{
@@ -312,5 +337,18 @@ class User_model extends CI_Model {
         }else{
             return null;
         }
+    }
+
+    public function getUserInterested($user_id){
+        $sqlTerm = "SELECT usermeta.meta_value FROM wp_usermeta usermeta WHERE usermeta.user_id =".(int)$user_id. " and usermeta.meta_key = 'interested'";
+        $query1 = $this->db->query($sqlTerm);
+        if($query1->num_rows() > 0){
+            $inValue = $query1->result_array()[0]['meta_value'];
+            $sql = $sql = "SELECT * FROM wp_terms term LEFT JOIN wp_term_taxonomy term_tx ON term.term_id = term_tx.term_id
+                         WHERE term_tx.taxonomy = 'post_tag' AND term.term_id in (". $inValue .")";
+            $query = $this->db->query($sql);
+            return $query->result_array();
+        }
+        return array();
     }
 }

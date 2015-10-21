@@ -1,7 +1,7 @@
 <div id="main-container" class="wrap-container container clearfix offcanvas offcanvas-right">
     <div class="main-content controller-member action-edit">
         <div class="append-bottom">
-            <div id="member-edit-form">
+            <form id="member-edit-form" action="update_profile" method="post">
                 <div style="display:none">
                     <input type="hidden" value="5c2696c5a2b1244f11d3a184cc47c3f866772c5c" name="YII_CSRF_TOKEN"/>
                 </div>    
@@ -13,22 +13,22 @@
                 <div class="gutter-top form-group row">
                     <div class="col-sm-6 col-xs-12">
                         <label class="clearfix" for="MemberProfile_fname">First Name</label>
-                        <input class="form-control" name="MemberProfile[fname]" id="MemberProfile_fname" type="text" value="<?php (isset($_SESSION['user_fname']))? $_SESSION['user_fname'] : $_SESSION['user_login']; ?>"/>
+                        <input class="form-control" name="post_data[fname]" id="MemberProfile_fname" type="text" value="<?php echo $_SESSION['user_fname'];?>"/>
                     </div>
                     <div class="col-sm-6 col-xs-12">
                         <label class="clearfix" for="MemberProfile_lname">Last Name</label>
-                        <input class="form-control popover-toggle"  name="MemberProfile[lname]" id="MemberProfile_lname" type="text" value="<?php echo $_SESSION['user_lname'];?>"/>
+                        <input class="form-control popover-toggle"  name="post_data[lname]" id="MemberProfile_lname" type="text" value="<?php echo $_SESSION['user_lname'];?>"/>
                     </div>
                     <div class="clear"></div>
                 </div>
                 <div class="gutter-top form-group row">
                     <div class="col-sm-6 col-xs-12">
                         <label class="clearfix" for="MemberProfile_career">Career</label>
-                        <input class="form-control" name="MemberProfile[career]" id="MemberProfile_career" type="text" value="<?php echo $_SESSION['cus_career'];?>"/>
+                        <input class="form-control" name="post_data[cus_career]" id="MemberProfile_career" type="text" value="<?php echo $_SESSION['cus_career'];?>"/>
                     </div>
                     <div class="col-sm-6 col-xs-12">
                         <label class="clearfix" for="MemberProfile_company">Company</label>
-                        <input class="form-control popover-toggle"  name="MemberProfile[company]" id="MemberProfile_company" type="text" value="<?php echo $_SESSION['cus_company'];?>"/>
+                        <input class="form-control popover-toggle"  name="post_data[cus_company]" id="MemberProfile_company" type="text" value="<?php echo $_SESSION['cus_company'];?>"/>
                     </div>
                     <div class="clear"></div>
                 </div>
@@ -42,19 +42,10 @@
                             <ul class="attachFiles-list ">
                                 <li class="attach-success" style="opacity: 1; width: 60px;" data-category="other" id="cover_710651">
                                     <a href="#" class="remove" title="Remove">Remove</a>
-
                                     <div class="attachFiles-item">
                                         <img alt="undefined - " class="preview" id="coverImg" style="cursor: pointer"
                                              src="<?php echo config_item('wp_home_url'). '/'. $_SESSION['cus_cover'];?>"/>
                                     </div>
-            
-                                    <input type="hidden" name="MemberProfile[coverImage][cover_710651][name]" class="file-attachment file-attach-cover_710651" value=""/>
-                                    <input type="hidden" name="MemberProfile[coverImage][cover_710651][type]" class="file-attachment file-attach-cover_710651" value="other"/>
-                                    <input type="hidden" name="MemberProfile[coverImage][cover_710651][path]" class="file-attachment file-attach-cover_710651" value=""/>
-                                    <input type="hidden" name="MemberProfile[coverImage][cover_710651][thumb]" class="file-attachment file-attach-cover_710651" value=""/>
-                                    <input type="hidden" name="MemberProfile[coverImage][cover_710651][id]" class="file-attachment file-attach-cover_710651" value=""/>
-                                    <input type="hidden" name="MemberProfile[coverImage][cover_710651][filesize]" class="file-attachment file-attach-cover_710651" value=""/>
-                                    <input type="hidden" name="MemberProfile[coverImage][cover_710651][description]" class="file-attachment file-attach-cover_710651" value=""/>
                                 </li>
                             </ul>
                             <div class="attachFiles-dropArea only-upload" id="attachFiles-dropArea-1" style="display: none; position: relative;">
@@ -63,13 +54,10 @@
                                     <a class="call-to-action attachFiles-pick _attachFiles-link" href="#" id="attachFiles-pick-1" style="position: relative; z-index: 1;">
                                     Browse<br/></a> to add attachments        
                                 </div>
-                                <div class="attachFiles-maxFiles">Max<br/> Files        </div>
+                                <div class="attachFiles-maxFiles">Max<br/> Files </div>
                             </div>
-    
                         </div>
-                        
-                        
-                    </div>        
+                    </div>
                 </div>
                 <div class="form-group">
                     <label class="pull-left" for="MemberProfile_images">
@@ -97,8 +85,6 @@
                                         ?>
                                         <img alt="undefined - " id="avatarImg" style="cursor: pointer" class="preview" style="" src="<?= $userAvatar; ?>">
                                     </div>
-            
-                                    <input type="hidden" name="MemberProfile[images][710651][name]" data-file-id="710651" data-property="name" class="file-attachment file-attach-710651" value="902af83297ca2ee2b4e73a6ceef84f7d.png"><input type="hidden" name="MemberProfile[images][710651][type]" data-file-id="710651" data-property="type" class="file-attachment file-attach-710651" value="other"><input type="hidden" name="MemberProfile[images][710651][path]" data-file-id="710651" data-property="path" class="file-attachment file-attach-710651" value=""><input type="hidden" name="MemberProfile[images][710651][thumb]" data-file-id="710651" data-property="thumb" class="file-attachment file-attach-710651" value=""><input type="hidden" name="MemberProfile[images][710651][id]" data-file-id="710651" data-property="id" class="file-attachment file-attach-710651" value="710651"><input type="hidden" name="MemberProfile[images][710651][filesize]" data-file-id="710651" data-property="filesize" class="file-attachment file-attach-710651" value="undefined"><input type="hidden" name="MemberProfile[images][710651][description]" data-file-id="710651" data-property="description" class="file-attachment file-attach-710651" value=""/>
                                 </li>
                             </ul>
                             <div class="attachFiles-dropArea only-upload  " id="attachFiles-dropArea-2" style="display: none; position: relative;">
@@ -110,16 +96,12 @@
                                 </div>
                                 <div class="attachFiles-maxFiles">Max<br/> Files </div>
                             </div>
-    
-                          
-                          
                         </div>
                     </div>    
                 </div>
-                 
                  <div class="form-group">
                     <label class="clearfix" for="MemberProfile_about">About You</label>
-                    <textarea class="form-control popover-toggle" rows="10" placeholder="Introduce yourself..." name="MemberProfile[about]" id="MemberProfile_about">
+                    <textarea class="form-control popover-toggle" rows="10" placeholder="Introduce yourself..." name="post_data[cus_description]" id="MemberProfile_about">
                         <?= $_SESSION['cus_description']?>
                     </textarea>
                     <script>
@@ -140,15 +122,13 @@
                            
                     <div class="clear"></div>
                     <div class="select2-container select2-container-multi clear form-control" id="s2id_MemberProfile_skillsString">
-                        <ul class="select2-choices" style="display: inline-block; float: left">
-                            <li class="select2-search-choice">    
-                                <div>Mobile app design</div>    
-                                <a href="#" class="select2-search-choice-close" tabindex="-1"></a>
-                            </li>
-                            <li class="select2-search-choice">    
-                                <div>Website design</div>    
-                                <a href="#" class="select2-search-choice-close" tabindex="-1"></a>
-                            </li>
+                        <ul class="select2-choices" style="display: inline-block; float: left" >
+                            <?php foreach($user_interested as $interested) { ?>
+                                <li class="select2-search-choice" value="<?= $interested['term_id'] ?>">
+                                    <div><?= $interested['name'] ?></div>
+                                    <a href="/chu-de/<?php echo $interested['slug']?>" class="select2-search-choice-close" tabindex="-1" name="post_data['interested'][]"></a>
+                                </li>
+                            <?php } ?>
                         </ul>
                         <input type="text" style="border: none; padding-top:9px; display: inline-block; float: left" id="post-tag-autocomplete"/>
                     </div>
@@ -160,20 +140,19 @@
                     <div class="form-group">
                         <label class="clearfix" id="location-city-anchor" for="MemberProfile_location_city">Location (city)</label>
                         <div class="widget-jsModuleLocationCombo" id="widget-jsModuleLocationCombo-profile-edit-location">
-                        <span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr;">
-                            <input id="" class="location-combo-input clearfix form-control tt-input" placeholder="Type a city" data-tooltip-pos="bottom" data-tooltip-fallback-pos="right" data-input-suggestion="Indicate the City you are based in." type="text" value="Singapore, SG" name="location_combo" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: rgba(0, 0, 0, 0);">
-                        </span>
-                        <input name="MemberProfile[locationCity]" id="MemberProfile_locationCity" type="hidden" value="Singapore"/>
-                        <input  name="MemberProfile[locationCountry]" id="MemberProfile_locationCountry" type="hidden" value="SG"/>
-                        <input  name="MemberProfile[locationID]" id="MemberProfile_locationID" type="hidden" value="1880252"/>
-                        </div>    
+                            <select id="post_country" name="post_data[country]" class="form-control">
+                                <option value="vn" selected>VietNam, VN</option>
+                                <option value="sg">Singapore, SG</option>
+                                <option value="us">United State, US</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="form-group">
                         <input class="action-declineDialog-submit tall col-xs-4 btn btn-pph" id="edit-profile-submit" type="submit" name="yt3" value="Done"/>        
                         <div class="clear"></div>
                     </div>
-            </div>
-            </div>
+            </form>
+        </div>
     </div>
     <aside class="right-column sidebar-member-edit offcanvas-sidebar">
         <div class="clearfix append-bottom">
@@ -354,6 +333,32 @@
         }
     });
 
+    // SUBMIT EDIT PROFILE FORM =============================
+    $('#member-edit-form').ajaxForm({
+        url : $(this).attr('action'),
+        type : "POST",
+        dataType : 'json',
+        data : $(this).serialize(),
+        beforeSubmit : function(arr, $form, options){
+            var interestedArray = [];
+            var listLI = $('#s2id_MemberProfile_skillsString li');
+            for(var i=0 ; i < listLI.length; i++){
+                var value = $(listLI[i]).attr('value');
+                interestedArray.push(value);
+            }
+            arr.push({
+                name : 'post_data[interested]',
+                value:  interestedArray.toString()
+            });
+            return true;
+        },
+        success: function(json){
+            if(json.status){
+                alert(json.message);
+            }
+        }
+    });
+
     $('#post-tag-autocomplete').autocomplete({
         'source': function(request, response) {
             $.ajax({
@@ -363,7 +368,8 @@
                     response($.map(json, function(item) {
                         return {
                             label: item['term_name'],
-                            value: item['term_id']
+                            value: item['term_id'],
+                            slug : item['term_slug']
                         }
                     }));
                 }
@@ -372,7 +378,7 @@
         'select': function(item) {
             var html = '<li class="select2-search-choice">'+
                        '<div>'+ item['label'] + '</div>'+
-                            '<a tabindex="-1" class="select2-search-choice-close" href="#"></a>'+
+                            '<a tabindex="-1" class="select2-search-choice-close" href="/chu-de/'+ item['slug'] +'"></a>'+
                        '</li>';
             $(this).parent().find('ul.select2-choices').append(html);
         }
