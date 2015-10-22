@@ -15,3 +15,10 @@ CREATE TABLE IF NOT EXISTS `wp_user_cookie` (
   PRIMARY KEY (`user_cookie_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+CREATE TABLE IF NOT EXISTS `wp_user_notification` (
+  `user_notification_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `notification_key` varchar(100) NOT NULL,
+  `notification_value` varchar(256) NOT NULL,
+  PRIMARY KEY (`user_notification_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;

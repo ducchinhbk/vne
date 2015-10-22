@@ -127,7 +127,7 @@
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu user-account-menu simple pull-right">
-                                    <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+                                    <li><a href="<?php echo config_item('wp_home_url'). '/author/ducchinhbk'?>"><i class="fa fa-dashboard"></i>Dashboard</a></li>
                                     <li>
                                         <a class="inline-option" title="Micheal T." rel="nofollow" href="<?php echo base_url( 'user/user/edit'); ?>"><i class="fpph fpph-user"></i>Profile</a>
                                     </li>
