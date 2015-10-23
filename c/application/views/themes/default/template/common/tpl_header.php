@@ -37,6 +37,7 @@
     <script src="<?php echo config_item('asset_url'); ?>default/js/custom-autocomplete.js"></script>
     <script src="<?php echo config_item('asset_url'); ?>default/js/cropper/cropper.min.js"></script>
 
+    <link rel="stylesheet" href="<?php echo config_item('asset_url'); ?>default/css/addmore.css"/>
 </head>
 <?php
     function isSessionUserDataAvailable(){

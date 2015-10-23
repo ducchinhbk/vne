@@ -22,3 +22,20 @@ CREATE TABLE IF NOT EXISTS `wp_user_notification` (
   `notification_value` varchar(256) NOT NULL,
   PRIMARY KEY (`user_notification_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `wp_user_collection` (
+  `user_collection_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `collection_title` varchar(100) NOT NULL,
+  `collection_description` varchar(256) NOT NULL,
+  `shared` tinyint(1) NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`user_collection_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `wp_user_collection_data` (
+  `user_collection_data_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_collection_id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  PRIMARY KEY (`user_collection_data_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;

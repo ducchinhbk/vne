@@ -37,3 +37,32 @@ label.error{
     color: red;
     font-size: 9px;
 }
+
+.profile-collection-item{
+    float: left;
+    margin-bottom: 20px;
+    padding-left: 8px;
+    padding-right: 9px;
+    position: relative;
+    width: 255px;
+}
+
+.profile-collection-main-img{
+    background: none repeat scroll 0 0 #eee;
+    position: relative;
+    width: 255px;
+}
+
+.profile-collection-bot-btn{
+    background-color: #f5650c;
+    border-radius: 3px;
+    color: #fff;
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 5px;
+    position: absolute;
+    right: 15px;
+    text-align: center;
+    top: 5px;
+}
