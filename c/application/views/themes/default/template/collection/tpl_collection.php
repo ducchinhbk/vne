@@ -602,6 +602,8 @@
         })
     });
 
+    var baseURL = '<?php echo config_item('wp_home_url'); ?>';
+
     function ShowFilter(){
         $('#autoFilter').show();
     }
@@ -623,7 +625,11 @@
                             date: item['date'],
                             author : item['author'],
                             author_id : item['author_id'],
-                            author_email : item['author_email']
+                            author_email : item['author_email'],
+                            post_id : item['post_id'],
+                            thumb_img : item['thumb_img'],
+                            author_nicename : item['author_nicename'],
+                            author_avatar : item['author_avatar']
                         }
                     }));
                 }
@@ -633,8 +639,8 @@
             var html = '<div class="col-xs-12 col-sm-4 col-md-3 hourlie-tile-container">'+
                             '<div class="clearfix hourlie-tile js-listing-tile  with-member-info">'+
                                 '<div class="image-container">'+
-                                    '<a class="" title="Thưởng thức loạt clip full siêu hot tại “Music Bank in Hanoi”" href="http://localhost/vneconomist/thuong-thuc-loat-clip-full-sieu-hot-tai-music-bank-in-hanoi_post-260.html">'+
-                                        '<img width="260" height="124" alt="Capture" class="attachment-260x195 wp-post-image" src="http://localhost/vneconomist/wp-content/uploads/2015/03/Capture-300x143.jpg">'+
+                                    '<a class="" title="'+ item.title +'" href="'+ baseURL + '/' + foldToAssci(item.title) + '_post-'+ item.post_id + '.html">'+
+                                        '<img width="260" height="124" alt="Capture" class="attachment-260x195 wp-post-image" src="'+ baseURL +'/wp-content/uploads/' + item.thumb_img +'">'+
                                     '</a>'+
                                     '<div class="stats-container clearfix">'+
                                         '<div class="pull-left rating">'+
@@ -650,18 +656,18 @@
                                     '</div>'+
                                 '</div>'+
                                 '<div class="title-container">'+
-                                    '<a style="word-wrap: break-word;" class="color-hourlie js-paragraph-crop" title="Thưởng thức loạt clip full siêu hot tại “Music Bank in Hanoi”" href="http://localhost/vneconomist/thuong-thuc-loat-clip-full-sieu-hot-tai-music-bank-in-hanoi_post-260.html">'+
-                                        'Thưởng thức loạt clip full siêu hot tại “Music Bank in Hanoi”'+
+                                    '<a style="word-wrap: break-word;" class="color-hourlie js-paragraph-crop" title="'+ item.title +'" href="'+ baseURL +'/' + foldToAssci(item.title) + '_post-' + item.post_id +'.html">'+
+                                        item.title +
                                     '</a>'+
                                 '</div>'+
                                 '<div class="profile-container stretch clearfix">'+
                                     '<div class="col-xs-8 no-padding-right">'+
                                        '<div class="user-image-container pull-left">'+
-                                            '<a href="http://localhost/vneconomist/author/ducchinhbk" title="Chinh Tran">'+
-                                               '<img width="30" height="30" alt="Chinh Tran" src="http://localhost/vneconomist/upload/avatar/chinh-30x30.png" class="user-avatar user-avatar-sm user-avatar-square"></a>'+
+                                            '<a href="'+ baseURL +'/c/user/personal/' + item.author + '" title="'+ item.author +'">'+
+                                               '<img width="30" height="30" alt="'+ item.author_nicename +'" src="'+ baseURL + '/' + item.author_avatar +'" class="user-avatar user-avatar-sm user-avatar-square"></a>'+
                                        '</div>'+
                                         '<div class="user-info pull-left">'+
-                                            '<a title="Chinh Tran" href="http://localhost/vneconomist/author/ducchinhbk" class="clearfix user-name crop">Chinh Tran</a>'+
+                                            '<a title="'+ item.author_nicename +'" href="'+ baseURL + '/c/user/personal/'+ item.author +'" class="clearfix user-name crop">'+ item.author +'</a>'+
                                             '<span class="user-country clearfix crop"></span>'+
                                         '</div>' +
                                     '</div>'+

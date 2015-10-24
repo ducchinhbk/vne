@@ -67,12 +67,17 @@ class Ajax extends CI_Controller {
             $postList = $this->post_model->getAllPostFilterByTitle($filter_model);
             $result = array();
             foreach($postList as $post){
+                $thumbImg = $this->post_model->getPostThumbImage($post['ID']);
                 $result[] = array(
                     'title' => $post['post_title'],
                     'date' => $post['post_date'],
                     'author' => $post['user_nicename'],
                     'author_id' => $post['post_author'],
-                    'author_email' => $post['user_email']
+                    'author_email' => $post['user_email'],
+                    'post_id' => $post['ID'],
+                    'thumb_img' => $thumbImg,
+                    'author_nicename' => $post['user_nicename'],
+                    'author_avatar' => $post['cus_avatar']
                 );
             }
             echo json_encode($result);
