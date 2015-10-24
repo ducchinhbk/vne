@@ -75,7 +75,187 @@
     </section>
     <!-- END: Carousel section -->
 </div>
-
+    <div id="colection-wrapper" class="colection-wrapper">
+      <div class="container container">
+          <div class="col-md-12 col-lg-12 ta-center">
+            <div class="hp-collection hp-tour-in">
+              <div class="section-title container section-title-thin ta-center">Don't want to search? Browse our collections for Ho Chi Minh</div>
+              <div class="row">
+                <div class="col-lg-3 col-md-6 collection-item">
+                  <div class="collection-box collection-box-snippet"> 
+                  <a href="#" title="Top Restaurants in Delhi NCR">
+                    <h4 class="collections-title" > 
+                        <span class="collections-title_outlets">30 Places</span> 
+                        <span class="collections-title_text">Trending this Week</span> 
+                    </h4>
+                    <div class="collection-box-bg lazy"  style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/e40960514831cb9b74c552d69eceee0f_1418387628_l.jpg');">
+                        <div class="collection-overlay"></div>
+                    </div>
+                    </a> 
+                  </div>
+                  <div class="clear"></div>
+                </div>
+                <div class="col-lg-3 col-md-6 collection-item">
+                  <div class="collection-box collection-box-snippet"> 
+                    <a href="#" title="Best New Restaurants in Delhi NCR">
+                        <h4 class="collections-title"> 
+                            <span class="collections-title_outlets">22 Places</span> 
+                            <span class="collections-title_text">Newly Opened</span> 
+                        </h4>
+                        <div class="collection-box-bg lazy" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/dc347fcba38a39000ab7ab50f0f222ad_1424059541_l.jpg');">
+                            <div class="collection-overlay"></div>
+                        </div>
+                    </a> 
+                  </div>
+                  <div class="clear"></div>
+                </div>
+                <div class="col-lg-3 col-md-6 collection-item">
+                  <div class="collection-box collection-box-snippet"> 
+                    <a href="#" title="Best Cafe Breakfast in Delhi NCR">
+                        <h4 class="collections-title" > 
+                            <span class="collections-title_outlets">18 Places</span> 
+                            <span class="collections-title_text">Cafe Breakfast</span> 
+                        </h4>
+                        <div class="collection-box-bg lazy" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/fb1dfaf63322c68558b27ed7e5dc6e9c_1418401086_l.jpg');">
+                            <div class="collection-overlay"></div>
+                        </div>
+                    </a> 
+                  </div>
+                  <div class="clear"></div>
+                </div>
+                <div class="col-lg-3 col-md-6 collection-item">
+                  <div class="collection-box collection-box-snippet"> 
+                    <a href="#" title="Best Microbreweries in Delhi NCR">
+                    <h4 class="collections-title" > 
+                        <span class="collections-title_outlets">14 Places</span> 
+                        <span class="collections-title_text">Microbreweries</span> 
+                    </h4>
+                    <div class="collection-box-bg lazy"  style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/0707137915a22b40b4d5e8274f47d791_1419918315_l.jpg');">
+                        <div class="collection-overlay"></div>
+                    </div>
+                    </a> </div>
+                  <div class="clear"></div>
+                </div>
+                <div class="col-lg-3 col-md-6 collection-item">
+                  <div class="collection-box collection-box-snippet"> 
+                    <a href="#" title="Best Coffee in Delhi NCR">
+                        <h4 class="collections-title"> 
+                            <span class="collections-title_outlets">19 Places</span> 
+                            <span class="collections-title_text">Great Coffee</span> 
+                        </h4>
+                        <div class="collection-box-bg lazy" style="background-image: url(<?php echo get_template_directory_uri(); ?>/images/95d517d48c52188721ddfcf69d7d34f5_1419406534_l.jpg');">
+                            <div class="collection-overlay"></div>
+                        </div>
+                    </a> 
+                  </div>
+                  <div class="clear"></div>
+                </div>
+                <div class="col-lg-3 col-md-6 collection-item">
+                  <div class="collection-box collection-box-snippet"> 
+                    <a href="#" title="Best Outdoor Dining in Delhi NCR">
+                    <h4 class="collections-title" > 
+                        <span class="collections-title_outlets">19 Places</span> 
+                        <span class="collections-title_text">Outdoor Seating</span> 
+                    </h4>
+                    <div class="collection-box-bg lazy"  style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/4c2b30d63f25fc4d52a220890442421a_1421300685_l.jpg'); ">
+                    <div class="collection-overlay"></div>
+                  </div>
+                    </a> </div>
+                  <div class="clear"></div>
+                </div>
+                <div class="col-lg-3 col-md-6 collection-item">
+                  <div class="collection-box collection-box-snippet"> 
+                    <a href="#" title="Best Healthy Breakfast in Delhi NCR">
+                    <h4 class="collections-title" > 
+                        <span class="collections-title_outlets">10 Places</span> 
+                        <span class="collections-title_text">Healthy Breakfast</span> 
+                    </h4>
+                    <div class="collection-box-bg lazy"  style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/b762edbc2f8303b0ffdbdaa2ed6287a6_1424180016_l.jpg'); ">
+                    <div class="collection-overlay"></div>
+                  </div>
+                    </a> </div>
+                  <div class="clear"></div>
+                </div>
+                <div class="col-lg-3 col-md-6 collection-item">
+                  <div class="collection-box collection-box-snippet"> 
+                    <a href="#" title="Best Breakfast Buffets in Delhi NCR">
+                        <h4 class="collections-title" > 
+                            <span class="collections-title_outlets">19 Places</span> 
+                            <span class="collections-title_text">Breakfast Buffets</span> 
+                        </h4>
+                        <div class="collection-box-bg lazy"  style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/d5e7778988c8df486127982a097b7ba5_1418401323_l.jpg'); ">
+                            <div class="collection-overlay"></div>
+                        </div>
+                    </a> 
+                  </div>
+                  <div class="clear"></div>
+                </div>
+                <div class="col-lg-3 col-md-6 collection-item">
+                  <div class="collection-box collection-box-snippet"> 
+                    <a href="#" title="Best Cheesecakes in Delhi NCR">
+                    <h4 class="collections-title" > 
+                        <span class="collections-title_outlets">18 Places</span> 
+                        <span class="collections-title_text">Great Cheesecakes</span> 
+                    </h4>
+                    <div class="collection-box-bg lazy"  style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/e359a2a24366b32acfe905ee084f4206_1418629602_l.jpg'); ">
+                        <div class="collection-overlay"></div>
+                    </div>
+                    </a> 
+                  </div>
+                  <div class="clear"></div>
+                </div>
+                <div class="col-lg-3 col-md-6 collection-item">
+                  <div class="collection-box collection-box-snippet"> 
+                    <a href="#" title="Best Cheap Breakfast in Delhi NCR">
+                        <h4 class="collections-title"> 
+                            <span class="collections-title_outlets">19 Places</span> 
+                            <span class="collections-title_text">Pocket Friendly Breakfast</span> 
+                        </h4>
+                        <div class="collection-box-bg lazy"  style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/81fbcaec4c83f321c854a0fdc9dcfdfd_1422002949_l.jpg'); ">
+                            <div class="collection-overlay"></div>
+                        </div>
+                    </a> 
+                  </div>
+                  <div class="clear"></div>
+                </div>
+                <div class="col-lg-3 col-md-6 collection-item">
+                  <div class="collection-box collection-box-snippet"> 
+                    <a href="#" title="Best Street Food in Delhi NCR">
+                        <h4 class="collections-title" > 
+                            <span class="collections-title_outlets">18 Places</span> 
+                            <span class="collections-title_text">Street Food</span> 
+                        </h4>
+                        <div class="collection-box-bg lazy"  style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/6a5f59d28b2e695b15e7029643e4ca27_1418391059_l.jpg'); ">
+                            <div class="collection-overlay"></div>
+                        </div>
+                    </a> 
+                  </div>
+                  <div class="clear"></div>
+                </div>
+                <div class="col-lg-3 col-md-6 collection-item">
+                  <div class="collection-box collection-box-snippet"> 
+                    <a href="#" title="Best Butter Chicken in Delhi NCR">
+                        <h4 class="collections-title" > 
+                            <span class="collections-title_outlets">19 Places</span> 
+                            <span class="collections-title_text">Butter Chicken</span> 
+                        </h4>
+                        <div class="collection-box-bg lazy"  style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/7d78f516cf561c362481f1d7a1fc7464_1418393872_l.jpg'); ">
+                            <div class="collection-overlay"></div>
+                        </div>
+                    </a> 
+                  </div>
+                  <div class="clear"></div>
+                </div>
+            </div>
+            <div class="row">
+            <div class="col-lg-12 ta-center mtop"> 
+                <a class="btn call-to-action btn-inverted hp-collection-load" href="#">Browse All</a> 
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
 <div id="main-container" class="wrap-container container clearfix offcanvas offcanvas-left with-left-sidebar">
     
     <div class="main-content controller-hourlie action-list" style="width: 100%;">
@@ -169,7 +349,7 @@
     display: none ;
     position: fixed;
     bottom: 45px;
-    left: 5px;
+    right: 0;
     width: 110px;
     background: #fff;
     box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.1);
@@ -185,7 +365,7 @@
 #navigation_toolbox .sub-menu{
     display: none;
     position: absolute;
-    left: 105px;
+    right: 105px;
     margin-top: -34px;
     background: #fff;
     box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.1);
@@ -200,12 +380,13 @@
     display: block;
     width: 100%;
     height: 100%;
-    padding: 7px 0 7px 7px;
+    padding: 7px 0;
     color: #5F5A5A;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
     font-size: 12px;
+    text-align: center;
     font-weight: bold;
     border-bottom: 1px dotted #ddd;
 }
