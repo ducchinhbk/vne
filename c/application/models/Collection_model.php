@@ -14,6 +14,17 @@ class Collection_model extends CI_Model {
         return $query->result_array();
     }
 
+    public function getCollectionById($collection_id){
+        if(is_numeric($collection_id)){
+            $sql = "SELECT * FROM wp_user_collection WHERE user_collection_id = ". (int)$collection_id;
+            $query = $this->db->query($sql);
+            if($query->num_rows() == 1){
+                return $query->result_array()[0];
+            }
+        }
+        return null;
+    }
+
     /**
      * @param $data
      * @return Only Return 1 obejct
@@ -70,5 +81,14 @@ class Collection_model extends CI_Model {
             }
         }
         return false;
+    }
+
+    public function fetchAllPostCollection($collectionId){
+        $sql = "SELECT * FROM wp_user_collection_data as ucd
+                         LEFT JOIN wp_posts as post ON ucd.post_id = post.ID
+                         LEFT JOIN wp_postmeta as postmeta ON post.ID = postmeta.post_id
+                         WHERE ucd.user_collection_id = ". (int)($collectionId);
+        $query = $this->db->query($sql);
+        return $query->result_array();
     }
 }

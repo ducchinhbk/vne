@@ -13,6 +13,9 @@ class Personal extends CI_Controller {
     }
 	public function index(){
         $data['user_collections'] = $this->collection_model->getListCollectionBy(1, 30, $_SESSION['user_id']);
+        $data['plus'] = config_item('plus');
+        $data['multiple'] = config_item('multiple');
+
 		$this->load->view('common/tpl_header');
         $this->load->view('user/tpl_personal', $data);
         $this->load->view('common/tpl_footer');
@@ -39,6 +42,21 @@ class Personal extends CI_Controller {
                     $result['status'] = true;
                     $result['data'] = $collectionObject;
                 }
+                echo json_encode($result);
+            }
+        }
+    }
+
+    public function get_collection(){
+        header('Content-Type: application/json');
+        $result = array();
+        if(isset($_GET['id']) && strlen($_GET['id']) > 0){
+            $idEncode = $_GET['id'];
+            $collectionId = base64_decode($idEncode);
+            $collectionObject = $this->collection_model->getCollectionById($collectionId);
+            if($collectionObject != null){
+                $result['status'] = true;
+                $result['data'] = $collectionObject;
                 echo json_encode($result);
             }
         }

@@ -58,5 +58,24 @@ class Ajax extends CI_Controller {
             }
         }
     }
-   
+
+    public function get_wp_posts_filter(){
+        header('Content-Type: application/json');
+        if(isset($_GET['filter_model'])){
+            $this->load->model('post_model');
+            $filter_model = $_GET['filter_model'];
+            $postList = $this->post_model->getAllPostFilterByTitle($filter_model);
+            $result = array();
+            foreach($postList as $post){
+                $result[] = array(
+                    'title' => $post['post_title'],
+                    'date' => $post['post_date'],
+                    'author' => $post['user_nicename'],
+                    'author_id' => $post['post_author'],
+                    'author_email' => $post['user_email']
+                );
+            }
+            echo json_encode($result);
+        }
+    }
 }

@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="<?php echo config_item('asset_url'); ?>default/css/cropper.min.css"/>
     <script src="<?php echo config_item('asset_url'); ?>default/js/custom-autocomplete.js"></script>
     <script src="<?php echo config_item('asset_url'); ?>default/js/cropper/cropper.min.js"></script>
+    <script src="<?php echo config_item('asset_url'); ?>default/js/main.js"></script>
 
     <link rel="stylesheet" href="<?php echo config_item('asset_url'); ?>default/css/addmore.css"/>
 </head>
@@ -128,7 +129,7 @@
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu user-account-menu simple pull-right">
-                                    <li><a href="<?php echo config_item('wp_home_url'). '/author/ducchinhbk'?>"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+                                    <li><a href="<?php echo config_item('base_url'). '/user/personal'?>"><i class="fa fa-dashboard"></i>Dashboard</a></li>
                                     <li>
                                         <a class="inline-option" title="Micheal T." rel="nofollow" href="<?php echo base_url( 'user/user/edit'); ?>"><i class="fpph fpph-user"></i>Profile</a>
                                     </li>

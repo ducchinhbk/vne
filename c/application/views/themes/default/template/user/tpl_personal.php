@@ -1,3 +1,7 @@
+<?php
+require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
+?>
+
 <div class="main-content full-width controller-member action-profile no-padding">
 
 <div class="clearfix profile-header profile-header-cover">
@@ -805,7 +809,7 @@
         <div class="col-xs-12">
             <a style="margin-bottom: 20px;" class="my-hourlies-viewall call-to-action right"></a>
         </div>
-
+        <div id="append_new_collect_div"></div>
         <?php foreach($user_collections as $collection){
             $collectionImage = 'http://media.foody.vn/res/g18/172685/prof/s256x160/foody-mobile--19-_hinhmob-jpg-207-635796577790000909.jpg';
             if(isset($collection['image']) && !empty($collection['image'])){
@@ -814,13 +818,13 @@
         ?>
             <div class="profile-collection-item">
                 <div class="profile-collection-main-img">
-                    <a title="<?= $collection['collection_title'];?>" href="#">
+                    <a title="<?= $collection['collection_title'];?>" href="<?php echo config_item('base_url'). 'collection/collection/'. CommonUtils::remove_vietnamese_accents($collection['collection_title']) . '_'. ($collection['user_collection_id'] + $plus)*$multiple; ?>">
                         <img title="<?= $collection['collection_description'];?>" alt="<?= $collection['collection_description'];?>" src="<?= $collectionImage; ?>">
                     </a>
                 </div>
-                <a class="profile-collection-title" href="#" title="<?= $collection['collection_title'];?>"><?= $collection['collection_title']?></a>
+                <a class="profile-collection-title" href="<?php echo config_item('base_url'). 'collection/collection/'. CommonUtils::remove_vietnamese_accents($collection['collection_title']) . '_'. ($collection['user_collection_id'] + $plus)*$multiple ;?>" title="<?= $collection['collection_title'];?>"><?= $collection['collection_title']?></a>
                 <div><span class="profile-collection-res-count">1</span> địa điểm</div>
-                <a class="profile-collection-bot-btn" href="#">
+                <a class="profile-collection-bot-btn" href="javascript:void(0);" onclick="openDialogEditCollection(<?= $collection['user_collection_id']; ?>);">
                     <span class="fa fa-pencil"></span> Chỉnh sửa
                 </a>
             </div>
@@ -887,7 +891,7 @@
                                 <label>Mô tả bộ sưu tập</label>
                             </div>
                             <div class="col-sm-9">
-                                <textarea class="form-control" name="post_data[description]" placeholder="Mô tả ngắn về bộ sưu tập của bạn"></textarea>
+                                <textarea class="form-control" id="descriptionCollection" name="post_data[description]" placeholder="Mô tả ngắn về bộ sưu tập của bạn"></textarea>
                             </div>
                         </div>
                         <div class="row" style="padding-top: 10px">
@@ -915,6 +919,10 @@
 
 
 <script>
+    var baseURL = '<?php echo config_item('base_url') ?>';
+    var plus = <?= $plus ?>;
+    var multiple = <?= $multiple; ?>;
+
     function openDialogCollection(){
         $('#collectionDialogModal').modal('show');
     }
@@ -958,25 +966,45 @@
         success: function(json){
             if(json.status){
                 var html = '';
-                for(var i=0; i< json.data.length; i++){
-                    var image = 'http://media.foody.vn/res/g18/172685/prof/s256x160/foody-mobile--19-_hinhmob-jpg-207-635796577790000909.jpg';
-                    if(json.data[i].image != undefined && json.data[i].image.length > 0){
-                        image = json.data[i].image;
-                    }
-                    html += '<div class="profile-collection-item">';
-                    html += '<div class="profile-collection-main-img">';
-                    html += '<a title="'+ json.data[i].title + '" href="#">';
-                    html += '<img title="'+ json.data[i].description + '" alt="'+ json.data[i].description + '" src="'+ image + '"></a>';
-                    html += '</div>';
-                    html += '<a class="profile-collection-title" href="#" title="'+ json.data[i].title + '">'+ json.data[i].title + '</a>';
-                    html += '<div><span class="profile-collection-res-count">1</span> địa điểm</div>';
-                    html += '<a class="profile-collection-bot-btn" href="#">';
-                    html += '<span class="fa fa-pencil"></span> Chỉnh sửa</a></div>';
+                var image = 'http://media.foody.vn/res/g18/172685/prof/s256x160/foody-mobile--19-_hinhmob-jpg-207-635796577790000909.jpg';
+                if(json.data.image != undefined && json.data.image.length > 0){
+                    image = json.data.image;
                 }
-                $('#user_collection_body').append(html);
+                html += '<div id="append_new_collect_div"></div>';
+                html += '<div class="profile-collection-item">';
+                html += '<div class="profile-collection-main-img">';
+                html += '<a title="'+ json.data.title + '" href="'+ baseURL +'collection/collection/'+ foldToAssci(json.data.title) + '_'+ (json.data.user_collection_id + plus)*multiple +'" title="'+ json.data.title + '">';
+                html += '<img title="'+ json.data.description + '" alt="'+ json.data.description + '" src="'+ image + '"></a>';
+                html += '</div>';
+                html += '<a class="profile-collection-title" href="'+ baseURL +'collection/collection/'+ foldToAssci(json.data.title) + '_'+ (json.data.user_collection_id + plus)*multiple +'" title="'+ json.data.title + '">'+ json.data.title + '</a>';
+                html += '<div><span class="profile-collection-res-count">1</span> địa điểm</div>';
+                html += '<a class="profile-collection-bot-btn" href="javascript:void(0)" onclick="openDialogEditCollection('+ json.data.user_collection_id +')">';
+                html += '<span class="fa fa-pencil"></span> Chỉnh sửa</a></div>';
+
+                $('#append_new_collect_div').replaceWith(html);
                 $('#collectionDialogModal').modal('hide');
             }
         }
     });
+
+    function openDialogEditCollection(collection_id){
+        $.ajax({
+            url : baseURL + 'user/personal/get_collection?id=' + window.btoa(collection_id),
+            type : 'get',
+            dataType : 'json',
+            success : function(json){
+                if(json.status){
+                    $('#collectionDialogModal #titleCollection').val(json.data.collection_title);
+                    $('#collectionDialogModal #descriptionCollection').val(json.data.collection_description);
+                    if(json.data.shared == 1){
+                        $('#collectionDialogModal #chkPublic').prop('checked', true);
+                    }else{
+                        $('#collectionDialogModal #chkPrivate').prop('checked', true);
+                    }
+                    $('#collectionDialogModal').modal('show');
+                }
+            }
+        });
+    }
 
 </script>

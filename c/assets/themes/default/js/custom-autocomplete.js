@@ -28,12 +28,17 @@
             $(this).on('keydown', function(event) {
                 switch(event.keyCode) {
                     case 8 : // backspace
-                        if($(this).val() == ''){
-                            var lastLi = $(this).parent().find('ul.select2-choices li:last-child');
-                            if($(lastLi).css('background-color') == this.background_compare){
-                                $(lastLi).remove();
-                            }else{
-                                $(lastLi).css('background-color', 'grey');
+                        if(this.selectPost != undefined && this.selectPost){
+                            this.request();
+                            break;
+                        }else{
+                            if($(this).val() == ''){
+                                var lastLi = $(this).parent().find('ul.select2-choices li:last-child');
+                                if($(lastLi).css('background-color') == this.background_compare){
+                                    $(lastLi).remove();
+                                }else{
+                                    $(lastLi).css('background-color', 'grey');
+                                }
                             }
                         }
                         break;
@@ -82,6 +87,11 @@
 
                 value = $(event.target).parent().attr('data-value');
 
+                if(this.selectPost != undefined && this.selectPost){
+                    this.select(this.items[0][value]);
+                    return;
+                }
+
                 if (value && this.items[value]) {
                     this.select(this.items[value]);
                 }
@@ -104,6 +114,64 @@
                 $(this).siblings('ul.dropdown-menu').hide();
             }
 
+            this.construcHtmlForFetchPost = function(json){
+                this.items = new Array();
+                this.items.push(json);
+
+                var html = '';
+                for(var i=0; i < json.length; i++){
+                    html += '<li class="lists-items ui-menu-item" role="menuitem">' +
+                        '          <a class="lists-items-link ui-corner-all" style="overflow:hidden;" tabindex="-1" data-value="'+ i +'">' +
+                        '               <img width="40px" align="left" src="http://media.foody.vn/res/g1/1366/prof/s50/foody-mobile-nool8x9y-jpg-309-635781075326160799.jpg" style="margin:2px;">' +
+                        '                   <span style="display:block; float:left;margin-left:5px;width:300px;">'+ json[i].title +'<br>' +
+                        '                       <span style="font-weight:normal;" class="lists-items-address">'+ json[i].date +'</span>' +
+                        '                   </span>' +
+                        '                   <span style="display: block; float: left; margin-left: 80px;" class="cert cert-level5-medium "></span>'+
+                        '                   <span style="display: block; float: left; margin-left: 25px;">Author: '+ json[i].author + '</span>'+
+                        '           </a>' +
+                        '       </li>';
+                }
+                return html;
+            }
+
+            this.defaultConstructHtml = function(json){
+                // Default of auto-complete
+                var html = '';
+                for (i = 0; i < json.length; i++) {
+                    this.items[json[i]['value']] = json[i];
+                }
+
+                for (i = 0; i < json.length; i++) {
+                    if (!json[i]['category']) {
+                        html += '<li data-value="' + json[i]['value'] + '"><a href="#">' + json[i]['label'] + '</a></li>';
+                    }
+                }
+
+                // Get all the ones with a categories
+                var category = new Array();
+
+                for (i = 0; i < json.length; i++) {
+                    if (json[i]['category']) {
+                        if (!category[json[i]['category']]) {
+                            category[json[i]['category']] = new Array();
+                            category[json[i]['category']]['name'] = json[i]['category'];
+                            category[json[i]['category']]['item'] = new Array();
+                        }
+
+                        category[json[i]['category']]['item'].push(json[i]);
+                    }
+                }
+
+                for (i in category) {
+                    html += '<li class="dropdown-header">' + category[i]['name'] + '</li>';
+
+                    for (j = 0; j < category[i]['item'].length; j++) {
+                        html += '<li data-value="' + category[i]['item'][j]['value'] + '"><a href="#">&nbsp;&nbsp;&nbsp;' + category[i]['item'][j]['label'] + '</a></li>';
+                    }
+                }
+                return html;
+            }
+
             // Request
             this.request = function() {
                 clearTimeout(this.timer);
@@ -118,37 +186,11 @@
                 html = '';
 
                 if (json.length) {
-                    for (i = 0; i < json.length; i++) {
-                        this.items[json[i]['value']] = json[i];
-                    }
-
-                    for (i = 0; i < json.length; i++) {
-                        if (!json[i]['category']) {
-                            html += '<li data-value="' + json[i]['value'] + '"><a href="#">' + json[i]['label'] + '</a></li>';
-                        }
-                    }
-
-                    // Get all the ones with a categories
-                    var category = new Array();
-
-                    for (i = 0; i < json.length; i++) {
-                        if (json[i]['category']) {
-                            if (!category[json[i]['category']]) {
-                                category[json[i]['category']] = new Array();
-                                category[json[i]['category']]['name'] = json[i]['category'];
-                                category[json[i]['category']]['item'] = new Array();
-                            }
-
-                            category[json[i]['category']]['item'].push(json[i]);
-                        }
-                    }
-
-                    for (i in category) {
-                        html += '<li class="dropdown-header">' + category[i]['name'] + '</li>';
-
-                        for (j = 0; j < category[i]['item'].length; j++) {
-                            html += '<li data-value="' + category[i]['item'][j]['value'] + '"><a href="#">&nbsp;&nbsp;&nbsp;' + category[i]['item'][j]['label'] + '</a></li>';
-                        }
+                    // my custom code
+                    if(this.selectPost != undefined && this.selectPost){
+                        html = this.construcHtmlForFetchPost(json);
+                    }else{
+                        html = this.defaultConstructHtml(json);
                     }
                 }
 
@@ -161,8 +203,12 @@
                 $(this).siblings('ul.dropdown-menu').html(html);
             }
 
-            $(this).after('<ul class="dropdown-menu"></ul>');
+            $(this).after('<ul class="dropdown-menu" ></ul>');
             $(this).siblings('ul.dropdown-menu').delegate('a', 'click', $.proxy(this.click, this));
+
+            if(this.selectPost != undefined && this.selectPost){
+                $(this).siblings('ul.dropdown-menu').css('width', '97%');
+            }
 
         });
     }
