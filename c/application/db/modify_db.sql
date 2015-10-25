@@ -37,5 +37,13 @@ CREATE TABLE IF NOT EXISTS `wp_user_collection_data` (
   `user_collection_data_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_collection_id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL,
+  `post_title` varchar(256) NOT NULL,
+  `post_thumb_img` varchar(100) NOT NULL,
+  `post_date` date NOT NULL,
+  `post_vote` int(100),
+  `post_author_id` int(11) NOT NULL,
+  `post_author_name` varchar(200) NOT NULL,
+  `post_author_email` varchar(200) NOT NULL,
+  `post_author_avatar` varchar(200) NOT NULL,
   PRIMARY KEY (`user_collection_data_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;

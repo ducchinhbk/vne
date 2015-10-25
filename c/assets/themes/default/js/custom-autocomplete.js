@@ -8,6 +8,7 @@
             this.index = 0;
             this.background_color = 'rgb(104,104,104)';
             this.background_compare = 'rgb(128, 128, 128)';
+            this.homePageURL = 'http://localhost/vneconomist';
 
             $.extend(this, option);
             $(this).attr('autocomplete', 'off');
@@ -122,7 +123,7 @@
                 for(var i=0; i < json.length; i++){
                     html += '<li class="lists-items ui-menu-item" role="menuitem">' +
                         '          <a class="lists-items-link ui-corner-all" style="overflow:hidden;" tabindex="-1" data-value="'+ i +'">' +
-                        '               <img width="40px" align="left" src="http://media.foody.vn/res/g1/1366/prof/s50/foody-mobile-nool8x9y-jpg-309-635781075326160799.jpg" style="margin:2px;">' +
+                        '               <img width="40px" align="left" src="'+ this.homePageURL +'/wp-content/uploads/' + json[i].thumb_img +'" style="margin:2px;">' +
                         '                   <span style="display:block; float:left;margin-left:5px;width:300px;">'+ json[i].title +'<br>' +
                         '                       <span style="font-weight:normal;" class="lists-items-address">'+ json[i].date +'</span>' +
                         '                   </span>' +

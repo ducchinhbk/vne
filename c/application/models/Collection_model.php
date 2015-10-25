@@ -84,11 +84,41 @@ class Collection_model extends CI_Model {
     }
 
     public function fetchAllPostCollection($collectionId){
-        $sql = "SELECT * FROM wp_user_collection_data as ucd
-                         LEFT JOIN wp_posts as post ON ucd.post_id = post.ID
-                         LEFT JOIN wp_postmeta as postmeta ON post.ID = postmeta.post_id
-                         WHERE ucd.user_collection_id = ". (int)($collectionId);
+        $sql = "SELECT * FROM wp_user_collection_data WHERE user_collection_id = ". (int)($collectionId);
         $query = $this->db->query($sql);
         return $query->result_array();
+    }
+
+    public function insertCollectionData($data){
+        if(isset($data['user_collection_id']) && isset($data['post_id']) && isset($data['post_author_id'])){
+            $sql = "INSERT INTO wp_user_collection_data SET
+                            user_collection_id = ". (int)$data['user_collection_id'] . ",
+                            post_id = ".(int)$data['post_id'] .",
+                            post_author_id = ". (int)$data['post_author_id'];
+            if(isset($data['post_thumb_img'])){
+                $sql .= ", post_thumb_img = ". $this->db->escape($data['post_thumb_img']);
+            }
+            if(isset($data['post_title'])){
+                $sql .= ", post_title = ". $this->db->escape($data['post_title']);
+            }
+            if(isset($data['post_date'])){
+                $sql .= ", post_date = ". $this->db->escape($data['post_date']);
+            }
+            if(isset($data['post_vote'])){
+                $sql .= ", post_vote = ". $this->db->escape($data['post_vote']);
+            }
+            if(isset($data['post_author_name'])){
+                $sql .= ", post_author_name = ". $this->db->escape($data['post_author_name']);
+            }
+            if(isset($data['post_author_email'])){
+                $sql .= ", post_author_email = ". $this->db->escape($data['post_author_email']);
+            }
+            if(isset($data['post_author_avatar'])){
+                $sql .= ", post_author_avatar = ". $this->db->escape($data['post_author_avatar']);
+            }
+            $this->db->query($sql);
+            return $this->db->insert_id();
+        }
+        return null;
     }
 }

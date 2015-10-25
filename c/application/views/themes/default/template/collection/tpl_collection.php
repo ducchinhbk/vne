@@ -1,9 +1,12 @@
+<?php
+require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
+?>
 
 <div class="wrap-container container clearfix offcanvas offcanvas-right" id="main-container">
 <div class="main-content controller-hourlie action-view">
 
 <header class="clearfix featured featured-right">
-    <h1 class="clearfix">Example of collection title</h1><i class=""></i>
+    <h1 class="clearfix"><?= $collection_title;?></h1><i class=""></i>
     <span></span>
 </header>
 
@@ -37,14 +40,14 @@
                         <div class="col-xs-12 col-sm-4 col-md-3 hourlie-tile-container">
                             <div class="clearfix hourlie-tile js-listing-tile  with-member-info">
                                 <div class="image-container">
-                                    <a class="" title="Thưởng thức loạt clip full siêu hot tại “Music Bank in Hanoi”" href="http://localhost/vneconomist/thuong-thuc-loat-clip-full-sieu-hot-tai-music-bank-in-hanoi_post-260.html">
-                                        <img width="260" height="124" alt="Capture" class="attachment-260x195 wp-post-image" src="http://localhost/vneconomist/wp-content/uploads/2015/03/Capture-300x143.jpg">
+                                    <a class="" title="<?= $collection['post_title']?>" href="<?php echo config_item('wp_home_url') . '/'. CommonUtils::remove_vietnamese_accents($collection['post_title']) . '_post-'. $collection['post_id'] . '.html'; ?>">
+                                        <img width="260" height="124" alt="Capture" class="attachment-260x195 wp-post-image" src="<?php echo config_item('wp_home_url') . '/wp-content/uploads/' . $collection['post_thumb_img']?>">
                                     </a>
                                     <div class="stats-container clearfix">
                                         <div class="pull-left rating">
                                             <i class="fpph fpph-thumb-up"></i>
                                             <span>Vote:</span>
-                                            <span class="rating-value">99</span>
+                                            <span class="rating-value"><?= $collection['post_vote']?></span>
                                         </div>
                                         <div class="pull-right sales">
                                             <i class="fpph fpph-buyer-activity"></i>
@@ -54,24 +57,24 @@
                                     </div>
                                 </div>
                                 <div class="title-container">
-                                    <a style="word-wrap: break-word;" class="color-hourlie js-paragraph-crop" title="Thưởng thức loạt clip full siêu hot tại “Music Bank in Hanoi”" href="http://localhost/vneconomist/thuong-thuc-loat-clip-full-sieu-hot-tai-music-bank-in-hanoi_post-260.html">
-                                        Thưởng thức loạt clip full siêu hot tại “Music Bank in Hanoi”
+                                    <a style="word-wrap: break-word;" class="color-hourlie js-paragraph-crop" title="<?= $collection['post_title']?>" href="<?php echo config_item('wp_home_url') . '/'. CommonUtils::remove_vietnamese_accents($collection['post_title']) . '_post-'. $collection['post_id'] . '.html'; ?>">
+                                        <?= $collection['post_title']; ?>
                                     </a>
                                 </div>
                                 <div class="profile-container stretch clearfix">
                                     <div class="col-xs-8 no-padding-right">
                                         <div class="user-image-container pull-left">
-                                            <a href="http://localhost/vneconomist/author/ducchinhbk" title="Chinh Tran">
-                                                <img width="30" height="30" alt="Chinh Tran" src="http://localhost/vneconomist/upload/avatar/chinh-30x30.png" class="user-avatar user-avatar-sm user-avatar-square">                                                             </a>
+                                            <a href="<?php echo config_item('wp_home_url') . '/c/user/personal/'. $collection['post_author_name'] ?>" title="<?= $collection['post_author_name']?>">
+                                                <img width="30" height="30" alt="<?= $collection['post_author_name'];?>" src="<?php echo config_item('wp_home_url'). '/'. $collection['post_author_avatar'];?>" class="user-avatar user-avatar-sm user-avatar-square">                                                             </a>
                                         </div>
                                         <div class="user-info pull-left">
-                                            <a title="Chinh Tran" href="http://localhost/vneconomist/author/ducchinhbk" class="clearfix user-name crop">Chinh Tran</a>
+                                            <a title="<?= $collection['post_author_name'];?>" href="<?php echo config_item('wp_home_url') . '/c/user/personal/'. $collection['post_author_name'] ?>" class="clearfix user-name crop"><?= $collection['post_author_name'];?></a>
                                             <span class="user-country clearfix crop"></span>
                                         </div>
 
                                     </div>
                                     <div style="font-size: 12px;line-height: 2.5;" class="col-xs-4 price-container price-tag text-right">
-                                        <span>30</span><sup> votes</sup>
+                                        <span><?= $collection['post_vote']?></span><sup> votes</sup>
                                     </div>
                                 </div>
                             </div>
@@ -592,6 +595,7 @@
     <br class="clear">
 </aside>
 </div>
+<input type="hidden" id="collectionID" value="<?= $collectionId ; ?>" />
 <script>
     $(document).ready(function(){
         $('.about-dialog-trigger').click(function(){
@@ -614,6 +618,7 @@
 
     $('#txtResAutoFilter').autocomplete({
         'selectPost' : true,
+        'homePageURL' : baseURL,
         'source': function(request, response) {
             $.ajax({
                 url: '<?php echo config_item('base_url'); ?>ajax/get_wp_posts_filter?filter_model=' +  encodeURIComponent(request),
@@ -680,7 +685,34 @@
             $('#appendSelectedPostDiv').append(html);
             hideFilter();
             $('.hideAfterSelectPost').hide();
+            addPostToCollection(item);
         }
     });
+
+    function addPostToCollection(item){
+        var postData = {
+            user_collection_id : $('#collectionID').val(),
+            post_id : item.post_id,
+            post_title : item.title,
+            post_thumb_img : item.thumb_img,
+            post_date : item.date,
+            post_vote : (item.post_vote != undefined) ? item.post_vote : 99,
+            post_author_id : item.author_id,
+            post_author_name : item.author,
+            post_author_email : item.author_email,
+            post_author_avatar : item.author_avatar
+        };
+        $.ajax({
+            url: baseURL + '/c/collection/collection/addposttocolleciton',
+            type: 'POST',
+            dataType : 'json',
+            data : postData,
+            success: function(json){
+                if(json.status){
+                    console.log('Added post to collection');
+                }
+            }
+        });
+    }
 
 </script>
