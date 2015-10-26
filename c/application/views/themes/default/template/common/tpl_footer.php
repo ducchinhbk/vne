@@ -7,7 +7,7 @@
 					<div class="description-text">
 						A community of <strong>curated freelance talent</strong> available to work for you remotely at the click of a button    </div>
 					<div class="copyright">
-						© 2015 PeoplePerHour Inc.    </div>
+						Â© 2015 PeoplePerHour Inc.    </div>
 					<div class="helper-links clearfix">
 						<ul>
 							<li><a href="#">Terms</a></li>
@@ -48,7 +48,7 @@
 					</div>
 				</div>
 				<div class="col-xs-12 hidden-md hidden-lg copyright-mobile">
-					© 2015 PeoplePerHour Inc.    <div class="helper-links right clearfix">
+					Â© 2015 PeoplePerHour Inc.    <div class="helper-links right clearfix">
 						<ul>
 							<li><a href="#">Terms</a></li>
 							<li><a href="#">Privacy</a></li>
