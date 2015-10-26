@@ -1,5 +1,8 @@
 <?php
 defined('ABSPATH') or die("No script kiddies please!");
+
+date_default_timezone_set("Asia/Bangkok");
+
 add_theme_support( 'post-thumbnails' );
 
 //custom image size
@@ -24,6 +27,10 @@ function dvd_enqueue_script(){
 //register ajax action for category page
 add_action('wp_ajax_autocomplete_getposts', 'autocomplete_getposts');
 add_action('wp_ajax_nopriv_autocomplete_getposts', 'autocomplete_getposts');
+
+//register ajax action for get comments
+add_action('wp_ajax_nopriv_get_comments_ajax', 'get_comments_ajax');
+add_action('wp_ajax_nopriv_add_review_rating', 'add_review_rating');
 
 //get background image
 function get_bg_resize_image($postID, $size)
@@ -83,25 +90,16 @@ function sw_get_current_weekday() {
     return $weekday.', '.date('d/m/Y | H:i');
 }
 
-function getPostViews($postID){
-    $count_key = 'post_views_count';
+
+function addPostMetaValue($postID, $metakey, $value) {
+    $count_key = $metakey;
     $count = get_post_meta($postID, $count_key, true);
     if($count==''){
+        $count = $value;
         delete_post_meta($postID, $count_key);
-        add_post_meta($postID, $count_key, '0');
-        return 0;
-    }
-    return $count;
-}
-function setPostViews($postID) {
-    $count_key = 'post_views_count';
-    $count = get_post_meta($postID, $count_key, true);
-    if($count==''){
-        $count = 0;
-        delete_post_meta($postID, $count_key);
-        add_post_meta($postID, $count_key, '0');
+        add_post_meta($postID, $count_key, $value);
     }else{
-        $count++;
+        $count = $count + $value;
         update_post_meta($postID, $count_key, $count);
     }
 }
@@ -254,14 +252,184 @@ function c_crop_image_resize( $url, $width = NULL, $height = NULL, $crop = true,
 	}											
 												
 /******--------AJAX--------********/
-													
-														
-function autocomplete_getposts(){
-                  
-    return "dflkhadfladf";
+// function for both ajax and normal get comments 
+function cus_get_comments($post_id = '0'){
+    
+    //echo $post_id;
+    $current_date = (isset($_POST['last_date']))? $_POST['last_date']: date('Y-m-d H:i');
+    $args = array(
+    	'post_id' => $post_id,
+        'date_query' => array(
+            'before'     => $current_date,
+    	),
+        'status'  => 'approve',
+        'number'  => 5,
+        'orderby' => 'date',
+        'order'   => 'DESC',
+    );
+    
+    $comments =  get_comments( $args );
+    if(count($comments) > 0){
+        foreach( $comments as $comment ){
+            $lastDate = $comment->comment_date;
+            print_comment($comment); 
+            echo '<input type="hidden" class="lastpost_date" value="'.$lastDate.'">';
+        }
+    }
+    else{
+        echo "no comment";
+    }  
+}													
+//function save comment														
+function add_review_rating(){
+    global $wpdb;
+    
+    $date_add = date('Y-m-d H:i');
+    $user_ip_address = get_client_ip();
+    $user_id = (isset($_POST['user_id']))? $_POST['user_id'] :''; 
+    $post_id = (isset($_POST['post_id']))? $_POST['post_id'] :''; 
+    $rate = (isset($_POST['rate']))? $_POST['rate'] :'';  
+    $comment_content = (isset($_POST['comment_content']))? $_POST['comment_content'] :'';          
+    $user_data = get_userdata( $user_id );
+    $comment_author = (!empty($user_data))? ($user_data->last_name.' '.$user_data->first_name): '';
+    $comment_author_email = (!empty($user_data))? $user_data->user_email: '';
+    $comment_author_city = (!empty($user_data))? $user_data->cus_city: '';
+    
+    $sql = $wpdb->prepare( 
+        		"
+            		INSERT INTO wp_ratings
+            		( post_id, user_id, rate, user_ip, date_added )
+            		VALUES ( %d, %d, %f, %s, %s )
+            	", 
+                    $post_id, 
+                	$user_id, 
+                	$rate,
+                    $user_ip_address,
+                    $date_add
+                );
+                
+    
+    $wpdb->query( $sql );
+    
+    $sql = $wpdb->prepare( 
+        		"
+            		INSERT INTO $wpdb->comments
+            		( comment_post_ID, comment_author, comment_author_email, comment_author_IP, comment_date, comment_date_gmt, comment_content, comment_approved, comment_type, user_id, cus_rating, cus_author_city )
+            		VALUES ( %d, %s, %s, %s, %s, %s, %s, %s, %s, %d, %f, %s )
+            	", 
+                    $post_id, 
+                	$comment_author, 
+                	$comment_author_email,
+                    $user_ip_address,
+                    $date_add,
+                    $date_add,
+                    $comment_content,
+                    '1',
+                    'comment',
+                    $user_id,
+                    $rate,
+                    $comment_author_city
+                    
+             );      
+    $wpdb->query( $sql );
+    
+    //update post_sum_rating meta and post_rating_total meta
+    addPostMetaValue($post_id, 'post_sum_rating', (float)$rate );
+    addPostMetaValue($post_id, 'post_rating_total', 1);
+    
+    echo "success";
+    
     die();
 }												
-												
+// function for both ajax and normal get comments 
+function get_comments_ajax($post_id = '0' ){
+    
+    $post_id = (isset($_POST['post_id']))? $_POST['post_id']: $post_id;
+    //echo $post_id;
+    $current_date = (isset($_POST['last_date']))? $_POST['last_date']: date('Y-m-d H:i');
+    $args = array(
+    	'post_id' => $post_id,
+        'date_query' => array(
+            'before'     => $current_date,
+    	),
+        'status'  => 'approve',
+        'number'  => 5,
+        'orderby' => 'date',
+        'order'   => 'DESC',
+    );
+    
+    $comments =  get_comments( $args );
+    if(count($comments) > 0){
+        foreach( $comments as $comment ){
+            $lastDate = $comment->comment_date;
+            print_comment($comment); 
+            echo '<input type="hidden" class="lastpost_date" value="'.$lastDate.'">';
+        }
+    }
+    else{
+        echo "no comment";
+    }
+    //check if ajax then call die() function
+    
+       die();   
+}                                       
+//print comment
+function print_comment($comment){
+    $output .= '<li class="item participant feedback clearfix ">';
+    $output .=     '<div class="no-padding-left col-xs-4 col-sm-2 left-col">';
+    $output .=         c_get_avatar($comment->user_id, 30, 30, "user-avatar user-avatar-sm");
+    $output .=          '<div class="clear"></div>';
+    $output .=      '</div>';
+    $output .=      '<div class="col-xs-8 col-sm-10 right-col no-padding-right">';
+    $output .=          '<time class="message-time" title="'.$comment->comment_date.'">'.get_comment_date('d-m-Y',$comment->comment_ID).'</time>';
+    $output .=          '<header class="clearfix">';
+    $output .=              '<div class="participant-name crop">'.$comment->comment_author.' </div>';
+    $output .=              '<div class="participant-location hidden-xs"> <i class="fpph fpph-location"></i>'. $comment->cus_author_city .' </div>';
+    $output .=              '<div class="feedback-rating pull-right">';
+    $output .=                   '<div class="widget-jsModuleRating clearfix">';
+    $output .=                       '<div class="price-tag" style="font-size: 20px; color: #4774b7;">';
+    $output .=                          '<span title="">'. $comment->cus_rating .'</span>';
+    $output .=                       '</div>';
+    $output .=                   '</div>';
+    $output .=              '</div>';
+    $output .=           '</header>';
+    $output .=           '<p>'.$comment->comment_content.'</p>';
+    $output .=        '</div>';
+    $output .=        '<div class="clear"></div>';
+    $output .=     '</li>';
+    
+    echo $output;
+}												
 /******--------END AJAX--------********/											
-									
+
+function count_comment($post_id)
+{
+    global $wpdb;
+    $where = $wpdb->prepare( "WHERE comment_post_ID = %s AND comment_approved = %d ", $post_id, 1 );
+    $count = $wpdb->get_results( "SELECT  COUNT(*) AS num_comments FROM {$wpdb->comments} $where", ARRAY_A );
+    //var_dump($count);
+    
+    return $count[0]['num_comments'];
+}									
+
+// Function to get the client IP address
+function get_client_ip() {
+    $ipaddress = '';
+    if ($_SERVER['HTTP_CLIENT_IP'])
+        $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
+    else if($_SERVER['HTTP_X_FORWARDED_FOR'])
+        $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    else if($_SERVER['HTTP_X_FORWARDED'])
+        $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
+    else if($_SERVER['HTTP_FORWARDED_FOR'])
+        $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
+    else if($_SERVER['HTTP_FORWARDED'])
+        $ipaddress = $_SERVER['HTTP_FORWARDED'];
+    else if($_SERVER['REMOTE_ADDR'])
+        $ipaddress = $_SERVER['REMOTE_ADDR'];
+    else
+        $ipaddress = 'UNKNOWN';
+    return $ipaddress;
+}
+
 									

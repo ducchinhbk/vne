@@ -23,11 +23,21 @@ $(document).ready(function()
 			}
 		});
 	};
+	// Function to uncolorize the right ratings
+	var uncolourizeRatings = function(nrOfRatings) {
+		$("#rating li a").each(function() {
+			if($(this).parent().index() > nrOfRatings) {
+				$(this).stop().animate({ backgroundColor : "#cbcbcb" } , animationTime);
+			}
+		});
+	};
 	
-	// Handle the hover events
-	$("#rating li a").hover(function() {
+	
+	$('#rating li a').click(function() {
 		
-		// Empty the rating info box and fade in
+		$(this).unbind('mouseout');  
+	}).mouseover(function() {
+		
 		ratingInfobox
 			.empty()
 			.stop()
@@ -40,20 +50,16 @@ $(document).ready(function()
 		
 		// Call the colourize function with the given index
 		colourizeRatings($(this).parent().index());
-	}, function() {
-		
-		// Fade out the rating information box
+		uncolourizeRatings($(this).parent().index());
+		$('#rating-index').val( ($(this).parent().index()/2) + 1 );
+	}).mouseout(function() {
 		ratingInfobox
 			.stop()
 			.animate({ opacity : 0 }, animationTime);
 		
 		// Restore all the rating to their original colours
 		$("#rating li a").stop().animate({ backgroundColor : "#cbcbcb" } , animationTime);
+        $('#rating-index').val(0);
 	});
-	
-	// Prevent the click event and show the rating
-	$("#rating li a").click(function(e) {
-		e.preventDefault();
-		alert("You voted on item number " + ($(this).parent().index() + 1));
-	});
+
 });

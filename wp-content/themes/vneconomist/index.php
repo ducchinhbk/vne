@@ -63,7 +63,6 @@
                         
                         <div class="col-sm-10 no-padding-left">
                             <input placeholder="Nhập từ khóa tìm kiếm.." value="<?php echo esc_attr( get_search_query() ); ?>" name="s" id="search-input" type="text" maxlength="85" />
-                           
                         </div>
                         <div class="col-sm-2 no-padding-left">
                             <input class="btn call-to-action btn-inverted" type="submit"  value="Let&#039;s Go ›" />
@@ -143,7 +142,7 @@
                             <span class="collections-title_outlets">19 Places</span> 
                             <span class="collections-title_text">Great Coffee</span> 
                         </h4>
-                        <div class="collection-box-bg lazy" style="background-image: url(<?php echo get_template_directory_uri(); ?>/images/95d517d48c52188721ddfcf69d7d34f5_1419406534_l.jpg');">
+                        <div class="collection-box-bg lazy" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/95d517d48c52188721ddfcf69d7d34f5_1419406534_l.jpg');">
                             <div class="collection-overlay"></div>
                         </div>
                     </a> 
