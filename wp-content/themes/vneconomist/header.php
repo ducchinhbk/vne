@@ -66,7 +66,7 @@ function isSessionUserDataAvailable(){
         $cookieVnupUser = $_COOKIE['vnup_user'];
         $index1 = strrpos($cookieVnupUser, 'user_token') + strlen('user_token') + 5;
         $index2 = strrpos($cookieVnupUser, 'remember_me') - 5;
-        $index3 = strrpos($cookieVnupUser, 'remember_me') + strlen('remember_me') + 5;
+        $index3 = strrpos($cookieVnupUser, 'remember_me') + strlen('remember_me') + 3;
 
         $user_token = substr($cookieVnupUser, $index1, $index2 - $index1);
         $remember_me = substr($cookieVnupUser, $index3, 1);
@@ -78,7 +78,8 @@ function isSessionUserDataAvailable(){
             if(isset($dbUserToken)){
                 // INIT USER SESSION DATA
                 $dataUserData = array(
-                    'user_name' => $dbUserToken->user_login,
+                    'user_login' => $dbUserToken->user_login,
+                    'user_nicename' => $dbUserToken->user_nicename,
                     'user_email' => $dbUserToken->user_email,
                     'user_fname' => $dbUserToken->first_name,
                     'user_lname' => $dbUserToken->last_name,
@@ -141,7 +142,7 @@ function isSessionUserDataAvailable(){
                                     if(!empty($sesObject['user_fname']) && !empty($sesObject['user_lname'])){
                                         $userName = $sesObject['user_fname'] . ' '. $sesObject['user_lname'];
                                     }else{
-                                        $userName = $sesObject['user_name'];
+                                        $userName = (!empty($sesObject['user_nicename']))? $sesObject['user_nicename'] : $sesObject['user_login'];
                                     }
 
                                     // user image

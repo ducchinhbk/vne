@@ -1,4 +1,3 @@
-<?php echo $header_view; ?>
 <div class="container container-top"></div>
 <div id="main-container" class="wrap-container container clearfix">
     <div class="main-content full-width controller-site action-register">

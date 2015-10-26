@@ -20,6 +20,7 @@ require_once(config_item('home_dir') . '/c/application/libraries/Facebook/HttpCl
 require_once(config_item('home_dir'). '/wp-includes/class-phpass.php');
 require_once(config_item('home_dir'). '/c/application/utils/HttpCallUtils.php');
 require_once(config_item('home_dir'). '/c/application/utils/ViewUtils.php');
+require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
 use Facebook\FacebookSession;
 use Facebook\FacebookRedirectLoginHelper;
 use Facebook\FacebookRequest;
@@ -96,6 +97,7 @@ class User extends CI_Controller
                 $this->storeDataToUserSession($userObject);
 
                 // HANDLE COOKIE DATA
+                $remember_me = ($remember_me === '1')? 1 : 0 ;
                 $this->handleCookie($userObject['ID'], $remember_me, 0);
 
                 if(isset($_SESSION['redirect_to'])){
@@ -123,16 +125,16 @@ class User extends CI_Controller
                     'image' => $image
                 );
                 $data = $args;
-                $data['user_login'] = $args['name'];
+                $data['user_login'] = CommonUtils::remove_vietnamese_accents($args['name']);
                 $data['user_email'] = ($args['email'] != null && !empty($args['email']))? $args['email'] : $id. '@facebook.com';
                 $data['cus_avatar'] = $args['image'];
                 $data['user_pass'] = $this->wp_hasher->HashPassword('12345');
                 $userObject = $this->user_model->get_user($data);
                 if($userObject == null){
-                    $data['ID'] = $this->user_model->insert_user($data);
-
+                    $userData = $this->user_model->insert_user($data);
+                    $data['ID'] = $userData['ID'];
                     // UPDATE USER SESSION DATA
-                    $this->storeDataToUserSession($data);
+                    $this->storeDataToUserSession($userData);
 
                     // send email cause this is new user
                     $this->sendmail($data['user_email'], 'WELCOME', array(
@@ -193,18 +195,18 @@ class User extends CI_Controller
 
             $userObject = $this->user_model->get_user($data);
             if($userObject == null){
-                $id = $this->user_model->insert_user($data);
-                $data['ID'] = $id;
+                $userData = $this->user_model->insert_user($data);
+                $data['ID'] = $userData['ID'];
 
                 // UPDATE USER SESSION DATA
-                $this->storeDataToUserSession($data);
+                $this->storeDataToUserSession($userData);
 
                 // send Email cause this is new user
                 $this->sendmail($data['user_email'], 'WELCOME', array(
                     'name' => $data['first_name']. ' ' . $data['last_name']
                 ));
             }else if($userObject['ID'] > 0){
-                $id = $userObject['ID'];
+                $data['ID'] = $userObject['ID'];
 
                 // UPDATE USER SESSION DATA
                 $this->storeDataToUserSession($userObject);
@@ -216,11 +218,11 @@ class User extends CI_Controller
             $userSessionData['user_login'] = $data['user_login'];
             $userSessionData['user_first_name'] = $data['first_name'];
             $userSessionData['user_last_name'] = $data['last_name'];
-            $userSessionData['user_id'] = $id;
+            $userSessionData['user_id'] = $data['ID'];
             $this->session->set_userdata($userSessionData);
 
             // HANDLE COOKIE DATA
-            $this->handleCookie($id, false, 1);
+            $this->handleCookie($data['ID'], false, 1);
 
             // REDIRECT TO CURRENT PAGE
             redirect($_SESSION['redirect_to']);
@@ -243,15 +245,15 @@ class User extends CI_Controller
             $data['memType'] = $_POST['EmailMemberRegistration']['memType'];
             $data['remember_me'] = true;
 
-            $data['user_login'] = $data['first_name'] . '_' . $data['last_name'];
+            $data['user_login'] = CommonUtils::remove_vietnamese_accents($data['first_name'] . '_' . $data['last_name']);
             $userObject = $this->user_model->get_user($data);
             if(isset($userObject) && isset($userObject['ID']) && $userObject['ID'] > 0){
                 echo 'This email is already existed';
             }else{
                 $data['user_pass'] = $this->wp_hasher->HashPassword(trim($data['password']));
                 $data['user_activation_key'] = sha1(mt_rand(10000,99999).time(). $data['user_email']);
-                $userID = $this->user_model->insert_user($data);
-
+                $userData = $this->user_model->insert_user($data);
+                $userID = $userData['ID'];
                 $activateCode = $data['user_activation_key'];
                 // send email
                 $this->sendmail($data['user_email'], 'ACTIVATE', array(
@@ -261,7 +263,7 @@ class User extends CI_Controller
 
                 // UPDATE SESSION USER DATA
                 $data['ID'] = $userID;
-                $this->storeDataToUserSession($data);
+                $this->storeDataToUserSession($userData);
 
                 // HANDLE COOKIE DATA
                 $this->handleCookie($userID, 1, 0);
@@ -297,16 +299,16 @@ class User extends CI_Controller
                 );
                 // insert new user into database
                 $data = $args;
-                $data['user_login'] = $args['name'];
+                $data['user_login'] = CommonUtils::remove_vietnamese_accents($args['name']);
                 $data['user_email'] = ($args['email'] != null && !empty($args['email']))? $args['email'] : $id. '@facebook.com';
                 $data['cus_avatar'] = $args['image'];
                 $data['user_pass'] = $this->wp_hasher->HashPassword('12345');
                 $userObject = $this->user_model->get_user($data);
                 if($userObject == null){
-                    $data['ID'] = $this->user_model->insert_user($data);
-
+                    $userData = $this->user_model->insert_user($data);
+                    $data['ID'] = $userData['ID'];
                     // UPDATE SESSION USER DATA
-                    $this->storeDataToUserSession($data);
+                    $this->storeDataToUserSession($userData);
 
                     // send Email cause this is new user
                     $this->sendmail($data['user_email'], 'WELCOME', array(
@@ -611,7 +613,7 @@ class User extends CI_Controller
         $userSessionData['user_id'] = $user['ID'];
         $userSessionData['user_login'] = $user['user_login'];
         $userSessionData['user_email'] = $user['user_email'];
-        $userSessionData['user_display_name'] = (isset($user['display_name']))? $user['display_name'] : '' ;
+        $userSessionData['user_display_name'] = (isset($user['display_name']))? $user['display_name'] : $user['user_login'] ;
         $userSessionData['cus_description'] = (isset($user['cus_description']))? $user['cus_description'] : '';
         $userSessionData['cus_avatar'] = $user['cus_avatar'];
         $userSessionData['cus_cover'] = $user['cus_cover'];

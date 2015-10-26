@@ -109,13 +109,17 @@ class User_model extends CI_Model {
             if(isset($data['cus_avatar'])){
                 $sql .= ", cus_avatar = ". $this->db->escape($data['cus_avatar']);
             }else{
-                $sql .= ", cus_avatar = 'upload/avatar/default_". rand(1,5) . ".png'";
+                $rand = rand(1,5);
+                $sql .= ", cus_avatar = 'upload/avatar/default_". $rand . ".png'";
+                $data['cus_avatar'] = "upload/avatar/default_". $rand . ".png";
             }
             // cus_cover
             if(isset($data['cus_cover'])){
                 $sql .= ", cus_cover = ". $this->db->escape($data['cus_cover']);
             }else{
-                $sql .= ", cus_cover = 'upload/cover/default_". rand(1,5) . ".jpg'";
+                $rand = rand(1,5);
+                $sql .= ", cus_cover = 'upload/cover/default_". $rand . ".jpg'";
+                $data['cus_cover'] = "upload/cover/default_". $rand . ".jpg";
             }
             // cus_quote
             if(isset($data['cus_quote'])){
@@ -136,7 +140,8 @@ class User_model extends CI_Model {
 
             try{
                 $this->db->query($sql);
-                return $this->db->insert_id();
+                $data['ID'] = $this->db->insert_id();
+                return $data;
             }catch(Exception $e){
                 echo $e->getMessage();
             }

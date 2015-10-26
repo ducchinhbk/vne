@@ -21,7 +21,7 @@ class Personal extends CI_Controller {
         $this->load->view('common/tpl_footer');
 	}
 
-    public function add_collection(){
+    public function addcollection(){
         header('Content-Type: application/json');
         $result = array();
         if(isset($_POST['post_data'])){
@@ -47,7 +47,7 @@ class Personal extends CI_Controller {
         }
     }
 
-    public function get_collection(){
+    public function getcollection(){
         header('Content-Type: application/json');
         $result = array();
         if(isset($_GET['id']) && strlen($_GET['id']) > 0){

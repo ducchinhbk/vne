@@ -7,7 +7,7 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
 <div class="clearfix profile-header profile-header-cover">
     <div class="profile-background col-xs-12 hidden-xs no-padding">
         <div class="background-wrapper">
-            <div class="memberImage" style="background-image: url(http://localhost/vneconomist/upload/cover/chinh.jpg);"></div>
+            <div class="memberImage" style="background-image: url('<?php echo config_item('wp_home_url'). '/'. $_SESSION['cus_cover']; ?>');"></div>
         </div>
     </div>
     <div class="profile-header-fav">
@@ -20,13 +20,18 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
             </div>
         </div>
     </div>
+    <?php
+        $userAvatar = $_SESSION['cus_avatar'];
+        if(strpos($userAvatar, 'http') === false){
+            $userAvatar = config_item('wp_home_url') . '/'. $_SESSION['cus_avatar'];
+        }
+    ?>
     <div class="profile-header-xs visible-xs-block hidden-sm">
         <div class="profile-availability">
             <i class="js-tooltip status-icon fa fa-circle green"></i>
         </div>
-
         <div class="profile-pic">
-            <img alt="Chinh Tran" src="http://localhost/vneconomist/upload/avatar/chinh.png">            
+            <img alt="<?= $_SESSION['user_display_name']?>" src="<?= $userAvatar ?>">
             <span title="Savitri D. is available to start working for you immediately" class="hidden-xs available  js-tooltip">
                 <i class="icon fa fa-check"></i>
             </span>
@@ -83,14 +88,14 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
     </div>
     <div class="profile-header-member hidden-xs">
         <div class="profile-pic">
-            <img alt="Chinh Tran" src="http://localhost/vneconomist/upload/avatar/chinh.png">            
+            <img alt="<?= $_SESSION['user_display_name']?>" src="<?= $userAvatar ?>">
             <span data-original-title="Savitri D. is available to start working for you immediately" title="" class="hidden-xs available  js-tooltip">
                 <i class="icon fa fa-check"></i>
             </span>
         </div>
         <div class="seller-name light">
             <h1>
-                Chinh Tran
+                <?= $_SESSION['user_fname']. ' '. $_SESSION['user_lname']; ?>
                 <aside>
                     Bussiness man, Zotadi Global Corporation
                 </aside>
@@ -818,7 +823,7 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
         ?>
             <div class="profile-collection-item">
                 <div class="profile-collection-main-img">
-                    <a title="<?= $collection['collection_title'];?>" href="<?php echo config_item('base_url'). 'collection/collection/'. CommonUtils::remove_vietnamese_accents($collection['collection_title']) . '_'. ($collection['user_collection_id'] + $plus)*$multiple; ?>">
+                    <a title="<?= $collection['collection_title'];?>" href="<?php echo config_item('base_url'). 'collection/collection/'. CommonUtils::remove_vietnamese_accents($collection['collection_title']) . '_'. ($collection['user_collection_id'] + $plus)*$multiple . '.html'; ?>">
                         <img title="<?= $collection['collection_description'];?>" alt="<?= $collection['collection_description'];?>" src="<?= $collectionImage; ?>">
                     </a>
                 </div>
@@ -877,7 +882,7 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
             </div>
             <div class="modal-body">
                 <div class="container-fluid" id="collectionDialogModalBody">
-                    <form id="collection-form" method="post" action="personal/add_collection">
+                    <form id="collection-form" method="post" action="personal/addcollection">
                         <div class="row">
                             <div class="col-sm-3">
                                 <label>Tên bộ sưu tập*</label>
@@ -989,7 +994,7 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
 
     function openDialogEditCollection(collection_id){
         $.ajax({
-            url : baseURL + 'user/personal/get_collection?id=' + window.btoa(collection_id),
+            url : baseURL + 'user/personal/getcollection?id=' + window.btoa(collection_id),
             type : 'get',
             dataType : 'json',
             success : function(json){
