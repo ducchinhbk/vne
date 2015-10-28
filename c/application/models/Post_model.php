@@ -26,4 +26,18 @@ class Post_model extends CI_Model {
         return '';
     }
 
+    public function getPostByAuthorId($page, $limit, $authorID){
+        $start = ($page-1)*$limit;
+        $end = $start + $limit;
+        $sql = "SELECT post.ID, post.post_title, post.post_date, user.user_nicename,user.ID as post_author, user.user_email, user.cus_avatar, user.cus_city
+                       FROM wp_posts as post
+                       LEFT JOIN wp_users as user ON post.post_author = user.ID
+                       WHERE post.post_type='post'
+                       AND post.post_status='publish'
+                       AND user.ID=". (int)$authorID . " ORDER BY post.post_date ASC LIMIT ". $start. ",". $end;
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
+
 }

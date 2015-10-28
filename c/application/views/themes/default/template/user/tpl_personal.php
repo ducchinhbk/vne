@@ -266,525 +266,62 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
 <div class="col-xs-12">
     <a style="margin-bottom: 20px;" class="my-hourlies-viewall call-to-action right"></a>
 </div>
+
 <!-- The Loop -->
-
-
-<div class="col-xs-12 col-sm-6 col-md-4 hourlie-tile-container">
-    <div class="clearfix hourlie-tile js-listing-tile  with-member-info">
-        <div class="image-container">
-            <a class="" title="Thưởng thức loạt clip full siêu hot tại “Music Bank in Hanoi”" href="http://localhost/vneconomist/thuong-thuc-loat-clip-full-sieu-hot-tai-music-bank-in-hanoi_post-260.html">
-                <img width="260" height="124" alt="Capture" class="attachment-260x195 wp-post-image" src="http://localhost/enang/wp-content/uploads/2015/03/Capture-300x143.jpg">
-            </a>
-            <div class="stats-container clearfix">
-                <div class="pull-left rating">
-                    <i class="fpph fpph-thumb-up"></i>
-                    <span>Vote:</span>
-                    <span class="rating-value">99</span>
-                </div>
-                <div class="pull-right sales">
-                    <i class="fpph fpph-buyer-activity"></i>
-                    <span>View:</span>
-                    <span class="sales-value">1999</span>
+<?php $index = 0; ?>
+<?php if(sizeof($postAuthors) > 0) { ?>
+<?php foreach($postAuthors as $post){ ?>
+    <div class="col-xs-12 col-sm-6 col-md-4 hourlie-tile-container">
+        <div class="clearfix hourlie-tile js-listing-tile  with-member-info">
+            <div class="image-container">
+                <a class="" title="<?= $post['title'];?>" href="<?php echo config_item('wp_home_url') .'/'. CommonUtils::remove_vietnamese_accents($post['title']). '_post-'. $post['post_id']. '.html'?>">
+                    <img width="260" height="124" alt="Capture" class="attachment-260x195 wp-post-image" src="<?php echo config_item('wp_home_url'). '/wp-content/uploads/'. $post['thumb_img']?>">
+                </a>
+                <div class="stats-container clearfix">
+                    <div class="pull-left rating">
+                        <i class="fpph fpph-thumb-up"></i>
+                        <span>Vote:</span>
+                        <span class="rating-value"><?= (isset($post['post_vote']))? $post['post_vote']: 99 ?></span>
+                    </div>
+                    <div class="pull-right sales">
+                        <i class="fpph fpph-buyer-activity"></i>
+                        <span>View:</span>
+                        <span class="sales-value">1999</span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="title-container">
-            <a style="word-wrap: break-word;" class="color-hourlie js-paragraph-crop" title="Thưởng thức loạt clip full siêu hot tại “Music Bank in Hanoi”" href="http://localhost/vneconomist/thuong-thuc-loat-clip-full-sieu-hot-tai-music-bank-in-hanoi_post-260.html">
-                Thưởng thức loạt clip full siêu hot tại “Music Bank in Hanoi”
-            </a>
-        </div>
-        <div class="profile-container stretch clearfix">
-            <div class="col-xs-8 no-padding-right">
-                <div class="user-image-container pull-left">
-                    <a title="Chinh Tran">
-                        <img width="30" height="30" alt="Chinh Tran" src="http://localhost/vneconomist/upload/avatar/chinh-30x30.png" class="user-avatar user-avatar-xs">                                                         </a>
-                </div>
-                <div class="user-info pull-left">
-                    <a class="clearfix user-name crop" title="Chinh Tran">Chinh Tran</a>
-                    <span class="user-country clearfix crop">Hồ Chí Minh</span>
-                </div>
-
+            <div class="title-container">
+                <a style="word-wrap: break-word;" class="color-hourlie js-paragraph-crop" title="<?= $post['title'];?>" href="<?php echo config_item('wp_home_url') .'/'. CommonUtils::remove_vietnamese_accents($post['title']). '_post-'. $post['post_id']. '.html'?>">
+                    <?= $post['title']; ?>
+                </a>
             </div>
-            <div style="font-size: 12px;line-height: 2.5;" class="col-xs-4 price-container price-tag text-right">
-                <span>30</span><sup> votes</sup>
+            <div class="profile-container stretch clearfix">
+                <div class="col-xs-8 no-padding-right">
+                    <div class="user-image-container pull-left">
+                        <?php $authorAvatar = $post['author_avatar'];
+                              if(strpos($authorAvatar, 'http') === false){
+                                  $authorAvatar = config_item('wp_home_url'). '/'. $authorAvatar;
+                              }
+                        ?>
+                        <a title="<?= $post['author']?>">
+                            <img width="30" height="30" alt="<?= $post['author']?>" src="<?= $authorAvatar;?>" class="user-avatar user-avatar-xs">
+                        </a>
+                    </div>
+                    <div class="user-info pull-left">
+                        <a class="clearfix user-name crop" title="<?= $post['author']?>"><?= $post['author']?></a>
+                        <span class="user-country clearfix crop"><?= $post['cus_city'];?></span>
+                    </div>
+
+                </div>
+                <div style="font-size: 12px;line-height: 2.5;" class="col-xs-4 price-container price-tag text-right">
+                    <span><?php echo (isset($post['post_vote']))? $post['post_vote'] : 30 ;?></span><sup> votes</sup>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-<div class="col-xs-12 col-sm-6 col-md-4 hourlie-tile-container">
-    <div class="clearfix hourlie-tile js-listing-tile  with-member-info">
-        <div class="image-container">
-            <a class="" title="Mối tình sét đánh trên phà" href="http://localhost/vneconomist/moi-tinh-set-danh-tren-pha_post-188.html">
-                <img width="138" height="195" alt="27" class="attachment-260x195 wp-post-image" src="http://localhost/enang/wp-content/uploads/2015/01/27-212x300.jpg">
-            </a>
-            <div class="stats-container clearfix">
-                <div class="pull-left rating">
-                    <i class="fpph fpph-thumb-up"></i>
-                    <span>Vote:</span>
-                    <span class="rating-value">99</span>
-                </div>
-                <div class="pull-right sales">
-                    <i class="fpph fpph-buyer-activity"></i>
-                    <span>View:</span>
-                    <span class="sales-value">1999</span>
-                </div>
-            </div>
-        </div>
-        <div class="title-container">
-            <a style="word-wrap: break-word;" class="color-hourlie js-paragraph-crop" title="Mối tình sét đánh trên phà" href="http://localhost/vneconomist/moi-tinh-set-danh-tren-pha_post-188.html">
-                Mối tình sét đánh trên phà
-            </a>
-        </div>
-        <div class="profile-container stretch clearfix">
-            <div class="col-xs-8 no-padding-right">
-                <div class="user-image-container pull-left">
-                    <a title="Chinh Tran">
-                        <img width="30" height="30" alt="Chinh Tran" src="http://localhost/vneconomist/upload/avatar/chinh-30x30.png" class="user-avatar user-avatar-xs">                                                         </a>
-                </div>
-                <div class="user-info pull-left">
-                    <a class="clearfix user-name crop" title="Chinh Tran">Chinh Tran</a>
-                    <span class="user-country clearfix crop">Hồ Chí Minh</span>
-                </div>
-
-            </div>
-            <div style="font-size: 12px;line-height: 2.5;" class="col-xs-4 price-container price-tag text-right">
-                <span>30</span><sup> votes</sup>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="col-xs-12 col-sm-6 col-md-4 hourlie-tile-container">
-    <div class="clearfix hourlie-tile js-listing-tile  with-member-info">
-        <div class="image-container">
-            <a class="" title="Những chiêu “móc túi” trắng trợn khách hàng tại cây xăng" href="http://localhost/vneconomist/nhung-chieu-moc-tui-trang-tron-khach-hang-tai-cay-xang_post-185.html">
-                <img width="138" height="195" alt="27" class="attachment-260x195 wp-post-image" src="http://localhost/enang/wp-content/uploads/2015/01/27-212x300.jpg">
-            </a>
-            <div class="stats-container clearfix">
-                <div class="pull-left rating">
-                    <i class="fpph fpph-thumb-up"></i>
-                    <span>Vote:</span>
-                    <span class="rating-value">99</span>
-                </div>
-                <div class="pull-right sales">
-                    <i class="fpph fpph-buyer-activity"></i>
-                    <span>View:</span>
-                    <span class="sales-value">1999</span>
-                </div>
-            </div>
-        </div>
-        <div class="title-container">
-            <a style="word-wrap: break-word;" class="color-hourlie js-paragraph-crop" title="Những chiêu “móc túi” trắng trợn khách hàng tại cây xăng" href="http://localhost/vneconomist/nhung-chieu-moc-tui-trang-tron-khach-hang-tai-cay-xang_post-185.html">
-                Những chiêu “móc túi” trắng trợn khách hàng tại cây xăng
-            </a>
-        </div>
-        <div class="profile-container stretch clearfix">
-            <div class="col-xs-8 no-padding-right">
-                <div class="user-image-container pull-left">
-                    <a title="Chinh Tran">
-                        <img width="30" height="30" alt="Chinh Tran" src="http://localhost/vneconomist/upload/avatar/chinh-30x30.png" class="user-avatar user-avatar-xs">                                                         </a>
-                </div>
-                <div class="user-info pull-left">
-                    <a class="clearfix user-name crop" title="Chinh Tran">Chinh Tran</a>
-                    <span class="user-country clearfix crop">Hồ Chí Minh</span>
-                </div>
-
-            </div>
-            <div style="font-size: 12px;line-height: 2.5;" class="col-xs-4 price-container price-tag text-right">
-                <span>30</span><sup> votes</sup>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="col-xs-12 col-sm-6 col-md-4 hourlie-tile-container">
-    <div class="clearfix hourlie-tile js-listing-tile  with-member-info">
-        <div class="image-container">
-            <a class="" title="Minh bạch để giành “trận địa thông tin”" href="http://localhost/vneconomist/minh-bach-de-gianh-tran-dia-thong-tin_post-181.html">
-                <img width="260" height="156" alt="mbutton_hi_2x" class="attachment-260x195 wp-post-image" src="http://localhost/enang/wp-content/uploads/2015/01/mbutton_hi_2x-300x180.jpg">
-            </a>
-            <div class="stats-container clearfix">
-                <div class="pull-left rating">
-                    <i class="fpph fpph-thumb-up"></i>
-                    <span>Vote:</span>
-                    <span class="rating-value">99</span>
-                </div>
-                <div class="pull-right sales">
-                    <i class="fpph fpph-buyer-activity"></i>
-                    <span>View:</span>
-                    <span class="sales-value">1999</span>
-                </div>
-            </div>
-        </div>
-        <div class="title-container">
-            <a style="word-wrap: break-word;" class="color-hourlie js-paragraph-crop" title="Minh bạch để giành “trận địa thông tin”" href="http://localhost/vneconomist/minh-bach-de-gianh-tran-dia-thong-tin_post-181.html">
-                Minh bạch để giành “trận địa thông tin”
-            </a>
-        </div>
-        <div class="profile-container stretch clearfix">
-            <div class="col-xs-8 no-padding-right">
-                <div class="user-image-container pull-left">
-                    <a title="Chinh Tran">
-                        <img width="30" height="30" alt="Chinh Tran" src="http://localhost/vneconomist/upload/avatar/chinh-30x30.png" class="user-avatar user-avatar-xs">                                                         </a>
-                </div>
-                <div class="user-info pull-left">
-                    <a class="clearfix user-name crop" title="Chinh Tran">Chinh Tran</a>
-                    <span class="user-country clearfix crop">Hồ Chí Minh</span>
-                </div>
-
-            </div>
-            <div style="font-size: 12px;line-height: 2.5;" class="col-xs-4 price-container price-tag text-right">
-                <span>30</span><sup> votes</sup>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="col-xs-12 col-sm-6 col-md-4 hourlie-tile-container">
-    <div class="clearfix hourlie-tile js-listing-tile  with-member-info">
-        <div class="image-container">
-            <a class="" title="11 bí quyết giao tiếp để giữ gìn bất cứ mối quan hệ nào" href="http://localhost/vneconomist/11-bi-quyet-giao-tiep-de-giu-gin-bat-cu-moi-quan-he-nao_post-178.html">
-                <img width="260" height="173" alt="vdfd" class="attachment-260x195 wp-post-image" src="http://localhost/enang/wp-content/uploads/2015/01/vdfd-300x200.jpg">
-            </a>
-            <div class="stats-container clearfix">
-                <div class="pull-left rating">
-                    <i class="fpph fpph-thumb-up"></i>
-                    <span>Vote:</span>
-                    <span class="rating-value">99</span>
-                </div>
-                <div class="pull-right sales">
-                    <i class="fpph fpph-buyer-activity"></i>
-                    <span>View:</span>
-                    <span class="sales-value">1999</span>
-                </div>
-            </div>
-        </div>
-        <div class="title-container">
-            <a style="word-wrap: break-word;" class="color-hourlie js-paragraph-crop" title="11 bí quyết giao tiếp để giữ gìn bất cứ mối quan hệ nào" href="http://localhost/vneconomist/11-bi-quyet-giao-tiep-de-giu-gin-bat-cu-moi-quan-he-nao_post-178.html">
-                11 bí quyết giao tiếp để giữ gìn bất cứ mối quan hệ nào
-            </a>
-        </div>
-        <div class="profile-container stretch clearfix">
-            <div class="col-xs-8 no-padding-right">
-                <div class="user-image-container pull-left">
-                    <a title="Chinh Tran">
-                        <img width="30" height="30" alt="Chinh Tran" src="http://localhost/vneconomist/upload/avatar/chinh-30x30.png" class="user-avatar user-avatar-xs">                                                         </a>
-                </div>
-                <div class="user-info pull-left">
-                    <a class="clearfix user-name crop" title="Chinh Tran">Chinh Tran</a>
-                    <span class="user-country clearfix crop">Hồ Chí Minh</span>
-                </div>
-
-            </div>
-            <div style="font-size: 12px;line-height: 2.5;" class="col-xs-4 price-container price-tag text-right">
-                <span>30</span><sup> votes</sup>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="col-xs-12 col-sm-6 col-md-4 hourlie-tile-container">
-    <div class="clearfix hourlie-tile js-listing-tile  with-member-info">
-        <div class="image-container">
-            <a class="" title="Học lỏm thói quen của “gái đẹp” để thấy mình xinh đẹp hơn" href="http://localhost/vneconomist/hoc-lom-thoi-quen-cua-gai-dep-de-thay-minh-xinh-dep-hon_post-176.html">
-                <img width="150" height="195" alt="11" class="attachment-260x195 wp-post-image" src="http://localhost/enang/wp-content/uploads/2015/01/111-231x300.jpg">
-            </a>
-            <div class="stats-container clearfix">
-                <div class="pull-left rating">
-                    <i class="fpph fpph-thumb-up"></i>
-                    <span>Vote:</span>
-                    <span class="rating-value">99</span>
-                </div>
-                <div class="pull-right sales">
-                    <i class="fpph fpph-buyer-activity"></i>
-                    <span>View:</span>
-                    <span class="sales-value">1999</span>
-                </div>
-            </div>
-        </div>
-        <div class="title-container">
-            <a style="word-wrap: break-word;" class="color-hourlie js-paragraph-crop" title="Học lỏm thói quen của “gái đẹp” để thấy mình xinh đẹp hơn" href="http://localhost/vneconomist/hoc-lom-thoi-quen-cua-gai-dep-de-thay-minh-xinh-dep-hon_post-176.html">
-                Học lỏm thói quen của “gái đẹp” để thấy mình xinh đẹp hơn
-            </a>
-        </div>
-        <div class="profile-container stretch clearfix">
-            <div class="col-xs-8 no-padding-right">
-                <div class="user-image-container pull-left">
-                    <a title="Chinh Tran">
-                        <img width="30" height="30" alt="Chinh Tran" src="http://localhost/vneconomist/upload/avatar/chinh-30x30.png" class="user-avatar user-avatar-xs">                                                         </a>
-                </div>
-                <div class="user-info pull-left">
-                    <a class="clearfix user-name crop" title="Chinh Tran">Chinh Tran</a>
-                    <span class="user-country clearfix crop">Hồ Chí Minh</span>
-                </div>
-
-            </div>
-            <div style="font-size: 12px;line-height: 2.5;" class="col-xs-4 price-container price-tag text-right">
-                <span>30</span><sup> votes</sup>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="col-xs-12 col-sm-6 col-md-4 hourlie-tile-container">
-    <div class="clearfix hourlie-tile js-listing-tile  with-member-info">
-        <div class="image-container">
-            <a class="" title="Anh quên cài khuy áo ngực cho em" href="http://localhost/vneconomist/anh-quen-cai-khuy-ao-nguc-cho-em_post-173.html">
-                <img width="135" height="195" alt="12" class="attachment-260x195 wp-post-image" src="http://localhost/enang/wp-content/uploads/2015/01/121-208x300.jpg">
-            </a>
-            <div class="stats-container clearfix">
-                <div class="pull-left rating">
-                    <i class="fpph fpph-thumb-up"></i>
-                    <span>Vote:</span>
-                    <span class="rating-value">99</span>
-                </div>
-                <div class="pull-right sales">
-                    <i class="fpph fpph-buyer-activity"></i>
-                    <span>View:</span>
-                    <span class="sales-value">1999</span>
-                </div>
-            </div>
-        </div>
-        <div class="title-container">
-            <a style="word-wrap: break-word;" class="color-hourlie js-paragraph-crop" title="Anh quên cài khuy áo ngực cho em" href="http://localhost/vneconomist/anh-quen-cai-khuy-ao-nguc-cho-em_post-173.html">
-                Anh quên cài khuy áo ngực cho em
-            </a>
-        </div>
-        <div class="profile-container stretch clearfix">
-            <div class="col-xs-8 no-padding-right">
-                <div class="user-image-container pull-left">
-                    <a title="Chinh Tran">
-                        <img width="30" height="30" alt="Chinh Tran" src="http://localhost/vneconomist/upload/avatar/chinh-30x30.png" class="user-avatar user-avatar-xs">                                                         </a>
-                </div>
-                <div class="user-info pull-left">
-                    <a class="clearfix user-name crop" title="Chinh Tran">Chinh Tran</a>
-                    <span class="user-country clearfix crop">Hồ Chí Minh</span>
-                </div>
-
-            </div>
-            <div style="font-size: 12px;line-height: 2.5;" class="col-xs-4 price-container price-tag text-right">
-                <span>30</span><sup> votes</sup>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="col-xs-12 col-sm-6 col-md-4 hourlie-tile-container">
-    <div class="clearfix hourlie-tile js-listing-tile  with-member-info">
-        <div class="image-container">
-            <a class="" title="YÊU Gái đi đêm có chắc là đã hư?" href="http://localhost/vneconomist/yeu-gai-di-dem-co-chac-la-da-hu_post-170.html">
-                <img width="260" height="166" alt="fff" class="attachment-260x195 wp-post-image" src="http://localhost/enang/wp-content/uploads/2015/01/fff-300x191.jpg">
-            </a>
-            <div class="stats-container clearfix">
-                <div class="pull-left rating">
-                    <i class="fpph fpph-thumb-up"></i>
-                    <span>Vote:</span>
-                    <span class="rating-value">99</span>
-                </div>
-                <div class="pull-right sales">
-                    <i class="fpph fpph-buyer-activity"></i>
-                    <span>View:</span>
-                    <span class="sales-value">1999</span>
-                </div>
-            </div>
-        </div>
-        <div class="title-container">
-            <a style="word-wrap: break-word;" class="color-hourlie js-paragraph-crop" title="YÊU Gái đi đêm có chắc là đã hư?" href="http://localhost/vneconomist/yeu-gai-di-dem-co-chac-la-da-hu_post-170.html">
-                YÊU Gái đi đêm có chắc là đã hư?
-            </a>
-        </div>
-        <div class="profile-container stretch clearfix">
-            <div class="col-xs-8 no-padding-right">
-                <div class="user-image-container pull-left">
-                    <a title="Chinh Tran">
-                        <img width="30" height="30" alt="Chinh Tran" src="http://localhost/vneconomist/upload/avatar/chinh-30x30.png" class="user-avatar user-avatar-xs">                                                         </a>
-                </div>
-                <div class="user-info pull-left">
-                    <a class="clearfix user-name crop" title="Chinh Tran">Chinh Tran</a>
-                    <span class="user-country clearfix crop">Hồ Chí Minh</span>
-                </div>
-
-            </div>
-            <div style="font-size: 12px;line-height: 2.5;" class="col-xs-4 price-container price-tag text-right">
-                <span>30</span><sup> votes</sup>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="col-xs-12 col-sm-6 col-md-4 hourlie-tile-container">
-    <div class="clearfix hourlie-tile js-listing-tile  with-member-info">
-        <div class="image-container">
-            <a class="" title="Tín hiệu vui đầu năm" href="http://localhost/vneconomist/tin-hieu-vui-dau-nam_post-166.html">
-                <img width="260" height="156" alt="anh 1" class="attachment-260x195 wp-post-image" src="http://localhost/enang/wp-content/uploads/2015/01/anh-1-300x180.jpg">
-            </a>
-            <div class="stats-container clearfix">
-                <div class="pull-left rating">
-                    <i class="fpph fpph-thumb-up"></i>
-                    <span>Vote:</span>
-                    <span class="rating-value">99</span>
-                </div>
-                <div class="pull-right sales">
-                    <i class="fpph fpph-buyer-activity"></i>
-                    <span>View:</span>
-                    <span class="sales-value">1999</span>
-                </div>
-            </div>
-        </div>
-        <div class="title-container">
-            <a style="word-wrap: break-word;" class="color-hourlie js-paragraph-crop" title="Tín hiệu vui đầu năm" href="http://localhost/vneconomist/tin-hieu-vui-dau-nam_post-166.html">
-                Tín hiệu vui đầu năm
-            </a>
-        </div>
-        <div class="profile-container stretch clearfix">
-            <div class="col-xs-8 no-padding-right">
-                <div class="user-image-container pull-left">
-                    <a title="Chinh Tran">
-                        <img width="30" height="30" alt="Chinh Tran" src="http://localhost/vneconomist/upload/avatar/chinh-30x30.png" class="user-avatar user-avatar-xs">                                                         </a>
-                </div>
-                <div class="user-info pull-left">
-                    <a class="clearfix user-name crop" title="Chinh Tran">Chinh Tran</a>
-                    <span class="user-country clearfix crop">Hồ Chí Minh</span>
-                </div>
-
-            </div>
-            <div style="font-size: 12px;line-height: 2.5;" class="col-xs-4 price-container price-tag text-right">
-                <span>30</span><sup> votes</sup>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="col-xs-12 col-sm-6 col-md-4 hourlie-tile-container">
-    <div class="clearfix hourlie-tile js-listing-tile  with-member-info">
-        <div class="image-container">
-            <a class="" title="Trở lại quỹ đạo" href="http://localhost/vneconomist/tro-lai-quy-dao_post-163.html">
-                <img width="260" height="178" alt="Hinh-322" class="attachment-260x195 wp-post-image" src="http://localhost/enang/wp-content/uploads/2015/01/Hinh-322-300x205.jpg">
-            </a>
-            <div class="stats-container clearfix">
-                <div class="pull-left rating">
-                    <i class="fpph fpph-thumb-up"></i>
-                    <span>Vote:</span>
-                    <span class="rating-value">99</span>
-                </div>
-                <div class="pull-right sales">
-                    <i class="fpph fpph-buyer-activity"></i>
-                    <span>View:</span>
-                    <span class="sales-value">1999</span>
-                </div>
-            </div>
-        </div>
-        <div class="title-container">
-            <a style="word-wrap: break-word;" class="color-hourlie js-paragraph-crop" title="Trở lại quỹ đạo" href="http://localhost/vneconomist/tro-lai-quy-dao_post-163.html">
-                Trở lại quỹ đạo
-            </a>
-        </div>
-        <div class="profile-container stretch clearfix">
-            <div class="col-xs-8 no-padding-right">
-                <div class="user-image-container pull-left">
-                    <a title="Chinh Tran">
-                        <img width="30" height="30" alt="Chinh Tran" src="http://localhost/vneconomist/upload/avatar/chinh-30x30.png" class="user-avatar user-avatar-xs">                                                         </a>
-                </div>
-                <div class="user-info pull-left">
-                    <a class="clearfix user-name crop" title="Chinh Tran">Chinh Tran</a>
-                    <span class="user-country clearfix crop">Hồ Chí Minh</span>
-                </div>
-
-            </div>
-            <div style="font-size: 12px;line-height: 2.5;" class="col-xs-4 price-container price-tag text-right">
-                <span>30</span><sup> votes</sup>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="col-xs-12 col-sm-6 col-md-4 hourlie-tile-container">
-    <div class="clearfix hourlie-tile js-listing-tile  with-member-info">
-        <div class="image-container">
-            <a class="" title="3 kiểu tóc ngang vai tuyệt đẹp cho bạn tung tăng chơi tết" href="http://localhost/vneconomist/3-kieu-toc-ngang-vai-tuyet-dep-cho-ban-tung-tang-choi-tet_post-155.html">
-                <img width="130" height="195" alt="zxfsdzg" class="attachment-260x195 wp-post-image" src="http://localhost/enang/wp-content/uploads/2015/01/281-200x300.jpg">
-            </a>
-            <div class="stats-container clearfix">
-                <div class="pull-left rating">
-                    <i class="fpph fpph-thumb-up"></i>
-                    <span>Vote:</span>
-                    <span class="rating-value">99</span>
-                </div>
-                <div class="pull-right sales">
-                    <i class="fpph fpph-buyer-activity"></i>
-                    <span>View:</span>
-                    <span class="sales-value">1999</span>
-                </div>
-            </div>
-        </div>
-        <div class="title-container">
-            <a style="word-wrap: break-word;" class="color-hourlie js-paragraph-crop" title="3 kiểu tóc ngang vai tuyệt đẹp cho bạn tung tăng chơi tết" href="http://localhost/vneconomist/3-kieu-toc-ngang-vai-tuyet-dep-cho-ban-tung-tang-choi-tet_post-155.html">
-                3 kiểu tóc ngang vai tuyệt đẹp cho bạn tung tăng chơi tết
-            </a>
-        </div>
-        <div class="profile-container stretch clearfix">
-            <div class="col-xs-8 no-padding-right">
-                <div class="user-image-container pull-left">
-                    <a title="Chinh Tran">
-                        <img width="30" height="30" alt="Chinh Tran" src="http://localhost/vneconomist/upload/avatar/chinh-30x30.png" class="user-avatar user-avatar-xs">                                                         </a>
-                </div>
-                <div class="user-info pull-left">
-                    <a class="clearfix user-name crop" title="Chinh Tran">Chinh Tran</a>
-                    <span class="user-country clearfix crop">Hồ Chí Minh</span>
-                </div>
-
-            </div>
-            <div style="font-size: 12px;line-height: 2.5;" class="col-xs-4 price-container price-tag text-right">
-                <span>30</span><sup> votes</sup>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="col-xs-12 col-sm-6 col-md-4 hourlie-tile-container">
-    <div class="clearfix hourlie-tile js-listing-tile  with-member-info">
-        <div class="image-container">
-            <a class="" title="Những kiểu tóc cô dâu không bao giờ lỗi mốt" href="http://localhost/vneconomist/nhung-kieu-toc-co-dau-khong-bao-gio-loi-mot_post-152.html">
-                <img width="138" height="195" alt="27" class="attachment-260x195 wp-post-image" src="http://localhost/enang/wp-content/uploads/2015/01/27-212x300.jpg">
-            </a>
-            <div class="stats-container clearfix">
-                <div class="pull-left rating">
-                    <i class="fpph fpph-thumb-up"></i>
-                    <span>Vote:</span>
-                    <span class="rating-value">99</span>
-                </div>
-                <div class="pull-right sales">
-                    <i class="fpph fpph-buyer-activity"></i>
-                    <span>View:</span>
-                    <span class="sales-value">1999</span>
-                </div>
-            </div>
-        </div>
-        <div class="title-container">
-            <a style="word-wrap: break-word;" class="color-hourlie js-paragraph-crop" title="Những kiểu tóc cô dâu không bao giờ lỗi mốt" href="http://localhost/vneconomist/nhung-kieu-toc-co-dau-khong-bao-gio-loi-mot_post-152.html">
-                Những kiểu tóc cô dâu không bao giờ lỗi mốt
-            </a>
-        </div>
-        <div class="profile-container stretch clearfix">
-            <div class="col-xs-8 no-padding-right">
-                <div class="user-image-container pull-left">
-                    <a title="Chinh Tran">
-                        <img width="30" height="30" alt="Chinh Tran" src="http://localhost/vneconomist/upload/avatar/chinh-30x30.png" class="user-avatar user-avatar-xs">                                                         </a>
-                </div>
-                <div class="user-info pull-left">
-                    <a class="clearfix user-name crop" title="Chinh Tran">Chinh Tran</a>
-                    <span class="user-country clearfix crop">Hồ Chí Minh</span>
-                </div>
-
-            </div>
-            <div style="font-size: 12px;line-height: 2.5;" class="col-xs-4 price-container price-tag text-right">
-                <span>30</span><sup> votes</sup>
-            </div>
-        </div>
-    </div>
-</div>
-
+<?php $index++; }}else{ ?>
+    Hiện tại bạn chưa viết bài viết nào. <a href="#">Viết ngay</a>
+<?php } ?>
 <!-- End Loop -->
 
 
