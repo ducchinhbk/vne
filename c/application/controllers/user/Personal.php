@@ -25,6 +25,8 @@ class Personal extends CI_Controller {
         }
         $authorPosts = $this->post_model->getPostByAuthorId($page, $limit, $this->reviewAuthorID);
         $data['postAuthors'] = array();
+        $data['page'] = $page;
+        $data['total'] = $this->post_model->getCountPostByAuthorId($this->reviewAuthorID);
         foreach($authorPosts as $post){
             $thumbImg = $this->post_model->getPostThumbImage($post['ID']);
             $data['postAuthors'][] = array(
@@ -48,6 +50,34 @@ class Personal extends CI_Controller {
         $this->load->view('user/tpl_personal', $data);
         $this->load->view('common/tpl_footer');
 	}
+
+    public function getPostByAuthor(){
+        $page = 1; $limit = 12;
+        if(isset($_GET['page'])){
+            $page = (int)$_GET['page'];
+        }
+        $data['page'] = $page;
+        $data['total'] = $this->post_model->getCountPostByAuthorId($this->reviewAuthorID);
+
+        $authorPosts = $this->post_model->getPostByAuthorId($page, $limit, $this->reviewAuthorID);
+        foreach($authorPosts as $post){
+            $thumbImg = $this->post_model->getPostThumbImage($post['ID']);
+            $data['postAuthors'][] = array(
+                'title' => $post['post_title'],
+                'date' => $post['post_date'],
+                'author' => $post['user_nicename'],
+                'author_id' => $post['post_author'],
+                'author_email' => $post['user_email'],
+                'post_id' => $post['ID'],
+                'thumb_img' => $thumbImg,
+                'author_nicename' => $post['user_nicename'],
+                'author_avatar' => $post['cus_avatar'],
+                'cus_city' => $post['cus_city']
+            );
+        }
+
+        $this->load->view('user/tpl_personal', $data);
+    }
 
     public function addcollection(){
         header('Content-Type: application/json');

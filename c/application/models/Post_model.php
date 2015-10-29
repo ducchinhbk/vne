@@ -39,5 +39,15 @@ class Post_model extends CI_Model {
         return $query->result_array();
     }
 
+    public function getCountPostByAuthorId($authorID){
+        $sql = "SELECT count(1) FROM wp_posts as post
+                       LEFT JOIN wp_users as user ON post.post_author = user.ID
+                       WHERE post.post_type='post'
+                       AND post.post_status='publish'
+                       AND user.ID=". (int)$authorID;
+        $query = $this->db->query($sql);
+        return $query->result_array()[0]['count(1)'];
+    }
+
 
 }
