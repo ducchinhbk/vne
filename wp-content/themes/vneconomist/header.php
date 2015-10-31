@@ -37,7 +37,7 @@
     <![endif]-->
     
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="http://malsup.github.com/jquery.form.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
     
@@ -179,8 +179,8 @@ function isSessionUserDataAvailable(){
                 <?php }else{ ?>
                     <div class="pull-right menu-block user-menu">
                         <div class="auth-menu">
-                            <a href="<?php echo site_url( '/c/user/user/signup?redirect_to='. urlencode(site_url($wp->request)));?>" title="Sign up" class="text-uppercase sign-up">Đăng ký</a>
-                            <a href="<?php echo site_url( '/c/user/user?redirect_to='. urlencode(site_url($wp->request)) );?>" title="Log in" class="text-uppercase login">Đăng nhập</a>
+                            <a href="<?php echo site_url( '/c/user/user/signup?redirect_to='. urlencode(site_url($wp->request)));?>" title="Đăng ký" class="text-uppercase sign-up">Đăng ký</a>
+                            <a href="<?php echo site_url( '/c/user/user?redirect_to='. urlencode(site_url($wp->request)) );?>" title="Đăng nhập" class="text-uppercase login">Đăng nhập</a>
                         </div>
                     </div>
                 <?php } ?>

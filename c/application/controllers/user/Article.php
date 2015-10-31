@@ -25,7 +25,7 @@ class Article extends CI_Controller {
         //$this->load->helper('wp');
         if( $this->input->post('post_data') && $this->validateForm()){
             
-
+            
             $post_data = $this->input->post('post_data');
             $filename = $_FILES["thumb"]["name"];
             $tmp_file = $_FILES["thumb"]["tmp_name"];
@@ -56,8 +56,9 @@ class Article extends CI_Controller {
             if($post_id != 0 )
             {
                 set_post_thumbnail($post_id,$this->download_image($post_id, $filename, $tmp_file));
-                echo " Insert post's successfull";
-                exit;
+                
+                redirect('/c/user/personal/'.$_SESSION['user_login'].'?cp=sussessful', 'refresh');
+                
             }
         }
 

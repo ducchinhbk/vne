@@ -60,11 +60,6 @@ function c_set_createpost_title($title='Vneconomist')
     $title = "Tạo bài viết mới - VnEconomist";
     return $title;
 }
-function c_get_header()
-{
-    add_filter( 'wp_title', 'c_set_createpost_title', 10, 2 );
-    return get_header();
-}
 
 //insert post by reusing wordpress function
 function c_insert_post($postdata){

@@ -13,13 +13,22 @@
     $category = get_the_category(); $cat_ID = ($category[0]->category_parent > 0)? $category[0]->category_parent : $category[0]->term_id; 
     
 ?>
+<style>
+    .controller-job.action-view header h1{
+        border-bottom: none;
+    }
+    .user-voted{background-color: #999 !important;border: none !important; text-shadow: none !important;}
+    .user-voted:hover{color: #fff !important;}
+</style>
 <div class="container container-top"></div>
 	<div id="main-container" class="wrap-container container clearfix offcanvas offcanvas-right">
-		<div class="main-content controller-hourlie action-view controller-member action-contact">
+		<div class="main-content controller-hourlie controller-job action-view controller-member action-contact">
        <?php if (have_posts()) { ?>		
              <?php while (have_posts()) : the_post();
-                     $user_info = get_userdata(get_the_author_ID()); 
-                     $full_name = get_user_meta( get_the_author_ID(), 'first_name', true ).' '.get_user_meta( get_the_author_ID(), 'last_name', true );
+                     $author_id = get_the_author_ID();
+                     
+                     $user_info = get_userdata($author_id); 
+                     $full_name = get_user_meta( $author_id, 'first_name', true ).' '.get_user_meta( $author_id, 'last_name', true );
              ?>
 			<header class="clearfix featured featured-right">
 				<h1 class="clearfix"> <?php the_title()?> </h1>
@@ -50,6 +59,8 @@
 				    </div>
 				</div>
 			</div>
+            <?php if(isset($_SESSION['wp_user_data'])){?>
+            
             <div>
                 <div class="col-xs-12 col-sm-6 col-md-2 col-lg-1 member"></div>
                 <div class="col-xs-12 col-sm-6 col-md-10 col-lg-10 col-lg-pull-1 contact">
@@ -62,6 +73,7 @@
         									<div class="fields clearfix">
         										
         										<div class="clearfix payment-contracts">
+                                                    <h2>Đánh giá của bạn</h2>
         											<div class="row">
         												<ul id="rating">
         													<li><a href="javascript:void(0)">1.0</a></li>
@@ -99,7 +111,16 @@
         				</div>
                     </div>
                 </div>
-                </div>
+            </div>
+            <?php } else { ?>
+            <section class="proposal-form prepend-top" data-hook="proposal-form" id="login-box">
+                <!--h2 class="bubble">Votes </h2-->
+                <div class="inactive-proposal gutter-top text-center">
+                    <p>Đăng nhập để vote cho tác giả hoặc bình luận bài viết.</p>
+                    <a  class="extra-tall call-to-action btn btn-inverted" href="<?php echo site_url( '/c/user/user?redirect_to='. urlencode(site_url($wp->request)) );?>">Đăng nhập </a>
+                </div>    
+            </section>
+            <?php } ?>
 			<div class="col-xs-12 js-auto-pause-hidden hourlie-description-text">
 		          
 				<div class="feedbacks-container clear prepend-top">
@@ -119,7 +140,7 @@
                 <?php if(count_comment( get_the_ID() ) > 0 ) {?>
                 <div class="feedback-toggle-container clearfix" style="margin-top: 30px;">
 				    <button class="btn tall call-to-action col-xs-12 col-md-6 col-md-offset-3" id="load-reviews">
-							Xem bình luận (<?php echo count_comment( get_the_ID() ); ?>)   
+							Xem bình luận 
                     </button>
 				</div>
                 <?php } ?>
@@ -131,7 +152,7 @@
 		<div class="clearfix js-keep-in-view hidden-xs hidden-sm cta-container">
 			<div class="clearfix">
 				<div class="price-container text-center gutter-top">
-					<span class="js-hourlie-discounted-price discounted-price" data-price-symbol="$" data-price-amount="16"> 16 votes  </span>
+					<span class="js-hourlie-discounted-price discounted-price" > <span id="sum-voted" class="sum-voted" style="font-weight: 600; color: #ff6a26;"><?php echo get_sum_voted($author_id);  ?></span> votes  </span>
 				</div>
 			</div>
 			<div class="clear append-bottom hidden-sm hidden-xs"></div>
@@ -140,13 +161,17 @@
 					<div class="clearfix">
 					
 						<div class="col-xs-8 no-padding-right">
-							<form class="js-checkout-button" id="pay-hourlie-230890-55efce6987b81-form" action="#" method="GET">
-								<div style="display:none"><input type="hidden" value="listings" name="ref" /></div>
-								<input name="Checkout[params][quantity]" id="Checkout_params_quantity" type="hidden" value="1" />
-								<input name="Checkout[params][ref]" id="Checkout_params_ref" type="hidden" value="listings" />
-								<input name="Checkout[modelIds][0]" id="Checkout_modelIds_0" type="hidden" value="230890" />
-								<input class="hourlie tall btn btn-inverted js-payment-button" type="submit" id="pay-hourlie-230890-55efce6987b81-button" name="pay-hourlie-230890-55efce6987b81-button" value="Vote" />
-							</form>            
+                            <?php if(isset($_SESSION['wp_user_data'])){ 
+                                     if(check_voted($user_info->ID, $_SESSION['wp_user_data']["user_id"], get_the_ID())){?>
+                                    <span class="hourlie tall btn btn-inverted js-payment-button user-voted" > Đã vote</span>
+                                <?php } else { ?>
+                                    <span class="hourlie tall btn btn-inverted js-payment-button" id="voting"> Vote</span>
+                                <?php }
+                                 } else {?>
+                            
+                                <a href="#login-box" class="hourlie tall btn btn-inverted js-payment-button"> Vote</a>
+                            <?php } ?>    
+                            <input type="hidden" name="author_id" id="author-id" value="<?php echo $author_id;?>"/>       
 						</div>
 					</div>
 				</div>
@@ -208,7 +233,7 @@
 				<a class="btn contact-button" rel="nofollow" href="#">Contact</a>
 			</div>
 		</div>
-		<br class="clear">
+		<br class="clear"/>
 		<div class="clearfix gutter-top">
 			<div class="lifted-corners with-handles">
 				<div class="handles"></div>
@@ -216,7 +241,7 @@
 					<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Money protection guarantee" class="money-protection-guarantee pull-left">
 					<div class="pull-left">
 						<h5>
-							Money Protection<br>Guarantee <aside>Job done or your money back</aside>
+							Money Protection<br/>Guarantee <aside>Job done or your money back</aside>
 						</h5>
 					</div>
 				</div>

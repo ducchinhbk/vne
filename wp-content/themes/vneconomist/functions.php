@@ -29,8 +29,16 @@ add_action('wp_ajax_autocomplete_getposts', 'autocomplete_getposts');
 add_action('wp_ajax_nopriv_autocomplete_getposts', 'autocomplete_getposts');
 
 //register ajax action for get comments
+add_action('wp_ajax_get_comments_ajax', 'get_comments_ajax');
 add_action('wp_ajax_nopriv_get_comments_ajax', 'get_comments_ajax');
+
+//register ajax action for review rating
+add_action('wp_ajax_add_review_rating', 'add_review_rating');
 add_action('wp_ajax_nopriv_add_review_rating', 'add_review_rating');
+
+//register ajax action for author voting
+add_action('wp_ajax_vote_for_author', 'vote_for_author');
+add_action('wp_ajax_nopriv_vote_for_author', 'vote_for_author');
 
 //get background image
 function get_bg_resize_image($postID, $size)
@@ -273,8 +281,8 @@ function cus_get_comments($post_id = '0'){
         foreach( $comments as $comment ){
             $lastDate = $comment->comment_date;
             print_comment($comment); 
-            echo '<input type="hidden" class="lastpost_date" value="'.$lastDate.'">';
         }
+        echo '<input type="hidden" class="lastpost_date" value="'.$lastDate.'">';
     }
     else{
         echo "no comment";
@@ -342,11 +350,13 @@ function add_review_rating(){
     die();
 }												
 // function for both ajax and normal get comments 
-function get_comments_ajax($post_id = '0' ){
+function get_comments_ajax(){
     
-    $post_id = (isset($_POST['post_id']))? $_POST['post_id']: $post_id;
-    //echo $post_id;
+    $post_id = (isset($_POST['post_id']))? $_POST['post_id']: 0;
+    //echo 'post_id= '.$post_id;
     $current_date = (isset($_POST['last_date']))? $_POST['last_date']: date('Y-m-d H:i');
+    //echo 'current_date= '.$current_date;
+    
     $args = array(
     	'post_id' => $post_id,
         'date_query' => array(
@@ -363,15 +373,15 @@ function get_comments_ajax($post_id = '0' ){
         foreach( $comments as $comment ){
             $lastDate = $comment->comment_date;
             print_comment($comment); 
-            echo '<input type="hidden" class="lastpost_date" value="'.$lastDate.'">';
         }
+        echo '<input type="hidden" class="lastpost_date" value="'.$lastDate.'">';
     }
     else{
         echo "no comment";
     }
     //check if ajax then call die() function
     
-       die();   
+    die();   
 }                                       
 //print comment
 function print_comment($comment){
@@ -399,6 +409,41 @@ function print_comment($comment){
     $output .=     '</li>';
     
     echo $output;
+}
+
+// function which process vote for author
+function vote_for_author(){
+    global $wpdb;
+    
+    $sum_voted = (int)$_POST['sum_voted'];
+    $post_id = $_POST['post_id'];
+    $user_id = $_POST['user_id'];
+    $author_id = $_POST['author_id'];
+    $date_voted =  date('Y-m-d H:i');
+    
+    if(!empty($post_id) && !empty($user_id) && !empty($author_id)){
+         $sql = $wpdb->prepare( 
+        		"
+            		INSERT INTO wp_author_votes
+            		( post_id, user_id, author_id, date_voted)
+            		VALUES ( %f, %f, %f, %s )
+            	", 
+                    $post_id, 
+                	$user_id, 
+                	$author_id,
+                    $date_voted
+                );
+        $wpdb->query( $sql );
+        
+        //update author sum voted
+        $sum_voted = $sum_voted + 1;
+        $wpdb->query( "UPDATE wp_users
+                        SET cus_sum_voted = $sum_voted
+                        WHERE ID = $author_id" );
+        echo $sum_voted;
+        die();
+    }
+    
 }												
 /******--------END AJAX--------********/											
 
@@ -430,6 +475,33 @@ function get_client_ip() {
     else
         $ipaddress = 'UNKNOWN';
     return $ipaddress;
+}
+
+//function check whether voted for author
+function check_voted($author_id, $user_id, $post_id){
+    global $wpdb;
+    $where = $wpdb->prepare( "WHERE author_id = %d AND user_id = %d AND post_id = %d ", $author_id, $user_id, $post_id );
+    $voted_id = $wpdb->get_results( "SELECT ID FROM wp_author_votes $where", ARRAY_A );
+    //var_dump($voted_id);
+    
+    if(empty($voted_id[0]['ID']))
+    {
+        return false;
+    }
+    
+    return true;
+}
+
+//get author sum of voted
+function get_sum_voted($author_id){
+    global $wpdb;
+    $where = $wpdb->prepare( "WHERE ID = %d ", $author_id);
+    $voted = $wpdb->get_results( "SELECT cus_sum_voted FROM wp_users $where", ARRAY_A );
+    //var_dump($voted);
+    $sum_voted = (empty($voted[0]['cus_sum_voted']))? 0 : $voted[0]['cus_sum_voted'];
+    
+    return $sum_voted;
+    
 }
 
 									
