@@ -1,5 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require_once(config_item('home_dir') . '/wp-load.php');
+require_once(config_item('home_dir') . '/wp-admin/includes/media.php');
+require_once(config_item('home_dir') . '/wp-admin/includes/file.php');
+require_once(config_item('home_dir') . '/wp-admin/includes/image.php');
 
 class Article extends CI_Controller {
 
@@ -18,9 +22,9 @@ class Article extends CI_Controller {
 
 
     public function create(){
-        $this->load->helper('wp');
+        //$this->load->helper('wp');
         if( $this->input->post('post_data') && $this->validateForm()){
-            echo "run herre";
+            
 
             $post_data = $this->input->post('post_data');
             $filename = $_FILES["thumb"]["name"];
@@ -47,12 +51,11 @@ class Article extends CI_Controller {
                 'post_category' => array($post_data['category_id'],$sub_cate)
             );
 
-            $post_id = c_insert_post($new_post);
+            $post_id = wp_insert_post($new_post);
 
             if($post_id != 0 )
             {
-                echo "run in post thumbnail";
-                c_set_post_thumbnail($post_id, $filename, $tmp_file);
+                set_post_thumbnail($post_id,$this->download_image($post_id, $filename, $tmp_file));
                 echo " Insert post's successfull";
                 exit;
             }
@@ -148,7 +151,7 @@ class Article extends CI_Controller {
         }
 
 
-        $data['header_view'] = c_get_header();
+        $this->load->view('common/tpl_header');
         $this->load->view('user/tpl_createpost', $data);
         $this->load->view('common/tpl_footer');
 
@@ -192,4 +195,46 @@ class Article extends CI_Controller {
         return !$this->error;
     }
 
+    
+    /* Create an new image from URL and create attachment obj */
+    protected function download_image($post_id, $filename, $image_temp) {
+    	try {
+    		$upload_dir = wp_upload_dir(); // Set upload folder
+            
+            $image_data = file_get_contents($image_temp); // Get image data
+            
+    		// Check folder permission and define file location
+    		if( wp_mkdir_p( $upload_dir['path'] ) ) {
+    			$file = $upload_dir['path'] . '/' . $filename;
+    		} else {
+    			$file = $upload_dir['basedir'] . '/upload/' . $filename;
+    		}
+    		
+    		if($image_data!==false) {
+    			file_put_contents( $file, $image_data ); // Create the image  file on the server
+    		} else {
+    			throw new Exception('Cannot fetch image from URL: '.$image_temp);
+    		}
+            
+    	} catch (Exception $e) {
+    		echo 'Error upload image! ';
+    		return;
+    	}
+    	
+    	$wp_filetype = wp_check_filetype( $filename, null ); // Check image file type
+    
+    	$attachment = array(
+    		'post_mime_type' => $wp_filetype['type'],
+    		'post_title'     => sanitize_file_name( $filename ),
+    		'post_content'   => '',
+    		'post_status'    => 'inherit'
+    	);
+    
+    	$attach_id = wp_insert_attachment( $attachment, $file, $post_id ); // create attachment
+    	$attach_data = wp_generate_attachment_metadata( $attach_id, $file ); // Define attachment metadata
+    	wp_update_attachment_metadata( $attach_id, $attach_data ); // Assign metadata to attachment
+    	// message("--> attachment downloaded: ".wp_get_attachment_url($attach_id));
+    
+    	return $attach_id;
+    }
 }
