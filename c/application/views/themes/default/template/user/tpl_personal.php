@@ -2,12 +2,30 @@
 require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
 ?>
 
-<div class="main-content full-width controller-member action-profile no-padding">
+<div class="container container-top">
+    <?php if(isset($_GET['cp'])){?>
+        <div class="cmm-announcement clearfix"  style="overflow: hidden; display: block;">
+            <p>
+                <a target="blank" href="#" class="announcement-click call-to-action">Bài viết đã được tạo thành công..! </a>
+            </p>
+            <i class="fa fa-times" id="noted-close"></i>
+            <script>
+                $(document).ready(function() {
+                    $('#noted-close').click(function(){
+                        $('.cmm-announcement').remove();
+                    });
+                });
+            </script>
+        </div>
+    <?php } ?>
+</div>
+<div id="main-container" class="wrap-container container clearfix">
+    <div class="main-content full-width controller-member action-profile no-padding">
 
 <div class="clearfix profile-header profile-header-cover">
     <div class="profile-background col-xs-12 hidden-xs no-padding">
         <div class="background-wrapper">
-            <div class="memberImage" style="background-image: url('<?php echo config_item('wp_home_url'). '/'. $_SESSION['cus_cover']; ?>');"></div>
+            <div class="memberImage" style="background-image: url('<?php echo config_item('wp_home_url'). '/'. $reviewUser['cus_cover']; ?>');"></div>
         </div>
     </div>
     <div class="profile-header-fav">
@@ -21,9 +39,9 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
         </div>
     </div>
     <?php
-        $userAvatar = $_SESSION['cus_avatar'];
+        $userAvatar = $reviewUser['cus_avatar'];
         if(strpos($userAvatar, 'http') === false){
-            $userAvatar = config_item('wp_home_url') . '/'. $_SESSION['cus_avatar'];
+            $userAvatar = config_item('wp_home_url') . '/'. $reviewUser['cus_avatar'];
         }
     ?>
     <div class="profile-header-xs visible-xs-block hidden-sm">
@@ -31,7 +49,7 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
             <i class="js-tooltip status-icon fa fa-circle green"></i>
         </div>
         <div class="profile-pic">
-            <img alt="<?= $_SESSION['user_display_name']?>" src="<?= $userAvatar ?>">
+            <img alt="<?= $reviewUser['display_name']?>" src="<?= $userAvatar ?>">
             <span title="Savitri D. is available to start working for you immediately" class="hidden-xs available  js-tooltip">
                 <i class="icon fa fa-check"></i>
             </span>
@@ -43,10 +61,10 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
         </div>
         <div class="clearfix member-info">
             <span class="member-name">
-                Chinh Tran           
+                <?= $reviewUser['user_nicename']; ?>
             </span>
             <span class="member-description">
-                Bussiness man, Zotadi Global Corporation            
+                <?= $reviewUser['cus_career']; ?>
             </span>
 
         </div>
@@ -54,7 +72,7 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
             <ul>
                 <li>
                     <i class="fpph fpph-location"></i>
-                    Hồ Chí Minh
+                    <?= $reviewUser['cus_city']; ?>
                 </li>
                 <li>
                     <i class="fpph fpph-seller-activity"></i>
@@ -72,12 +90,14 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
         </div>
         <div class="member-about clearfix">
             <div class="member-status text-center">
-                <q title="Everything come to you in the right moment! Be patient!" class="crop full-width-q">Everything come to you in the right moment! Be patient!</q>
+                <q title="Everything come to you in the right moment! Be patient!" class="crop full-width-q">
+                    Everything come to you in the right moment! Be patient!
+                </q>
             </div>
             <hr class="clearfix">
             <div class="about-container js-about-container">
                 <p>
-                    We comprises a skilled and professional team of internet marketers with 10 years of experience in developing integrated tools in optimizing social media sites. We                <a class="call-to-action about-read-more about-dialog-trigger">xem thêm...</a>
+                   <?= $reviewUser['cus_description'];?>
                 </p>
             </div>
         </div>
@@ -88,32 +108,36 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
     </div>
     <div class="profile-header-member hidden-xs">
         <div class="profile-pic">
-            <img alt="<?= $_SESSION['user_display_name']?>" src="<?= $userAvatar ?>">
+            <img alt="<?= $reviewUser['display_name']?>" src="<?= $userAvatar ?>">
             <span data-original-title="Savitri D. is available to start working for you immediately" title="" class="hidden-xs available  js-tooltip">
                 <i class="icon fa fa-check"></i>
             </span>
         </div>
         <div class="seller-name light">
             <h1>
-                <?= $_SESSION['user_fname']. ' '. $_SESSION['user_lname']; ?>
+                <?= $reviewUser['first_name']. ' '. $reviewUser['last_name']; ?>
                 <aside>
-                    Bussiness man, Zotadi Global Corporation
+                    <?= $reviewUser['cus_career']; ?>
                 </aside>
             </h1>
         </div>
     </div>
-    <div class="cover-edit-action hidden-xs">
-        <a href="http://localhost/vneconomist/c/user/user/edit" class="btn cover-edit-button">
-            <i class="fa fa-camera"></i> Change Cover
-        </a>
-    </div>
+    <?php if(isset($_SESSION['user_id']) && $reviewUser['ID'] == $_SESSION['user_id']){ ?>
+        <div class="cover-edit-action hidden-xs">
+            <a href="http://localhost/vneconomist/c/user/user/edit" class="btn cover-edit-button">
+                <i class="fa fa-camera"></i> Change Cover
+            </a>
+        </div>
+    <?php } ?>
     <div class="profile-header-right-col align-center hidden-xs">
         <div class="cert-container">
             <span title="CERT is PPH's  proprietary ranking algorithm  which factors in all the things our buyers care about a Seller, in one synthetic score. Sellers are ranked from CERT1 up to CERT5 with the Top 0.5% getting a special badge." data-tooltip-pos="left" data-tooltip-content="CERT is PPH's  proprietary ranking algorithm  which factors in all the things our buyers care about a Seller, in one synthetic score. Sellers are ranked from CERT1 up to CERT5 with the Top 0.5% getting a special badge." data-level="5" class="cert cert-level5-xlarge ">
             </span>
         </div>
         <!--span><a class="btn contact-member call-to-action btn-inverted " rel="nofollow" href="#">Contact</a></span-->
-        <a href="http://localhost/vneconomist/c/user/user/edit" rel="nofollow" class="btn contact-member call-to-action  ">Edit</a>
+        <?php if(isset($_SESSION['user_id']) && $reviewUser['ID'] == $_SESSION['user_id']){ ?>
+            <a href="http://localhost/vneconomist/c/user/user/edit" rel="nofollow" class="btn contact-member call-to-action  ">Edit</a>
+        <?php } ?>
     </div>
 </div>
 <div class="member-info-container">
@@ -127,15 +151,14 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
         </p>
         <div class="about-container js-about-container">
             <p>
-                We comprises a skilled and professional team of internet marketers with 10 years of experience in developing integrated tools in optimizing social media sites. We                    <a class="call-to-action about-read-more about-dialog-trigger">xem thêm...</a>
-
+                <?= $reviewUser['cus_description']; ?>
             </p>
         </div>
         <div class="clearfix">
             <ul class="clearfix details-list">
                 <li>
                     <i class="fpph fpph-location"></i>
-                    Hồ Chí Minh
+                    <?= $reviewUser['cus_city']?>
                 </li>
                 <li class="">
                     <i title="Savitri D. is available to start working for you immediately" class="status-icon fa fa-check-circle green js-tooltip"></i>
@@ -248,7 +271,7 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
 <div class="member-tabs pph-default stretch gutter-bottom hidden-xs" id="members-widget-hourlies-portfolio">
 <ul class="nav nav-tabs" role="tablist">
     <li class="active">
-        <a href="#my-post" data-toggle="tab" role="tab">Bài viết (60)</a>
+        <a href="#my-post" data-toggle="tab" role="tab">Bài viết (<?= $total; ?>)</a>
     </li>
     <li>
         <a href="#my-colection" data-toggle="tab" role="tab">Bộ sưu tập</a>
@@ -262,12 +285,13 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
 </ul>
 <div class="tab-content">
 <div class="tab-pane fade in active" id="my-post">
-<div class="clearfix" id="">
+<div class="clearfix">
 <div class="col-xs-12">
     <a style="margin-bottom: 20px;" class="my-hourlies-viewall call-to-action right"></a>
 </div>
 
 <!-- The Loop -->
+<div id="paginationBody">
 <?php $index = 0; ?>
 <?php if(sizeof($postAuthors) > 0) { ?>
 <?php foreach($postAuthors as $post){ ?>
@@ -320,28 +344,29 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
         </div>
     </div>
 <?php $index++; }}else{ ?>
-    Hiện tại bạn chưa viết bài viết nào. <a href="#">Viết ngay</a>
+    <?php if(isset($_SESSION['user_id']) && $reviewUser['ID'] == $_SESSION['user_id']){ ?>
+        Hiện tại bạn chưa viết bài viết nào. <a href="#">Viết ngay</a>
+    <?php } ?>
 <?php } ?>
+</div>
 <!-- End Loop -->
 
 
 <div class="clearfix"></div>
 <div style="margin-top: 20px;" class="pager">
     <div class="pagination clearfix">
-        <ul class="yiiPager" id="hourlies-listing-pager">
-
-            <li class="hidden-xs"><a title="Trang 1" class="selected" data-page="1" href="http://localhost/vneconomist/author/ducchinhbk?page=1">1</a></li>
-
-            <li class="hidden-xs"><a title="Trang 2" class="" data-page="2" href="http://localhost/vneconomist/author/ducchinhbk?page=2">2</a></li>
-
-            <li class="hidden-xs"><a title="Trang 3" class="" data-page="3" href="http://localhost/vneconomist/author/ducchinhbk?page=3">3</a></li>
-
-            <li class="hidden-xs"><a title="Trang 4" class="" data-page="4" href="http://localhost/vneconomist/author/ducchinhbk?page=4">4</a></li>
-
-            <li class="hidden-xs"><a title="Trang 5" class="" data-page="5" href="http://localhost/vneconomist/author/ducchinhbk?page=5">5</a></li>
-            <li class=""><a title="Trang tiếp theo" class="next" data-page="2" href="http://localhost/vneconomist/author/ducchinhbk?page=2"><i class="fa fa-angle-right"></i></a></li>
-        </ul>
-
+        <?php if($numPage > 1){ ?>
+            <ul class="yiiPager" id="hourlies-listing-pager">
+                <?php $index = 1;
+                    foreach($paginations as $pagination){
+                ?>
+                <li class="hidden-xs" style="display: <?php echo ($pagination['show'])? '': 'none' ?>"><a title="Trang <?=$pagination['index']?>" class="<?= $pagination['class']?>" href="<?= $pagination['link']?>"><?=$index?></a></li>
+                <?php $index++; } ?>
+                <?php if($numPage > 5){ ?>
+                    <li class=""><a title="Trang tiếp theo" class="next" href="<?php echo config_item('base_url'). 'user/personal/'. $reviewUsername . '?page='. ($page + 1) ; ?>"><i class="fa fa-angle-right"></i></a></li>
+                <?php } ?>
+            </ul>
+        <?php } ?>
     </div>
 </div>
 </div>
@@ -357,7 +382,7 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
             if(isset($collection['image']) && !empty($collection['image'])){
                 $collectionImage = $collection['image'];
             }
-        ?>
+            ?>
             <div class="profile-collection-item">
                 <div class="profile-collection-main-img">
                     <a title="<?= $collection['collection_title'];?>" href="<?php echo config_item('base_url'). 'collection/collection/'. CommonUtils::remove_vietnamese_accents($collection['collection_title']) . '_'. ($collection['user_collection_id'] + $plus)*$multiple . '.html'; ?>">
@@ -366,22 +391,25 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
                 </div>
                 <a class="profile-collection-title" href="<?php echo config_item('base_url'). 'collection/collection/'. CommonUtils::remove_vietnamese_accents($collection['collection_title']) . '_'. ($collection['user_collection_id'] + $plus)*$multiple ;?>" title="<?= $collection['collection_title'];?>"><?= $collection['collection_title']?></a>
                 <div><span class="profile-collection-res-count">1</span> địa điểm</div>
-                <a class="profile-collection-bot-btn" href="javascript:void(0);" onclick="openDialogEditCollection(<?= $collection['user_collection_id']; ?>);">
-                    <span class="fa fa-pencil"></span> Chỉnh sửa
-                </a>
+                <?php if(isset($_SESSION['user_id']) && $reviewUser['ID'] == $_SESSION['user_id']){ ?>
+                    <a class="profile-collection-bot-btn" href="javascript:void(0);" onclick="openDialogEditCollection(<?= $collection['user_collection_id']; ?>);">
+                        <span class="fa fa-pencil"></span> Chỉnh sửa
+                    </a>
+                <?php } ?>
             </div>
         <?php } ?>
-
-        <div class="profile-collection-item">
-            <div class="profile-collection-main-img">
-                <a href="javascript:void(0)">
-                    <img src="http://image.foody.vn/default/s256x160/no-image.png">
-                </a>
-                <a onclick="openDialogCollection();" class="profile-collection-bot-btn" href="javascript:void(0);">
-                    <span class="fa fa-file-o"></span> + Tạo bộ sưu tập
-                </a>
+        <?php if(isset($_SESSION['user_id']) && $reviewUser['ID'] == $_SESSION['user_id']){ ?>
+            <div class="profile-collection-item">
+                <div class="profile-collection-main-img">
+                    <a href="javascript:void(0)">
+                        <img src="http://image.foody.vn/default/s256x160/no-image.png">
+                    </a>
+                    <a onclick="openDialogCollection();" class="profile-collection-bot-btn" href="javascript:void(0);">
+                        <span class="fa fa-file-o"></span> + Tạo bộ sưu tập
+                    </a>
+                </div>
             </div>
-        </div>
+        <?php } ?>
     </div>
 </div>
 <div class="tab-pane fade" id="my-bookmark">
@@ -406,7 +434,7 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
 <div id="members-widget-hourlies-portfolio-accordion" class="panel-group visible-xs tab-collapsed"></div>	        	    </div>
 </div>
 </div>
-
+</div>
 <!-- MODEL COLLECTION BOOPSTRAP -->
 <div id="collectionDialogModal" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -419,7 +447,7 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
             </div>
             <div class="modal-body">
                 <div class="container-fluid" id="collectionDialogModalBody">
-                    <form id="collection-form" method="post" action="personal/addcollection">
+                    <form id="collection-form" method="post" action="addcollection">
                         <div class="row">
                             <div class="col-sm-3">
                                 <label>Tên bộ sưu tập*</label>

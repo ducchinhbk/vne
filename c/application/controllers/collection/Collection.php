@@ -7,10 +7,17 @@ class Collection extends CI_Controller {
         parent::__construct();
         $this->load->library('session');
         $this->load->model('collection_model');
+        $this->load->model('user_model');
 
         // TODO : check previlige to view this collection
     }
     public function index(){
+        // CHECK COOKIE FOR LOGIN
+        if(isset($_COOKIE['vnup_user']) && isset($_COOKIE['vnup_log_social']) && (!isset($_SESSION['user_id']) || empty($_SESSION['user_id']))){
+            $_SESSION['redirect_to'] = $_SERVER['HTTP_HOST']. $_SERVER['REQUEST_URI'];
+            redirect(config_item('base_url'). 'user/user');
+        }
+
         $requestURI = $_SERVER['REQUEST_URI'];
         $requestURI = str_replace('.html', '', $requestURI);
         $lastUnderScore = strrpos($requestURI, "_");
@@ -21,6 +28,8 @@ class Collection extends CI_Controller {
             $data['collectionId'] = $collectionId;
             $collectionObject = $this->collection_model->getCollectionById($collectionId);
             $data['collection_title'] = $collectionObject['collection_title'];
+            $searchUser['id'] = $collectionObject['user_id'];
+            $data['userOwnerCollection'] = $this->user_model->get_user($searchUser);
 
             $data['collectionList'] = $this->collection_model->fetchAllPostCollection($collectionId);
         }

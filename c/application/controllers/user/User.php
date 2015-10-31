@@ -470,7 +470,7 @@ class User extends CI_Controller
                     $user_token,
                     $this->input->user_agent(),
                     $this->input->ip_address());
-                if(isset($dbUserToken)){
+                if($dbUserToken != null && isset($dbUserToken['ID'])){
                     // UPDATE USER SESSION DATA
                     $this->storeDataToUserSession($dbUserToken);
 
@@ -479,6 +479,8 @@ class User extends CI_Controller
                     }else{
                         redirect($this->homepage);
                     }
+                }else{
+                    redirect($this->homepage);
                 }
             }
         }

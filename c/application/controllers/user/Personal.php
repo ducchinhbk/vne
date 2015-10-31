@@ -1,23 +1,52 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require_once(config_item('home_dir'). '/c/application/utils/ViewUtils.php');
 
 class Personal extends CI_Controller {
 
     private $reviewAuthorID;
+    private $reviewUserName;
+    private $reviewUser;
     function __construct(){
         parent::__construct();
         $this->load->library('session');
         $this->load->model('collection_model');
         $this->load->model('post_model');
-
-        // Review this code ... not nessesarry
-        if(!isset($_SESSION['user_id']) || $this->session->user_id <= 0 || !isset($_COOKIE['vnup_user'])){
-            redirect(config_item('wp_home_url'));
-        }
-        $this->reviewAuthorID = $_SESSION['user_id'];
+        $this->load->model('user_model');
+        $this->load->library('pagination');
     }
 	public function index(){
-        $data['user_collections'] = $this->collection_model->getListCollectionBy(1, 30, $_SESSION['user_id']);
+        // CHECK COOKIE FOR LOGIN
+        if(isset($_COOKIE['vnup_user']) && isset($_COOKIE['vnup_log_social']) && (!isset($_SESSION['user_id']) || empty($_SESSION['user_id']))){
+            $_SESSION['redirect_to'] = $_SERVER['HTTP_HOST']. $_SERVER['REQUEST_URI'];
+            redirect(config_item('base_url'). 'user/user');
+        }
+
+        // CHECK USER WANT TO VIEW
+        $requestURI = $_SERVER['REQUEST_URI'];
+        $requestURI = str_replace('.html', '', $requestURI);
+        if(strrpos($requestURI, '?') !== false){
+            $requestURI = substr($requestURI, 0, strrpos($requestURI, '?'));
+        }
+        $lastSlash = strrpos($requestURI, "/");
+        $userLoginName = substr($requestURI, $lastSlash + 1);
+        if(is_string($userLoginName) && strlen($userLoginName) > 0){
+            $searchUser['user_login'] = $userLoginName;
+            $userObject = $this->user_model->get_user($searchUser);
+            if($userObject != null && $userObject['ID'] > 0){
+                $this->reviewAuthorID = $userObject['ID'];
+                $this->reviewUserName = $userObject['user_login'];
+                $this->reviewUser = $userObject;
+            }else{
+                redirect(config_item('wp_home_url'));
+            }
+        }else{
+            redirect(config_item('wp_home_url'));
+        }
+
+        $data['user_collections'] = $this->collection_model->getListCollectionBy(1, 30, $this->reviewUser['ID']);
+        $data['reviewUsername'] = $this->reviewUserName;
+        $data['reviewUser'] = $this->reviewUser;
 
         $page = 1; $limit = 12;
         if(isset($_GET['page'])){
@@ -25,8 +54,34 @@ class Personal extends CI_Controller {
         }
         $authorPosts = $this->post_model->getPostByAuthorId($page, $limit, $this->reviewAuthorID);
         $data['postAuthors'] = array();
+
         $data['page'] = $page;
         $data['total'] = $this->post_model->getCountPostByAuthorId($this->reviewAuthorID);
+        $data['numPage'] = ($data['total'] % 12 == 0)? (int)$data['total']/12 : (int)$data['total']/12 + 1;
+
+        $leftRange = $page - 2;
+        $rightRange = $page + 2;
+        if($leftRange <= 0){
+            $leftRange = 1;
+            $rightRange = 5;
+        }
+        if($rightRange >= $data['numPage']){
+            $leftRange = $data['numPage'] - 5;
+            $rightRange = $data['numPage'];
+        }
+
+        for($index = 1; $index <= $data['numPage'] ; $index++){
+            $isShow = false;
+            if($leftRange <= $index && $index <= $rightRange){ // chia het cho 4
+                $isShow = true;
+            }
+            $data['paginations'][] = array(
+                'show' => $isShow,
+                'index' => $index,
+                'class' => ($page == $index)? 'selected' : '',
+                'link' => config_item('base_url') . 'user/personal/' . $data['reviewUsername'] . '?page='. $index
+            );
+        }
         foreach($authorPosts as $post){
             $thumbImg = $this->post_model->getPostThumbImage($post['ID']);
             $data['postAuthors'][] = array(
@@ -50,34 +105,6 @@ class Personal extends CI_Controller {
         $this->load->view('user/tpl_personal', $data);
         $this->load->view('common/tpl_footer');
 	}
-
-    public function getPostByAuthor(){
-        $page = 1; $limit = 12;
-        if(isset($_GET['page'])){
-            $page = (int)$_GET['page'];
-        }
-        $data['page'] = $page;
-        $data['total'] = $this->post_model->getCountPostByAuthorId($this->reviewAuthorID);
-
-        $authorPosts = $this->post_model->getPostByAuthorId($page, $limit, $this->reviewAuthorID);
-        foreach($authorPosts as $post){
-            $thumbImg = $this->post_model->getPostThumbImage($post['ID']);
-            $data['postAuthors'][] = array(
-                'title' => $post['post_title'],
-                'date' => $post['post_date'],
-                'author' => $post['user_nicename'],
-                'author_id' => $post['post_author'],
-                'author_email' => $post['user_email'],
-                'post_id' => $post['ID'],
-                'thumb_img' => $thumbImg,
-                'author_nicename' => $post['user_nicename'],
-                'author_avatar' => $post['cus_avatar'],
-                'cus_city' => $post['cus_city']
-            );
-        }
-
-        $this->load->view('user/tpl_personal', $data);
-    }
 
     public function addcollection(){
         header('Content-Type: application/json');
