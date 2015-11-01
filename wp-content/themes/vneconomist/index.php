@@ -78,7 +78,7 @@
       <div class="container container">
           <div class="col-md-12 col-lg-12 ta-center">
             <div class="hp-collection hp-tour-in">
-              <div class="section-title container section-title-thin ta-center">Don't want to search? Browse our collections for Ho Chi Minh</div>
+              <div class="section-title container section-title-thin ta-center">Bộ sưu tập bài viết nổi bật</div>
               <div class="row">
                 <div class="col-lg-3 col-md-6 collection-item">
                   <div class="collection-box collection-box-snippet"> 
@@ -248,7 +248,7 @@
             </div>
             <div class="row">
             <div class="col-lg-12 ta-center mtop"> 
-                <a class="btn call-to-action btn-inverted hp-collection-load" href="#">Browse All</a> 
+                <a class="btn call-to-action btn-inverted hp-collection-load" href="#">Xem thêm</a> 
             </div>
           </div>
         </div>
@@ -262,7 +262,7 @@
             <div class="bg-fill clearfix options-container">
                 <header class="clear">
                     <h1 id="hourlies-listing-heading">
-                        Bộ sưu tập nổi bật
+                        Bài viết mới 
                     </h1>
                 </header>
                         
@@ -283,13 +283,16 @@
                                 	while ( $the_query->have_posts() ) {
                                 		$the_query->the_post();
                                         $full_name = get_user_meta( get_the_author_ID(), 'first_name', true ).' '.get_user_meta( get_the_author_ID(), 'last_name', true );
+                                        $url = wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()) );
+                                        $user_city = get_user_data_field('cus_city', get_the_author_ID());
                                         ?>
                        
                                         <div class="col-xs-12 col-sm-4 col-md-3 hourlie-tile-container">
                                             <div class="clearfix hourlie-tile js-listing-tile  with-member-info">
                                                 <div class="image-container">
                                                     <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>" class="">
-                                                        <?php the_post_thumbnail(array(260, 195)); ?>         
+                                                         
+                                                        <img width="253" height="195" src="<?php echo c_crop_image_resize($url, 253, 195, true); ?> " class="attachment-253x195 wp-post-image" alt="Capture"/>       
                                                     </a>
                                                     <div class="stats-container clearfix">
                                                         <div class="pull-left rating">
@@ -298,7 +301,7 @@
                                                             <span class="rating-value">99</span>
                                                         </div>
                                                         <div class="pull-right sales">
-                                                            <i class="fpph fpph-buyer-activity"></i>
+                                                            <span class="fpph fpph-user"></span>
                                                             <span>View:</span>
                                                             <span class="sales-value">1999</span>
                                                         </div>
@@ -318,7 +321,7 @@
                                                         </div>
                                                         <div class="user-info pull-left">
                                                             <a class="clearfix user-name crop" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>" title="<?php echo $full_name; ?>" ><?php echo $full_name; ?></a>
-                                                            <span class="user-country clearfix crop"><?php echo $cur_user->cus_city; ?></span>
+                                                            <span class="user-country clearfix crop"><?php echo $user_city['cus_city']; ?></span>
                                                         </div>
                                                         
                                                     </div>

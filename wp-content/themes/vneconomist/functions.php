@@ -180,11 +180,12 @@ function c_crop_image_resize( $url, $width = NULL, $height = NULL, $crop = true,
 		// Get default size from database
 		$width = ( $width )  ? $width : get_option( 'thumbnail_size_w' );
 		$height = ( $height ) ? $height : get_option( 'thumbnail_size_h' );
-		  
+		  //echo $url;
 		// Allow for different retina sizes
 		$retina = $retina ? ( $retina === true ? 2 : $retina ) : 1;
 		// Get the image file path
 		$file_path = parse_url( $url );
+        
         //var_dump($file_path); exit;
 		$file_path = $_SERVER['DOCUMENT_ROOT'] . $file_path['path'];
 		//echo $file_path; exit;
@@ -255,6 +256,7 @@ function c_crop_image_resize( $url, $width = NULL, $height = NULL, $crop = true,
 			$resized_url = str_replace( basename( $url ), basename( $dest_file_name ), $url );
 				
 		}
+        //echo $resized_url; exit;
 		// Return image array
 		return $resized_url;
 	}											
@@ -447,6 +449,16 @@ function vote_for_author(){
 }												
 /******--------END AJAX--------********/											
 
+function get_user_data_field($field, $user_id)
+{
+    global $wpdb;
+    $where = $wpdb->prepare( "WHERE ID = %d ", $user_id);
+    $result = $wpdb->get_results( "SELECT $field FROM wp_users $where", ARRAY_A );
+    //var_dump($count);
+    
+    return $result[0];
+}
+//function count number of comment
 function count_comment($post_id)
 {
     global $wpdb;
