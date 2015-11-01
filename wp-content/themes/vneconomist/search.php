@@ -37,6 +37,7 @@
     						while ( have_posts() ) {
     							the_post();
                                 $full_name = get_user_meta( get_the_author_ID(), 'first_name', true ).' '.get_user_meta( get_the_author_ID(), 'last_name', true );
+                                $user_city = get_user_data_field('cus_city', get_the_author_ID());
                         ?>
                        
                                 <div class="col-xs-12 col-sm-4 col-md-3 hourlie-tile-container">
@@ -72,7 +73,7 @@
                                                 </div>
                                                 <div class="user-info pull-left">
                                                     <a class="clearfix user-name crop" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>" title="<?php echo $full_name; ?>" ><?php echo $full_name; ?></a>
-                                                    <span class="user-country clearfix crop"><?php echo $cur_user->cus_city; ?></span>
+                                                    <span class="user-country clearfix crop"><?php echo $user_city['cus_city']; ?></span>
                                                 </div>
                                                         
                                             </div>
