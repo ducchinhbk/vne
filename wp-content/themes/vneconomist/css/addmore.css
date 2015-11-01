@@ -245,6 +245,10 @@ label.error{
     font-size: 12px !important;
     font-size: 1.2rem !important;
 }
+.controller-hourlie.action-list .listing-row .member-first-name{
+    width: 88px;
+    overflow: hidden;
+}
 .controller-hourlie.action-list .listing-row .member-first-name .member-name{
     font-size: 13px !important;
     font-size: 1.3rem !important;

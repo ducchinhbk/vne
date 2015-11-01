@@ -29,6 +29,7 @@
                      
                      $user_info = get_userdata($author_id); 
                      $full_name = get_user_meta( $author_id, 'first_name', true ).' '.get_user_meta( $author_id, 'last_name', true );
+                    
              ?>
 			<header class="clearfix featured featured-right">
 				<h1 class="clearfix"> <?php the_title()?> </h1>
@@ -206,7 +207,7 @@
 				<div class="member-information-container">
 					<div class="member-name-container crop">
 						<h2>
-							<a class="crop member-short-name" title="<?php echo $full_name; ?>" rel="nofollow" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php echo $full_name; ?></a>
+							<a class="crop member-short-name" title="<?php echo $full_name; ?>" rel="nofollow" href="<?php echo site_url( '/c/user/personal/'. $user_info->user_login);?>"><?php echo $full_name; ?></a>
 							<span class="icon member-online offline"></span>
 						</h2>
 						<div class="member-job-title crop"><?php echo $user_info->cus_career.', '.$user_info->cus_company;?> </div>

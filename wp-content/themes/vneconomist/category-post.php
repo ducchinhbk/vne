@@ -37,8 +37,10 @@
                                 	
                                 	while ( $the_query->have_posts() ) {
                                 		$the_query->the_post();
+                                        $user_info = get_userdata(get_the_author_ID()); 
+                                        $full_name = $user_info->first_name.' '.$user_info->last_name;
                                         $url = wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()) );
-                                        $user_city = get_user_data_field('cus_city', get_the_author_ID());
+                                        $avatar_url =  site_url( $user_info->cus_avatar );
                                         ?>
                                         
                                         
@@ -59,13 +61,13 @@
         										<ul class="clearfix member-info horizontal left crop">
         											<li>
         												<div class="user-image pull-left">
-        													<a class="member-name" title="<?php echo get_the_author();?>" rel="nofollow" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>">
-                                                                <?php echo c_get_avatar(get_the_author_meta('ID'), 30, 30, "user-avatar user-avatar-sm user-avatar-square");?>
+        													<a class="member-name" title="<?php echo $full_name; ?>" rel="nofollow" href="<?php echo site_url( '/c/user/personal/'. $user_info->user_login);?>">
+                                                                <img class="user-avatar user-avatar-sm user-avatar-square" src="<?php  echo c_crop_image_resize($avatar_url, 30, 30, true)?>" alt="" width="30" height="30"/>
                                                             </a>                    
                                                         </div>
         												<div class="pull-left">
-        													<span class="member-first-name crop"><a class="member-name" title="<?php echo get_the_author();?>" rel="nofollow" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php echo get_the_author();?></a></span>
-        													<span class="user-country crop"><?php echo $user_city['cus_city']; ?></span>
+        													<span class="member-first-name crop"><a class="member-name" title="<?php echo $full_name; ?>" rel="nofollow" href="<?php echo site_url( '/c/user/personal/'. $user_info->user_login);?>"><?php echo $full_name; ?></a></span>
+        													<span class="user-country crop"><?php echo $user_info->cus_city; ?></span>
         												</div>
         											</li>
                                                     <li class="js-tooltip" title="Hourlie's Rating">

@@ -36,15 +36,17 @@
                         <?php
     						while ( have_posts() ) {
     							the_post();
-                                $full_name = get_user_meta( get_the_author_ID(), 'first_name', true ).' '.get_user_meta( get_the_author_ID(), 'last_name', true );
-                                $user_city = get_user_data_field('cus_city', get_the_author_ID());
+                                $user_info = get_userdata(get_the_author_ID());
+                                $full_name = $user_info->first_name.' '.$user_info->last_name;
+                                $url = wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()) );
+                                $avatar_url =  site_url( $user_info->cus_avatar );
                         ?>
                        
                                 <div class="col-xs-12 col-sm-4 col-md-3 hourlie-tile-container">
                                     <div class="clearfix hourlie-tile js-listing-tile  with-member-info">
                                         <div class="image-container">
                                             <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>" class="">
-                                                <?php the_post_thumbnail(array(260, 195)); ?>         
+                                                <img width="253" height="195" src="<?php echo c_crop_image_resize($url, 253, 195, true); ?> " class=" wp-post-image" alt="<?php the_title(); ?>"/>        
                                             </a>
                                             <div class="stats-container clearfix">
                                                 <div class="pull-left rating">
@@ -67,13 +69,13 @@
                                         <div class="profile-container stretch clearfix">
                                             <div class="col-xs-8 no-padding-right">
                                                 <div class="user-image-container pull-left">
-                                                    <a title="<?php echo $full_name; ?>" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>">
-                                                        <?php echo c_get_avatar(get_the_author_ID());?>
+                                                    <a title="<?php echo $full_name; ?>" href="<?php echo site_url( '/c/user/personal/'. $user_info->user_login);?>">
+                                                         <img class="user-avatar user-avatar-sm user-avatar-square'" src="<?php  echo c_crop_image_resize($avatar_url, 30, 30, true)?>" alt="" width="30" height="30"/>
                                                     </a>
                                                 </div>
                                                 <div class="user-info pull-left">
-                                                    <a class="clearfix user-name crop" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>" title="<?php echo $full_name; ?>" ><?php echo $full_name; ?></a>
-                                                    <span class="user-country clearfix crop"><?php echo $user_city['cus_city']; ?></span>
+                                                    <a class="clearfix user-name crop" href="<?php echo site_url( '/c/user/personal/'. $user_info->user_login);?>" title="<?php echo $full_name; ?>" ><?php echo $full_name; ?></a>
+                                                    <span class="user-country clearfix crop"><?php echo $user_info->cus_city; ?></span>
                                                 </div>
                                                         
                                             </div>
