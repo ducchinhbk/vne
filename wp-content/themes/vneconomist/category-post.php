@@ -49,6 +49,7 @@
         								      
                                             <a href="<?php esc_url(the_permalink())?>" title="<?php the_title() ?> " class="hourlie-image-frame ">  
                                                <img width="238" height="140" src="<?php echo c_crop_image_resize($url, 238, 140, true); ?> " class=" wp-post-image" alt="Capture"/>       
+                                                <span class="circle">5,0</span>
                                             </a>
         								</div>
         								<div class="col-xs-7 col-sm-8 no-padding-left no-padding-right hourlie-info">
