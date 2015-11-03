@@ -62,7 +62,7 @@
                     <form class="clearfix" id="get-started" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" role="search">
                         
                         <div class="col-sm-10 no-padding-left">
-                            <input placeholder="Nhập từ khóa tìm kiếm.." value="<?php echo esc_attr( get_search_query() ); ?>" name="s" id="search-input" type="text" maxlength="85" />
+                            <input placeholder="Tìm kiếm bài viết, bộ sưu tập.." value="<?php echo esc_attr( get_search_query() ); ?>" name="s" id="search-input" type="text" maxlength="85" />
                         </div>
                         <div class="col-sm-2 no-padding-left">
                             <input class="btn call-to-action btn-inverted" type="submit"  value="Let&#039;s Go ›" />
@@ -80,7 +80,7 @@
             <div class="hp-collection hp-tour-in">
               <div class="section-title container section-title-thin ta-center">Bộ sưu tập bài viết nổi bật</div>
               <div class="row">
-                <div class="col-lg-3 col-md-6 collection-item">
+                <div class="col-xs-12 col-md-4 col-lg-3 collection-item">
                   <div class="collection-box collection-box-snippet"> 
                   <a href="#" title="Top Restaurants in Delhi NCR">
                     <h4 class="collections-title" > 
@@ -94,7 +94,7 @@
                   </div>
                   <div class="clear"></div>
                 </div>
-                <div class="col-lg-3 col-md-6 collection-item">
+                <div class="col-xs-12 col-md-4 col-lg-3 collection-item">
                   <div class="collection-box collection-box-snippet"> 
                     <a href="#" title="Best New Restaurants in Delhi NCR">
                         <h4 class="collections-title"> 
@@ -108,7 +108,7 @@
                   </div>
                   <div class="clear"></div>
                 </div>
-                <div class="col-lg-3 col-md-6 collection-item">
+                <div class="col-xs-12 col-md-4 col-lg-3 collection-item">
                   <div class="collection-box collection-box-snippet"> 
                     <a href="#" title="Best Cafe Breakfast in Delhi NCR">
                         <h4 class="collections-title" > 
@@ -122,7 +122,7 @@
                   </div>
                   <div class="clear"></div>
                 </div>
-                <div class="col-lg-3 col-md-6 collection-item">
+                <div class="col-xs-12 col-md-4 col-lg-3 collection-item">
                   <div class="collection-box collection-box-snippet"> 
                     <a href="#" title="Best Microbreweries in Delhi NCR">
                     <h4 class="collections-title" > 
@@ -135,7 +135,7 @@
                     </a> </div>
                   <div class="clear"></div>
                 </div>
-                <div class="col-lg-3 col-md-6 collection-item">
+                <div class="col-xs-12 col-md-4 col-lg-3 collection-item">
                   <div class="collection-box collection-box-snippet"> 
                     <a href="#" title="Best Coffee in Delhi NCR">
                         <h4 class="collections-title"> 
@@ -149,7 +149,7 @@
                   </div>
                   <div class="clear"></div>
                 </div>
-                <div class="col-lg-3 col-md-6 collection-item">
+                <div class="col-xs-12 col-md-4 col-lg-3 collection-item">
                   <div class="collection-box collection-box-snippet"> 
                     <a href="#" title="Best Outdoor Dining in Delhi NCR">
                     <h4 class="collections-title" > 
@@ -162,7 +162,7 @@
                     </a> </div>
                   <div class="clear"></div>
                 </div>
-                <div class="col-lg-3 col-md-6 collection-item">
+                <div class="col-xs-12 col-md-4 col-lg-3 collection-item">
                   <div class="collection-box collection-box-snippet"> 
                     <a href="#" title="Best Healthy Breakfast in Delhi NCR">
                     <h4 class="collections-title" > 
@@ -175,7 +175,7 @@
                     </a> </div>
                   <div class="clear"></div>
                 </div>
-                <div class="col-lg-3 col-md-6 collection-item">
+                <div class="col-xs-12 col-md-4 col-lg-3 collection-item">
                   <div class="collection-box collection-box-snippet"> 
                     <a href="#" title="Best Breakfast Buffets in Delhi NCR">
                         <h4 class="collections-title" > 
@@ -189,7 +189,7 @@
                   </div>
                   <div class="clear"></div>
                 </div>
-                <div class="col-lg-3 col-md-6 collection-item">
+                <div class="col-xs-12 col-md-4 col-lg-3 collection-item">
                   <div class="collection-box collection-box-snippet"> 
                     <a href="#" title="Best Cheesecakes in Delhi NCR">
                     <h4 class="collections-title" > 
@@ -203,7 +203,7 @@
                   </div>
                   <div class="clear"></div>
                 </div>
-                <div class="col-lg-3 col-md-6 collection-item">
+                <div class="col-xs-12 col-md-4 col-lg-3 collection-item">
                   <div class="collection-box collection-box-snippet"> 
                     <a href="#" title="Best Cheap Breakfast in Delhi NCR">
                         <h4 class="collections-title"> 
@@ -217,7 +217,7 @@
                   </div>
                   <div class="clear"></div>
                 </div>
-                <div class="col-lg-3 col-md-6 collection-item">
+                <div class="col-xs-12 col-md-4 col-lg-3 collection-item">
                   <div class="collection-box collection-box-snippet"> 
                     <a href="#" title="Best Street Food in Delhi NCR">
                         <h4 class="collections-title" > 
@@ -231,7 +231,7 @@
                   </div>
                   <div class="clear"></div>
                 </div>
-                <div class="col-lg-3 col-md-6 collection-item">
+                <div class="col-xs-12 col-md-4 col-lg-3 collection-item">
                   <div class="collection-box collection-box-snippet"> 
                     <a href="#" title="Best Butter Chicken in Delhi NCR">
                         <h4 class="collections-title" > 
@@ -419,7 +419,7 @@
     color: #fff;
 }
 </style>
-<div id="navigation_toolbox">
+<div id="navigation_toolbox" class="hidden-xs hidden-sm">
     
     <?php
     wp_nav_menu(array(

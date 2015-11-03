@@ -231,17 +231,16 @@ function isSessionUserDataAvailable(){
                             <!-- Sell Section-->
                             <section>
                                 <header class="row text-uppercase">Có gì hay</header>
-                                <ul class="simple">
-                                    <li><a href="#">News</a></li>
-                                    <li><a href="#">VneTV</a></li>
+                               <ul class="dropdown-menu simple pull-right">
+                                    <li><a href="#">eNews</a></li>
+                                    <li><a href="#">eTV</a></li>
                                     <li><a href="#">Zotadi</a></li>
-                                    <li><a href="#">VnWorks</a></li>
-                                    <li><a href="#">VnLand</a></li>
+                                    <li><a href="#">eAction</a></li>
+                                    <li><a href="#">eChild</a></li>
                                 </ul>
                             </section>
                             <!-- Help Section -->
                             <section>
-                                <header class="row text-uppercase">Help</header>
                                 <ul class="simple">
                                     <li>
                                         <a href="<?php echo site_url( '/c/user/user/signup?redirect_to='. urlencode(site_url($wp->request)));?>">Sign up</a>

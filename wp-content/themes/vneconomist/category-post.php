@@ -45,19 +45,20 @@
                                         
                                         
                                     <div class="clearfix listing-row hourlie-list-item ">
-        								<div class="col-xs-4 col-sm-4 hourlie-image-container row-image-container">
+        								<div class="col-xs-5 col-sm-4  hourlie-image-container row-image-container">
         								      
                                             <a href="<?php esc_url(the_permalink())?>" title="<?php the_title() ?> " class="hourlie-image-frame ">  
                                                <img width="238" height="140" src="<?php echo c_crop_image_resize($url, 238, 140, true); ?> " class=" wp-post-image" alt="Capture"/>       
                                             </a>
         								</div>
-        								<div class="col-xs-8 col-sm-8 no-padding-left no-padding-right hourlie-info">
+        								<div class="col-xs-7 col-sm-8 no-padding-left no-padding-right hourlie-info">
         									<div class="col-xs-8 col-sm-9 info no-padding-left no-padding-right">
         										<h3 class="title">
         											<a href="<?php esc_url(the_permalink())?>" class="js-paragraph-crop" data-height="60"> 
         												<?php the_title() ?>
         											</a>
         										</h3>
+                                                <br class="clear"/>
         										<ul class="clearfix member-info horizontal left crop">
         											<li>
         												<div class="user-image pull-left">
@@ -88,9 +89,6 @@
         											</li>
         											
         										</ul>
-        									</div>
-        									<div class="col-xs-4 col-sm-3 details">
-        										 
         									</div>
         									<br class="clear"/>
         								</div>

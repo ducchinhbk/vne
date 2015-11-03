@@ -256,8 +256,44 @@ label.error{
     color: #555 !important;
 }
 
-
-
+@media(max-width: 899px){
+    
+    .top-navigation .tab-content section ul{
+        padding: 5px 5px;
+    }
+}
+@media (max-width: 767px){
+    
+    .hd-search-form{
+        width: 295px !important;
+        float: left;
+        margin-top: 15px !important;
+        margin-left: 0 !important;
+    }
+    .home-container .section-home.section-carousel .carousel-caption{
+        top: 20%;
+    }
+    .controller-hourlie.action-list .listings-container{
+        margin-left: -10px;
+    }
+    .home-container.fullheight {
+        height: 85%;
+    }
+    .hd-search-form .input-group-btn .js-submit-search{
+        padding: 7px 12px 8px !important;
+    }
+    .controller-hourlie .hourlie-list-item .info{
+        width: 100%;
+        height: auto;
+    }
+    .listings-container .listing-row .row-image-container{
+        padding: 0;
+    }
+    .hourlie-image-container{
+        height: 125px;
+    }
+    
+}
 
 
 
