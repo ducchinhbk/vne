@@ -184,14 +184,14 @@ function isSessionUserDataAvailable(){
                 <div class="pull-right menu-block navigation-menu">
                     <ul>
 
-                        <li class="dropdown">
+                        <!--li class="dropdown">
                             <a class="dropdown-toggle  text-uppercase with-border-on-hover " data-toggle="dropdown" rel="nofollow"  ><i class="fpph-categories color-pph" style="margin-right: 6px;"></i>Có gì hay</a>
                             <ul class="dropdown-menu simple pull-right">
                                 <li><a href="http://news.vneconomist.com/" target="_blank">eNews</a></li>
                                 <li><a href="http://tv.vneconomist.com/" target="_blank">eTV</a></li>
                                 <li><a href="http://www.zotadi.com/" target="_blank">Zotadi</a></li>
                             </ul>
-                        </li>
+                        </li-->
                         <li class="dropdown separator"><a class="job btn bold" rel="nofollow" data-trigger="post-btn" href="<?php echo site_url( '/c/user/article/create' );?>">Tạo bài viết</a></li>
                     </ul>
                 </div>
@@ -224,14 +224,14 @@ function isSessionUserDataAvailable(){
                                 </ul>
                             </section>
                             <!-- Sell Section-->
-                            <section>
+                            <!--section>
                                 <header class="row text-uppercase">Có gì hay</header>
                                <ul class="dropdown-menu simple pull-right">
                                     <li><a href="http://news.vneconomist.com/" target="_blank">eNews</a></li>
                                     <li><a href="http://tv.vneconomist.com/" target="_blank">eTV</a></li>
                                     <li><a href="http://www.zotadi.com/" target="_blank">Zotadi</a></li>
                                 </ul>
-                            </section>
+                            </section-->
                             <!-- Help Section -->
                             <section>
                                 <ul class="simple">
