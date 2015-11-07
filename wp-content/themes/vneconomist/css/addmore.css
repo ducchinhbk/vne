@@ -202,9 +202,14 @@ label.error{
 }
 .hp-collection .collections-title_text {
     display: block;
+    height: 40px;
+    width: 200px;
     font-size: 12pt;
     line-height: 20px;
     font-weight: 400;
+    overflow: hidden;
+    
+    text-align: left;
 }
 .hp-collection .collection-box-bg {
     background-size: cover;
@@ -244,6 +249,15 @@ label.error{
 .controller-hourlie.action-list .listing-row .horizontal>li{
     font-size: 12px !important;
     font-size: 1.2rem !important;
+}
+.hourlie-tile-container .hourlie-tile:hover >.image-container .img-grid:after, .listings-container .listing-row .row-image-container:hover >.hourlie-image-frame:after{
+    background: linear-gradient(bottom,rgba(0,0,0,.2) 20%,rgba(0,0,0,0) 100%);
+    background: transparent 100%;
+    background: -webkit-linear-gradient(bottom,rgba(0,0,0,.2) 20%,rgba(0,0,0,0) 100%);
+    background: -moz-linear-gradient(bottom,rgba(0,0,0,.2) 20%,rgba(0,0,0,0) 100%);
+    background: -ms-linear-gradient(bottom,rgba(0,0,0,.2) 20%,rgba(0,0,0,0) 100%);
+    background: -o-linear-gradient(bottom,rgba(0,0,0,.2) 20%,rgba(0,0,0,0) 100%);
+     background: linear-gradient(to top,rgba(0,0,0,.2) 20%,rgba(0,0,0,0) 100%);
 }
 .controller-hourlie.action-list .listing-row .member-first-name{
     width: 88px;
@@ -287,7 +301,10 @@ label.error{
     text-align: center;
     z-index: 10;
 }
-
+.write-btn{
+    padding: 15px 60px;
+    margin-top: -30px;
+}
 
 @media(max-width: 899px){
     

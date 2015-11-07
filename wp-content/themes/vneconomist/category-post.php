@@ -18,7 +18,14 @@
 			<section class="listings-container hourlies-listing-container" id="hourlies-listing">
 				<div class="bg-fill clearfix options-container">
 					<header class="clear">
-						<h1 id="hourlies-listing-heading"> <?php echo get_cat_name( $cat_ID ) ?>  </h1>
+						<h1 id="hourlies-listing-heading">
+                         <?php echo get_cat_name( $cat_ID ) ?>  
+                         <aside id="hourlies-listing-count">
+                            <div class="clearfix">
+                                <span class="hidden-xs"><?php echo category_description(); ?></span>
+                            </div>
+                         </aside>
+                         </h1>
 					</header>
 				</div>
 				<div class="results list" id="hourlies-listing-results">
@@ -288,10 +295,10 @@
                               <div class="row">
                                 <div class="col-lg-12 col-md-12 collection-item">
                                   <div class="collection-box collection-box-snippet"> 
-                                  <a href="#" title="Top Restaurants in Delhi NCR">
+                                  <a href="#" title="Góp ý chính sách cho startup">
                                     <h4 class="collections-title" > 
-                                        <span class="collections-title_outlets">30 Places</span> 
-                                        <span class="collections-title_text">Trending this Week</span> 
+                                        <span class="collections-title_outlets">0 Bài viết</span> 
+                                        <span class="collections-title_text">Góp ý chính sách cho startup</span> 
                                     </h4>
                                     <div class="collection-box-bg lazy"  style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/e40960514831cb9b74c552d69eceee0f_1418387628_l.jpg');">
                                         <div class="collection-overlay"></div>
@@ -302,10 +309,10 @@
                                 </div>
                                 <div class="col-lg-12 col-md-12 collection-item">
                                   <div class="collection-box collection-box-snippet"> 
-                                    <a href="#" title="Best New Restaurants in Delhi NCR">
+                                    <a href="#" title="Internet of things">
                                         <h4 class="collections-title"> 
-                                            <span class="collections-title_outlets">22 Places</span> 
-                                            <span class="collections-title_text">Newly Opened</span> 
+                                            <span class="collections-title_outlets">0 Bài viết</span> 
+                                            <span class="collections-title_text">Internet of things</span> 
                                         </h4>
                                         <div class="collection-box-bg lazy" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/dc347fcba38a39000ab7ab50f0f222ad_1424059541_l.jpg');">
                                             <div class="collection-overlay"></div>
@@ -316,10 +323,10 @@
                                 </div>
                                 <div class="col-lg-12 col-md-12 collection-item">
                                   <div class="collection-box collection-box-snippet"> 
-                                    <a href="#" title="Best Cafe Breakfast in Delhi NCR">
+                                    <a href="#" title="Startup về media">
                                         <h4 class="collections-title" > 
-                                            <span class="collections-title_outlets">18 Places</span> 
-                                            <span class="collections-title_text">Cafe Breakfast</span> 
+                                            <span class="collections-title_outlets">0 Bài viết</span> 
+                                            <span class="collections-title_text">Startup về media</span> 
                                         </h4>
                                         <div class="collection-box-bg lazy" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/fb1dfaf63322c68558b27ed7e5dc6e9c_1418401086_l.jpg');">
                                             <div class="collection-overlay"></div>
@@ -330,10 +337,10 @@
                                 </div>
                                 <div class="col-lg-12 col-md-12 collection-item">
                                   <div class="collection-box collection-box-snippet"> 
-                                    <a href="#" title="Best Microbreweries in Delhi NCR">
+                                    <a href="#" title="Lý do 55 000 doanh nghiệp phá sản hàng năm">
                                     <h4 class="collections-title" > 
-                                        <span class="collections-title_outlets">14 Places</span> 
-                                        <span class="collections-title_text">Microbreweries</span> 
+                                        <span class="collections-title_outlets">0 Bài viết</span> 
+                                        <span class="collections-title_text">Lý do 55 000 doanh nghiệp phá sản hàng năm</span> 
                                     </h4>
                                     <div class="collection-box-bg lazy"  style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/0707137915a22b40b4d5e8274f47d791_1419918315_l.jpg');">
                                         <div class="collection-overlay"></div>
@@ -343,10 +350,10 @@
                                 </div>
                                 <div class="col-lg-12 col-md-12 collection-item">
                                   <div class="collection-box collection-box-snippet"> 
-                                    <a href="#" title="Best Coffee in Delhi NCR">
+                                    <a href="#" title="Startup về du lịch">
                                         <h4 class="collections-title"> 
-                                            <span class="collections-title_outlets">19 Places</span> 
-                                            <span class="collections-title_text">Great Coffee</span> 
+                                            <span class="collections-title_outlets">0 Bài viết</span> 
+                                            <span class="collections-title_text">Startup về du lịch</span> 
                                         </h4>
                                         <div class="collection-box-bg lazy" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/95d517d48c52188721ddfcf69d7d34f5_1419406534_l.jpg');">
                                             <div class="collection-overlay"></div>
@@ -357,10 +364,10 @@
                                 </div>
                                 <div class="col-lg-12 col-md-12 collection-item">
                                   <div class="collection-box collection-box-snippet"> 
-                                    <a href="#" title="Best Outdoor Dining in Delhi NCR">
+                                    <a href="#" title="Startup về nông nghiệp">
                                     <h4 class="collections-title" > 
-                                        <span class="collections-title_outlets">19 Places</span> 
-                                        <span class="collections-title_text">Outdoor Seating</span> 
+                                        <span class="collections-title_outlets">0 Bài viết</span> 
+                                        <span class="collections-title_text">Startup về nông nghiệp</span> 
                                     </h4>
                                     <div class="collection-box-bg lazy"  style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/4c2b30d63f25fc4d52a220890442421a_1421300685_l.jpg'); ">
                                     <div class="collection-overlay"></div>
@@ -370,10 +377,10 @@
                                 </div>
                                 <div class="col-lg-12 col-md-12 collection-item">
                                   <div class="collection-box collection-box-snippet"> 
-                                    <a href="#" title="Best Healthy Breakfast in Delhi NCR">
+                                    <a href="#" title="Khởi nghiệp nhà hàng">
                                     <h4 class="collections-title" > 
-                                        <span class="collections-title_outlets">10 Places</span> 
-                                        <span class="collections-title_text">Healthy Breakfast</span> 
+                                        <span class="collections-title_outlets">0 Bài viết</span> 
+                                        <span class="collections-title_text">Khởi nghiệp nhà hàng</span> 
                                     </h4>
                                     <div class="collection-box-bg lazy"  style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/b762edbc2f8303b0ffdbdaa2ed6287a6_1424180016_l.jpg'); ">
                                     <div class="collection-overlay"></div>
@@ -383,66 +390,10 @@
                                 </div>
                                 <div class="col-lg-12 col-md-12 collection-item">
                                   <div class="collection-box collection-box-snippet"> 
-                                    <a href="#" title="Best Breakfast Buffets in Delhi NCR">
+                                    <a href="#" title="Khởi nghiệp quán cafe">
                                         <h4 class="collections-title" > 
-                                            <span class="collections-title_outlets">19 Places</span> 
-                                            <span class="collections-title_text">Breakfast Buffets</span> 
-                                        </h4>
-                                        <div class="collection-box-bg lazy"  style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/d5e7778988c8df486127982a097b7ba5_1418401323_l.jpg'); ">
-                                            <div class="collection-overlay"></div>
-                                        </div>
-                                    </a> 
-                                  </div>
-                                  <div class="clear"></div>
-                                </div>
-                                <div class="col-lg-12 col-md-12 collection-item">
-                                  <div class="collection-box collection-box-snippet"> 
-                                    <a href="#" title="Best Cheesecakes in Delhi NCR">
-                                    <h4 class="collections-title" > 
-                                        <span class="collections-title_outlets">18 Places</span> 
-                                        <span class="collections-title_text">Great Cheesecakes</span> 
-                                    </h4>
-                                    <div class="collection-box-bg lazy"  style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/e359a2a24366b32acfe905ee084f4206_1418629602_l.jpg'); ">
-                                        <div class="collection-overlay"></div>
-                                    </div>
-                                    </a> 
-                                  </div>
-                                  <div class="clear"></div>
-                                </div>
-                                <div class="col-lg-12 col-md-12 collection-item">
-                                  <div class="collection-box collection-box-snippet"> 
-                                    <a href="#" title="Best Cheap Breakfast in Delhi NCR">
-                                        <h4 class="collections-title"> 
-                                            <span class="collections-title_outlets">19 Places</span> 
-                                            <span class="collections-title_text">Pocket Friendly Breakfast</span> 
-                                        </h4>
-                                        <div class="collection-box-bg lazy"  style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/81fbcaec4c83f321c854a0fdc9dcfdfd_1422002949_l.jpg'); ">
-                                            <div class="collection-overlay"></div>
-                                        </div>
-                                    </a> 
-                                  </div>
-                                  <div class="clear"></div>
-                                </div>
-                                <div class="col-lg-12 col-md-12 collection-item">
-                                  <div class="collection-box collection-box-snippet"> 
-                                    <a href="#" title="Best Street Food in Delhi NCR">
-                                        <h4 class="collections-title" > 
-                                            <span class="collections-title_outlets">18 Places</span> 
-                                            <span class="collections-title_text">Street Food</span> 
-                                        </h4>
-                                        <div class="collection-box-bg lazy"  style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/6a5f59d28b2e695b15e7029643e4ca27_1418391059_l.jpg'); ">
-                                            <div class="collection-overlay"></div>
-                                        </div>
-                                    </a> 
-                                  </div>
-                                  <div class="clear"></div>
-                                </div>
-                                <div class="col-lg-12 col-md-12 collection-item">
-                                  <div class="collection-box collection-box-snippet"> 
-                                    <a href="#" title="Best Butter Chicken in Delhi NCR">
-                                        <h4 class="collections-title" > 
-                                            <span class="collections-title_outlets">19 Places</span> 
-                                            <span class="collections-title_text">Butter Chicken</span> 
+                                            <span class="collections-title_outlets">0 Bài viết</span> 
+                                            <span class="collections-title_text">Khởi nghiệp quán cafe</span> 
                                         </h4>
                                         <div class="collection-box-bg lazy"  style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/7d78f516cf561c362481f1d7a1fc7464_1418393872_l.jpg'); ">
                                             <div class="collection-overlay"></div>

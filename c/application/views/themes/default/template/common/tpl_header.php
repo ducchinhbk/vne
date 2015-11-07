@@ -135,10 +135,7 @@
                                     </li>
                                     <li><a href="#"><i class="fpph fpph-gear"></i>Settings</a></li>
                                     <li><a href="<?php echo base_url( 'user/user/logout?redirect_to='. urlencode('http://'. $_SERVER['HTTP_HOST']. $_SERVER['REQUEST_URI']));?>"><i class="fa fa-power-off"></i>Log out</a></li>
-                                    <li><a target="_blank" href="#"><i class="fpph fpph-customer-support"></i>Customer Support</a></li>
-                                    <li>
-                                        <a rel="nofollow" href="#"><i class="fpph fpph-questionmark-circle"></i>How it works</a>
-                                    </li>
+                                    
                                 </ul>
                             </li>
                         </ul>
@@ -157,11 +154,9 @@
                         <li class="dropdown">
                             <a class="dropdown-toggle  text-uppercase with-border-on-hover " data-toggle="dropdown" rel="nofollow"  ><i class="fpph-categories color-pph" style="margin-right: 6px;"></i>Có gì hay</a>
                             <ul class="dropdown-menu simple pull-right">
-                                <li><a href="#">eNews</a></li>
-                                <li><a href="#">eTV</a></li>
-                                <li><a href="#">Zotadi</a></li>
-                                <li><a href="#">eAction</a></li>
-                                <li><a href="#">eChild</a></li>
+                                <li><a href="http://news.vneconomist.com/" target="_blank">eNews</a></li>
+                                <li><a href="http://tv.vneconomist.com/" target="_blank">eTV</a></li>
+                                <li><a href="http://www.zotadi.com/" target="_blank">Zotadi</a></li>
                             </ul>
                         </li>
                         <li class="dropdown separator"><a class="job btn bold" rel="nofollow" data-trigger="post-btn" href="<?php echo base_url( 'user/article/create' );?>">Tạo bài viết</a></li>
@@ -199,11 +194,9 @@
                             <section>
                                 <header class="row text-uppercase">Có gì hay</header>
                                 <ul class="simple">
-                                    <li><a href="#">News</a></li>
-                                    <li><a href="#">VneTV</a></li>
-                                    <li><a href="#">Zotadi</a></li>
-                                    <li><a href="#">VnWorks</a></li>
-                                    <li><a href="#">VnLand</a></li>
+                                    <li><a href="http://news.vneconomist.com/" target="_blank">eNews</a></li>
+                                    <li><a href="http://tv.vneconomist.com/" target="_blank">eTV</a></li>
+                                    <li><a href="http://www.zotadi.com/" target="_blank">Zotadi</a></li>
                                 </ul>
                             </section>
                             <!-- Help Section -->

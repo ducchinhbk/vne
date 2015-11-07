@@ -242,7 +242,7 @@
 					<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Money protection guarantee" class="money-protection-guarantee pull-left">
 					<div class="pull-left">
 						<h5>
-							Money Protection<br/>Guarantee <aside>Job done or your money back</aside>
+							Famous Author <aside>Chứng nhận tác giả</aside>
 						</h5>
 					</div>
 				</div>
@@ -261,7 +261,7 @@
                                 	
                 ?>    	
             
-				<h2 class="bubble">Bài viết gợi ý</h2>
+				<h2 class="bubble">Đọc thêm</h2>
 				<hr/>
 				<ul class="clearfix recommended-hourlie-items">
                     <?php while ( $the_query->have_posts() ) {
