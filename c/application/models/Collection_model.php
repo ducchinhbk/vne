@@ -60,7 +60,7 @@ class Collection_model extends CI_Model {
     }
 
     public function update($data){
-        if(isset($data['user_id']) && $data['user_id'] > 0){
+        if(isset($data['user_id']) && $data['user_id'] > 0 && isset($data['user_collection_id']) && $data['user_collection_id'] > 0){
             $sqlUpdate = '';
             if(isset($data['title'])){
                 $sqlUpdate .= (empty($sqlUpdate))? 'collection_title = '. $this->db->escape($data['title'])
@@ -75,7 +75,7 @@ class Collection_model extends CI_Model {
                                                 : ',shared = '. $data['shared'];
             }
             if(!empty($sqlUpdate)){
-                $sql = "UPDATE wp_user_collection SET ". $sqlUpdate ." WHERE user_id = ". (int)$data['user_id'];
+                $sql = "UPDATE wp_user_collection SET ". $sqlUpdate ." WHERE user_id=". (int)$data['user_id'] . " AND user_collection_id=". (int)$data['user_collection_id'];
                 $this->db->query($sql);
                 return true;
             }
@@ -120,5 +120,12 @@ class Collection_model extends CI_Model {
             return $this->db->insert_id();
         }
         return null;
+    }
+
+    public function deleteById($collectionId, $user_id){
+        $sql = "DELETE FROM wp_user_collection WHERE user_collection_id = ". (int)$collectionId . " AND user_id=". (int)$user_id;
+        $this->db->query($sql);
+        $sql = "DELETE FROM wp_user_collection_data WHERE user_collection_id = ". (int)$collectionId ;
+        $this->db->query($sql);
     }
 }

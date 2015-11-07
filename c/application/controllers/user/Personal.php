@@ -109,7 +109,7 @@ class Personal extends CI_Controller {
     public function addcollection(){
         header('Content-Type: application/json');
         $result = array();
-        if(isset($_POST['post_data'])){
+        if(isset($_POST['post_data']) && isset($_SESSION['user_id']) && $_SESSION['user_id'] > 0){
             $post_data = $_POST['post_data'];
             if(is_array($post_data)){
                 $data['title'] = $post_data['title'];
@@ -146,4 +146,34 @@ class Personal extends CI_Controller {
             }
         }
     }
+
+    public function deletecollection(){
+        header('Content-Type: application/json');
+        $result = array();
+        if(isset($_POST['collection_id']) && strlen($_POST['collection_id']) > 0 && isset($_SESSION['user_id']) && $_SESSION['user_id'] > 0){
+            $collectionId = $_POST['collection_id'];
+            $this->collection_model->deleteById($collectionId, $_SESSION['user_id']);
+            $result['status'] = true;
+            echo json_encode($result);
+        }
+    }
+
+    public function editcollection(){
+        header('Content-Type: application/json');
+        $result = array();
+        if(isset($_POST['post_data']) && isset($_SESSION['user_id']) && $_SESSION['user_id'] > 0){
+            $post_data = $_POST['post_data'];
+            if(is_array($post_data)){
+                $data['title'] = $post_data['title'];
+                $data['description'] = $post_data['description'];
+                $data['shared'] = ($post_data['shared'] == 'true')? 1: 0 ; // TRUE OR FALSE
+                $data['user_collection_id'] = $post_data['collection_id'];
+                $data['user_id'] = $_SESSION['user_id'];
+                $this->collection_model->update($data);
+                $result['status'] = true;
+                echo json_encode($result);
+            }
+        }
+    }
+
 }

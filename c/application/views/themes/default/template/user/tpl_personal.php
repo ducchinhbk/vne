@@ -372,45 +372,56 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
 </div>
 </div>
 <div class="tab-pane fade" id="my-colection">
-    <div class="clearfix" id="user_collection_body">
-        <div class="col-xs-12">
-            <a style="margin-bottom: 20px;" class="my-hourlies-viewall call-to-action right"></a>
+    <div class="hp-collection hp-tour-in">
+        <div class="row">
+            <div id="append_new_collect_div"></div>
+            <?php foreach($user_collections as $collection){
+                $collectionImage = 'http://media.foody.vn/res/g18/172685/prof/s256x160/foody-mobile--19-_hinhmob-jpg-207-635796577790000909.jpg';
+                if(isset($collection['image']) && !empty($collection['image'])){
+                    $collectionImage = $collection['image'];
+                }
+                ?>
+                <!-- LOAD SHARED OR NOT SHARED -->
+                <?php if($collection['shared'] == 1 || (isset($_SESSION['user_id']) && $reviewUser['ID'] == $_SESSION['user_id'])){ ?>
+                    <div class="col-xs-12 col-md-4 col-lg-3 collection-item" id="item_collect_<?= $collection['user_collection_id'];?>">
+                        <div class="collection-box collection-box-snippet">
+                            <a title="<?= $collection['collection_title'];?>" href="<?php echo config_item('base_url'). 'collection/collection/'. CommonUtils::remove_vietnamese_accents($collection['collection_title']) . '_'. ($collection['user_collection_id'] + $plus)*$multiple . '.html'; ?>">
+                                <?php if(isset($_SESSION['user_id']) && $reviewUser['ID'] == $_SESSION['user_id']){ ?>
+                                    <h5 class="collections-header">
+                                        <a class="fa fa-pencil" title="Chỉnh sửa" href="javascript:;" onclick="openDialogEditCollection('<?= $collection['user_collection_id']?>');"></a>
+                                        <a class="fa fa-times" title="Xoá bộ sưu tập" href="javascript:;" onclick="openDialogRemoveCollection('<?= $collection['user_collection_id']?>')"></a>
+                                    </h5>
+                                <?php } ?>
+                                <h4 class="collections-title">
+                                    <span class="collections-title_outlets"><?= $collection['collection_title'];?></span>
+                                    <span class="collections-title_text"><?= $collection['collection_description'];?></span>
+                                </h4>
+                                <div style="background-image: url('http://localhost/vneconomist/wp-content/themes/vneconomist/images/e40960514831cb9b74c552d69eceee0f_1418387628_l.jpg');" class="collection-box-bg lazy">
+                                    <div class="collection-overlay"></div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                <?php }?>
+            <?php } ?>
+            <?php if(isset($_SESSION['user_id']) && $reviewUser['ID'] == $_SESSION['user_id']){ ?>
+                <div class="col-xs-12 col-md-4 col-lg-3 collection-item">
+                    <div class="collection-box collection-box-snippet">
+                        <a href="javascript:void(0);">
+                            <h5 class="collections-header" style="display: block">
+                                <a class="fa fa-pencil" title="Tạo bộ sưu tập" href="javascript:;" onclick="openDialogCollection();">Tạo bộ sưu tập</a>
+                            </h5>
+                            <div style="background-image: url('http://image.foody.vn/default/s256x160/no-image.png');" class="collection-box-bg lazy">
+                                <div class="collection-overlay"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            <?php } ?>
         </div>
-        <div id="append_new_collect_div"></div>
-        <?php foreach($user_collections as $collection){
-            $collectionImage = 'http://media.foody.vn/res/g18/172685/prof/s256x160/foody-mobile--19-_hinhmob-jpg-207-635796577790000909.jpg';
-            if(isset($collection['image']) && !empty($collection['image'])){
-                $collectionImage = $collection['image'];
-            }
-            ?>
-            <div class="profile-collection-item">
-                <div class="profile-collection-main-img">
-                    <a title="<?= $collection['collection_title'];?>" href="<?php echo config_item('base_url'). 'collection/collection/'. CommonUtils::remove_vietnamese_accents($collection['collection_title']) . '_'. ($collection['user_collection_id'] + $plus)*$multiple . '.html'; ?>">
-                        <img title="<?= $collection['collection_description'];?>" alt="<?= $collection['collection_description'];?>" src="<?= $collectionImage; ?>">
-                    </a>
-                </div>
-                <a class="profile-collection-title" href="<?php echo config_item('base_url'). 'collection/collection/'. CommonUtils::remove_vietnamese_accents($collection['collection_title']) . '_'. ($collection['user_collection_id'] + $plus)*$multiple ;?>" title="<?= $collection['collection_title'];?>"><?= $collection['collection_title']?></a>
-                <div><span class="profile-collection-res-count">1</span> địa điểm</div>
-                <?php if(isset($_SESSION['user_id']) && $reviewUser['ID'] == $_SESSION['user_id']){ ?>
-                    <a class="profile-collection-bot-btn" href="javascript:void(0);" onclick="openDialogEditCollection(<?= $collection['user_collection_id']; ?>);">
-                        <span class="fa fa-pencil"></span> Chỉnh sửa
-                    </a>
-                <?php } ?>
-            </div>
-        <?php } ?>
-        <?php if(isset($_SESSION['user_id']) && $reviewUser['ID'] == $_SESSION['user_id']){ ?>
-            <div class="profile-collection-item">
-                <div class="profile-collection-main-img">
-                    <a href="javascript:void(0)">
-                        <img src="http://image.foody.vn/default/s256x160/no-image.png">
-                    </a>
-                    <a onclick="openDialogCollection();" class="profile-collection-bot-btn" href="javascript:void(0);">
-                        <span class="fa fa-file-o"></span> + Tạo bộ sưu tập
-                    </a>
-                </div>
-            </div>
-        <?php } ?>
     </div>
+    <!-- Old code here -->
 </div>
 <div class="tab-pane fade" id="my-bookmark">
     <div class="clearfix" id="">
@@ -442,7 +453,7 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="channelDlActionTitle">
-                    <i class="fa fa-edit"></i>Tạo bộ sưu tập
+                    <i class="fa fa-edit"></i><span id="headerDialog">Tạo bộ sưu tập</span>
                 </h4>
             </div>
             <div class="modal-body">
@@ -481,12 +492,36 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
                 </div>
             </div>
             <div class="modal-footer">
-                <input onclick="$('#collection-form').submit();" type="submit" class="btn btn-primary" style="float: right" value="Tạo bộ sưu tập" />
+                <input id="collectionSubmitBtn" onclick="$('#collection-form').submit();" type="submit" class="btn btn-primary" style="float: right" value="Tạo bộ sưu tập" />
             </div>
+            <input type="hidden" id="editCollectionId" value="" />
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-
+<div id="removeCollectionDialogModal" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="channelDlActionTitle">
+                    <i class="fa fa-warning"></i>Xác nhận
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid" id="collectionDialogModalBody">
+                    <div class="row">
+                        Bạn có chắc xoá bộ sưu tập này ?
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <input type="button" class="btn btn-primary" value="Yes" onclick="removeCollection()"/>
+                <input type="button" class="btn btn-primary" value="Cancel" data-dismiss="modal" />
+            </div>
+            <input type="hidden" id="removeCollectionId" value=""/>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 <script>
     var baseURL = '<?php echo config_item('base_url') ?>';
@@ -494,7 +529,10 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
     var multiple = <?= $multiple; ?>;
 
     function openDialogCollection(){
+        $('#collectionDialogModal #headerDialog').html('Tạo bộ sưu tập');
+        $('#collectionDialogModal #collectionSubmitBtn').val('Tạo bộ sưu tập');
         $('#collectionDialogModal').modal('show');
+        $('#collection-form').attr('action', 'addcollection');
     }
 
     function selectBM(checkbox, anotherCheckbox){
@@ -531,50 +569,83 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
                 name : 'post_data[shared]',
                 value:  isShared.toString()
             });
+            if($('#collection-form').attr('action') == 'editcollection'){
+                arr.push({
+                    name : 'post_data[collection_id]',
+                    value:  $('#editCollectionId').val()
+                });
+            }
             return true;
         },
         success: function(json){
             if(json.status){
-                var html = '';
-                var image = 'http://media.foody.vn/res/g18/172685/prof/s256x160/foody-mobile--19-_hinhmob-jpg-207-635796577790000909.jpg';
-                if(json.data.image != undefined && json.data.image.length > 0){
-                    image = json.data.image;
-                }
-                html += '<div id="append_new_collect_div"></div>';
-                html += '<div class="profile-collection-item">';
-                html += '<div class="profile-collection-main-img">';
-                html += '<a title="'+ json.data.title + '" href="'+ baseURL +'collection/collection/'+ foldToAssci(json.data.title) + '_'+ (json.data.user_collection_id + plus)*multiple +'" title="'+ json.data.title + '">';
-                html += '<img title="'+ json.data.description + '" alt="'+ json.data.description + '" src="'+ image + '"></a>';
-                html += '</div>';
-                html += '<a class="profile-collection-title" href="'+ baseURL +'collection/collection/'+ foldToAssci(json.data.title) + '_'+ (json.data.user_collection_id + plus)*multiple +'" title="'+ json.data.title + '">'+ json.data.title + '</a>';
-                html += '<div><span class="profile-collection-res-count">1</span> địa điểm</div>';
-                html += '<a class="profile-collection-bot-btn" href="javascript:void(0)" onclick="openDialogEditCollection('+ json.data.user_collection_id +')">';
-                html += '<span class="fa fa-pencil"></span> Chỉnh sửa</a></div>';
+                var action = $('#collection-form').attr('action');
+                if(action == 'addcollection'){
+                    var html = '';
+                    var image = 'http://localhost/vneconomist/wp-content/themes/vneconomist/images/e40960514831cb9b74c552d69eceee0f_1418387628_l.jpg';
+                    if(json.data.image != undefined && json.data.image.length > 0){
+                        image = json.data.image;
+                    }
+                    html += '<div class="col-xs-12 col-md-4 col-lg-3 collection-item" id="item_collect_'+ json.data.user_collection_id +'">';
+                    html += '<div class="collection-box collection-box-snippet">';
+                    html += '<a title="'+ json.data.title + '" href="'+ baseURL + 'collection/collection/'+  foldToAssci(json.data.title) + '_' + (json.data.user_collection_id + plus)*multiple + '.html">';
+                    html += '<h5 class="collections-header">';
+                    html += '<a class="fa fa-pencil" title="Chỉnh sửa" href="javascript:;" onclick="openDialogEditCollection('+ json.data.user_collection_id +')"></a>';
+                    html += '<a class="fa fa-times" title="Xoá bộ sưu tập" href="javascript:;" onclick="openDialogRemoveCollection('+json.data.user_collection_id+')"></a>';
+                    html += '</h5>';
+                    html += '<h4 class="collections-title">';
+                    html += '<span class="collections-title_outlets">'+ json.data.title +'</span>';
+                    html += '<span class="collections-title_text">'+ json.data.description +'</span>';
+                    html += '</h4>';
+                    html += '<div style="background-image: url('+ image +');" class="collection-box-bg lazy">';
+                    html += '<div class="collection-overlay"></div>';
+                    html += '</div>';
+                    html += '</a>';
+                    html += '</div>';
+                    html += '<div class="clear"></div>';
+                    html += '</div>';
 
-                $('#append_new_collect_div').replaceWith(html);
-                $('#collectionDialogModal').modal('hide');
+                    $('#append_new_collect_div').replaceWith(html);
+                    $('#collectionDialogModal').modal('hide');
+                }else if(action == 'editcollection'){
+                    var title = $('#collectionDialogModalBody #titleCollection').val();
+                    var description = $('#collectionDialogModalBody #descriptionCollection').val();
+                    var curEditCollectionId = $('#editCollectionId').val();
+
+                    $('#item_collect_' + curEditCollectionId + ' .collections-title_outlets').html(title);
+                    $('#item_collect_' + curEditCollectionId + ' .collections-title_text').html(description);
+                    $('#collectionDialogModal').modal('hide');
+                }
             }
         }
     });
-
-    function openDialogEditCollection(collection_id){
+    function openDialogRemoveCollection(collection_id){
+        $('#removeCollectionId').val(collection_id);
+        $('#removeCollectionDialogModal').modal('show');
+    }
+    function removeCollection(){
+        var data = {
+            collection_id : $('#removeCollectionId').val()
+        };
         $.ajax({
-            url : baseURL + 'user/personal/getcollection?id=' + window.btoa(collection_id),
-            type : 'get',
+            url : baseURL + 'user/personal/deletecollection',
+            type: 'post',
+            data : data,
             dataType : 'json',
             success : function(json){
                 if(json.status){
-                    $('#collectionDialogModal #titleCollection').val(json.data.collection_title);
-                    $('#collectionDialogModal #descriptionCollection').val(json.data.collection_description);
-                    if(json.data.shared == 1){
-                        $('#collectionDialogModal #chkPublic').prop('checked', true);
-                    }else{
-                        $('#collectionDialogModal #chkPrivate').prop('checked', true);
-                    }
-                    $('#collectionDialogModal').modal('show');
+                    $('#item_collect_'+ data.collection_id).remove();
+                    $('#removeCollectionDialogModal').modal('hide');
                 }
             }
         });
+    }
+    function openDialogEditCollection(collection_id){
+        $('#editCollectionId').val(collection_id);
+        $('#collection-form').attr('action', 'editcollection');
+        $('#collectionDialogModal #headerDialog').html('Chỉnh sửa bộ sưu tập');
+        $('#collectionDialogModal #collectionSubmitBtn').val('Cập nhật');
+        $('#collectionDialogModal').modal('show');
     }
 
 </script>

@@ -32,8 +32,8 @@ use Facebook\FacebookCurlHttpClient;
 class User extends CI_Controller
 {
 
-    private $app_id = '651313361641726';
-    private $app_secret = '2b4fd78d7d3acdfcfff6e50c064b8f37';
+    private $app_id = '1592766714327131';
+    private $app_secret = 'f63611d138d023ef6721b521d0835f59';
     private $inClientId = '75c18x2d1j1vcr';
     private $inClientSecret = '249hzZ8HKnm5fOtL';
 

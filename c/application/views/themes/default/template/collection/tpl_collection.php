@@ -13,26 +13,28 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
 <div class="col-xs-12 clearfix js-auto-pause-hidden">
     <div class="hp-collection hp-tour-in">
         <div class="row" id="appendSelectedPostDiv">
-            <div style="clear: both; padding: 10px 0px; margin-bottom: 5px; width: 100%; float: left; background: rgb(248, 248, 248) none repeat scroll 0% 0%; text-align: center; font-weight: bold; margin-top: 2px; border: 1px solid rgb(221, 221, 221); position: relative;" data-bind="visible:IsOwner()&amp;&amp;currentList().Enable">
-                <a style="display: block;" onclick="ShowFilter()" href="javascript:void(0)">+ Thêm nhanh bài viết</a>
-                <div style="z-index: 10; background: rgb(221, 221, 221) none repeat scroll 0% 0%; width: 100%; margin-top: 10px; border: 1px solid rgb(187, 187, 187); padding: 10px; position: absolute; left: -1px; display: none;" id="autoFilter">
-                    <div style="float: left; text-align: left; padding-bottom: 3px; font-weight: normal;">
-                        Lọc tìm theo tên bài viết
-                    </div>
-                    <div style="overflow: hidden; float: left;">
-                        <input type="text" style="float: left; padding: 8px; border: 0; border: #aaa 1px solid; border-radius: 3px; width: 823px"
-                               id="txtResAutoFilter"
-                               class="ui-autocomplete-input ui-corner-all"
-                               autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
-                        <div id="filter-loader" style="float: left; position: absolute; right: 18px; top: 40px; display: none;">
-                            <img src="http://static.foody.vn/beta/Style/images/icons/loading.gif">
+            <?php if(isset($_SESSION['user_id']) && $userOwnerCollection['ID'] == $_SESSION['user_id']){ ?>
+                <div style="clear: both; padding: 10px 0px; margin-bottom: 5px; width: 100%; float: left; background: rgb(248, 248, 248) none repeat scroll 0% 0%; text-align: center; font-weight: bold; margin-top: 2px; border: 1px solid rgb(221, 221, 221); position: relative;" data-bind="visible:IsOwner()&amp;&amp;currentList().Enable">
+                    <a style="display: block;" onclick="ShowFilter()" href="javascript:void(0)">+ Thêm nhanh bài viết</a>
+                    <div style="z-index: 10; background: rgb(221, 221, 221) none repeat scroll 0% 0%; width: 100%; margin-top: 10px; border: 1px solid rgb(187, 187, 187); padding: 10px; position: absolute; left: -1px; display: none;" id="autoFilter">
+                        <div style="float: left; text-align: left; padding-bottom: 3px; font-weight: normal;">
+                            Lọc tìm theo tên bài viết
                         </div>
+                        <div style="overflow: hidden; float: left;">
+                            <input type="text" style="float: left; padding: 8px; border: 0; border: #aaa 1px solid; border-radius: 3px; width: 823px"
+                                   id="txtResAutoFilter"
+                                   class="ui-autocomplete-input ui-corner-all"
+                                   autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
+                            <div id="filter-loader" style="float: left; position: absolute; right: 18px; top: 40px; display: none;">
+                                <img src="http://static.foody.vn/beta/Style/images/icons/loading.gif">
+                            </div>
+                        </div>
+                        <button style="border: #ccc 1px solid; border-radius: 2px; color: #aaa; background: #eee; padding: 2px; font-size: 10px; position: absolute; top: 8px; right: 10px; cursor: pointer; width: 16px; line-height: 11px;" class="button-cancel" onclick="hideFilter()">
+                            X
+                        </button>
                     </div>
-                    <button style="border: #ccc 1px solid; border-radius: 2px; color: #aaa; background: #eee; padding: 2px; font-size: 10px; position: absolute; top: 8px; right: 10px; cursor: pointer; width: 16px; line-height: 11px;" class="button-cancel" onclick="hideFilter()">
-                        X
-                    </button>
                 </div>
-            </div>
+            <?php } ?>
 
             <?php
                 if(sizeof($collectionList) > 0){

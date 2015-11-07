@@ -77,6 +77,24 @@ label.error{
     overflow: hidden;
     margin-bottom: 10px;
 }
+.hp-collection .collections-header {
+    display: none;
+    font-size: 11px;
+    position: absolute;
+    top: 1px;
+    right: 10px;
+    color: #FFF;
+    text-shadow: 0 0 2px rgba(0,0,0,.3);
+    margin: 0;
+    z-index: 1;
+}
+.hp-collection .collections-header a{
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.hp-collection .collection-box:hover .collections-header{
+    display: block;
+}
 .hp-collection .collections-title {
     font-size: 18px;
     position: absolute;
@@ -116,7 +134,7 @@ label.error{
     -webkit-border-radius: 10px;
     background-position: center center;
     overflow: hidden;
-    height: 100px;
+    height: 130px;
 }
 .collection-overlay {
     border-radius: 10px;

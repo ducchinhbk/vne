@@ -51,7 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'user/user';
 $route['collection/collection/(:any)_(:any)'] = 'collection/collection';
-$route['user/personal/(?!addcollection|getcollection$).*'] = 'user/personal';
+$route['user/personal/(?!addcollection|getcollection|deletecollection|editcollection$).*'] = 'user/personal';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
