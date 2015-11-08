@@ -44,11 +44,13 @@
                        
                                 <div class="col-xs-12 col-sm-4 col-md-3 hourlie-tile-container">
                                     <div class="clearfix hourlie-tile js-listing-tile  with-member-info">
+                                        <a href="#" data-res-id="302636"  data-entity-id="302636" data-entity-type="WISHLIST" data-in-wtt="false" class="bookmark fpph-bookmark" title="Lưu vào"></a>
                                         <div class="image-container">
-                                            <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>" class="">
+                                            <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>" class="img-grid">
                                                 <img width="253" height="195" src="<?php echo c_crop_image_resize($url, 253, 195, true); ?> " class=" wp-post-image" alt="<?php the_title(); ?>"/>        
+                                                <span class="circle">5,0</span>
                                             </a>
-                                            <div class="stats-container clearfix">
+                                            <!--div class="stats-container clearfix">
                                                 <div class="pull-left rating">
                                                     <i class="fpph fpph-thumb-up"></i>
                                                     <span>Vote:</span>
@@ -59,7 +61,7 @@
                                                     <span>View:</span>
                                                     <span class="sales-value">1999</span>
                                                 </div>
-                                            </div>
+                                            </div-->
                                         </div>
                                         <div class="title-container">
                                             <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>" class="color-hourlie js-paragraph-crop" style="word-wrap: break-word;">

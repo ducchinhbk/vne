@@ -51,9 +51,7 @@ a.js-paragraph-crop{
 .top-navigation .nav .navigation-menu, .top-navigation .nav .user-menu{
     height: auto !important;
 }
-.hourlie-image-container, .hourlie-image-container a{
-    height: 150px;
-}
+
 .widget-memberSummary{
     padding: 5px 0;
     border-bottom: 1px dotted #ECECEC;
@@ -257,7 +255,8 @@ label.error{
     background: -moz-linear-gradient(bottom,rgba(0,0,0,.2) 20%,rgba(0,0,0,0) 100%);
     background: -ms-linear-gradient(bottom,rgba(0,0,0,.2) 20%,rgba(0,0,0,0) 100%);
     background: -o-linear-gradient(bottom,rgba(0,0,0,.2) 20%,rgba(0,0,0,0) 100%);
-     background: linear-gradient(to top,rgba(0,0,0,.2) 20%,rgba(0,0,0,0) 100%);
+    background: linear-gradient(to top,rgba(0,0,0,.2) 20%,rgba(0,0,0,0) 100%);
+    background-position: 0 -102%; 
 }
 .controller-hourlie.action-list .listing-row .member-first-name{
     width: 88px;
@@ -282,7 +281,11 @@ label.error{
     background: -moz-linear-gradient(bottom,rgba(0,0,0,.65) 20%,rgba(0,0,0,0) 100%);
     background: -ms-linear-gradient(bottom,rgba(0,0,0,.65) 20%,rgba(0,0,0,0) 100%);
     background: -o-linear-gradient(bottom,rgba(0,0,0,.65) 20%,rgba(0,0,0,0) 100%);
-     background: linear-gradient(to top,rgba(0,0,0,.65) 20%,rgba(0,0,0,0) 100%); 
+    background: linear-gradient(to top,rgba(0,0,0,.65) 20%,rgba(0,0,0,0) 100%);
+    -webkit-transition: all .5s linear;
+	-moz-transition: all .5s linear;
+	-o-transition: all .5s linear;
+	transition: all .5s linear;   
 }
 .image-container .img-grid .circle, .hourlie-image-frame .circle{
     width: 40px;
@@ -300,12 +303,50 @@ label.error{
     font-size: 16px;
     text-align: center;
     z-index: 10;
+    visibility:visible;
+    opacity:1;
+    transition:opacity 0.5s linear;
+}
+.listings-container .listing-row .row-image-container .hourlie-image-frame:hover >.circle , .image-container .img-grid:hover >.circle{
+    visibility:hidden !important;
+    opacity:0 !important;
 }
 .write-btn{
     padding: 15px 60px;
     margin-top: -30px;
 }
-
+.bookmark {
+    position: absolute !important;
+    z-index: 422;
+    right: 7px;
+    top: 160px;
+    padding: 6px 8px 5px 15px!important;
+    border: 1px solid #fff;
+    border-color: rgba(255,255,255,.25);
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    background-color: rgba(255,255,255,.15);
+    box-shadow: 0 1px 2px rgba(0,0,0,.5);
+    visibility:hidden;
+    opacity:0;
+    transition:opacity 0.5s linear;
+}
+.bookmark:before{
+    content: "\e63c";
+    color: #fff;
+}
+.listings-container .listing-row .row-image-container:hover >.bookmark, .hourlie-tile-container .hourlie-tile:hover >.bookmark{
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    visibility:visible;
+    opacity:1;
+}
+.listings-container .listing-row .row-image-container .bookmark{
+    right: 21px;
+    top: 110px;
+}
 @media(max-width: 899px){
     
     .top-navigation .tab-content section ul{

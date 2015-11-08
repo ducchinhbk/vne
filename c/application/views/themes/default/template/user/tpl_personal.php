@@ -297,11 +297,13 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
 <?php foreach($postAuthors as $post){ ?>
     <div class="col-xs-12 col-sm-6 col-md-4 hourlie-tile-container">
         <div class="clearfix hourlie-tile js-listing-tile  with-member-info">
+            <a href="#" data-res-id="302636"  data-entity-id="302636" data-entity-type="WISHLIST" data-in-wtt="false" class="bookmark fpph-bookmark" title="Lưu vào"></a>
             <div class="image-container">
-                <a class="" title="<?= $post['title'];?>" href="<?php echo config_item('wp_home_url') .'/'. CommonUtils::remove_vietnamese_accents($post['title']). '_post-'. $post['post_id']. '.html'?>">
-                    <img width="260" height="124" alt="Capture" class="attachment-260x195 wp-post-image" src="<?php echo config_item('wp_home_url'). '/wp-content/uploads/'. $post['thumb_img']?>">
+                <a class="img-grid" title="<?= $post['title'];?>" href="<?php echo config_item('wp_home_url') .'/'. CommonUtils::remove_vietnamese_accents($post['title']). '_post-'. $post['post_id']. '.html'?>">
+                    <img width="253" height="195" alt="Capture" class="attachment-260x195 wp-post-image" src="<?php echo config_item('wp_home_url'). '/wp-content/uploads/'. $post['thumb_img']?>">
+                    <span class="circle">5,0</span>
                 </a>
-                <div class="stats-container clearfix">
+                <!--div class="stats-container clearfix">
                     <div class="pull-left rating">
                         <i class="fpph fpph-thumb-up"></i>
                         <span>Vote:</span>
@@ -312,7 +314,7 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
                         <span>View:</span>
                         <span class="sales-value">1999</span>
                     </div>
-                </div>
+                </div-->
             </div>
             <div class="title-container">
                 <a style="word-wrap: break-word;" class="color-hourlie js-paragraph-crop" title="<?= $post['title'];?>" href="<?php echo config_item('wp_home_url') .'/'. CommonUtils::remove_vietnamese_accents($post['title']). '_post-'. $post['post_id']. '.html'?>">

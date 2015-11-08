@@ -293,6 +293,7 @@
                        
                                         <div class="col-xs-12 col-sm-4 col-md-3 hourlie-tile-container">
                                             <div class="clearfix hourlie-tile js-listing-tile  with-member-info">
+                                                <a href="#" data-res-id="302636"  data-entity-id="302636" data-entity-type="WISHLIST" data-in-wtt="false" class="bookmark fpph-bookmark" title="Lưu vào"></a>
                                                 <div class="image-container">
                                                     <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>" class="img-grid">
                                                          

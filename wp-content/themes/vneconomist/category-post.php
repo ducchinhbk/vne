@@ -53,7 +53,7 @@
                                         
                                     <div class="clearfix listing-row hourlie-list-item ">
         								<div class="col-xs-5 col-sm-4  hourlie-image-container row-image-container">
-        								      
+        								      <a href="#" data-res-id="302636"  data-entity-id="302636" data-entity-type="WISHLIST" data-in-wtt="false" class="bookmark fpph-bookmark" title="Lưu vào"></a>
                                             <a href="<?php esc_url(the_permalink())?>" title="<?php the_title() ?> " class="hourlie-image-frame ">  
                                                <img width="238" height="140" src="<?php echo c_crop_image_resize($url, 238, 140, true); ?> " class=" wp-post-image" alt="Capture"/>       
                                                 <span class="circle">5,0</span>
