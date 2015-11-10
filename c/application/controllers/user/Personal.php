@@ -13,6 +13,7 @@ class Personal extends CI_Controller {
         $this->load->model('collection_model');
         $this->load->model('post_model');
         $this->load->model('user_model');
+        $this->load->model('bookmark_model');
         $this->load->library('pagination');
     }
 	public function index(){
@@ -101,6 +102,8 @@ class Personal extends CI_Controller {
         $data['plus'] = config_item('plus');
         $data['multiple'] = config_item('multiple');
 
+        $data['bookmarks'] = $this->bookmark_model->getBookmarkPost($this->reviewUser['ID']);
+
 		$this->load->view('common/tpl_header');
         $this->load->view('user/tpl_personal', $data);
         $this->load->view('common/tpl_footer');
@@ -136,12 +139,12 @@ class Personal extends CI_Controller {
         header('Content-Type: application/json');
         $result = array();
         if(isset($_GET['id']) && strlen($_GET['id']) > 0){
-            $idEncode = $_GET['id'];
-            $collectionId = base64_decode($idEncode);
+            $collectionId = $_GET['id'];
             $collectionObject = $this->collection_model->getCollectionById($collectionId);
             if($collectionObject != null){
                 $result['status'] = true;
                 $result['data'] = $collectionObject;
+                unset($result['data']['user_id']);
                 echo json_encode($result);
             }
         }

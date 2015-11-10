@@ -84,7 +84,7 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
                     <?php }
                 }else{ ?>
                     <div class="hideAfterSelectPost">
-                        Bạn chưa có add bài viết nào trong bộ sưu tập này.
+                        Chưa có bài viết nào trong bộ sưu tập này.
                     </div>
                 <?php }
             ?>

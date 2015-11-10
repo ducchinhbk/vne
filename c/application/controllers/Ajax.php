@@ -84,4 +84,38 @@ class Ajax extends CI_Controller {
         }
     }
 
+    public function save_bookmark(){
+        header('Content-Type: application/json');
+        if(isset($_SESSION['user_id']) && $this->session->user_id > 0 && isset($_COOKIE['vnup_user'])){
+            $this->load->model('bookmark_model');
+
+            $data['post_id'] = $_GET['post_id'];
+            $data['post_title'] = $_GET['post_title'];
+            $data['post_thumb_img'] = $_GET['post_thumb_img'];
+            $data['post_vote'] = $_GET['post_vote'];
+            $data['post_author_id'] = $_GET['post_author_id'];
+            $data['post_author_name'] = $_GET['post_author_name'];
+            $data['post_author_email'] = $_GET['post_author_email'];
+            $data['post_author_avatar'] = $_GET['post_author_avatar'];
+            $data['post_author_city'] = $_GET['post_author_city'];
+            $data['user_id'] = $_SESSION['user_id'];
+
+            $data['data'] = $this->bookmark_model->insert($data);
+            $data['status'] = true;
+            echo json_encode($data);
+        }
+    }
+
+    public function remove_bookmark(){
+        header('Content-Type: application/json');
+        if(isset($_SESSION['user_id']) && $this->session->user_id > 0 && isset($_COOKIE['vnup_user'])){
+            $this->load->model('bookmark_model');
+            $data['post_id'] = $_GET['post_id'];
+            $data['user_id'] = $_SESSION['user_id'];
+            $this->bookmark_model->delete($data);
+            $data['status'] = true;
+            echo json_encode($data);
+        }
+    }
+
 }

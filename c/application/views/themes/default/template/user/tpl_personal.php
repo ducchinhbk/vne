@@ -297,24 +297,22 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
 <?php foreach($postAuthors as $post){ ?>
     <div class="col-xs-12 col-sm-6 col-md-4 hourlie-tile-container">
         <div class="clearfix hourlie-tile js-listing-tile  with-member-info">
-            <a href="#" data-res-id="302636"  data-entity-id="302636" data-entity-type="WISHLIST" data-in-wtt="false" class="bookmark fpph-bookmark" title="Lưu vào"></a>
+            <a href="javascript:;" onclick="saveBookmark($(this));"
+               data-post="<?= $post['post_id']?>"
+               data-post-title="<?= $post['title']?>"
+               data-post-thumb-img="<?= $post['thumb_img']?>"
+               data-post-vote="<?= (isset($post['post_vote']))? $post['post_vote'] : ''?>"
+               data-post-author="<?= $post['author_id']?>"
+               data-post-author-name="<?= $post['author']?>"
+               data-post-author-email="<?= $post['author_email']?>"
+               data-post-author-avatar="<?= $post['author_avatar']?>"
+               data-post-author-city="<?= $post['cus_city']?>"
+               class="bookmark fpph-bookmark" title="Lưu vào"></a>
             <div class="image-container">
                 <a class="img-grid" title="<?= $post['title'];?>" href="<?php echo config_item('wp_home_url') .'/'. CommonUtils::remove_vietnamese_accents($post['title']). '_post-'. $post['post_id']. '.html'?>">
                     <img width="253" height="195" alt="Capture" class="attachment-260x195 wp-post-image" src="<?php echo config_item('wp_home_url'). '/wp-content/uploads/'. $post['thumb_img']?>">
                     <span class="circle">5,0</span>
                 </a>
-                <!--div class="stats-container clearfix">
-                    <div class="pull-left rating">
-                        <i class="fpph fpph-thumb-up"></i>
-                        <span>Vote:</span>
-                        <span class="rating-value"><?= (isset($post['post_vote']))? $post['post_vote']: 99 ?></span>
-                    </div>
-                    <div class="pull-right sales">
-                        <i class="fpph fpph-buyer-activity"></i>
-                        <span>View:</span>
-                        <span class="sales-value">1999</span>
-                    </div>
-                </div-->
             </div>
             <div class="title-container">
                 <a style="word-wrap: break-word;" class="color-hourlie js-paragraph-crop" title="<?= $post['title'];?>" href="<?php echo config_item('wp_home_url') .'/'. CommonUtils::remove_vietnamese_accents($post['title']). '_post-'. $post['post_id']. '.html'?>">
@@ -334,7 +332,7 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
                         </a>
                     </div>
                     <div class="user-info pull-left">
-                        <a class="clearfix user-name crop" title="<?= $post['author']?>"><?= $post['author']?></a>
+                        <a class="clearfix user-name crop" href="<?php echo config_item('wp_home_url') . '/c/user/personal/'. $post['author'];?>" title="<?= $post['author']?>"><?= $post['author']?></a>
                         <span class="user-country clearfix crop"><?= $post['cus_city'];?></span>
                     </div>
 
@@ -387,21 +385,21 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
                 <?php if($collection['shared'] == 1 || (isset($_SESSION['user_id']) && $reviewUser['ID'] == $_SESSION['user_id'])){ ?>
                     <div class="col-xs-12 col-md-4 col-lg-3 collection-item" id="item_collect_<?= $collection['user_collection_id'];?>">
                         <div class="collection-box collection-box-snippet">
-                            <a title="<?= $collection['collection_title'];?>" href="<?php echo config_item('base_url'). 'collection/collection/'. CommonUtils::remove_vietnamese_accents($collection['collection_title']) . '_'. ($collection['user_collection_id'] + $plus)*$multiple . '.html'; ?>">
+                            <span title="<?= $collection['collection_title'];?>">
                                 <?php if(isset($_SESSION['user_id']) && $reviewUser['ID'] == $_SESSION['user_id']){ ?>
                                     <h5 class="collections-header">
-                                        <a class="fa fa-pencil" title="Chỉnh sửa" href="javascript:;" onclick="openDialogEditCollection('<?= $collection['user_collection_id']?>');"></a>
-                                        <a class="fa fa-times" title="Xoá bộ sưu tập" href="javascript:;" onclick="openDialogRemoveCollection('<?= $collection['user_collection_id']?>')"></a>
+                                        <span class="fa fa-pencil" title="Chỉnh sửa" style="cursor: pointer;" onclick="openDialogEditCollection('<?= $collection['user_collection_id']?>');"></span>
+                                        <span class="fa fa-times" title="Xoá bộ sưu tập" style="cursor: pointer;" onclick="openDialogRemoveCollection('<?= $collection['user_collection_id']?>')"></span>
                                     </h5>
                                 <?php } ?>
-                                <h4 class="collections-title">
+                                <a class="collections-title" style="text-decoration: none;" href="<?php echo config_item('base_url'). 'collection/collection/'. CommonUtils::remove_vietnamese_accents($collection['collection_title']) . '_'. ($collection['user_collection_id'] + $plus)*$multiple . '.html'; ?>">
                                     <span class="collections-title_outlets"><?= $collection['collection_title'];?></span>
                                     <span class="collections-title_text"><?= $collection['collection_description'];?></span>
-                                </h4>
+                                </a>
                                 <div style="background-image: url('http://localhost/vneconomist/wp-content/themes/vneconomist/images/e40960514831cb9b74c552d69eceee0f_1418387628_l.jpg');" class="collection-box-bg lazy">
                                     <div class="collection-overlay"></div>
                                 </div>
-                            </a>
+                            </span>
                         </div>
                         <div class="clear"></div>
                     </div>
@@ -430,7 +428,46 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
         <div class="col-xs-12">
             <a style="margin-bottom: 20px;" class="my-hourlies-viewall call-to-action right"></a>
         </div>
-        <p>Tính năng lưu bài viết đang xây dựng..</p>
+        <?php foreach($bookmarks as $bookmark){ ?>
+            <div class="col-xs-12 col-sm-6 col-md-4 hourlie-tile-container" id="bookmark_<?= $bookmark['post_id']?>">
+                <div class="clearfix hourlie-tile js-listing-tile  with-member-info">
+                    <a href="javascript:;" onclick="removefromBookmark(<?= $bookmark['post_id']?>);" class="bookmark remove-flash fpph-bookmark" title="Remove"></a>
+                    <div class="image-container">
+                        <a class="img-grid" title="<?= $bookmark['post_title'];?>" href="<?php echo config_item('wp_home_url') .'/'. CommonUtils::remove_vietnamese_accents($bookmark['post_title']). '_post-'. $bookmark['post_id']. '.html'?>">
+                            <img width="253" height="195" alt="Capture" class="attachment-260x195 wp-post-image" src="<?php echo config_item('wp_home_url'). '/wp-content/uploads/'. $bookmark['post_thumb_img']?>">
+                            <span class="circle">5,0</span>
+                        </a>
+                    </div>
+                    <div class="title-container">
+                        <a style="word-wrap: break-word;" class="color-hourlie js-paragraph-crop" title="<?= $bookmark['post_title'];?>" href="<?php echo config_item('wp_home_url') .'/'. CommonUtils::remove_vietnamese_accents($bookmark['post_title']). '_post-'. $bookmark['post_id']. '.html'?>">
+                            <?= $bookmark['post_title']; ?>
+                        </a>
+                    </div>
+                    <div class="profile-container stretch clearfix">
+                        <div class="col-xs-8 no-padding-right">
+                            <div class="user-image-container pull-left">
+                                <?php $authorAvatar = $bookmark['post_author_avatar'];
+                                if(strpos($authorAvatar, 'http') === false){
+                                    $authorAvatar = config_item('wp_home_url'). '/'. $authorAvatar;
+                                }
+                                ?>
+                                <a title="<?= $bookmark['post_author_name']?>">
+                                    <img width="30" height="30" alt="<?= $bookmark['post_author_name']?>" src="<?= $authorAvatar;?>" class="user-avatar user-avatar-xs">
+                                </a>
+                            </div>
+                            <div class="user-info pull-left">
+                                <a class="clearfix user-name crop" href="<?php echo config_item('wp_home_url') . '/c/user/personal/'. $bookmark['post_author_name'];?>" title="<?= $bookmark['post_author_name']?>"><?= $bookmark['post_author_name']?></a>
+                                <span class="user-country clearfix crop"><?= $bookmark['post_author_city'];?></span>
+                            </div>
+
+                        </div>
+                        <div style="font-size: 12px;line-height: 2.5;" class="col-xs-4 price-container price-tag text-right">
+                            <span><?php echo (isset($post['post_vote']))? $post['post_vote'] : 30 ;?></span><sup> votes</sup>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
     </div>
 </div>
 <div class="tab-pane fade" id="my-bookmark">
@@ -524,6 +561,30 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+<div id="removeBookmarkModal" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="channelDlActionTitle">
+                    <i class="fa fa-warning"></i>Xác nhận
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid" id="collectionDialogModalBody">
+                    <div class="row">
+                        Bạn có chắc xoá bài viết này khỏi mục đã lưu?
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <input type="button" class="btn btn-primary" value="Yes" onclick="submitRemoveBookmark();"/>
+                <input type="button" class="btn btn-primary" value="Cancel" data-dismiss="modal" />
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+    <input type="hidden" id="postID" value=""/>
+</div><!-- /.modal -->
 
 <script>
     var baseURL = '<?php echo config_item('base_url') ?>';
@@ -590,19 +651,19 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
                     }
                     html += '<div class="col-xs-12 col-md-4 col-lg-3 collection-item" id="item_collect_'+ json.data.user_collection_id +'">';
                     html += '<div class="collection-box collection-box-snippet">';
-                    html += '<a title="'+ json.data.title + '" href="'+ baseURL + 'collection/collection/'+  foldToAssci(json.data.title) + '_' + (json.data.user_collection_id + plus)*multiple + '.html">';
+                    html += '<span title="'+ json.data.title + '">';
                     html += '<h5 class="collections-header">';
                     html += '<a class="fa fa-pencil" title="Chỉnh sửa" href="javascript:;" onclick="openDialogEditCollection('+ json.data.user_collection_id +')"></a>';
                     html += '<a class="fa fa-times" title="Xoá bộ sưu tập" href="javascript:;" onclick="openDialogRemoveCollection('+json.data.user_collection_id+')"></a>';
                     html += '</h5>';
-                    html += '<h4 class="collections-title">';
+                    html += '<a class="collections-title" style="text-decoration: none;" href="'+ baseURL + 'collection/collection/'+  foldToAssci(json.data.title) + '_' + (json.data.user_collection_id + plus)*multiple + '.html">';
                     html += '<span class="collections-title_outlets">'+ json.data.title +'</span>';
                     html += '<span class="collections-title_text">'+ json.data.description +'</span>';
-                    html += '</h4>';
+                    html += '</a>';
                     html += '<div style="background-image: url('+ image +');" class="collection-box-bg lazy">';
                     html += '<div class="collection-overlay"></div>';
                     html += '</div>';
-                    html += '</a>';
+                    html += '</span>';
                     html += '</div>';
                     html += '<div class="clear"></div>';
                     html += '</div>';
@@ -647,7 +708,76 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
         $('#collection-form').attr('action', 'editcollection');
         $('#collectionDialogModal #headerDialog').html('Chỉnh sửa bộ sưu tập');
         $('#collectionDialogModal #collectionSubmitBtn').val('Cập nhật');
-        $('#collectionDialogModal').modal('show');
+        var data = {
+            id : collection_id
+        };
+        $.ajax({
+            url : baseURL + 'user/personal/getcollection',
+            data : data,
+            type : 'get',
+            dataType : 'json',
+            success : function(json){
+                if(json.status){
+                    $('#collectionDialogModal #titleCollection').val(json.data.collection_title);
+                    $('#collectionDialogModal #descriptionCollection').val(json.data.collection_description);
+                    if(json.data.shared == "1"){
+                        $('#chkPublic').prop('checked', 'true');
+                        $('#chkPrivate').prop('checked', '');
+                    }else{
+                        $('#chkPublic').prop('checked', '');
+                        $('#chkPrivate').prop('checked', 'true');
+                    }
+                    $('#collectionDialogModal').modal('show');
+                }
+            }
+        });
     }
 
+    function saveBookmark(ele){
+        var data = {
+            post_id : $(ele).attr('data-post'),
+            post_title : $(ele).attr('data-post-title'),
+            post_thumb_img : $(ele).attr('data-post-thumb-img'),
+            post_vote : $(ele).attr('data-post-vote'),
+            post_author_id : $(ele).attr('data-post-author'),
+            post_author_name: $(ele).attr('data-post-author-name'),
+            post_author_email : $(ele).attr('data-post-author-email'),
+            post_author_avatar : $(ele).attr('data-post-author-avatar'),
+            post_author_city : $(ele).attr('data-post-author-city')
+        };
+        $.ajax({
+            url : baseURL + 'ajax/save_bookmark',
+            data : data,
+            type : 'get',
+            dataType : 'json',
+            success: function(json){
+                if(json.status){
+                    alert('bookmark thanh cong');
+                }
+            }
+        });
+    }
+
+    function removefromBookmark(postID){
+        $('#removeBookmarkModal #postID').val(postID);
+        $('#removeBookmarkModal').modal('show');
+    }
+
+    function submitRemoveBookmark(){
+        var postID = $('#removeBookmarkModal #postID').val();
+        $.ajax({
+            url : baseURL + 'ajax/remove_bookmark',
+            data: {
+                post_id : postID
+            },
+            type: 'get',
+            dataType : 'json',
+            success: function(json){
+                if(json.status){
+                    $('#bookmark_' + postID).remove();
+                    $('#removeBookmarkModal').modal('hide');
+                }
+            }
+        });
+    }
 </script>

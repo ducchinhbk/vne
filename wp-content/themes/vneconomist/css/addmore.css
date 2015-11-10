@@ -336,6 +336,10 @@ label.error{
     content: "\e63c";
     color: #fff;
 }
+.bookmark.remove-flash:before{
+    content: "\e600";
+    color: #fff;
+}
 .listings-container .listing-row .row-image-container:hover >.bookmark, .hourlie-tile-container .hourlie-tile:hover >.bookmark{
     display: block;
     color: #fff;

@@ -74,4 +74,18 @@ CREATE TABLE `wp_ratings` (
 
 insert  into `wp_ratings`(`id`,`blog_id`,`post_id`,`user_id`,`user_ip`,`rate`,`date_added`) values (19,0,166,1,'::1',4.5,'2015-10-25 11:47:00'),(20,0,166,1,'::1',4.5,'2015-10-25 11:48:00'),(21,0,166,1,'::1',4,'2015-10-26 21:29:00'),(22,0,181,1,'::1',3.5,'2015-10-26 21:37:00'),(23,0,181,1,'::1',3.5,'2015-10-26 21:39:00'),(24,0,166,1,'::1',4.5,'2015-10-31 11:41:00');
 
-
+CREATE TABLE IF NOT EXISTS `wp_user_bookmark` (
+  `user_bookmark_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` INT(11) NOT NULL,
+  `post_id` INT(11) NOT NULL,
+  `post_title` varchar(256) NOT NULL,
+  `post_thumb_img` varchar(100) NOT NULL,
+  `post_date` date NOT NULL,
+  `post_vote` int(100),
+  `post_author_id` int(11) NOT NULL,
+  `post_author_name` varchar(200) NOT NULL,
+  `post_author_email` varchar(200) NOT NULL,
+  `post_author_avatar` varchar(200) NOT NULL,
+  `post_author_city` varchar(200),
+  PRIMARY KEY (`user_bookmark_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
