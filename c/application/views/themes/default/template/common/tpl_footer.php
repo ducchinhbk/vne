@@ -5,9 +5,9 @@
 				<div class="col-sm-3 hidden-sm hidden-xs description">
 					<a href="#" class="pph-logo"></a>
 					<div class="description-text">
-						A community of <strong>curated freelance talent</strong> available to work for you remotely at the click of a button    </div>
+						A community of <strong>people</strong> available to dedicate to make the world better   </div>
 					<div class="copyright">
-						© 2015 PeoplePerHour Inc.    </div>
+						© 2015 VnEconomist Inc.    </div>
 					<div class="helper-links clearfix">
 						<ul>
 							<li><a href="#">Terms</a></li>
@@ -17,38 +17,37 @@
 				</div>
 				<div class="col-sm-12 col-md-9 col-lg-6 links clearfix">
 					<div class="col-xs-12 col-sm-4">
-						<h4>Company</h4>
+						<h4>VnEconomist</h4>
 						<ul class="footer-nav">
 							<li><a target="_blank" href="#">About Us</a></li>
 							<li><a href="#">Careers</a></li>
 							<li><a target="_blank" href="#">Our Team</a></li>
 							<li><a target="_blank" href="#">Blog</a></li>
-							<li><a target="_blank" href="#">Press</a></li>
-							<li class="logo-item"><a href="#" class="supertasker-logo" target="_blank" title="Supertasker"></a></li>
+							
 						</ul>
-						<hr class="visible-xs">
+						<hr class="visible-xs"/>
 					</div>
 					<div class="col-xs-12 col-sm-4">
-						<h4>Help</h4>
+						<h4>Trợ giúp</h4>
 						<ul class="footer-nav">
 							<li><a href="#">How it Works</a></li>
 							<li><a target="_blank" href="#">Help Guides</a></li>
 							<li><a target="_blank" href="#">Support</a></li>
-							<li><a href="#">Enterprise Solutions</a> <span class="etiquette-new sm">NEW</span></li>
-							<li><a href="#">Trust &amp; Safety</a></li>
 						</ul>
-						<hr class="visible-xs">
+						<hr class="visible-xs"/>
 					</div>
 					<div class="col-xs-12 col-sm-4">
-						<h4>Resources</h4>
+						<h4>Liên kết</h4>
 						<ul class="footer-nav">
-							<li><a href="#">Directory</a></li>
-							<li><a target="_blank" href="#">Economic Research</a> <span class="etiquette-new sm">NEW</span></li>
+                            <li><a target="_blank" href="#">Zotadi</a> </li>
+							<li><a target="_blank" href="#">eFund</a></li>
+							<li><a target="_blank" href="#">eJob</a> </li>
+                            <li><a target="_blank" href="#">eAction</a> </li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-xs-12 hidden-md hidden-lg copyright-mobile">
-					© 2015 PeoplePerHour Inc.    <div class="helper-links right clearfix">
+					© 2015 VnEconomist Inc.    <div class="helper-links right clearfix">
 						<ul>
 							<li><a href="#">Terms</a></li>
 							<li><a href="#">Privacy</a></li>
@@ -56,9 +55,9 @@
 					</div>
 				</div>
 				<div class="col-sm-4 col-lg-3 connect visible-lg">
-					<h4>Connect with us</h4>
+					<h4>Kết nối</h4>
 					<div class="email-input">
-						Get special offers up to 60% off!        
+						Đăng ký để cập nhận những bài viết hay nhất!        
 						<form class="form" id="newsletter-subscription-form" action="#" method="post">
 							<div style="display:none">
 								<input type="hidden" value="31d41365ab376728e548533230ffea87d65cd731" name="YII_CSRF_TOKEN"/>
@@ -95,7 +94,7 @@
 				</div>    
 			</div>
         <div class="detect-mobile"></div>
-	</footer>       
+	</footer>        
 
 </div>
        

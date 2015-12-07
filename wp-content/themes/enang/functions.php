@@ -767,7 +767,6 @@ function get_relate_catID($catID){
      return $result;
 }												
 													
-													
 												
 											
 											

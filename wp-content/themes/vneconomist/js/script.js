@@ -62,4 +62,16 @@ $(document).ready(function()
         $('#rating-index').val(0);
 	});
 
+    /****Popup login***/
+    $('.login-require').click(function(){
+        $('#bg-overlay').addClass('modal-backdrop fade in');
+        $('#jsModuleLoginSignup').fadeIn("slow");
+        
+        $('.close').click(function() {
+    		$('#jsModuleLoginSignup').fadeOut("slow");
+            $('#bg-overlay').removeClass('modal-backdrop fade in');  
+    	});
+    });
+    
+    
 });

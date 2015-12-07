@@ -42,7 +42,7 @@
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
     
     <script src="<?php echo get_template_directory_uri(); ?>/js/autocomplete.js"></script>
-    
+    <script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/script.js"></script>
 </head>
 
 <?php
@@ -106,25 +106,6 @@ function isSessionUserDataAvailable(){
                 <?php if(isSessionUserDataAvailable() && isset($_COOKIE['vnup_user'])) { ?>
                     <div class="pull-right menu-block user-menu">
                         <ul>
-                            <!-- FAVORITES -->
-                            <li class="dropdown mini-menu-item" data-hook="miniMenu">
-                                <a href="#" title="Favourites" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fpph fpph-star"></i>
-                                </a>
-                                <ul class="dropdown-menu favourites-menu simple pull-right mini-view-list">
-                                    <li class="header">My Favourites</li>
-                                    <li class="fav-hourlies-count">
-                                        <a href="#"><span class="pull-right">0</span> Hourlies</a>
-                                    </li>
-                                    <li class="fav-people-count">
-                                        <a href="#"><span class="pull-right">0</span> People</a>
-                                    </li>
-                                    <li class="fav-jobs-count">
-                                        <a href="#"><span class="pull-right">0</span> Jobs</a>
-                                    </li>
-                                </ul>
-                            </li>
-
                             <li class="dropdown mini-menu-item navNotifications notifications-bell" data-hook="miniMenu">
                                 <a title="Notifications" class="dropdown-toggle" data-toggle="dropdown" href="#">
                                     <span class="notification-bubble" style="display:none;">0</span>
@@ -157,8 +138,7 @@ function isSessionUserDataAvailable(){
                                     <div class="top-nav-image">
                                         <img src="<?= $userImage; ?>" alt="<?= $userName; ?>" class="img-rounded user-avatar">
                                     </div>
-					                            <span class="user-greeting crop">Hi <?= $userName; ?>
-                                                </span>
+                                    <span class="user-greeting crop">Hi <?= $userName; ?></span>
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu user-account-menu simple pull-right">
@@ -176,22 +156,12 @@ function isSessionUserDataAvailable(){
                 <?php }else{ ?>
                     <div class="pull-right menu-block user-menu">
                         <div class="auth-menu">
-                            <a href="<?php echo site_url( '/c/user/user/signup?redirect_to='. urlencode(site_url($wp->request)));?>" title="Đăng ký" class="text-uppercase sign-up">Đăng ký</a>
                             <a href="<?php echo site_url( '/c/user/user?redirect_to='. urlencode(site_url($wp->request)) );?>" title="Đăng nhập" class="text-uppercase login">Đăng nhập</a>
                         </div>
                     </div>
                 <?php } ?>
                 <div class="pull-right menu-block navigation-menu">
                     <ul>
-
-                        <!--li class="dropdown">
-                            <a class="dropdown-toggle  text-uppercase with-border-on-hover " data-toggle="dropdown" rel="nofollow"  ><i class="fpph-categories color-pph" style="margin-right: 6px;"></i>Có gì hay</a>
-                            <ul class="dropdown-menu simple pull-right">
-                                <li><a href="http://news.vneconomist.com/" target="_blank">eNews</a></li>
-                                <li><a href="http://tv.vneconomist.com/" target="_blank">eTV</a></li>
-                                <li><a href="http://www.zotadi.com/" target="_blank">Zotadi</a></li>
-                            </ul>
-                        </li-->
                         <li class="dropdown separator"><a class="job btn bold" rel="nofollow" data-trigger="post-btn" href="<?php echo site_url( '/c/user/article/create' );?>">Tạo bài viết</a></li>
                     </ul>
                 </div>
@@ -205,46 +175,27 @@ function isSessionUserDataAvailable(){
 
             <div class="nav navbar-collapse">
                 <div class="navbar-mobile visible-xs visible-sm">
-                    <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="active">
-                            <a href="#home" role="tab" data-toggle="tab"><i class="fa fa-home"></i></a>
+                            <a href="<?php echo site_url();?>" role="tab" data-toggle="tab"><i class="fa fa-home"></i></a>
                         </li>
                     </ul>
-
-                    <!-- Tab panes -->
                     <div class="tab-content">
-                        <!-- BEGIN: Home tab -->
                         <div class="tab-pane active" id="home">
-                            <!-- Buy Section-->
                             <section>
                                 <header class="row text-uppercase"></header>
                                 <ul class="simple">
-                                    <li><a href="#">Tạo bài viết</a></li>
+                                    <li><a href="<?php echo site_url( '/c/user/article/create' );?>">Tạo bài viết</a></li>
                                 </ul>
                             </section>
-                            <!-- Sell Section-->
-                            <!--section>
-                                <header class="row text-uppercase">Có gì hay</header>
-                               <ul class="dropdown-menu simple pull-right">
-                                    <li><a href="http://news.vneconomist.com/" target="_blank">eNews</a></li>
-                                    <li><a href="http://tv.vneconomist.com/" target="_blank">eTV</a></li>
-                                    <li><a href="http://www.zotadi.com/" target="_blank">Zotadi</a></li>
-                                </ul>
-                            </section-->
-                            <!-- Help Section -->
                             <section>
                                 <ul class="simple">
                                     <li>
-                                        <a href="<?php echo site_url( '/c/user/user/signup?redirect_to='. urlencode(site_url($wp->request)));?>">Sign up</a>
-                                    </li>
-                                    <li>
-                                        <a href="<?php echo site_url( '/c/user/user?redirect_to='. urlencode(site_url($wp->request)) );?>">Log in</a>
+                                        <a href="<?php echo site_url( '/c/user/user?redirect_to='. urlencode(site_url($wp->request)) );?>">Đăng nhập</a>
                                     </li>
                                 </ul>
                             </section>
                         </div>
-                        <!-- END: Home Tab-->
                     </div>
                 </div>
             </div>

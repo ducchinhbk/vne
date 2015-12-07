@@ -516,4 +516,48 @@ function get_sum_voted($author_id){
     
 }
 
-									
+//get collection(tag) thumbnail by geting thumbnail of first post													
+function get_collec_thumb($tag_title){
+    
+     $args = array(
+        'tag' => $tag_title,
+        'posts_per_page' => 1,
+      );
+      $query = new WP_Query($args);
+      if ($query->have_posts()) {
+        while ($query->have_posts()) : $query->the_post();
+          
+          $thumbnail_url = wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()) );
+          
+          endwhile;
+        
+      }
+      else{
+        $thumbnail_url = esc_url( get_template_directory_uri() ).'/images/img_default.jpg';
+      }
+     return $thumbnail_url;   
+}
+//get number of posts in a tag
+function get_tag_count($tag_title){
+    
+    $the_term = get_term_by( 'slug', $tag_title, 'post_tag' );
+    
+    return $the_term->count; 
+}	
+//get collections (tags)
+function get_collections($offset, $limit)
+{
+    global $wpdb;
+    $sql = $wpdb->prepare( 
+        		  " SELECT ta.term_id, ta.count, te.name, te.slug
+                    FROM wp_terms te LEFT JOIN wp_term_taxonomy ta ON te.term_id = ta.term_id 
+                    WHERE ta.taxonomy = 'post_tag'
+                    ORDER BY ta.term_id
+                    LIMIT %d, %d
+            	 ", 
+                    $offset, 
+                	$limit
+                 );
+       $tag_arrs = $wpdb->get_results( $sql, ARRAY_A );
+    return $tag_arrs;
+}								

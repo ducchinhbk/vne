@@ -13,26 +13,9 @@ class Collection extends CI_Controller {
     }
     public function index(){
         // CHECK COOKIE FOR LOGIN
-        if(isset($_COOKIE['vnup_user']) && isset($_COOKIE['vnup_log_social']) && (!isset($_SESSION['user_id']) || empty($_SESSION['user_id']))){
-            $_SESSION['redirect_to'] = $_SERVER['HTTP_HOST']. $_SERVER['REQUEST_URI'];
-            redirect(config_item('base_url'). 'user/user');
-        }
-
-        $requestURI = $_SERVER['REQUEST_URI'];
-        $requestURI = str_replace('.html', '', $requestURI);
-        $lastUnderScore = strrpos($requestURI, "_");
-        $encodeId = substr($requestURI, $lastUnderScore + 1);
-        $data['collectionList'] = array();
-        if(is_numeric($encodeId)){
-            $collectionId = (int)$encodeId/config_item('multiple') - config_item('plus');
-            $data['collectionId'] = $collectionId;
-            $collectionObject = $this->collection_model->getCollectionById($collectionId);
-            $data['collection_title'] = $collectionObject['collection_title'];
-            $searchUser['id'] = $collectionObject['user_id'];
-            $data['userOwnerCollection'] = $this->user_model->get_user($searchUser);
-
-            $data['collectionList'] = $this->collection_model->fetchAllPostCollection($collectionId);
-        }
+        
+        $data['collectionList'] = '';
+       
         $this->load->view('common/tpl_header');
         $this->load->view('collection/tpl_collection', $data);
         $this->load->view('common/tpl_footer');

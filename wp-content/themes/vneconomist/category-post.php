@@ -89,12 +89,12 @@
         												<i class="fpph-clock-wall color-gray"></i>
         												<span class="hourlie-info-value">1,200 Views</span>
         											</li>
-        											<li class="js-tooltip" title="Hourlies sold">
+        											<!--li class="js-tooltip" title="Hourlies sold">
         												<i class="fpph-buyer-activity color-gray"></i>
                                                         <span class="hourlie-info-value">79</span>
         												<span>Bình luận</span>
         												
-        											</li>
+        											</li-->
         											
         										</ul>
         									</div>

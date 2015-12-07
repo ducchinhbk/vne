@@ -3,9 +3,9 @@
     <div class="main-content full-width controller-site action-register">
 
         <div class="login-signup-container">
-            <h1 class="gutter-bottom clearfix align-center">Sign Up
-                <aside class="clearfix">Already have an account?
-                    <a class="call-to-action" href="<?php echo config_item('base_url') . 'user/user'?>">Log In</a>
+            <h1 class="gutter-bottom clearfix align-center">Đăng ký
+                <aside class="clearfix">Đã có tài khoản?
+                    <a class="call-to-action" href="<?php echo config_item('base_url') . 'user/user'?>">Đăng nhập</a>
                 </aside>
             </h1>
             <div class="signup-form-container">
@@ -16,12 +16,12 @@
                             <div class="col-xs-12">
                                 <div class="col-xs-12 col-sm-6 clearfix social-left">
                                     <a class="action-social-login medium button social-button facebook" rel="nofollow" href="<?= $loginFacebookLink; ?>">
-                                        <i class="fa fa-facebook"></i><span>Sign up with Facebook</span>
+                                        <i class="fa fa-facebook"></i><span>Đăng nhập bằng Facebook</span>
                                     </a>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 clearfix social-right">
                                     <a class="action-social-login medium button social-button linkedin" href="<?= $loginViaLinkin; ?>">
-                                        <i class="fa fa-linkedin"></i><span>Sign up with LinkedIn</span>
+                                        <i class="fa fa-linkedin"></i><span>LinkedIn</span>
                                     </a>
                                 </div>
                             </div>
@@ -31,7 +31,7 @@
                                 <aside class="gutter-bottom">Sign up with Facebook and discover what your friends are doing </aside>
                             </div>
                             <div class="align-center">
-                                <a class="action-social-login tall button facebook" rel="nofollow" href="#">Sign Up with Facebook</a>
+                                <a class="action-social-login tall button facebook" rel="nofollow" href="<?= $loginFacebookLink; ?>">Sign Up with Facebook</a>
                             </div>
                             <div class="fb-facepile-container clearfix align-center gutter-top">
                                 <div class="stylish-arrow"></div>
@@ -43,28 +43,28 @@
                         </div>
                         <div class="clearfix col-xs-12 col-sm-offset-2 col-sm-8 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4 no-padding" data-hook="partial-singup-form">
                             <div class="gutter-bottom">
-                                <label class="clear required" for="EmailMemberRegistration_fname">First Name</label>
+                                <label class="clear required" for="EmailMemberRegistration_fname">Tên</label>
                                 <input tabindex="1" class="medium clear" data-tip-position="bottom" name="EmailMemberRegistration[fname]" id="EmailMemberRegistration_fname" type="text" maxlength="40" required />
                             </div>
                             <div class="gutter-bottom">
-                                <label class="clear required" for="EmailMemberRegistration_lname">Last Name</label>
+                                <label class="clear required" for="EmailMemberRegistration_lname">Họ</label>
                                 <input tabindex="2" class="medium clear" data-tip-position="bottom" name="EmailMemberRegistration[lname]" id="EmailMemberRegistration_lname" type="text" maxlength="100" required/>
                             </div>
 
                             <div class="gutter-bottom">
-                                <label class="clear required" for="EmailMemberRegistration_email">Your email</label>
+                                <label class="clear required" for="EmailMemberRegistration_email">Email</label>
                                 <input tabindex="3" class="medium clear login-signup-email" data-tip-position="bottom" name="EmailMemberRegistration[email]" id="EmailMemberRegistration_email" type="email" required/>
                             </div>
                             <div class="gutter-bottom">
-                                <label class="clear required" for="EmailMemberRegistration_password">Password</label>
+                                <label class="clear required" for="EmailMemberRegistration_password">Mật khẩu</label>
                                 <input id="password" tabindex="4" class="medium clear" autocomplete="off" data-tip-position="bottom" name="EmailMemberRegistration[password]" id="EmailMemberRegistration_password" type="password" maxlength="200" required/>
                             </div>
                             <div class="gutter-bottom" id="retypePasswordDiv">
-                                <label class="clear required" for="EmailMemberRegistration_repassword">Retype Password</label>
+                                <label class="clear required" for="EmailMemberRegistration_repassword">Nhập lại mật khẩu</label>
                                 <input id="re_password" tabindex="4" class="medium clear" autocomplete="off" data-tip-position="bottom" name="EmailMemberRegistration[repassword]" id="EmailMemberRegistration_repassword" type="password" maxlength="200" required/>
                             </div>
 
-                            <label class="clear gutter-bottom" for="member-type-slider">Account Type</label>
+                            <label class="clear gutter-bottom" for="member-type-slider">Loại tài khoản</label>
                             <div class="clearfix gutter-bottom member-type-container" id="accountTypeDiv">
                                 <div class="col-xs-12 no-padding">
                                     <input id="ytEmailMemberRegistration_memType" type="hidden" value="" name="EmailMemberRegistration[memType]" />
@@ -91,7 +91,7 @@
                                 </div>
                             </div>
                             <div class="clearfix">
-                                <input tabindex="7" class="call-to-action tall clear btn-inverted" type="submit" name="yt0" value="Sign Up" />
+                                <input tabindex="7" class="call-to-action tall clear btn-inverted" type="submit" name="yt0" value="Đăng ký" />
                                 <div class="tocLink">
                                     By clicking Sign Up you agree to our new <a target="_blank" href="#">T&C's</a>
                                 </div>

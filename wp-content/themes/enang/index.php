@@ -54,7 +54,7 @@
             								<img class="f-image"  src="<?php echo get_bg_image(get_the_ID()); ?>" alt="<?php the_title();?>">
             								<div class="carousel-caption"> 
             									<a href="<?php esc_url(the_permalink())?>"><?php the_title();?></a>
-            									<br>
+            									<br/>
             									<?php echo get_cate_name(get_the_ID())?>
             								</div>
             								<p class="gradient"></p>

@@ -1,26 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require_once(config_item('home_dir') . '/c/application/libraries/Facebook/FacebookSession.php');
-require_once(config_item('home_dir') . '/c/application/libraries/Facebook/FacebookRequest.php');
-require_once(config_item('home_dir') . '/c/application/libraries/Facebook/FacebookResponse.php');
-require_once(config_item('home_dir') . '/c/application/libraries/Facebook/FacebookSDKException.php');
-require_once(config_item('home_dir') . '/c/application/libraries/Facebook/FacebookRequestException.php');
-require_once(config_item('home_dir') . '/c/application/libraries/Facebook/FacebookRedirectLoginHelper.php');
-require_once(config_item('home_dir') . '/c/application/libraries/Facebook/FacebookAuthorizationException.php');
-require_once(config_item('home_dir') . '/c/application/libraries/Facebook/GraphObject.php');
-require_once(config_item('home_dir') . '/c/application/libraries/Facebook/GraphUser.php');
-require_once(config_item('home_dir') . '/c/application/libraries/Facebook/GraphAlbum.php');
-require_once(config_item('home_dir') . '/c/application/libraries/Facebook/GraphSessionInfo.php');
-require_once(config_item('home_dir') . '/c/application/libraries/Facebook/Entities/AccessToken.php');
-require_once(config_item('home_dir') . '/c/application/libraries/Facebook/HttpClients/FacebookCurl.php');
-require_once(config_item('home_dir') . '/c/application/libraries/Facebook/HttpClients/FacebookHttpable.php');
-require_once(config_item('home_dir') . '/c/application/libraries/Facebook/HttpClients/FacebookCurlHttpClient.php');
-
+require_once(config_item('home_dir') . '/facebook/fb.php');
 require_once(config_item('home_dir'). '/wp-includes/class-phpass.php');
-require_once(config_item('home_dir'). '/c/application/utils/HttpCallUtils.php');
-require_once(config_item('home_dir'). '/c/application/utils/ViewUtils.php');
-require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
+
 use Facebook\FacebookSession;
 use Facebook\FacebookRedirectLoginHelper;
 use Facebook\FacebookRequest;
@@ -32,8 +15,8 @@ use Facebook\FacebookCurlHttpClient;
 class User extends CI_Controller
 {
 
-    private $app_id = '1592766714327131';
-    private $app_secret = 'f63611d138d023ef6721b521d0835f59';
+    private $app_id = '189952838014491';
+    private $app_secret = '4112151381263a557fa64a8f92f8dbe2';
     private $inClientId = '75c18x2d1j1vcr';
     private $inClientSecret = '249hzZ8HKnm5fOtL';
 
@@ -52,6 +35,7 @@ class User extends CI_Controller
         $this->load->library('email');
         $this->load->helper('url');
         $this->load->helper('cookie');
+        $this->load->helper('common');
         $this->load->model('user_model');
         $this->load->model('user_cookie_model');
 
@@ -87,16 +71,15 @@ class User extends CI_Controller
 
     //function process normal user login
     public function login(){
+        
         if(isset($_POST['LoginForm'])){
             $email = $_POST['LoginForm']['email'];
             $pass = $_POST['LoginForm']['password'];
             $remember_me = $_POST['LoginForm']['rememberMe'];
             $userObject = $this->user_model->validate_login($email, $pass);
-            if(is_array($userObject)){ // > 0 is valid
-                // UPDATE USER SESSION DATA
+            if(is_array($userObject)){ 
                 $this->storeDataToUserSession($userObject);
-
-                // HANDLE COOKIE DATA
+                
                 $remember_me = ($remember_me === '1')? 1 : 0 ;
                 $this->handleCookie($userObject['ID'], $remember_me, 0);
 
@@ -125,7 +108,7 @@ class User extends CI_Controller
                     'image' => $image
                 );
                 $data = $args;
-                $data['user_login'] = CommonUtils::remove_vietnamese_accents($args['name']);
+                $data['user_login'] = remove_vietnamese_accents($args['name']);
                 $data['user_email'] = ($args['email'] != null && !empty($args['email']))? $args['email'] : $id. '@facebook.com';
                 $data['cus_avatar'] = $args['image'];
                 $data['user_pass'] = $this->wp_hasher->HashPassword('12345');
@@ -133,7 +116,6 @@ class User extends CI_Controller
                 if($userObject == null){
                     $userData = $this->user_model->insert_user($data);
                     $data['ID'] = $userData['ID'];
-                    // UPDATE USER SESSION DATA
                     $this->storeDataToUserSession($userData);
 
                     // send email cause this is new user
@@ -160,7 +142,7 @@ class User extends CI_Controller
             }
 
             $data['loginViaLinkin'] = 'https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id='. $this->inClientId . '&redirect_uri='. $this->callbackInLink .'&state=DCEeFWf45A53sdfKef42afda4&scope=r_basicprofile%20r_emailaddress';
-
+            
             $this->load->view('common/tpl_header');
             $this->load->view('user/tpl_login', $data);
             $this->load->view('common/tpl_footer');
@@ -180,10 +162,10 @@ class User extends CI_Controller
                 'client_id' => urlencode($this->inClientId),
                 'client_secret' => urlencode($this->inClientSecret)
             );
-            $response = HttpCallUtils::makeHttpCall($url_POST, $fields, 'POST', null);
+            $response = makeHttpCall($url_POST, $fields, 'POST', null);
             $accessTokenObject = json_decode($response, true); // array data
 
-            $user = HttpCallUtils::fetchBasicProfile($accessTokenObject['access_token']);
+            $user = fetchBasicProfile($accessTokenObject['access_token']);
             $data['user_login'] = substr($user->emailAddress, 0, strpos($user->emailAddress, '@'));
             $data['user_email'] = $user->emailAddress;
             $data['cus_avatar'] = (isset($user->pictureUrl))? $user->pictureUrl : $this->homepage . '/upload/avatar/user_default.png';
@@ -245,7 +227,7 @@ class User extends CI_Controller
             $data['memType'] = $_POST['EmailMemberRegistration']['memType'];
             $data['remember_me'] = true;
 
-            $data['user_login'] = CommonUtils::remove_vietnamese_accents($data['first_name'] . '_' . $data['last_name']);
+            $data['user_login'] = remove_vietnamese_accents($data['first_name'] . '_' . $data['last_name']);
             $userObject = $this->user_model->get_user($data);
             if(isset($userObject) && isset($userObject['ID']) && $userObject['ID'] > 0){
                 echo 'This email is already existed';
@@ -299,7 +281,7 @@ class User extends CI_Controller
                 );
                 // insert new user into database
                 $data = $args;
-                $data['user_login'] = CommonUtils::remove_vietnamese_accents($args['name']);
+                $data['user_login'] = remove_vietnamese_accents($args['name']);
                 $data['user_email'] = ($args['email'] != null && !empty($args['email']))? $args['email'] : $id. '@facebook.com';
                 $data['cus_avatar'] = $args['image'];
                 $data['user_pass'] = $this->wp_hasher->HashPassword('12345');
@@ -403,12 +385,12 @@ class User extends CI_Controller
         $messageBody = '';
         if($type == 'WELCOME'){
             $subject = 'WELCOME TO VNUP';
-            $filePath = config_item('home_dir'). '/c/application/views/themes/default/template/email/welcome.tpl';
-            $messageBody = ViewUtils::loadTemplate($filePath, $data);
+            $filePath = config_item('home_dir'). '/c/application/views/themes/default/template/email/welcome.php';
+            $messageBody = loadTemplate($filePath, $data);
         }else if($type == 'ACTIVATE'){
             $subject = 'Thank you for signup VNUP';
-            $filePath = config_item('home_dir'). '/c/application/views/themes/default/template/email/activate.tpl';
-            $messageBody = ViewUtils::loadTemplate($filePath, $data);
+            $filePath = config_item('home_dir'). '/c/application/views/themes/default/template/email/activate.php';
+            $messageBody = loadTemplate($filePath, $data);
         }
         $this->email->to($email);
         $this->email->subject($subject);

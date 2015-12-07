@@ -59,16 +59,16 @@
         <div class="get-started-form">
             <div class="container clearfix">
                 <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 no-padding-left no-padding-right clearfix">
-                    <!--form class="clearfix" id="get-started" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" role="search">
+                    <form class="clearfix" id="get-started" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" role="search">
                         
-                        <div class="col-sm-10 no-padding-left">
-                            <input placeholder="Tìm kiếm bài viết, bộ sưu tập.." value="<?php echo esc_attr( get_search_query() ); ?>" name="s" id="search-input" type="text" maxlength="85" />
+                        <div class="col-sm-12 no-padding-left box-writing">
+                            Write good things to make the world better..
                         </div>
                         <div class="col-sm-2 no-padding-left">
-                            <input class="btn call-to-action btn-inverted" type="submit"  value="Let&#039;s Go ›" />
+                            <a href="<?php echo site_url( '/c/user/article/create' );?>" class="btn call-to-action btn-inverted write-btn"  value="Let&#039;s Go ›">Let&#039;s Go ›</a>
                         </div>
-                    </form-->  
-                    <a href="<?php echo site_url( '/c/user/article/create' );?>" class="btn call-to-action btn-inverted write-btn"  value="Let&#039;s Go ›">Let&#039;s Go ›</a>  
+                    </form> 
+                    <!--a href="<?php echo site_url( '/c/user/article/create' );?>" class="btn call-to-action btn-inverted write-btn"  value="Let&#039;s Go ›">Let&#039;s Go ›</a-->  
                 </div>
             </div>
         </div>
@@ -81,171 +81,26 @@
             <div class="hp-collection hp-tour-in">
               <div class="section-title container section-title-thin ta-center">Bộ sưu tập bài viết nổi bật</div>
               <div class="row">
-                <div class="col-xs-12 col-md-4 col-lg-3 collection-item">
-                  <div class="collection-box collection-box-snippet"> 
-                  <a href="#" title="Góp ý chính sách cho startup">
-                    <h4 class="collections-title" > 
-                        <span class="collections-title_outlets">0 Bài viết</span> 
-                        <span class="collections-title_text">Góp ý chính sách cho startup</span> 
-                    </h4>
-                    <div class="collection-box-bg lazy"  style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/e40960514831cb9b74c552d69eceee0f_1418387628_l.jpg');">
-                        <div class="collection-overlay"></div>
-                    </div>
-                    </a> 
-                  </div>
-                  <div class="clear"></div>
-                </div>
-                <div class="col-xs-12 col-md-4 col-lg-3 collection-item">
-                  <div class="collection-box collection-box-snippet"> 
-                    <a href="#" title="Tâm sự của đàn anh doanh nhân đi trước">
-                        <h4 class="collections-title"> 
-                            <span class="collections-title_outlets">0 Bài viết</span> 
-                            <span class="collections-title_text">Tâm sự của đàn anh doanh nhân đi trước</span> 
-                        </h4>
-                        <div class="collection-box-bg lazy" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/dc347fcba38a39000ab7ab50f0f222ad_1424059541_l.jpg');">
-                            <div class="collection-overlay"></div>
+                <?php $collections = get_collections(0, 12); 
+                      foreach($collections as $collection){ ?>
+                
+                        <div class="col-xs-12 col-md-4 col-lg-3 collection-item">
+                          <div class="collection-box collection-box-snippet"> 
+                          <a href="<?php echo esc_url(site_url().'/bo-suu-tap/'.$collection['slug']); ?>" title="<?php echo $collection['name']?>">
+                            <h4 class="collections-title" > 
+                                <span class="collections-title_outlets"><?php echo $collection['count']?> Bài viết</span> 
+                                <span class="collections-title_text"><?php echo $collection['name']?></span> 
+                            </h4>
+                            <div class="collection-box-bg lazy"  style="background-image: url('<?php echo c_crop_image_resize(get_collec_thumb($collection['slug']), 400, 115, true); ?>');">
+                                <div class="collection-overlay"></div>
+                            </div>
+                            </a> 
+                          </div>
+                          <div class="clear"></div>
                         </div>
-                    </a> 
-                  </div>
-                  <div class="clear"></div>
-                </div>
-                <div class="col-xs-12 col-md-4 col-lg-3 collection-item">
-                  <div class="collection-box collection-box-snippet"> 
-                    <a href="#" title="Quốc gia khởi nghiệp">
-                        <h4 class="collections-title" > 
-                            <span class="collections-title_outlets">0 Bài viết</span> 
-                            <span class="collections-title_text">Quốc gia khởi nghiệp</span> 
-                        </h4>
-                        <div class="collection-box-bg lazy" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/fb1dfaf63322c68558b27ed7e5dc6e9c_1418401086_l.jpg');">
-                            <div class="collection-overlay"></div>
-                        </div>
-                    </a> 
-                  </div>
-                  <div class="clear"></div>
-                </div>
-                <div class="col-xs-12 col-md-4 col-lg-3 collection-item">
-                  <div class="collection-box collection-box-snippet"> 
-                    <a href="#" title="Kinh doanh quán cafe">
-                    <h4 class="collections-title" > 
-                        <span class="collections-title_outlets">0 Bài viết</span> 
-                        <span class="collections-title_text">Khởi nghiệp quán cafe</span> 
-                    </h4>
-                    <div class="collection-box-bg lazy"  style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/0707137915a22b40b4d5e8274f47d791_1419918315_l.jpg');">
-                        <div class="collection-overlay"></div>
-                    </div>
-                    </a> </div>
-                  <div class="clear"></div>
-                </div>
-                <div class="col-xs-12 col-md-4 col-lg-3 collection-item">
-                  <div class="collection-box collection-box-snippet"> 
-                    <a href="#" title="Startup về nông nghiệp">
-                        <h4 class="collections-title"> 
-                            <span class="collections-title_outlets">0 Bài viết</span> 
-                            <span class="collections-title_text">Startup về nông nghiệp</span> 
-                        </h4>
-                        <div class="collection-box-bg lazy" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/95d517d48c52188721ddfcf69d7d34f5_1419406534_l.jpg');">
-                            <div class="collection-overlay"></div>
-                        </div>
-                    </a> 
-                  </div>
-                  <div class="clear"></div>
-                </div>
-                <div class="col-xs-12 col-md-4 col-lg-3 collection-item">
-                  <div class="collection-box collection-box-snippet"> 
-                    <a href="#" title="Khởi nghiệp nhà hàng">
-                    <h4 class="collections-title" > 
-                        <span class="collections-title_outlets">0 Bài viết</span> 
-                        <span class="collections-title_text">Khởi nghiệp nhà hàng</span> 
-                    </h4>
-                    <div class="collection-box-bg lazy"  style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/4c2b30d63f25fc4d52a220890442421a_1421300685_l.jpg'); ">
-                    <div class="collection-overlay"></div>
-                  </div>
-                    </a> </div>
-                  <div class="clear"></div>
-                </div>
-                <div class="col-xs-12 col-md-4 col-lg-3 collection-item">
-                  <div class="collection-box collection-box-snippet"> 
-                    <a href="#" title="Startup về du lịch">
-                    <h4 class="collections-title" > 
-                        <span class="collections-title_outlets">0 Bài viết</span> 
-                        <span class="collections-title_text">Startup về du lịch</span> 
-                    </h4>
-                    <div class="collection-box-bg lazy"  style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/b762edbc2f8303b0ffdbdaa2ed6287a6_1424180016_l.jpg'); ">
-                    <div class="collection-overlay"></div>
-                  </div>
-                    </a> </div>
-                  <div class="clear"></div>
-                </div>
-                <div class="col-xs-12 col-md-4 col-lg-3 collection-item">
-                  <div class="collection-box collection-box-snippet"> 
-                    <a href="#" title="Startup về media">
-                        <h4 class="collections-title" > 
-                            <span class="collections-title_outlets">0 Bài viết</span> 
-                            <span class="collections-title_text">Startup về media</span> 
-                        </h4>
-                        <div class="collection-box-bg lazy"  style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/d5e7778988c8df486127982a097b7ba5_1418401323_l.jpg'); ">
-                            <div class="collection-overlay"></div>
-                        </div>
-                    </a> 
-                  </div>
-                  <div class="clear"></div>
-                </div>
-                <div class="col-xs-12 col-md-4 col-lg-3 collection-item">
-                  <div class="collection-box collection-box-snippet"> 
-                    <a href="#" title="Internet of things">
-                    <h4 class="collections-title" > 
-                        <span class="collections-title_outlets">0 Bài viết</span> 
-                        <span class="collections-title_text">Internet of things</span> 
-                    </h4>
-                    <div class="collection-box-bg lazy"  style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/e359a2a24366b32acfe905ee084f4206_1418629602_l.jpg'); ">
-                        <div class="collection-overlay"></div>
-                    </div>
-                    </a> 
-                  </div>
-                  <div class="clear"></div>
-                </div>
-                <div class="col-xs-12 col-md-4 col-lg-3 collection-item">
-                  <div class="collection-box collection-box-snippet"> 
-                    <a href="#" title="Lý do 55 000 doanh nghiệp phá sản hàng năm">
-                        <h4 class="collections-title"> 
-                            <span class="collections-title_outlets">0 Bài viết</span> 
-                            <span class="collections-title_text">Lý do 55 000 doanh nghiệp phá sản hàng năm</span> 
-                        </h4>
-                        <div class="collection-box-bg lazy"  style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/81fbcaec4c83f321c854a0fdc9dcfdfd_1422002949_l.jpg'); ">
-                            <div class="collection-overlay"></div>
-                        </div>
-                    </a> 
-                  </div>
-                  <div class="clear"></div>
-                </div>
-                <div class="col-xs-12 col-md-4 col-lg-3 collection-item">
-                  <div class="collection-box collection-box-snippet"> 
-                    <a href="#" title="Gửi đến giới trẻ">
-                        <h4 class="collections-title" > 
-                            <span class="collections-title_outlets">0 Bài viết</span> 
-                            <span class="collections-title_text">Gửi đến giới trẻ</span> 
-                        </h4>
-                        <div class="collection-box-bg lazy"  style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/6a5f59d28b2e695b15e7029643e4ca27_1418391059_l.jpg'); ">
-                            <div class="collection-overlay"></div>
-                        </div>
-                    </a> 
-                  </div>
-                  <div class="clear"></div>
-                </div>
-                <div class="col-xs-12 col-md-4 col-lg-3 collection-item">
-                  <div class="collection-box collection-box-snippet"> 
-                    <a href="#" title="Kinh doanh bền vững">
-                        <h4 class="collections-title" > 
-                            <span class="collections-title_outlets">0 Bài viết</span> 
-                            <span class="collections-title_text">Kinh doanh bền vững</span> 
-                        </h4>
-                        <div class="collection-box-bg lazy"  style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/7d78f516cf561c362481f1d7a1fc7464_1418393872_l.jpg'); ">
-                            <div class="collection-overlay"></div>
-                        </div>
-                    </a> 
-                  </div>
-                  <div class="clear"></div>
-                </div>
+                
+                <?php } ?>
+                
             </div>
             <div class="row">
             <div class="col-lg-12 ta-center mtop"> 
@@ -263,7 +118,7 @@
             <div class="bg-fill clearfix options-container">
                 <header class="clear">
                     <h1 id="hourlies-listing-heading">
-                        Bài viết mới 
+                        Nổi bật trong ngày 
                     </h1>
                 </header>
                         
@@ -271,9 +126,7 @@
             <div class="results grid" id="hourlies-listing-results">
                 <div id="hourlies-listing-listview" class="list-view">
                     <div class="items clearfix items-results ">
-                    
                      <!-- The Loop -->
-
                         <?php   
                             $args = array(
                                 'posts_per_page' => 16
@@ -293,7 +146,7 @@
                        
                                         <div class="col-xs-12 col-sm-4 col-md-3 hourlie-tile-container">
                                             <div class="clearfix hourlie-tile js-listing-tile  with-member-info">
-                                                <a href="#" data-res-id="302636"  data-entity-id="302636" data-entity-type="WISHLIST" data-in-wtt="false" class="bookmark fpph-bookmark" title="Lưu vào"></a>
+                                                <span data-res-id="302636"  data-entity-id="302636" data-entity-type="WISHLIST" data-in-wtt="false" class="bookmark fpph-bookmark login-require" title="Lưu vào"></span>
                                                 <div class="image-container">
                                                     <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>" class="img-grid">
                                                          
