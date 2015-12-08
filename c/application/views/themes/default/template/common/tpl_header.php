@@ -61,7 +61,7 @@
                 </div>
                 <div class="clearfix search-container" id="job-listing-search">
                     <div class="input-group clearfix ">
-                        <input id="keyword" placeholder="Search Jobs..." class="form-control" type="text" value="" name="keyword">
+                        <input id="keyword" placeholder="Tìm bài viết..." class="form-control" type="text" value="" name="keyword">
 						<span class="input-group-btn">
 							<button type="button" data-reset-url="/freelance-jobs" class="btn btn-default js-reset-form" style="display: none;">
                                 <i class="fa fa-times-circle"></i>

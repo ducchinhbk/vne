@@ -1,8 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+define('HOME_DIR', config_item('home_dir'));
+define('HOME_URL', config_item('wp_home_url'));
+define('callbacklink', HOME_URL.'/c/user/user/ilogin');
+define('activelink', HOME_URL.'/c/user/user/activate');
+define('DOMAIN', config_item('domain'));
 
-require_once(config_item('home_dir') . '/facebook/fb.php');
-require_once(config_item('home_dir'). '/wp-includes/class-phpass.php');
+require_once(HOME_DIR. '/facebook/fb.php');
+require_once(HOME_DIR. '/wp-includes/class-phpass.php');
 
 use Facebook\FacebookSession;
 use Facebook\FacebookRedirectLoginHelper;
@@ -23,9 +28,9 @@ class User extends CI_Controller
     private $default_redirectURL;
     private $helper;
     private $wp_hasher;
-    private $callbackInLink = 'http://localhost/vneconomist/c/user/user/ilogin';
-    private $homepage = 'http://localhost/vneconomist';
-    private $activateLink = 'http://localhost/vneconomist/c/user/user/activate';
+    private $callbackInLink = callbacklink;
+    private $homepage = HOME_URL;
+    private $activateLink = activelink;
 
     function __construct(){
         parent::__construct();
@@ -55,7 +60,7 @@ class User extends CI_Controller
         $this->email->from('vnupeconomist@gmail.com', 'VN UP TEST');
 
         // ==================================================================
-        $this->default_redirectURL = config_item('base_url') . 'user/user';
+        $this->default_redirectURL = HOME_URL . '/c/user/user';
         FacebookSession::setDefaultApplication($this->app_id, $this->app_secret);
         $this->helper = new FacebookRedirectLoginHelper($this->default_redirectURL);
         $this->wp_hasher = new PasswordHash(8, true);
@@ -124,12 +129,9 @@ class User extends CI_Controller
                     ));
                 }else{
                     $data['ID'] = $userObject['ID'];
-
-                    // UPDATE USER SESSION DATA
                     $this->storeDataToUserSession($userObject);
                 }
 
-                // HANDLE COOKIE DATA
                 $this->handleCookie($data['ID'], false, 1);
 
                 if(isset($_SESSION['redirect_to'])){
@@ -158,7 +160,7 @@ class User extends CI_Controller
             $fields = array(
                 'code' => $code,
                 'grant_type' => urlencode('authorization_code'),
-                'redirect_uri' => urlencode('http://localhost/vnup/c/user/user/ilogin'),
+                'redirect_uri' => urlencode(HOME_URL.'/c/user/user/ilogin'),
                 'client_id' => urlencode($this->inClientId),
                 'client_secret' => urlencode($this->inClientSecret)
             );
@@ -180,17 +182,13 @@ class User extends CI_Controller
                 $userData = $this->user_model->insert_user($data);
                 $data['ID'] = $userData['ID'];
 
-                // UPDATE USER SESSION DATA
                 $this->storeDataToUserSession($userData);
-
-                // send Email cause this is new user
+                
                 $this->sendmail($data['user_email'], 'WELCOME', array(
                     'name' => $data['first_name']. ' ' . $data['last_name']
                 ));
             }else if($userObject['ID'] > 0){
                 $data['ID'] = $userObject['ID'];
-
-                // UPDATE USER SESSION DATA
                 $this->storeDataToUserSession($userObject);
             }
 
@@ -203,10 +201,7 @@ class User extends CI_Controller
             $userSessionData['user_id'] = $data['ID'];
             $this->session->set_userdata($userSessionData);
 
-            // HANDLE COOKIE DATA
             $this->handleCookie($data['ID'], false, 1);
-
-            // REDIRECT TO CURRENT PAGE
             redirect($_SESSION['redirect_to']);
         }
     }
@@ -305,7 +300,7 @@ class User extends CI_Controller
                 if(isset($_SESSION['redirect_to'])){
                     redirect($_SESSION['redirect_to']);
                 }else{
-                    echo 'Login via facebook successful! But missing redirect link to url';
+                    redirect($this->homepage);
                 }
             }else{
                 $data['loginFacebookLink'] = $this->helper->getLoginUrl();
@@ -365,10 +360,10 @@ class User extends CI_Controller
         }
 
         // REMOVE COOKIE DATA
-        delete_cookie('vnup_user', '.localhost', '/');
+        delete_cookie('vnup_user', DOMAIN, '/');
 
         // REMOVE COOKIE USER LOGIN VIA SOCIAL
-        delete_cookie('vnup_log_social', '.localhost', '/');
+        delete_cookie('vnup_log_social', DOMAIN, '/');
 
         if(isset($_GET['redirect_to'])){
             redirect($_GET['redirect_to']);
@@ -385,11 +380,11 @@ class User extends CI_Controller
         $messageBody = '';
         if($type == 'WELCOME'){
             $subject = 'WELCOME TO VNUP';
-            $filePath = config_item('home_dir'). '/c/application/views/themes/default/template/email/welcome.php';
+            $filePath = HOME_DIR. '/c/application/views/themes/default/template/email/welcome.php';
             $messageBody = loadTemplate($filePath, $data);
         }else if($type == 'ACTIVATE'){
             $subject = 'Thank you for signup VNUP';
-            $filePath = config_item('home_dir'). '/c/application/views/themes/default/template/email/activate.php';
+            $filePath = HOME_DIR. '/c/application/views/themes/default/template/email/activate.php';
             $messageBody = loadTemplate($filePath, $data);
         }
         $this->email->to($email);
@@ -403,7 +398,7 @@ class User extends CI_Controller
             'name'   => 'user',
             'value'  => json_encode($data),
             'expire' => time()+ 85200,
-            'domain' => '.localhost',
+            'domain' => DOMAIN,
             'path'   => '/',
             'prefix' => 'vnup_',
         );
@@ -429,7 +424,7 @@ class User extends CI_Controller
             'name'   => 'log_social',
             'value'  => $loginViaSocial,
             'expire' => 86400, // 1 day
-            'domain' => '.localhost',
+            'domain' => DOMAIN,
             'path'   => '/',
             'prefix' => 'vnup_',
         );
@@ -496,7 +491,7 @@ class User extends CI_Controller
                     $fileUpload = $_FILES["avatarfile"];
                 }
 
-                $target_dir = config_item('home_dir'). '/upload/'. $imageType .'/';
+                $target_dir = HOME_DIR. '/upload/'. $imageType .'/';
                 $check = getimagesize($fileUpload["tmp_name"]);
 
                 if($check){

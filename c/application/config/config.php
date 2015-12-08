@@ -524,6 +524,7 @@ $config['home_dir'] = 'C:\wamp\www\vneconomist';
 $config['asset_url'] = 'http://localhost/vneconomist/c/assets/themes/';
 $config['wp_theme_url'] = 'http://localhost/vneconomist/wp-content/themes/vneconomist/';
 $config['wp_home_url'] = 'http://localhost/vneconomist';
+$config['domain'] = '.localhost';
 
 $config['plus'] = 39;
 $config['multiple']= 79;

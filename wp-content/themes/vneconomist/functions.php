@@ -172,6 +172,14 @@ function c_get_avatar($user_id, $width = 30, $height = 30, $class=""){
     return $result;
 }													
 
+function c_avatar($image_path){
+    
+    if($image_path == '')
+        $image_path = site_url('upload/avatar/default_avatar.jpg');
+    else
+        $image_path = site_url($image_path);
+    return $image_path;
+}
 //crop image size by url													
 function c_crop_image_resize( $url, $width = NULL, $height = NULL, $crop = true, $retina = false ) {
 		global $wpdb;
@@ -522,6 +530,8 @@ function get_collec_thumb($tag_title){
      $args = array(
         'tag' => $tag_title,
         'posts_per_page' => 1,
+		'order by'   => ID,
+		'order'      => 'DESC'
       );
       $query = new WP_Query($args);
       if ($query->have_posts()) {
@@ -533,8 +543,9 @@ function get_collec_thumb($tag_title){
         
       }
       else{
-        $thumbnail_url = esc_url( get_template_directory_uri() ).'/images/img_default.jpg';
+        $thumbnail_url = esc_url( get_template_directory_uri() ).'/images/collection_img_default.jpg';
       }
+      
      return $thumbnail_url;   
 }
 //get number of posts in a tag

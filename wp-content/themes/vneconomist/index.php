@@ -59,7 +59,7 @@
         <div class="get-started-form">
             <div class="container clearfix">
                 <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 no-padding-left no-padding-right clearfix">
-                    <form class="clearfix" id="get-started" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" role="search">
+                    <div class="clearfix" id="get-started" >
                         
                         <div class="col-sm-12 no-padding-left box-writing">
                             Write good things to make the world better..
@@ -67,7 +67,7 @@
                         <div class="col-sm-2 no-padding-left">
                             <a href="<?php echo site_url( '/c/user/article/create' );?>" class="btn call-to-action btn-inverted write-btn"  value="Let&#039;s Go ›">Let&#039;s Go ›</a>
                         </div>
-                    </form> 
+                    </div> 
                     <!--a href="<?php echo site_url( '/c/user/article/create' );?>" class="btn call-to-action btn-inverted write-btn"  value="Let&#039;s Go ›">Let&#039;s Go ›</a-->  
                 </div>
             </div>
@@ -140,7 +140,7 @@
                                         //var_dump($user_info); exit;
                                         $full_name = $user_info->first_name.' '.$user_info->last_name;
                                         $url = wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()) );
-                                        $avatar_url =  site_url( $user_info->cus_avatar );
+                                        $avatar_url =  c_avatar($user_info->cus_avatar);
                                         //echo $avatar_url; exit;
                                         ?>
                        
@@ -153,18 +153,6 @@
                                                         <img width="253" height="195" src="<?php echo c_crop_image_resize($url, 253, 195, true); ?> " class="attachment-253x195 wp-post-image" alt="Capture"/>       
                                                         <span class="circle">5,0</span>
                                                     </a>
-                                                    <!--div class="stats-container clearfix">
-                                                        <div class="pull-left rating">
-                                                            <i class="fpph fpph-thumb-up"></i>
-                                                            <span>Vote:</span>
-                                                            <span class="rating-value">99</span>
-                                                        </div>
-                                                        <div class="pull-right sales">
-                                                            <span class="fpph fpph-user"></span>
-                                                            <span>View:</span>
-                                                            <span class="sales-value">1999</span>
-                                                        </div>
-                                                    </div-->
                                                 </div>
                                                 <div class="title-container">
                                                     <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>" class="color-hourlie js-paragraph-crop" style="word-wrap: break-word;font-weight: bold;">

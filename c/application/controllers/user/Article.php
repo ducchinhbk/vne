@@ -1,9 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-require_once(config_item('home_dir') . '/wp-load.php');
-require_once(config_item('home_dir') . '/wp-admin/includes/media.php');
-require_once(config_item('home_dir') . '/wp-admin/includes/file.php');
-require_once(config_item('home_dir') . '/wp-admin/includes/image.php');
+define('HOME_DIR', config_item('home_dir'));
+define('HOME_URL', config_item('wp_home_url'));
+
+require_once(HOME_DIR . '/wp-load.php');
+require_once(HOME_DIR . '/wp-admin/includes/media.php');
+require_once(HOME_DIR . '/wp-admin/includes/file.php');
+require_once(HOME_DIR . '/wp-admin/includes/image.php');
 
 class Article extends CI_Controller {
 
@@ -11,12 +14,12 @@ class Article extends CI_Controller {
 
     function __construct(){
         parent::__construct();
-        $_SESSION['redirect_to'] = config_item('base_url') . 'user/article/create';
+        $_SESSION['redirect_to'] = HOME_URL . '/c/user/article/create';
         if(!isset($_SESSION['user_id']) || !isset($_COOKIE['vnup_user'])){
-            redirect(config_item('base_url') . 'user/user');
+            redirect(HOME_URL . '/c/user/user');
         }
         if(isset($_SESSION['user_id']) && $this->session->user_id == null){
-            redirect(config_item('home_url'));
+            redirect(HOME_URL);
         }
     }
 
@@ -29,10 +32,6 @@ class Article extends CI_Controller {
             $post_data = $this->input->post('post_data');
             $filename = $_FILES["thumb"]["name"];
             $tmp_file = $_FILES["thumb"]["tmp_name"];
-            //echo 'filename = '.$filename;
-            //echo 'tmp_name = '.$tmp_name;
-            //var_dump($post_data);
-            // exit;
 
             if(isset($post_data['subcate_id']))
             {
@@ -56,8 +55,7 @@ class Article extends CI_Controller {
             if($post_id != 0 )
             {
                 set_post_thumbnail($post_id,$this->download_image($post_id, $filename, $tmp_file));
-                
-                redirect('/c/user/personal/'.$_SESSION['user_login'].'?cp=sussessful', 'refresh');
+                redirect(HOME_URL.'/c/user/personal/'.$_SESSION['user_login'].'?cp=sussessful', 'refresh');
                 
             }
         }
@@ -103,10 +101,7 @@ class Article extends CI_Controller {
 
         //catch submit data
         if( $this->input->post('post_data') ){
-
             $post_data = $this->input->post('post_data');
-
-
         }
 
         if(isset($post_data['category_id']))

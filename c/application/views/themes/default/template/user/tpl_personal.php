@@ -49,7 +49,7 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
             <i class="js-tooltip status-icon fa fa-circle green"></i>
         </div>
         <div class="profile-pic">
-            <img alt="<?= $reviewUser['display_name']?>" src="<?= $userAvatar ?>">
+            <img alt="<?php echo $reviewUser['display_name']?>" src="<?php echo $userAvatar ?>">
             <span title="Savitri D. is available to start working for you immediately" class="hidden-xs available  js-tooltip">
                 <i class="icon fa fa-check"></i>
             </span>
@@ -61,10 +61,10 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
         </div>
         <div class="clearfix member-info">
             <span class="member-name">
-                <?= $reviewUser['user_nicename']; ?>
+                <?php echo $reviewUser['user_nicename']; ?>
             </span>
             <span class="member-description">
-                <?= $reviewUser['cus_career']; ?>
+                <?php echo $reviewUser['cus_career']; ?>
             </span>
 
         </div>
@@ -72,7 +72,7 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
             <ul>
                 <li>
                     <i class="fpph fpph-location"></i>
-                    <?= $reviewUser['cus_city']; ?>
+                    <?php echo $reviewUser['cus_city']; ?>
                 </li>
                 <li>
                     <i class="fpph fpph-seller-activity"></i>
@@ -94,10 +94,10 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
                     Everything come to you in the right moment! Be patient!
                 </q>
             </div>
-            <hr class="clearfix">
+            <hr class="clearfix"/>
             <div class="about-container js-about-container">
                 <p>
-                   <?= $reviewUser['cus_description'];?>
+                   <?php echo $reviewUser['cus_description'];?>
                 </p>
             </div>
         </div>
@@ -108,23 +108,23 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
     </div>
     <div class="profile-header-member hidden-xs">
         <div class="profile-pic">
-            <img alt="<?= $reviewUser['display_name']?>" src="<?= $userAvatar ?>">
+            <img alt="<?php echo $reviewUser['display_name']?>" src="<?php echo $userAvatar ?>"/>
             <span data-original-title="Savitri D. is available to start working for you immediately" title="" class="hidden-xs available  js-tooltip">
                 <i class="icon fa fa-check"></i>
             </span>
         </div>
         <div class="seller-name light">
             <h1>
-                <?= $reviewUser['first_name']. ' '. $reviewUser['last_name']; ?>
+                <?php echo $reviewUser['first_name']. ' '. $reviewUser['last_name']; ?>
                 <aside>
-                    <?= $reviewUser['cus_career']; ?>
+                    <?php echo $reviewUser['cus_career']; ?>
                 </aside>
             </h1>
         </div>
     </div>
     <?php if(isset($_SESSION['user_id']) && $reviewUser['ID'] == $_SESSION['user_id']){ ?>
         <div class="cover-edit-action hidden-xs">
-            <a href="http://localhost/vneconomist/c/user/user/edit" class="btn cover-edit-button">
+            <a href="<?php echo config_item('wp_home_url');?>/c/user/user/edit" class="btn cover-edit-button">
                 <i class="fa fa-camera"></i> Change Cover
             </a>
         </div>
@@ -136,7 +136,7 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
         </div>
         <!--span><a class="btn contact-member call-to-action btn-inverted " rel="nofollow" href="#">Contact</a></span-->
         <?php if(isset($_SESSION['user_id']) && $reviewUser['ID'] == $_SESSION['user_id']){ ?>
-            <a href="http://localhost/vneconomist/c/user/user/edit" rel="nofollow" class="btn contact-member call-to-action  ">Edit</a>
+            <a href="<?php echo config_item('wp_home_url');?>/c/user/user/edit" rel="nofollow" class="btn contact-member call-to-action  ">Edit</a>
         <?php } ?>
     </div>
 </div>
@@ -146,19 +146,19 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
         <div class="member-status">
             <q title="Everything come to you in the right moment! Be patient!" class="crop full-width-q">Everything come to you in the right moment! Be patient!</q>
         </div>
-        <hr>
+        <hr/>
         <p>
         </p>
         <div class="about-container js-about-container">
             <p>
-                <?= $reviewUser['cus_description']; ?>
+                <?php echo $reviewUser['cus_description']; ?>
             </p>
         </div>
         <div class="clearfix">
             <ul class="clearfix details-list">
                 <li>
                     <i class="fpph fpph-location"></i>
-                    <?= $reviewUser['cus_city']?>
+                    <?php echo $reviewUser['cus_city']?>
                 </li>
                 <li class="">
                     <i title="Savitri D. is available to start working for you immediately" class="status-icon fa fa-check-circle green js-tooltip"></i>
@@ -270,6 +270,9 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
 <div class="col-xs-12 col-sm-8 col-lg-9 profile-main">
 <div class="member-tabs pph-default stretch gutter-bottom hidden-xs" id="members-widget-hourlies-portfolio">
 <ul class="nav nav-tabs" role="tablist">
+    <li>
+        <a href="#my-appointment" data-toggle="tab" role="tab">Lịch hẹn</a>
+    </li>
     <li class="active">
         <a href="#my-post" data-toggle="tab" role="tab">Bài viết (<?= $total; ?>)</a>
     </li>
@@ -279,11 +282,234 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
     <li>
         <a href="#my-bookmark" data-toggle="tab" role="tab">Đã lưu</a>
     </li>
-    <li>
-        <a href="#my-friend" data-toggle="tab" role="tab">Bạn bè</a>
-    </li>
 </ul>
 <div class="tab-content">
+<div class="tab-pane fade" id="my-appointment">
+    <div class="clearfix">
+        <div class="col-xs-12">
+            <a style="margin-bottom: 20px;" class="my-hourlies-viewall call-to-action right"></a>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-4 col-xs-6 text-center">
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>06:00</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                     <img alt="06:00" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/open.png"/>  
+                </span>
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>06:30</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                    <img alt="06:30" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/close.png"/>  
+                </span>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 text-center">
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>07:00</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                     <img alt="07:00" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/oyasumi.png"/>  
+                </span>
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>07:30</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                    <img alt="07:30" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/oyasumi.png"/>  
+                </span>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 text-center">
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>08:00</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                     <img alt="08:00" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/open.png"/>  
+                </span>
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>08:30</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                    <img alt="08:30" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/close.png"/>  
+                </span>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 text-center">
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>09:00</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                     <img alt="09:00" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/oyasumi.png"/>  
+                </span>
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>09:30</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                    <img alt="09:30" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/oyasumi.png"/>  
+                </span>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 text-center">
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>10:00</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                     <img alt="10:00" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/open.png"/>  
+                </span>
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>10:30</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                    <img alt="10:30" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/close.png"/>  
+                </span>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 text-center">
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>11:00</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                     <img alt="11:00" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/oyasumi.png"/>  
+                </span>
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>11:30</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                    <img alt="11:30" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/oyasumi.png"/>  
+                </span>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 text-center">
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>12:00</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                     <img alt="12:00" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/open.png"/>  
+                </span>
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>12:30</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                    <img alt="12:30" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/close.png"/>  
+                </span>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 text-center">
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>13:00</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                     <img alt="13:00" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/open.png"/>  
+                </span>
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>13:30</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                    <img alt="13:30" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/close.png"/>  
+                </span>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 text-center">
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>14:00</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                     <img alt="14:00" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/oyasumi.png"/>  
+                </span>
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>14:30</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                    <img alt="14:30" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/oyasumi.png"/>  
+                </span>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 text-center">
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>15:00</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                     <img alt="15:00" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/open.png"/>  
+                </span>
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>15:30</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                    <img alt="15:30" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/close.png"/>  
+                </span>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 text-center">
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>16:00</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                     <img alt="16:00" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/open.png"/>  
+                </span>
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>16:30</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                    <img alt="16:30" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/close.png"/>  
+                </span>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 text-center">
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>17:00</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                     <img alt="17:00" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/oyasumi.png"/>  
+                </span>
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>17:30</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                    <img alt="17:30" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/oyasumi.png"/>  
+                </span>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 text-center">
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>18:00</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                     <img alt="18:00" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/open.png"/>  
+                </span>
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>18:30</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                    <img alt="18:30" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/close.png"/>  
+                </span>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 text-center">
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>19:00</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                     <img alt="19:00" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/open.png"/>  
+                </span>
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>19:30</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                    <img alt="19:30" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/close.png"/>  
+                </span>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 text-center">
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>20:00</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                     <img alt="20:00" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/open.png"/>  
+                </span>
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>20:30</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                    <img alt="20:30" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/close.png"/>  
+                </span>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 text-center">
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>21:00</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                     <img alt="21:00" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/open.png"/>  
+                </span>
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>21:30</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                    <img alt="21:30" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/close.png"/>  
+                </span>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 text-center">
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>22:00</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                     <img alt="22:00" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/open.png"/>  
+                </span>
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>22:30</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                    <img alt="22:30" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/close.png"/>  
+                </span>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 text-center">
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>23:00</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                     <img alt="23:00" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/open.png"/>  
+                </span>
+                <span class="text-center" style="display:inline-block;line-height:10px; margin-right:10px;padding-bottom:15px;">
+                    <label>23:30</label><br/>
+                    <span class="fa fa-caret-down"></span><br/>
+                    <img alt="23:30" style="display:inline-block; padding-top:5px;" src="<?php echo config_item('wp_theme_url');?>/images/close.png"/>  
+                </span>
+            </div>
+        </div>
+
+    </div>
+</div>
 <div class="tab-pane fade in active" id="my-post">
 <div class="clearfix">
 <div class="col-xs-12">
@@ -298,25 +524,25 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
     <div class="col-xs-12 col-sm-6 col-md-4 hourlie-tile-container">
         <div class="clearfix hourlie-tile js-listing-tile  with-member-info">
             <a href="javascript:;" onclick="saveBookmark($(this));"
-               data-post="<?= $post['post_id']?>"
-               data-post-title="<?= $post['title']?>"
-               data-post-thumb-img="<?= $post['thumb_img']?>"
-               data-post-vote="<?= (isset($post['post_vote']))? $post['post_vote'] : ''?>"
-               data-post-author="<?= $post['author_id']?>"
-               data-post-author-name="<?= $post['author']?>"
-               data-post-author-email="<?= $post['author_email']?>"
-               data-post-author-avatar="<?= $post['author_avatar']?>"
-               data-post-author-city="<?= $post['cus_city']?>"
+               data-post="<?php echo $post['post_id']?>"
+               data-post-title="<?php echo $post['title']?>"
+               data-post-thumb-img="<?php echo $post['thumb_img']?>"
+               data-post-vote="<?php echo (isset($post['post_vote']))? $post['post_vote'] : ''?>"
+               data-post-author="<?php echo $post['author_id']?>"
+               data-post-author-name="<?php echo $post['author']?>"
+               data-post-author-email="<?php echo $post['author_email']?>"
+               data-post-author-avatar="<?php echo $post['author_avatar']?>"
+               data-post-author-city="<?php echo $post['cus_city']?>"
                class="bookmark fpph-bookmark" title="Lưu vào"></a>
             <div class="image-container">
-                <a class="img-grid" title="<?= $post['title'];?>" href="<?php echo config_item('wp_home_url') .'/'. CommonUtils::remove_vietnamese_accents($post['title']). '_post-'. $post['post_id']. '.html'?>">
-                    <img width="253" height="195" alt="Capture" class="attachment-260x195 wp-post-image" src="<?php echo config_item('wp_home_url'). '/wp-content/uploads/'. $post['thumb_img']?>">
+                <a class="img-grid" title="<?php echo $post['title'];?>" href="<?php echo config_item('wp_home_url') .'/'. CommonUtils::remove_vietnamese_accents($post['title']). '_post-'. $post['post_id']. '.html'?>">
+                    <img width="253" height="195" alt="Capture" class="attachment-260x195 wp-post-image" src="<?php echo config_item('wp_home_url'). '/wp-content/uploads/'. $post['thumb_img']?>"/>
                     <span class="circle">5,0</span>
                 </a>
             </div>
             <div class="title-container">
-                <a style="word-wrap: break-word;" class="color-hourlie js-paragraph-crop" title="<?= $post['title'];?>" href="<?php echo config_item('wp_home_url') .'/'. CommonUtils::remove_vietnamese_accents($post['title']). '_post-'. $post['post_id']. '.html'?>">
-                    <?= $post['title']; ?>
+                <a style="word-wrap: break-word;" class="color-hourlie js-paragraph-crop" title="<?php echo $post['title'];?>" href="<?php echo config_item('wp_home_url') .'/'. CommonUtils::remove_vietnamese_accents($post['title']). '_post-'. $post['post_id']. '.html'?>">
+                    <?php echo $post['title']; ?>
                 </a>
             </div>
             <div class="profile-container stretch clearfix">
@@ -327,13 +553,13 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
                                   $authorAvatar = config_item('wp_home_url'). '/'. $authorAvatar;
                               }
                         ?>
-                        <a title="<?= $post['author']?>">
-                            <img width="30" height="30" alt="<?= $post['author']?>" src="<?= $authorAvatar;?>" class="user-avatar user-avatar-xs">
+                        <a title="<?php echo $post['author']?>">
+                            <img width="30" height="30" alt="<?php echo $post['author']?>" src="<?php echo $authorAvatar;?>" class="user-avatar user-avatar-xs">
                         </a>
                     </div>
                     <div class="user-info pull-left">
-                        <a class="clearfix user-name crop" href="<?php echo config_item('wp_home_url') . '/c/user/personal/'. $post['author'];?>" title="<?= $post['author']?>"><?= $post['author']?></a>
-                        <span class="user-country clearfix crop"><?= $post['cus_city'];?></span>
+                        <a class="clearfix user-name crop" href="<?php echo config_item('wp_home_url') . '/c/user/personal/'. $post['author'];?>" title="<?php echo $post['author']?>"><?php echo $post['author']?></a>
+                        <span class="user-country clearfix crop"><?php echo $post['cus_city'];?></span>
                     </div>
 
                 </div>
@@ -360,10 +586,10 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
                 <?php $index = 1;
                     foreach($paginations as $pagination){
                 ?>
-                <li class="hidden-xs" style="display: <?php echo ($pagination['show'])? '': 'none' ?>"><a title="Trang <?=$pagination['index']?>" class="<?= $pagination['class']?>" href="<?= $pagination['link']?>"><?=$index?></a></li>
+                <li class="hidden-xs" style="display: <?php echo ($pagination['show'])? '': 'none' ?>"><a title="Trang <?php echo $pagination['index']?>" class="<?php echo $pagination['class']?>" href="<?php echo $pagination['link']?>"><?php echo $index?></a></li>
                 <?php $index++; } ?>
                 <?php if($numPage > 5){ ?>
-                    <li class=""><a title="Trang tiếp theo" class="next" href="<?php echo config_item('base_url'). 'user/personal/'. $reviewUsername . '?page='. ($page + 1) ; ?>"><i class="fa fa-angle-right"></i></a></li>
+                    <li class=""><a title="Trang tiếp theo" class="next" href="<?php echo config_item('wp_home_url'). '/c/user/personal/'. $reviewUsername . '?page='. ($page + 1) ; ?>"><i class="fa fa-angle-right"></i></a></li>
                 <?php } ?>
             </ul>
         <?php } ?>
@@ -383,18 +609,18 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
                 ?>
                 <!-- LOAD SHARED OR NOT SHARED -->
                 <?php if($collection['shared'] == 1 || (isset($_SESSION['user_id']) && $reviewUser['ID'] == $_SESSION['user_id'])){ ?>
-                    <div class="col-xs-12 col-md-4 col-lg-3 collection-item" id="item_collect_<?= $collection['user_collection_id'];?>">
+                    <div class="col-xs-12 col-md-4 col-lg-3 collection-item" id="item_collect_<?php echo $collection['user_collection_id'];?>">
                         <div class="collection-box collection-box-snippet">
-                            <span title="<?= $collection['collection_title'];?>">
+                            <span title="<?php echo $collection['collection_title'];?>">
                                 <?php if(isset($_SESSION['user_id']) && $reviewUser['ID'] == $_SESSION['user_id']){ ?>
                                     <h5 class="collections-header">
-                                        <span class="fa fa-pencil" title="Chỉnh sửa" style="cursor: pointer;" onclick="openDialogEditCollection('<?= $collection['user_collection_id']?>');"></span>
-                                        <span class="fa fa-times" title="Xoá bộ sưu tập" style="cursor: pointer;" onclick="openDialogRemoveCollection('<?= $collection['user_collection_id']?>')"></span>
+                                        <span class="fa fa-pencil" title="Chỉnh sửa" style="cursor: pointer;" onclick="openDialogEditCollection('<?php echo $collection['user_collection_id']?>');"></span>
+                                        <span class="fa fa-times" title="Xoá bộ sưu tập" style="cursor: pointer;" onclick="openDialogRemoveCollection('<?php echo $collection['user_collection_id']?>')"></span>
                                     </h5>
                                 <?php } ?>
                                 <a class="collections-title" style="text-decoration: none;" href="<?php echo config_item('base_url'). 'collection/collection/'. CommonUtils::remove_vietnamese_accents($collection['collection_title']) . '_'. ($collection['user_collection_id'] + $plus)*$multiple . '.html'; ?>">
-                                    <span class="collections-title_outlets"><?= $collection['collection_title'];?></span>
-                                    <span class="collections-title_text"><?= $collection['collection_description'];?></span>
+                                    <span class="collections-title_outlets"><?php echo $collection['collection_title'];?></span>
+                                    <span class="collections-title_text"><?php echo $collection['collection_description'];?></span>
                                 </a>
                                 <div style="background-image: url('http://localhost/vneconomist/wp-content/themes/vneconomist/images/e40960514831cb9b74c552d69eceee0f_1418387628_l.jpg');" class="collection-box-bg lazy">
                                     <div class="collection-overlay"></div>
@@ -423,24 +649,25 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
     </div>
     <!-- Old code here -->
 </div>
+
 <div class="tab-pane fade" id="my-bookmark">
     <div class="clearfix" id="">
         <div class="col-xs-12">
             <a style="margin-bottom: 20px;" class="my-hourlies-viewall call-to-action right"></a>
         </div>
         <?php foreach($bookmarks as $bookmark){ ?>
-            <div class="col-xs-12 col-sm-6 col-md-4 hourlie-tile-container" id="bookmark_<?= $bookmark['post_id']?>">
+            <div class="col-xs-12 col-sm-6 col-md-4 hourlie-tile-container" id="bookmark_<?php echo $bookmark['post_id']?>">
                 <div class="clearfix hourlie-tile js-listing-tile  with-member-info">
-                    <a href="javascript:;" onclick="removefromBookmark(<?= $bookmark['post_id']?>);" class="bookmark remove-flash fpph-bookmark" title="Remove"></a>
+                    <a href="javascript:;" onclick="removefromBookmark(<?php echo $bookmark['post_id']?>);" class="bookmark remove-flash fpph-bookmark" title="Remove"></a>
                     <div class="image-container">
-                        <a class="img-grid" title="<?= $bookmark['post_title'];?>" href="<?php echo config_item('wp_home_url') .'/'. CommonUtils::remove_vietnamese_accents($bookmark['post_title']). '_post-'. $bookmark['post_id']. '.html'?>">
+                        <a class="img-grid" title="<?php echo $bookmark['post_title'];?>" href="<?php echo config_item('wp_home_url') .'/'. CommonUtils::remove_vietnamese_accents($bookmark['post_title']). '_post-'. $bookmark['post_id']. '.html'?>">
                             <img width="253" height="195" alt="Capture" class="attachment-260x195 wp-post-image" src="<?php echo config_item('wp_home_url'). '/wp-content/uploads/'. $bookmark['post_thumb_img']?>">
                             <span class="circle">5,0</span>
                         </a>
                     </div>
                     <div class="title-container">
                         <a style="word-wrap: break-word;" class="color-hourlie js-paragraph-crop" title="<?= $bookmark['post_title'];?>" href="<?php echo config_item('wp_home_url') .'/'. CommonUtils::remove_vietnamese_accents($bookmark['post_title']). '_post-'. $bookmark['post_id']. '.html'?>">
-                            <?= $bookmark['post_title']; ?>
+                            <?php echo $bookmark['post_title']; ?>
                         </a>
                     </div>
                     <div class="profile-container stretch clearfix">
@@ -451,13 +678,13 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
                                     $authorAvatar = config_item('wp_home_url'). '/'. $authorAvatar;
                                 }
                                 ?>
-                                <a title="<?= $bookmark['post_author_name']?>">
-                                    <img width="30" height="30" alt="<?= $bookmark['post_author_name']?>" src="<?= $authorAvatar;?>" class="user-avatar user-avatar-xs">
+                                <a title="<?php echo $bookmark['post_author_name']?>">
+                                    <img width="30" height="30" alt="<?php echo $bookmark['post_author_name']?>" src="<?php echo $authorAvatar;?>" class="user-avatar user-avatar-xs">
                                 </a>
                             </div>
                             <div class="user-info pull-left">
-                                <a class="clearfix user-name crop" href="<?php echo config_item('wp_home_url') . '/c/user/personal/'. $bookmark['post_author_name'];?>" title="<?= $bookmark['post_author_name']?>"><?= $bookmark['post_author_name']?></a>
-                                <span class="user-country clearfix crop"><?= $bookmark['post_author_city'];?></span>
+                                <a class="clearfix user-name crop" href="<?php echo config_item('wp_home_url') . '/c/user/personal/'. $bookmark['post_author_name'];?>" title="<?php echo $bookmark['post_author_name']?>"><?php echo $bookmark['post_author_name']?></a>
+                                <span class="user-country clearfix crop"><?php echo $bookmark['post_author_city'];?></span>
                             </div>
 
                         </div>
@@ -470,15 +697,7 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
         <?php } ?>
     </div>
 </div>
-<div class="tab-pane fade" id="my-bookmark">
-    <div class="clearfix" id="">
-        <div class="col-xs-12">
-            <a style="margin-bottom: 20px;" class="my-hourlies-viewall call-to-action right"></a>
-        </div>
-        <p>Tính năng bạn bè đang được phát triển..</p>
 
-    </div>
-</div>
 </div>
 </div>
 <div id="members-widget-hourlies-portfolio-accordion" class="panel-group visible-xs tab-collapsed"></div>	        	    </div>

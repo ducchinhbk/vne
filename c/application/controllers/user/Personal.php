@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-require_once(config_item('home_dir'). '/c/application/utils/ViewUtils.php');
+//require_once(config_item('home_dir'). '/c/application/utils/ViewUtils.php');
 
 class Personal extends CI_Controller {
 
@@ -15,12 +15,13 @@ class Personal extends CI_Controller {
         $this->load->model('user_model');
         $this->load->model('bookmark_model');
         $this->load->library('pagination');
+        $this->load->helper('common');
     }
 	public function index(){
         // CHECK COOKIE FOR LOGIN
         if(isset($_COOKIE['vnup_user']) && isset($_COOKIE['vnup_log_social']) && (!isset($_SESSION['user_id']) || empty($_SESSION['user_id']))){
             $_SESSION['redirect_to'] = $_SERVER['HTTP_HOST']. $_SERVER['REQUEST_URI'];
-            redirect(config_item('base_url'). 'user/user');
+            redirect(config_item('wp_home_url'). '/c/user/user');
         }
 
         // CHECK USER WANT TO VIEW
@@ -80,7 +81,7 @@ class Personal extends CI_Controller {
                 'show' => $isShow,
                 'index' => $index,
                 'class' => ($page == $index)? 'selected' : '',
-                'link' => config_item('base_url') . 'user/personal/' . $data['reviewUsername'] . '?page='. $index
+                'link' => config_item('wp_home_url') . '/c/user/personal/' . $data['reviewUsername'] . '?page='. $index
             );
         }
         foreach($authorPosts as $post){
