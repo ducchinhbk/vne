@@ -77,21 +77,17 @@
 					</div>
 				</div>
 				<div class="col-sm-4 col-lg-3 connect visible-lg">
-					<h4>Kết nối</h4>
-					<div class="email-input">
-						Đăng ký để cập nhận những bài viết hay nhất!        
+					<div class="email-input">       
 						<form class="form" id="newsletter-subscription-form" action="#" method="post">
-							<div style="display:none">
-								<input type="hidden" value="31d41365ab376728e548533230ffea87d65cd731" name="YII_CSRF_TOKEN"/>
-							</div>        
-							<div class="input-group" id="NewsletterSubscription_email_group">
-								<input placeholder="Type your email.." class="form-control" name="NewsletterSubscription[email]" id="NewsletterSubscription_email" type="email">                        
-								<span class="input-group-btn">
-									<button class="btn btn-default submit-btn" type="submit">
-										<i class="fa fa-caret-right"></i>
-									</button>
-								</span>
+							        
+							<div class="language" id="NewsletterSubscription_email_group">
+								<select class="language_se form-control" name="language">
+                                    <option value="en" selected="selected">English</option>
+                                    <option value="vi">Tiếng Việt</option>
+                                </select>
 							</div>
+							<input type="hidden" name="redirectUrl" value="31d41365ab376728e548533230ffea87d65cd731" />
+							
 						</form>    
 					</div>
 					<div class="social">

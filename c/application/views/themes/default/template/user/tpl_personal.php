@@ -1,7 +1,7 @@
 <?php
 require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
 ?>
-
+<style>.container span.fa{margin-right: 0px;}</style>
 <div class="container container-top">
     <?php if(isset($_GET['cp'])){?>
         <div class="cmm-announcement clearfix"  style="overflow: hidden; display: block;">
@@ -135,9 +135,8 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
             </span>
         </div>
         <!--span><a class="btn contact-member call-to-action btn-inverted " rel="nofollow" href="#">Contact</a></span-->
-        <?php if(isset($_SESSION['user_id']) && $reviewUser['ID'] == $_SESSION['user_id']){ ?>
-            <a href="<?php echo config_item('wp_home_url');?>/c/user/user/edit" rel="nofollow" class="btn contact-member call-to-action  ">Edit</a>
-        <?php } ?>
+        <a href="#" rel="nofollow" class="btn contact-member call-to-action  ">Inbox</a>
+        
     </div>
 </div>
 <div class="member-info-container">
@@ -280,7 +279,7 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
         <a href="#my-colection" data-toggle="tab" role="tab">Bộ sưu tập</a>
     </li>
     <li>
-        <a href="#my-bookmark" data-toggle="tab" role="tab">Đã lưu</a>
+        <a href="#my-bookmark" data-toggle="tab" role="tab">Da luu</a>
     </li>
 </ul>
 <div class="tab-content">
@@ -288,6 +287,40 @@ require_once config_item('home_dir') . '/c/application/utils/CommonUtils.php';
     <div class="clearfix">
         <div class="col-xs-12">
             <a style="margin-bottom: 20px;" class="my-hourlies-viewall call-to-action right"></a>
+        </div>
+        <div class="row">
+            <ul class="clearfix member-info horizontal left crop">
+                <li>
+                    <div class="pull-left">
+                        <span class="member-first-name crop"><a class="member-name" title="Green D." rel="nofollow" href="#">Green</a></span>
+                        <span class="user-country crop">United Kingdom</span>
+                    </div>
+                </li>
+                 <li>
+                    <div class="pull-left">
+                        <span class="member-first-name crop"><a class="member-name" title="Green D." rel="nofollow" href="#">Green</a></span>
+                        <span class="user-country crop">United Kingdom</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="pull-left">
+                        <span class="member-first-name crop"><a class="member-name" title="Green D." rel="nofollow" href="#">Green</a></span>
+                        <span class="user-country crop">United Kingdom</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="pull-left">
+                        <span class="member-first-name crop"><a class="member-name" title="Green D." rel="nofollow" href="#">Green</a></span>
+                        <span class="user-country crop">United Kingdom</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="pull-left">
+                        <span class="member-first-name crop"><a class="member-name" title="Green D." rel="nofollow" href="#">Green</a></span>
+                        <span class="user-country crop">United Kingdom</span>
+                    </div>
+                </li>
+              </ul>
         </div>
         <div class="row">
             <div class="col-md-3 col-sm-4 col-xs-6 text-center">

@@ -571,4 +571,17 @@ function get_collections($offset, $limit)
                  );
        $tag_arrs = $wpdb->get_results( $sql, ARRAY_A );
     return $tag_arrs;
-}								
+}
+
+//get languages	
+function get_languages()
+{
+    global $wpdb;
+    $sql = "SELECT ta.term_id, ta.count, te.name, te.slug
+            FROM wp_terms te LEFT JOIN wp_term_taxonomy ta ON te.term_id = ta.term_id 
+            WHERE ta.taxonomy = 'languages'
+            ORDER BY te.name
+            	 ";
+    $tag_arrs = $wpdb->get_results( $sql, ARRAY_A );
+    return $tag_arrs;
+}							
