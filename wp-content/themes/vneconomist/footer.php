@@ -78,15 +78,14 @@
 				</div>
 				<div class="col-sm-4 col-lg-3 connect visible-lg">
 					<div class="email-input">       
-						<form class="form" id="newsletter-subscription-form" action="#" method="post">
-							        
-							<div class="language" id="NewsletterSubscription_email_group">
-								<select class="language_se form-control" name="language">
+						<form class="form" id="language-form" action="<?php echo home_url('language'); ?>" method="post">
+							<div class="language" id="language-footer">
+								<select class="language_se form-control" name="language" onchange="this.form.submit()">
                                     <option value="en" selected="selected">English</option>
                                     <option value="vi">Tiếng Việt</option>
                                 </select>
 							</div>
-							<input type="hidden" name="redirectUrl" value="31d41365ab376728e548533230ffea87d65cd731" />
+							<input type="hidden" name="redirectUrl" value="<?php echo 'http://'.$_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] ?>" />
 							
 						</form>    
 					</div>

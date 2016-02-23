@@ -7,7 +7,12 @@
  * @author    Chinh Tran
  * 
  **/
+ 
+ if(!isset($_COOKIE['language'])) {
+      setcookie('language', 'en', time() + (86400 * 365), "/");// 1 year
+ } 
 ?>
+
 <?php get_header(); ?>
 
 <div class="container container-top"></div>
