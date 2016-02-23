@@ -81,8 +81,8 @@
 						<form class="form" id="language-form" action="<?php echo home_url('language'); ?>" method="post">
 							<div class="language" id="language-footer">
 								<select class="language_se form-control" name="language" onchange="this.form.submit()">
-                                    <option value="en" selected="selected">English</option>
-                                    <option value="vi">Tiếng Việt</option>
+                                    <option value="en" <?php echo ($_COOKIE['language'] == 'en')? 'selected="selected"': '' ?> >English</option>
+                                    <option value="vi" <?php echo ($_COOKIE['language'] == 'vi')? 'selected="selected"': '' ?>>Tiếng Việt</option>
                                 </select>
 							</div>
 							<input type="hidden" name="redirectUrl" value="<?php echo 'http://'.$_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] ?>" />
