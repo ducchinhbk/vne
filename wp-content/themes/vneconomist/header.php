@@ -136,7 +136,7 @@ function isSessionUserDataAvailable(){
                                 ?>
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <div class="top-nav-image">
-                                        <img src="<?= $userImage; ?>" alt="<?= $userName; ?>" class="img-rounded user-avatar">
+                                        <img src="<?= $userImage; ?>" alt="<?= $userName; ?>" class="img-rounded user-avatar"/>
                                     </div>
                                     <span class="user-greeting crop">Hi <?= $userName; ?></span>
                                     <span class="caret"></span>
@@ -162,7 +162,7 @@ function isSessionUserDataAvailable(){
                 <?php } ?>
                 <div class="pull-right menu-block navigation-menu">
                     <ul>
-                        <li class="dropdown separator"><a class="job btn bold" rel="nofollow" data-trigger="post-btn" href="<?php echo site_url( '/c/user/article/create' );?>">Tạo bài viết</a></li>
+                        <li class="dropdown separator"><a class="job btn bold" rel="nofollow" data-trigger="post-btn" href="<?php echo site_url( '/c/user/article/create' );?>">+Tạo bài viết</a></li>
                     </ul>
                 </div>
             </div>

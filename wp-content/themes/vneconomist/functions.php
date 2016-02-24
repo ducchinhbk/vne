@@ -554,6 +554,20 @@ function get_tag_count($tag_title){
     $the_term = get_term_by( 'slug', $tag_title, 'post_tag' );
     
     return $the_term->count; 
+}
+//get substring
+function get_subtr($string, $limit){
+    $arr_str = explode(' ', $string);
+    $result = '';
+    for($i = 0; $i < count($arr_str); $i++)
+    {
+        if($i >=  $limit)
+        {
+            break;
+        }   
+        $result = $result.' '.$arr_str[$i] ;
+    }
+     return $result;
 }	
 //get collections (tags)
 function get_collections($offset, $limit)

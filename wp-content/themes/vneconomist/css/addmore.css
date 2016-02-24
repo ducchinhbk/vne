@@ -1,3 +1,4 @@
+@font-face{font-family:BaomoiMenu;src:url(../fonts/BaomoMenu_gdi.eot);src:local('☺'),url(../fonts/BaomoMenu_gdi.eot?#iefix) format('embedded-opentype'),url(../fonts/BaomoMenu_gdi.woff) format('woff'),url(../fonts/BaomoMenu_gdi.ttf) format('truetype')}@font-face{font-family:Baomoi;src:url(../fonts/Baomoi_gdi.eot?v=1);src:local('☺'),url(../fonts/Baomoi_gdi.eot?#iefixv=1) format('embedded-opentype'),url(../fonts/Baomoi_gdi.woff?v=1) format('woff'),url(../fonts/Baomoi_gdi.ttf?v=1) format('truetype')}@font-face{font-family:Baomoi;src:url(../fonts/Baomoi-Italic_gdi.eot?v=1);src:local('☺'),url(../fonts/Baomoi-Italic_gdi.eot?#iefixv=1) format('embedded-opentype'),url(../fonts/Baomoi-Italic_gdi.woff?v=1) format('woff'),url(../fonts/Baomoi-Italic_gdi.ttf?v=1) format('truetype');font-style:italic}@font-face{font-family:Baomoi;src:url(../fonts/Baomoi-SemiBold_gdi.eot?v=1);src:local('☺'),url(../fonts/Baomoi-SemiBold_gdi.eot?#iefixv=1) format('embedded-opentype'),url(../fonts/Baomoi-SemiBold_gdi.woff?v=1) format('woff'),url(../fonts/Baomoi-SemiBold_gdi.ttf?v=1) format('truetype');font-weight:700}@font-face{font-family:Baomoi;src:url(../fonts/Baomoi-SemiBoldItalic_gdi.eot?v=1);src:local('☺'),url(../fonts/Baomoi-SemiBoldItalic_gdi.eot?#iefixv=1) format('embedded-opentype'),url(../fonts/Baomoi-SemiBoldItalic_gdi.woff?v=1) format('woff'),url(../fonts/Baomoi-SemiBoldItalic_gdi.ttf?v=1) format('truetype');font-weight:700;font-style:italic}
 
 .hd-search-form{
 	width: 385px;
@@ -206,7 +207,7 @@ label.error{
     line-height: 20px;
     font-weight: 400;
     overflow: hidden;
-    
+    font-weight: bold;
     text-align: left;
 }
 .hp-collection .collection-box-bg {
@@ -303,13 +304,13 @@ label.error{
     font-size: 16px;
     text-align: center;
     z-index: 10;
-    visibility:visible;
-    opacity:1;
+    visibility:hidden;
+    opacity:0;
     transition:opacity 0.5s linear;
 }
 .listings-container .listing-row .row-image-container .hourlie-image-frame:hover >.circle , .image-container .img-grid:hover >.circle{
-    visibility:hidden !important;
-    opacity:0 !important;
+    visibility:visible !important;
+    opacity:1 !important;
 }
 .write-btn{
     padding: 10px 25px;
@@ -318,7 +319,7 @@ label.error{
     position: absolute !important;
     z-index: 422;
     right: 7px;
-    top: 160px;
+    top: 190px;
     padding: 6px 8px 5px 15px!important;
     border: 1px solid #fff;
     border-color: rgba(255,255,255,.25);
@@ -383,7 +384,17 @@ label.error{
     height: 43px;
     font-size: 18px;
 }
-
+.c_title{
+    text-align: center;
+    margin: 30px 0;
+    font-family: Baomoi,Arial,Helvetica,sans-serif;
+    font-size: 3.6em;
+    font-weight: bold;
+    color: #383838;
+}
+p.excerpt{
+    font-size: 14px;
+}
 @media(max-width: 899px){
     
     .top-navigation .tab-content section ul{

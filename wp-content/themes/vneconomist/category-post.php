@@ -11,11 +11,9 @@
 <?php get_header();?>
 <?php  $cat_ID = get_query_var('cat');  ?>
 
-<div class="container container-top"></div>
-
-<div id="main-container" class="wrap-container container clearfix offcanvas offcanvas-left with-left-sidebar">
-		<div class="main-content controller-hourlie action-list">
-			<section class="listings-container hourlies-listing-container" id="hourlies-listing">
+<div class="wrap-container container" id="main-container">
+    <div class="main-content controller-hourlie action-list">
+        <section class="listings-container hourlies-listing-container" id="hourlies-listing">
 				<div class="bg-fill clearfix options-container">
 					<header class="clear">
 						<h1 id="hourlies-listing-heading">

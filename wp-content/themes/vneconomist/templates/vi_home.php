@@ -135,6 +135,7 @@
                                                 <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>" class="color-hourlie js-paragraph-crop" style="word-wrap: break-word;font-weight: bold;">
                                                     <?php the_title(); ?>           
                                                 </a>
+                                                <p class="excerpt"><?php echo get_subtr(get_the_excerpt(), 22); ?></p>
                                             </div>
                                             <div class="profile-container stretch clearfix">
                                                 <div class="col-xs-8 no-padding-right">

@@ -20,9 +20,17 @@
     .user-voted{background-color: #999 !important;border: none !important; text-shadow: none !important;}
     .user-voted:hover{color: #fff !important;}
 </style>
-<div class="container container-top"></div>
-	<div id="main-container" class="wrap-container container clearfix offcanvas offcanvas-right">
-		<div class="main-content controller-hourlie controller-job action-view controller-member action-contact">
+
+<div id="main-container" class="wrap-container container">
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <h1 class="c_title"> Những chiêu “móc túi” trắng trợn khách hàn </h1>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+    <div class="clear"> </div>
+    <div class="main-content controller-hourlie controller-job action-view controller-member action-contact">
        <?php if (have_posts()) { ?>		
              <?php while (have_posts()) : the_post();
                      $author_id = get_the_author_ID();
@@ -31,122 +39,129 @@
                      $full_name = get_user_meta( $author_id, 'first_name', true ).' '.get_user_meta( $author_id, 'last_name', true );
                     
              ?>
-			<header class="clearfix featured featured-right">
-				<h1 class="clearfix"> <?php the_title()?> </h1>
-			</header>
-			
-			
-			<div class="col-xs-12 clearfix js-auto-pause-hidden hourlie-description-text">
-				<?php the_content(); ?>	
-			</div>
-                <?php addPostMetaValue(get_the_ID(), 'post_views_count', 1);  endwhile; ?> 
-            <?php } else { ?>
-        		  <div class="col-xs-12 clearfix js-auto-pause-hidden hourlie-description-text">
-        				<h1 class="single-title" >Không có thông tin để hiển thị</h1>					
-			     </div>
-                        			
- 		     <?php } ?> 
-			<div class="js-auto-pause-hidden" >
-				<div class="widget-order-hourlie-addons clearfix">
-					<div class="title-container">
-						<h2 class="col-xs-12 clearfix prepend-top">Bộ sưu tập liên quan</h2>
-					</div>
-				
-				    <div  class="content-text clear addons-container" data-hook="addons-container">
-				        <ul class="addons clearfix boxmodelfix">
-								
-				        </ul>
-				        <br class="clear"/>
-				    </div>
-				</div>
-			</div>
-            <?php if(isset($_SESSION['wp_user_data'])){?>
-            
-            <div>
-                <div class="col-xs-12 col-sm-6 col-md-2 col-lg-1 member"></div>
-                <div class="col-xs-12 col-sm-6 col-md-10 col-lg-10 col-lg-pull-1 contact">
-                    <div class="hire-form-container clearfix">
-                        <div>
-        					<form enctype="multipart/form-data" id="member-contact-form" action="#" method="post">
-        						<div class="row">
-        							<div class="col-xs-12 form-group">
-        								<div class="instant-hire clearfix">
-        									<div class="fields clearfix">
-        										
-        										<div class="clearfix payment-contracts">
-                                                    <h2>Đánh giá của bạn</h2>
-        											<div class="row">
-        												<ul id="rating">
-        													<li><a href="javascript:void(0)">1.0</a></li>
-        													<li><a href="javascript:void(0)">1.5</a></li>
-        													<li><a href="javascript:void(0)">2.0</a></li>
-        													<li><a href="javascript:void(0)">2.5</a></li>
-        													<li><a href="javascript:void(0)">3.0</a></li>
-        													<li><a href="javascript:void(0)">3.5</a></li>
-        													<li><a href="javascript:void(0)">4.0</a></li>
-        													<li><a href="javascript:void(0)">4.5</a></li>
-        													<li><a href="javascript:void(0)">5.0</a></li>
-        												</ul>
-        												<input type="hidden" id="rating-index" name="rating_index" value=""/>
-        											</div>
-        
-        										</div>
-        									</div>
-        								</div>
-        								<div class="textbox new-job hourlie clearfix">
-        									<textarea id="commnent-content" placeholder="Chia sẽ suy nghĩ của bạn về bài viết.." class="col-xs-12" name="comment_content" ></textarea>            
-        									
-        								</div> 
-        								<input type="hidden" name="user_id" id="user-id" value="<?php echo (!empty($_SESSION["wp_user_data"]))? $_SESSION["wp_user_data"]['user_id']: '1'?>"/>
-                                        <input type="hidden" name="post_id" id="post-id" value="<?php echo get_the_ID();?>"/>
-        							</div>
-        						</div>
-        
-        
-        						<div class="form-group submit-btn clearfix gutter-top new-job hourlie">
-        							<input id="review-form" class="tall btn btn-inverted call-to-action col-xs-12 col-sm-6 col-md-4 col-lg-2" type="button" name="yt0" value="Gửi bình luận"  style="padding: 7px 0;font-size: 12px;"/>
-        						</div>
-        						<div class="js-invite-more-sellers"></div>
-        
-        					</form>
-        				</div>
-                    </div>
-                </div>
-            </div>
-            <?php } else { ?>
-            <section class="proposal-form prepend-top" data-hook="proposal-form" id="login-box">
-                <!--h2 class="bubble">Votes </h2-->
-                <div class="inactive-proposal gutter-top text-center">
-                    <p>Đăng nhập để vote cho tác giả hoặc bình luận bài viết.</p>
-                    <a  class="extra-tall call-to-action btn btn-inverted" href="<?php echo site_url( '/c/user/user?redirect_to='. urlencode(site_url($wp->request)) );?>">Đăng nhập </a>
-                </div>    
-            </section>
-            <?php } ?>
-			<div class="col-xs-12 js-auto-pause-hidden hourlie-description-text">
-		          
-				<div class="feedbacks-container clear prepend-top">
-					<div class="feedbacks-list-container">
-						<h2 class="prepend-top reviews clearfix">
-							Bình luận (<?php echo count_comment( get_the_ID() ); ?>) </h2>
-						<section id="feedack-230890" class="timeline clear review-list" data-hook="feedack-container">
-							<div id="reviews-list" class="list-view">
+             <div class="col-xs-12 clearfix js-auto-pause-hidden hourlie-description-text">
+                 <div class="full-width controller-member">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="active">
+                            <a href="#story" data-toggle="tab" role="tab">Story</a>
+                        </li>
+                        <li>
+                            <a href="#update" data-toggle="tab" role="tab">Update</a>
+                        </li>
+                        <li>
+                            <a href="#comment" data-toggle="tab" role="tab">Comments</a>
+                        </li>
+                        <li>
+                            <a href="#contributor" data-toggle="tab" role="tab">Contributors</a>
+                        </li>
+                    </ul>
+                    
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="story">
+                            <?php the_content(); ?>	
+                        </div>
+                        <div class="tab-pane" id="update">
+                        
+                        </div>
+                        <div class="tab-pane" id="comment">
+                            <?php if(isset($_SESSION['wp_user_data'])){?>
                             
-								<ul class="items row" id="comments-list">
-    								<?php (count_comment( get_the_ID() ) > 0 )? cus_get_comments(get_the_ID()): ''; ?>
-                                    
-    							</ul>
-						</div>            
-					</section>
-				</div>
-                <?php if(count_comment( get_the_ID() ) > 0 ) {?>
-                <div class="feedback-toggle-container clearfix" style="margin-top: 30px;">
-				    <button class="btn tall call-to-action col-xs-12 col-md-6 col-md-offset-3" id="load-reviews">
-							Xem bình luận 
-                    </button>
-				</div>
-                <?php } ?>
-			</div>
-		</div>
+                                    <div>
+                                        <div class="col-xs-12 col-sm-6 col-md-2 col-lg-1 member"></div>
+                                        <div class="col-xs-12 col-sm-6 col-md-10 col-lg-10 col-lg-pull-1 contact">
+                                            <div class="hire-form-container clearfix">
+                                                <div>
+                                					<form enctype="multipart/form-data" id="member-contact-form" action="#" method="post">
+                                						<div class="row">
+                                							<div class="col-xs-12 form-group">
+                                								<div class="instant-hire clearfix">
+                                									<div class="fields clearfix">
+                                										
+                                										<div class="clearfix payment-contracts">
+                                                                            <h2>Đánh giá của bạn</h2>
+                                											<div class="row">
+                                												<ul id="rating">
+                                													<li><a href="javascript:void(0)">1.0</a></li>
+                                													<li><a href="javascript:void(0)">1.5</a></li>
+                                													<li><a href="javascript:void(0)">2.0</a></li>
+                                													<li><a href="javascript:void(0)">2.5</a></li>
+                                													<li><a href="javascript:void(0)">3.0</a></li>
+                                													<li><a href="javascript:void(0)">3.5</a></li>
+                                													<li><a href="javascript:void(0)">4.0</a></li>
+                                													<li><a href="javascript:void(0)">4.5</a></li>
+                                													<li><a href="javascript:void(0)">5.0</a></li>
+                                												</ul>
+                                												<input type="hidden" id="rating-index" name="rating_index" value=""/>
+                                											</div>
+                                
+                                										</div>
+                                									</div>
+                                								</div>
+                                								<div class="textbox new-job hourlie clearfix">
+                                									<textarea id="commnent-content" placeholder="Chia sẽ suy nghĩ của bạn về bài viết.." class="col-xs-12" name="comment_content" ></textarea>            
+                                									
+                                								</div> 
+                                								<input type="hidden" name="user_id" id="user-id" value="<?php echo (!empty($_SESSION["wp_user_data"]))? $_SESSION["wp_user_data"]['user_id']: '1'?>"/>
+                                                                <input type="hidden" name="post_id" id="post-id" value="<?php echo get_the_ID();?>"/>
+                                							</div>
+                                						</div>
+                                
+                                
+                                						<div class="form-group submit-btn clearfix gutter-top new-job hourlie">
+                                							<input id="review-form" class="tall btn btn-inverted call-to-action col-xs-12 col-sm-6 col-md-4 col-lg-2" type="button" name="yt0" value="Gửi bình luận"  style="padding: 7px 0;font-size: 12px;"/>
+                                						</div>
+                                						<div class="js-invite-more-sellers"></div>
+                                
+                                					</form>
+                                				</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            <?php } else { ?>
+                                    <section class="proposal-form prepend-top" data-hook="proposal-form" id="login-box">
+                                        <div class="inactive-proposal gutter-top text-center">
+                                            <p>Đăng nhập để vote cho tác giả hoặc bình luận bài viết.</p>
+                                            <a class="extra-tall call-to-action btn btn-inverted" href="<?php echo site_url( '/c/user/user?redirect_to='. urlencode(site_url($wp->request)) );?>">Đăng nhập </a>
+                                        </div>    
+                                    </section>
+                            <?php } ?>
+          			       <div class="col-xs-12 js-auto-pause-hidden hourlie-description-text">
+                				<div class="feedbacks-container clear prepend-top">
+               					    <div class="feedbacks-list-container">
+              						    <h2 class="prepend-top reviews clearfix">
+                 							Bình luận (<?php echo count_comment( get_the_ID() ); ?>) </h2>
+                  						<section id="feedack-230890" class="timeline clear review-list" data-hook="feedack-container">
+               							    <div id="reviews-list" class="list-view">
+                                                <ul class="items row" id="comments-list">
+                  								  <?php (count_comment( get_the_ID() ) > 0 )? cus_get_comments(get_the_ID()): ''; ?>
+                                                                    
+          							            </ul>
+              						        </div>            
+            					       </section>
+                				    </div>
+                                    <?php if(count_comment( get_the_ID() ) > 0 ) {?>
+                                        <div class="feedback-toggle-container clearfix" style="margin-top: 30px;">
+                				            <button class="btn tall call-to-action col-xs-12 col-md-6 col-md-offset-3" id="load-reviews">
+                 							    Xem bình luận 
+                                            </button>
+                        				</div>
+                                    <?php } ?>
+                     			</div>
+                      		</div>
+                        </div>
+                        <div class="tab-pane" id="contributor">
+                        
+                        </div>
+                    </div>
+                 </div>
+			
+				
+			 </div>
+                <?php addPostMetaValue(get_the_ID(), 'post_views_count', 1);   ?> 
+            <?php endwhile; } ?>
+        		  
+			
+            
     </div>
     <aside class="right-column sidebar-hourlie-view offcanvas-sidebar">
         <div class="js-keep-in-view-marker"></div>
