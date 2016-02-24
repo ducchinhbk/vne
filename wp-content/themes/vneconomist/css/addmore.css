@@ -167,7 +167,7 @@ label.error{
 }
 .section-title {
     color: #2d2d2d;
-    font-size: 18px;
+    font-size: 28px;
     font-weight: 700;
 }
 .hp-collection .collection-box {
@@ -366,7 +366,8 @@ label.error{
     margin-bottom: 10px;
     height: 60px;
     padding: 15px;
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: bold;
 }
 .box-writing:before {
     position: absolute;
@@ -403,6 +404,49 @@ label.error{
 p.excerpt{
     font-size: 14px;
 }
+.communityTile {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    float: left;
+    width: 33.33333333%;
+    min-height: 445px;
+}
+.communityTile-container {
+    background-color: rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    min-height: inherit;
+    padding: 10px;
+}
+.communityTile-imageDesktop, .communityTile-imageMobile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-position: center;
+    background-size: cover;
+    z-index: -1;
+}
+.communityTile-meta {
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+.communityTile-title {
+    font-family: "Benton Sans","Helvetica","sans-serif";
+    font-size: 24px;
+    line-height: 34px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.communityTile-meta {
+    min-height: 15rem;
+}
+
 @media(max-width: 899px){
     
     .top-navigation .tab-content section ul{

@@ -173,3 +173,57 @@
         </section>
     </div>
 </div>
+<!--Three main concerpt-->
+<div id="colection-wrapper" class="colection-wrapper">
+    <div class="container container">
+        <div class="col-md-12 col-lg-12 ta-center">
+            <div class="hp-collection hp-tour-in">
+              <div class="section-title container section-title-thin ta-center">Bộ sưu tập bài viết nổi bật</div>
+              <div class="row">
+                  <a class="communityTile ng-isolate-scope" href="#">
+                      <div class="communityTile-container">
+                          <div>
+                              <div class="communityTile-imageMobile" style="background-image: url('https://c1.iggcdn.com/indiegogo-media-prod-cld/image/upload/f_auto/v1441057604/sgm0bjwbamd6mnf0gnmp.jpg')"></div>
+                              <div class="communityTile-imageDesktop" style="background-image: url('https://c1.iggcdn.com/indiegogo-media-prod-cld/image/upload/f_auto/v1441057611/emvlxlfcrgani2njdimw.jpg')"></div>
+                              <div class="communityTile-meta">
+                                  <div class="communityTile-title">
+                                    Team Favorites
+                                  </div>
+                                  <div class="communityTile-description">Explore campaigns hand-picked by Indiegogo employees.</div>
+                              </div>
+                          </div>
+                      </div>
+                    </a>
+                    <a class="communityTile ng-isolate-scope" href="#">
+                      <div class="communityTile-container">
+                          <div>
+                              <div class="communityTile-imageMobile" style="background-image: url('https://c1.iggcdn.com/indiegogo-media-prod-cld/image/upload/f_auto/v1449531502/jzxndjnmsysqt7m9mbig.jpg')"></div>
+                              <div class="communityTile-imageDesktop" style="background-image: url('https://c1.iggcdn.com/indiegogo-media-prod-cld/image/upload/f_auto/v1449531502/jzxndjnmsysqt7m9mbig.jpg')"></div>
+                              <div class="communityTile-meta">
+                                  <div class="communityTile-title">
+                                    Team Favorites
+                                  </div>
+                                  <div class="communityTile-description">Explore campaigns hand-picked by Indiegogo employees.</div>
+                              </div>
+                          </div>
+                      </div>
+                    </a>
+                    <a class="communityTile ng-isolate-scope" href="#">
+                      <div class="communityTile-container">
+                          <div>
+                              <div class="communityTile-imageMobile" style="background-image: url('https://c1.iggcdn.com/indiegogo-media-prod-cld/image/upload/f_auto/v1441057819/yuylukwz1f86zi42c2jg.jpg')"></div>
+                              <div class="communityTile-imageDesktop" style="background-image: url('https://c1.iggcdn.com/indiegogo-media-prod-cld/image/upload/f_auto/v1441057819/yuylukwz1f86zi42c2jg.jpg')"></div>
+                              <div class="communityTile-meta">
+                                  <div class="communityTile-title">
+                                    Team Favorites
+                                  </div>
+                                  <div class="communityTile-description">Explore campaigns hand-picked by Indiegogo employees.</div>
+                              </div>
+                          </div>
+                      </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
