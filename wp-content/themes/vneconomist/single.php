@@ -14,6 +14,12 @@
     
 ?>
 <style>
+    body {
+        background-color: #fff;
+    }
+    .site-wrapper .wrap-container>div.main-content, .controller-member.action-profile .member-activity {
+        background-color: #fff;
+    }
     .controller-job.action-view header h1{
         border-bottom: none;
     }

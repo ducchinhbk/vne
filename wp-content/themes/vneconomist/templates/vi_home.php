@@ -110,7 +110,7 @@
                     <div class="items clearfix items-results ">
                         <?php   
                             $args = array(
-                                'posts_per_page' => 16
+                                'posts_per_page' => 8
                             );
                             $the_query = new WP_Query($args);
                             if ( $the_query->have_posts() ) {
@@ -149,7 +149,7 @@
                                                         <span class="user-country clearfix crop"><?php echo $user_info->cus_city; ?></span>
                                                     </div>    
                                                 </div>
-                                                <div class="col-xs-4 price-container price-tag text-right" style="font-size: 12px;line-height: 2.5;">
+                                                <div class="col-xs-4 price-container price-tag text-right">
                                                     <span>30</span><sup> votes</sup>              
                                                 </div>
                                             </div>
@@ -163,7 +163,12 @@
                         <!-- End Loop -->
                    
                     </div>
-                </div>    
+                </div>  
+                <div class="row">
+                    <div class="col-lg-12 ta-center mtop"> 
+                        <a class="btn call-to-action btn-inverted hp-collection-load" href="#">Xem thêm</a> 
+                    </div>
+              </div>  
             </div>
         </section>
     </div>

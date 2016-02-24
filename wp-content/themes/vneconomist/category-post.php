@@ -11,6 +11,14 @@
 <?php get_header();?>
 <?php  $cat_ID = get_query_var('cat');  ?>
 
+<style>
+    body {
+        background-color: #fff;
+    }
+    .site-wrapper .wrap-container>div.main-content, .controller-member.action-profile .member-activity {
+        background-color: #fff;
+    }
+</style>
 <div class="wrap-container container" id="main-container">
     <div class="main-content controller-hourlie action-list">
         <section class="listings-container hourlies-listing-container" id="hourlies-listing">
@@ -64,7 +72,8 @@
         												<?php the_title() ?>
         											</a>
         										</h3>
-                                                <br class="clear"/>
+                                                <p class="excerpt"><?php echo get_subtr(get_the_excerpt(), 32).'..'; ?></p>
+                                                
         										<ul class="clearfix member-info horizontal left crop">
         											<li>
         												<div class="user-image pull-left">
@@ -78,21 +87,21 @@
         												</div>
         											</li>
                                                     <li class="js-tooltip" title="Hourlie's Rating">
-        												<i class="fpph-thumb-up color-gray"></i>
+        												<i class="fpph-thumb-up color-pph"></i>
                                                         <span class="hourlie-info-value">99</span>
         												<span>Votes</span>
         												
         											</li>
         											<li class="js-tooltip hidden-xs" title="Delivered in 1 day">
-        												<i class="fpph-clock-wall color-gray"></i>
+        												<i class="fpph-clock-wall color-pph"></i>
         												<span class="hourlie-info-value">1,200 Views</span>
         											</li>
-        											<!--li class="js-tooltip" title="Hourlies sold">
-        												<i class="fpph-buyer-activity color-gray"></i>
+        											<li class="js-tooltip" title="Hourlies sold">
+        												<i class="fpph-buyer-activity color-pph"></i>
                                                         <span class="hourlie-info-value">79</span>
         												<span>Bình luận</span>
         												
-        											</li-->
+        											</li>
         											
         										</ul>
         									</div>

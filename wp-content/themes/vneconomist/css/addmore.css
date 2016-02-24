@@ -9,10 +9,16 @@
 
 .hd-search-form input{
 	height: 34px;
+    border-radius: 17px;
+    -webkit-border-radius: 17px;
+    -moz-border-radius: 17px;
 }
 .hd-search-form .input-group-btn .js-submit-search{
 	border-left: none;
     padding: 9px 12px;
+    border-radius: 0 17px 17px 0;
+    -webkit-border-radius: 0 17px 17px 0;
+    -moz-border-radius: 0 17px 17px 0;
 }
 .home-container .section-home .container>h3{
 	font-size: 2.5rem;
@@ -22,6 +28,8 @@
 }
 .controller-hourlie.action-list .listing-row .title{
 	font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
 }
 .controller-hourlie.action-list .listing-row .horizontal>li{
 	text-transform: none;
@@ -31,7 +39,7 @@
 	background-color: #fff;
 }
 a.js-paragraph-crop{
-	color: #4774b7;
+	color: #383838;
 }
 .top-navigation .nav .dropdown .dropdown-menu.simple li a:not(.nested-link){
     font-size: 15px;
